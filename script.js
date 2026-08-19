@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('scroll', handleScroll);
   mobileMenuBtn.addEventListener('click', toggleMobileMenu);
 
-  const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+  const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link, .mobile-nav-sublink, .nav-dropdown-item');
   navLinks.forEach(link => {
     link.addEventListener('click', function (e) {
       const href = this.getAttribute('href');
@@ -60,6 +60,38 @@ document.addEventListener('DOMContentLoaded', function () {
 
   window.scrollToSection = scrollToSection;
   handleScroll();
+
+  // ===== Destinations dropdown =====
+  const navDropdown = document.getElementById('nav-destinations-dropdown');
+  if (navDropdown) {
+    const trigger = navDropdown.querySelector('.nav-dropdown-trigger');
+    trigger.addEventListener('click', function (e) {
+      e.stopPropagation();
+      const isOpen = navDropdown.classList.toggle('open');
+      trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    document.addEventListener('click', function (e) {
+      if (!navDropdown.contains(e.target)) {
+        navDropdown.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        navDropdown.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  const mobileNavGroup = document.querySelector('.mobile-nav-group');
+  if (mobileNavGroup) {
+    const mobileTrigger = mobileNavGroup.querySelector('.mobile-nav-dropdown-trigger');
+    mobileTrigger.addEventListener('click', function () {
+      const isOpen = mobileNavGroup.classList.toggle('open');
+      mobileTrigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
 });
 
 
@@ -67,24 +99,63 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function () {
   const form = document.getElementById('contact-form');
   const thankYouMsg = document.getElementById('thank-you-msg');
+  const WHATSAPP_NUMBER = '918050306510'; // no + or spaces, per wa.me format
 
   if (form) {
+    const submitBtn = form.querySelector('.form-submit-btn');
+
     form.addEventListener('submit', async function (e) {
       e.preventDefault();
+
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const message = form.message.value.trim();
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.dataset.originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = 'Sending...';
+      }
+
       const formData = new FormData(form);
+      let emailSent = false;
+
       try {
-        const response = await fetch(
-          'https://script.google.com/macros/s/AKfycbxarK5O8lxPWBSIxNwgSHkOBe7GT3a413ZSjdAd9nE7nB8d-4Zvk3lcWhvVTz5m7uAvsA/exec',
-          { method: 'POST', body: formData }
-        );
-        if (!response.ok) throw new Error('Network response was not ok');
-        thankYouMsg.style.display = 'block';
-        form.reset();
-        setTimeout(() => { window.location.href = '/'; }, 1500);
+        // Sends an email notification via Formspree (endpoint already set in the form's action attribute)
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: { Accept: 'application/json' },
+        });
+        emailSent = response.ok;
+        if (!response.ok) {
+          console.error('Formspree submission failed:', response.status);
+        }
       } catch (error) {
         console.error('Form submission error:', error);
-        alert('Oops! Something went wrong. Please try again.');
       }
+
+      // Build a pre-filled WhatsApp message regardless of email outcome,
+      // so the lead always reaches the team one way or another.
+      const waText = encodeURIComponent(
+        `Hi ELUNITE! My name is ${name}.\nEmail: ${email}\nMessage: ${message}`
+      );
+      const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${waText}`;
+
+      thankYouMsg.style.display = 'block';
+      if (!emailSent) {
+        thankYouMsg.textContent =
+          "🎉 Thanks for reaching out! We couldn't confirm the email went through, but we're opening WhatsApp for you now so we don't miss your message.";
+      }
+      form.reset();
+
+      setTimeout(() => {
+        window.open(waUrl, '_blank', 'noopener');
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = submitBtn.dataset.originalText;
+        }
+      }, 1200);
     });
   }
 });

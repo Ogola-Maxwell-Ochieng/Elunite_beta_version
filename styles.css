@@ -202,6 +202,86 @@ body {
   color: rgb(255, 198, 26);
 }
 
+/* ===== Destinations dropdown (desktop) ===== */
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-trigger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-dropdown-caret {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.25s ease;
+}
+
+.nav-dropdown:hover .nav-dropdown-caret,
+.nav-dropdown.open .nav-dropdown-caret {
+  transform: rotate(180deg);
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  min-width: 200px;
+  background: rgba(8, 27, 73, 0.98);
+  border: 1px solid rgba(255, 198, 26, 0.25);
+  border-radius: 10px;
+  box-shadow: var(--shadow-md);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  z-index: 60;
+}
+
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown.open .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.nav-dropdown-item {
+  color: var(--dark-foreground);
+  text-decoration: none;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: var(--transition-all);
+}
+
+.nav-dropdown-item:hover {
+  background: rgba(255, 198, 26, 0.12);
+  color: rgb(255, 198, 26);
+}
+
+.nav-dropdown-viewall {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  margin-top: 4px;
+  padding-top: 10px;
+  color: rgb(255, 198, 26);
+  font-size: 13px;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
 .nav-cta {
   display: none;
 }
@@ -303,6 +383,64 @@ body {
 }
 
 .mobile-nav-link:hover {
+  color: var(--accent);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* ===== Destinations dropdown (mobile) ===== */
+.mobile-nav-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-nav-dropdown-trigger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-align: center;
+}
+
+.mobile-nav-dropdown-trigger .nav-dropdown-caret {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.25s ease;
+}
+
+.mobile-nav-group.open .nav-dropdown-caret {
+  transform: rotate(180deg);
+}
+
+.mobile-nav-submenu {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.mobile-nav-group.open .mobile-nav-submenu {
+  max-height: 400px;
+}
+
+.mobile-nav-sublink {
+  color: var(--dark-foreground);
+  text-decoration: none;
+  padding: 0.6rem 0.75rem;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 15px !important;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border-radius: 0.25rem;
+  transition: var(--transition-all);
+}
+
+.mobile-nav-sublink:hover {
   color: var(--accent);
   background: rgba(255, 255, 255, 0.05);
 }
@@ -12968,5 +13106,93 @@ body {
 
   .article-cta-box {
     padding: 28px 22px;
+  }
+}
+
+/* ===== Mobile responsiveness fixes for images (iPhone 12 & similar, ≤480px) ===== */
+@media (max-width: 480px) {
+
+  /* Generic safety net: no image should ever overflow its container */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Hero orbs — decorative, often absolutely positioned and oversized on mobile */
+  .sap-hero-orb-1,
+  .sap-hero-orb-2 {
+    width: 140px;
+    height: 140px;
+  }
+
+  /* "ELUNITE Solution" rows — icon + text side by side breaks on narrow screens */
+  .sap-intro-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .sap-solve-row {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .sap-solve-ico {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 8px;
+  }
+
+  .sap-solve-ico img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* "Why Choose Us" layout — dark card + mini cards */
+  .sap-why-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sap-why-right {
+    grid-template-columns: 1fr;
+  }
+
+  .sap-why-mini {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+  }
+
+  .sap-why-ico {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 8px;
+  }
+
+  .sap-why-ico img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* Included section cards & process track — force single column stacking */
+  .sap-included-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sap-process-track {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 767px) {
+  /* Slightly wider breakpoint for phones like iPhone 12 in general */
+  .sap-hero-title {
+    font-size: clamp(2rem, 8vw, 2.75rem);
+  }
+
+  .sap-hero-desc {
+    font-size: 1rem;
   }
 }

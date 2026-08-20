@@ -61,37 +61,74 @@ document.addEventListener('DOMContentLoaded', function () {
   window.scrollToSection = scrollToSection;
   handleScroll();
 
-  // ===== Destinations dropdown =====
-  const navDropdown = document.getElementById('nav-destinations-dropdown');
-  if (navDropdown) {
-    const trigger = navDropdown.querySelector('.nav-dropdown-trigger');
+  // ===== Nav dropdowns (Destinations, Services, etc.) =====
+  const navDropdowns = document.querySelectorAll('.nav-dropdown');
+  navDropdowns.forEach(function (dropdown) {
+    const trigger = dropdown.querySelector('.nav-dropdown-trigger');
     trigger.addEventListener('click', function (e) {
       e.stopPropagation();
-      const isOpen = navDropdown.classList.toggle('open');
+      const isOpen = dropdown.classList.toggle('open');
       trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      // Close any other open dropdown
+      navDropdowns.forEach(function (other) {
+        if (other !== dropdown) {
+          other.classList.remove('open');
+          other.querySelector('.nav-dropdown-trigger').setAttribute('aria-expanded', 'false');
+        }
+      });
     });
-    document.addEventListener('click', function (e) {
-      if (!navDropdown.contains(e.target)) {
-        navDropdown.classList.remove('open');
-        trigger.setAttribute('aria-expanded', 'false');
+  });
+  document.addEventListener('click', function (e) {
+    navDropdowns.forEach(function (dropdown) {
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove('open');
+        dropdown.querySelector('.nav-dropdown-trigger').setAttribute('aria-expanded', 'false');
       }
     });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') {
-        navDropdown.classList.remove('open');
-        trigger.setAttribute('aria-expanded', 'false');
-      }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      navDropdowns.forEach(function (dropdown) {
+        dropdown.classList.remove('open');
+        dropdown.querySelector('.nav-dropdown-trigger').setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+
+  function closeAllNavDropdowns() {
+    navDropdowns.forEach(function (dropdown) {
+      dropdown.classList.remove('open');
+      dropdown.querySelector('.nav-dropdown-trigger').setAttribute('aria-expanded', 'false');
     });
   }
 
-  const mobileNavGroup = document.querySelector('.mobile-nav-group');
-  if (mobileNavGroup) {
-    const mobileTrigger = mobileNavGroup.querySelector('.mobile-nav-dropdown-trigger');
+  // Close any open dropdown as soon as the page is scrolled
+  window.addEventListener('scroll', closeAllNavDropdowns, { passive: true });
+
+  // Hovering a different nav item cleanly switches/closes dropdowns
+  // instead of leaving a click-opened one stuck open
+  navDropdowns.forEach(function (dropdown) {
+    dropdown.addEventListener('mouseenter', function () {
+      navDropdowns.forEach(function (other) {
+        if (other !== dropdown) {
+          other.classList.remove('open');
+          other.querySelector('.nav-dropdown-trigger').setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  });
+  document.querySelectorAll('.nav-link:not(.nav-dropdown-trigger)').forEach(function (link) {
+    link.addEventListener('mouseenter', closeAllNavDropdowns);
+  });
+
+  const mobileNavGroups = document.querySelectorAll('.mobile-nav-group');
+  mobileNavGroups.forEach(function (group) {
+    const mobileTrigger = group.querySelector('.mobile-nav-dropdown-trigger');
     mobileTrigger.addEventListener('click', function () {
-      const isOpen = mobileNavGroup.classList.toggle('open');
+      const isOpen = group.classList.toggle('open');
       mobileTrigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
-  }
+  });
 });
 
 
@@ -344,7 +381,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const urls = {
         facebook: 'https://www.facebook.com/elunite/',
         instagram: 'https://www.instagram.com/elunite_education/',
-        linkedin: 'https://linkedin.com/company/elunite',
+        linkedin: 'https://www.linkedin.com/company/elunite/',
         twitter: 'https://x.com/EluniteEd'
       };
       if (urls[platform]) window.open(urls[platform], '_blank');

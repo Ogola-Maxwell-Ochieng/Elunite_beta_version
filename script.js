@@ -193,6 +193,11 @@ document.addEventListener('DOMContentLoaded', function () {
           submitBtn.innerHTML = submitBtn.dataset.originalText;
         }
       }, 1200);
+
+      // Hide the thank-you message automatically after 10 seconds
+      setTimeout(() => {
+        thankYouMsg.style.display = 'none';
+      }, 10000);
     });
   }
 });

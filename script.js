@@ -381,7 +381,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const urls = {
         facebook: 'https://www.facebook.com/elunite/',
         instagram: 'https://www.instagram.com/elunite_education/',
-        linkedin: 'https://www.linkedin.com/company/elunite/',
+        linkedin: 'https://linkedin.com/company/elunite',
         twitter: 'https://x.com/EluniteEd'
       };
       if (urls[platform]) window.open(urls[platform], '_blank');

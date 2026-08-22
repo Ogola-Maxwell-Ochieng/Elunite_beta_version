@@ -180,6 +180,7 @@
 
     <!-- ═══ SCRIPTS ═══ -->
     <script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+   
   </head>
 
   <body>
@@ -404,7 +405,7 @@
       <div class="container">
         <div class="blog-listing-grid" id="blog-listing-grid">
           <!-- Post: Complete Guide -->
-          <article class="blog-listing-card" data-date="2026-08-13">
+          <article class="blog-listing-card" data-date="2026-08-18">
             <a href="complete-guide-studying-abroad-2026.html" class="blog-listing-img" aria-label="Read: Complete Guide to Studying Abroad in 2026">
               <img
                 src="images/Complete Guide to Studying Abroad in 2026 Top Countries, Universities, and Application Tips.png"
@@ -427,7 +428,7 @@
               </p>
               <p class="blog-listing-meta">
                 <i data-lucide="calendar" style="width: 14px; height: 14px"></i>
-                Updated Aug 13, 2026 &nbsp;•&nbsp;
+                Updated Aug 18, 2026 &nbsp;•&nbsp;
                 <i data-lucide="clock" style="width: 14px; height: 14px"></i>
                 5 min read
               </p>
@@ -439,7 +440,7 @@
           </article>
 
           <!-- Post: Best Countries -->
-          <article class="blog-listing-card" data-date="2026-08-17">
+          <article class="blog-listing-card" data-date="2026-08-18">
             <a href="best-countries-study-abroad-2026.html" class="blog-listing-img blog-listing-img--icon" aria-label="Read: Best Countries to Study Abroad in 2026">
               <img
                 src="images/Best Countries to Study Abroad in 2026 Affordable Tuition, Visa Success Rates & Career Opportunities.png"
@@ -462,9 +463,9 @@
               </p>
               <p class="blog-listing-meta">
                 <i data-lucide="calendar" style="width: 14px; height: 14px"></i>
-                Updated Aug 17, 2026 &nbsp;•&nbsp;
+                Updated Aug 18, 2026 &nbsp;•&nbsp;
                 <i data-lucide="clock" style="width: 14px; height: 14px"></i>
-                6 min read
+                4 min read
               </p>
               <a href="best-countries-study-abroad-2026.html" class="blog-listing-readmore">
                 Read the full guide
@@ -509,7 +510,7 @@
           </article>
 
           <!-- Post: How to Choose the Right University -->
-          <article class="blog-listing-card" data-date="2026-08-21">
+          <article class="blog-listing-card" data-date="2026-08-14">
             <a href="how-to-choose-the-right-university-abroad.html" class="blog-listing-img blog-listing-img--icon" aria-label="Read: How to Choose the Right University Abroad">
               <img
                 src="images/How to Choose the Right University Abroad Courses, Rankings, Scholarships & Future Career Scope.png"
@@ -532,7 +533,7 @@
               </p>
               <p class="blog-listing-meta">
                 <i data-lucide="calendar" style="width: 14px; height: 14px"></i>
-                Updated Aug 21, 2026 &nbsp;•&nbsp;
+                Updated Aug 14, 2026 &nbsp;•&nbsp;
                 <i data-lucide="clock" style="width: 14px; height: 14px"></i>
                 6 min read
               </p>
@@ -544,7 +545,7 @@
           </article>
 
           <!-- Post: Scholarships 2026 -->
-          <article class="blog-listing-card" data-date="2026-08-21">
+          <article class="blog-listing-card" data-date="2026-08-12">
             <a href="study-abroad-scholarships-2026.html" class="blog-listing-img blog-listing-img--icon" aria-label="Read: Study Abroad Scholarships 2026">
               <img
                 src="images/Study Abroad Scholarships 2026 How to Apply, Eligibility Requirements & Tips to Get Approved.png"
@@ -567,7 +568,7 @@
               </p>
               <p class="blog-listing-meta">
                 <i data-lucide="calendar" style="width: 14px; height: 14px"></i>
-                Updated Aug 21, 2026 &nbsp;•&nbsp;
+                Updated Aug 12, 2026 &nbsp;•&nbsp;
                 <i data-lucide="clock" style="width: 14px; height: 14px"></i>
                 8 min read
               </p>
@@ -733,38 +734,6 @@
       }
     </script>
     <script>
-      // ═══════════════════════════════════════════════════════════
-      // Auto-sort blog cards newest first, and mark the newest as
-      // the featured card (first column, first row). Add new posts
-      // anywhere in the grid above with a data-date attribute and
-      // this handles the rest automatically.
-      // ═══════════════════════════════════════════════════════════
-      (function () {
-        var grid = document.getElementById("blog-listing-grid");
-        if (!grid) return;
-        var cards = Array.prototype.slice.call(
-          grid.querySelectorAll(".blog-listing-card")
-        );
-        if (!cards.length) return;
-
-        cards.sort(function (a, b) {
-          var dateA = new Date(a.getAttribute("data-date") || 0);
-          var dateB = new Date(b.getAttribute("data-date") || 0);
-          return dateB - dateA;
-        });
-
-        cards.forEach(function (card, index) {
-          card.classList.toggle("blog-listing-card--featured", index === 0);
-          grid.appendChild(card);
-        });
-
-        // Re-render icons in case reordering changed which are on screen
-        if (typeof lucide !== "undefined") {
-          lucide.createIcons();
-        }
-      })();
-    </script>
-    <script>
       // Live blog card search
       (function () {
         var input = document.getElementById("blog-search-input");
@@ -819,5 +788,6 @@
       })();
       
     </script>
+    <script src="blog-sort.js"></script>
   </body>
 </html>

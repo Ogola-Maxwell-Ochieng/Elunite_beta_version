@@ -50,7 +50,7 @@
     <!-- ═══ TWITTER CARD ═══ -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@elunite" />
-    
+
     <meta
       name="twitter:title"
       content="Study Abroad Blog | Tips, Guides &amp; Scholarships – Elunite"
@@ -118,19 +118,32 @@
           {
             "@type": "BlogPosting",
             "headline": "Complete Guide to Studying Abroad in 2026: Top Countries, Universities, and Application Tips",
+            "url": "https://www.elunite.com/complete-guide-studying-abroad-2026.html",
             "datePublished": "2026-08-13"
           },
           {
             "@type": "BlogPosting",
-            "headline": "Best Countries to Study Abroad in 2026: Affordable Tuition, Visa Success Rates & Career Opportunities"
+            "headline": "Best Countries to Study Abroad in 2026: Affordable Tuition, Visa Success Rates & Career Opportunities",
+            "url": "https://www.elunite.com/best-countries-study-abroad-2026.html",
+            "datePublished": "2026-08-17"
           },
           {
             "@type": "BlogPosting",
-            "headline": "How to Choose the Right University Abroad: Courses, Rankings, Scholarships & Future Career Scope"
+            "headline": "A Parent's Guide to Study Abroad: Safety, Real Costs & How to Spot a Legitimate Consultant",
+            "url": "https://www.elunite.com/parents-guide-study-abroad-safety-cost.html",
+            "datePublished": "2026-08-21"
           },
           {
             "@type": "BlogPosting",
-            "headline": "Study Abroad Scholarships 2026: How to Apply, Eligibility Requirements & Tips to Get Approved"
+            "headline": "How to Choose the Right University Abroad: Courses, Rankings, Scholarships & Future Career Scope",
+            "url": "https://www.elunite.com/how-to-choose-the-right-university-abroad.html",
+            "datePublished": "2026-08-21"
+          },
+          {
+            "@type": "BlogPosting",
+            "headline": "Study Abroad Scholarships 2026: How to Apply, Eligibility Requirements & Tips to Get Approved",
+            "url": "https://www.elunite.com/study-abroad-scholarships-2026.html",
+            "datePublished": "2026-08-21"
           }
         ]
       }
@@ -280,6 +293,9 @@
 
         <!-- Mobile Navigation -->
         <div id="mobile-menu" class="mobile-menu hidden">
+          <button type="button" id="mobile-menu-close" class="mobile-menu-close" aria-label="Close menu">
+            <i data-lucide="x"></i>
+          </button>
           <div class="mobile-menu-content">
             <a href="index.html" class="mobile-nav-link">Home</a>
             <a href="about.html" class="mobile-nav-link">About Us</a>
@@ -367,12 +383,28 @@
       </div>
     </section>
 
+    <!--
+      ═══════════════════════════════════════════════════════════════
+      HOW TO ADD A NEW BLOG POST (read this before adding a card)
+      ═══════════════════════════════════════════════════════════════
+      1. Copy any existing <article class="blog-listing-card"> block
+         below and paste it anywhere inside #blog-listing-grid. Where
+         you paste it does NOT matter.
+      2. Set data-date="YYYY-MM-DD" on the <article> to the post's
+         publish date.
+      3. A script at the bottom of this page automatically sorts every
+         card newest-first and puts the newest one in the featured,
+         first column / first row spot. You never have to manually
+         reorder anything.
+      ═══════════════════════════════════════════════════════════════
+    -->
+
     <!-- Blog Card Grid -->
     <section class="blog-listing-section">
       <div class="container">
-        <div class="blog-listing-grid">
-          <!-- Featured post -->
-          <article class="blog-listing-card blog-listing-card--featured">
+        <div class="blog-listing-grid" id="blog-listing-grid">
+          <!-- Post: Complete Guide -->
+          <article class="blog-listing-card" data-date="2026-08-13">
             <a href="complete-guide-studying-abroad-2026.html" class="blog-listing-img" aria-label="Read: Complete Guide to Studying Abroad in 2026">
               <img
                 src="images/Complete Guide to Studying Abroad in 2026 Top Countries, Universities, and Application Tips.png"
@@ -395,9 +427,9 @@
               </p>
               <p class="blog-listing-meta">
                 <i data-lucide="calendar" style="width: 14px; height: 14px"></i>
-                Updated Aug 18, 2026 &nbsp;•&nbsp;
+                Updated Aug 13, 2026 &nbsp;•&nbsp;
                 <i data-lucide="clock" style="width: 14px; height: 14px"></i>
-                12 min read
+                5 min read
               </p>
               <a href="complete-guide-studying-abroad-2026.html" class="blog-listing-readmore">
                 Read the full guide
@@ -406,8 +438,8 @@
             </div>
           </article>
 
-          <!-- Post 2 -->
-          <article class="blog-listing-card">
+          <!-- Post: Best Countries -->
+          <article class="blog-listing-card" data-date="2026-08-17">
             <a href="best-countries-study-abroad-2026.html" class="blog-listing-img blog-listing-img--icon" aria-label="Read: Best Countries to Study Abroad in 2026">
               <img
                 src="images/Best Countries to Study Abroad in 2026 Affordable Tuition, Visa Success Rates & Career Opportunities.png"
@@ -430,7 +462,7 @@
               </p>
               <p class="blog-listing-meta">
                 <i data-lucide="calendar" style="width: 14px; height: 14px"></i>
-                Updated Aug 18, 2026 &nbsp;•&nbsp;
+                Updated Aug 17, 2026 &nbsp;•&nbsp;
                 <i data-lucide="clock" style="width: 14px; height: 14px"></i>
                 6 min read
               </p>
@@ -441,17 +473,57 @@
             </div>
           </article>
 
-          <!-- Post 3 -->
-          <article class="blog-listing-card">
-            <div class="blog-listing-coming-soon">Coming Soon</div>
-            <div class="blog-listing-img blog-listing-img--icon">
-              <i data-lucide="graduation-cap"></i>
+          <!-- Post: Parent's Guide -->
+          <article class="blog-listing-card" data-date="2026-08-21">
+            <a href="parents-guide-study-abroad-safety-cost.html" class="blog-listing-img blog-listing-img--icon" aria-label="Read: A Parent's Guide to Study Abroad">
+              <img
+                src="images/A Parent's Guide to Study Abroad Safety, Real Costs & How to Spot a Legitimate Consultant.png"
+                alt="A Parent's Guide to Study Abroad"
+                loading="lazy"
+              />
+            </a>
+            <div class="blog-listing-body">
+              <span class="blog-listing-tag">Complete Guide</span>
+              <h3 class="blog-listing-card-title">
+                <a href="parents-guide-study-abroad-safety-cost.html">
+                  A Parent's Guide to Study Abroad: Safety, Real Costs
+                  &amp; How to Spot a Legitimate Consultant
+                </a>
+              </h3>
+              <p class="blog-listing-excerpt">
+                Straight answers to the questions parents actually have:
+                is it safe, what does it really cost, and how do you tell
+                a legitimate consultant from a scam.
+              </p>
+              <p class="blog-listing-meta">
+                <i data-lucide="calendar" style="width: 14px; height: 14px"></i>
+                Updated Aug 21, 2026 &nbsp;•&nbsp;
+                <i data-lucide="clock" style="width: 14px; height: 14px"></i>
+                7 min read
+              </p>
+              <a href="parents-guide-study-abroad-safety-cost.html" class="blog-listing-readmore">
+                Read the full guide
+                <i data-lucide="arrow-right" style="width: 15px; height: 15px"></i>
+              </a>
             </div>
+          </article>
+
+          <!-- Post: How to Choose the Right University -->
+          <article class="blog-listing-card" data-date="2026-08-21">
+            <a href="how-to-choose-the-right-university-abroad.html" class="blog-listing-img blog-listing-img--icon" aria-label="Read: How to Choose the Right University Abroad">
+              <img
+                src="images/How to Choose the Right University Abroad Courses, Rankings, Scholarships & Future Career Scope.png"
+                alt="How to Choose the Right University Abroad"
+                loading="lazy"
+              />  
+            </a>
             <div class="blog-listing-body">
               <span class="blog-listing-tag">University Selection</span>
               <h3 class="blog-listing-card-title">
-                How to Choose the Right University Abroad: Courses,
-                Rankings, Scholarships &amp; Future Career Scope
+                <a href="how-to-choose-the-right-university-abroad.html">
+                  How to Choose the Right University Abroad: Courses,
+                  Rankings, Scholarships &amp; Future Career Scope
+                </a>
               </h3>
               <p class="blog-listing-excerpt">
                 Rankings only tell half the story. Here's how to weigh
@@ -460,38 +532,52 @@
               </p>
               <p class="blog-listing-meta">
                 <i data-lucide="calendar" style="width: 14px; height: 14px"></i>
-                Mar 4 &nbsp;•&nbsp;
+                Updated Aug 21, 2026 &nbsp;•&nbsp;
                 <i data-lucide="clock" style="width: 14px; height: 14px"></i>
-                4 min read
+                6 min read
               </p>
+              <a href="how-to-choose-the-right-university-abroad.html" class="blog-listing-readmore">
+                Read the full guide
+                <i data-lucide="arrow-right" style="width: 15px; height: 15px"></i>
+              </a>
             </div>
           </article>
 
-          <!-- Post 4 -->
-          <article class="blog-listing-card">
-            <div class="blog-listing-coming-soon">Coming Soon</div>
-            <div class="blog-listing-img blog-listing-img--icon">
-              <i data-lucide="award"></i>
-            </div>
+          <!-- Post: Scholarships 2026 -->
+          <article class="blog-listing-card" data-date="2026-08-21">
+            <a href="study-abroad-scholarships-2026.html" class="blog-listing-img blog-listing-img--icon" aria-label="Read: Study Abroad Scholarships 2026">
+              <img
+                src="images/Study Abroad Scholarships 2026 How to Apply, Eligibility Requirements & Tips to Get Approved.png"
+                alt="Study Abroad Scholarships 2026"
+                loading="lazy"
+              />  
+            </a>
             <div class="blog-listing-body">
               <span class="blog-listing-tag">Scholarships</span>
               <h3 class="blog-listing-card-title">
-                Study Abroad Scholarships 2026: How to Apply, Eligibility
-                Requirements &amp; Tips to Get Approved
+                <a href="study-abroad-scholarships-2026.html">
+                  Study Abroad Scholarships 2026: How to Apply, Eligibility
+                  Requirements &amp; Tips to Get Approved
+                </a>
               </h3>
               <p class="blog-listing-excerpt">
-                A practical walkthrough of where to find funding, what
-                makes an application stand out, and mistakes that get
-                strong candidates rejected.
+                A practical walk-through of Chevening, DAAD, Mastercard
+                Foundation, Erasmus Mundus and more, with real deadlines
+                and what actually gets applications approved.
               </p>
               <p class="blog-listing-meta">
                 <i data-lucide="calendar" style="width: 14px; height: 14px"></i>
-                Feb 24 &nbsp;•&nbsp;
+                Updated Aug 21, 2026 &nbsp;•&nbsp;
                 <i data-lucide="clock" style="width: 14px; height: 14px"></i>
-                4 min read
+                8 min read
               </p>
+              <a href="study-abroad-scholarships-2026.html" class="blog-listing-readmore">
+                Read the full guide
+                <i data-lucide="arrow-right" style="width: 15px; height: 15px"></i>
+              </a>
             </div>
           </article>
+
         </div>
       </div>
     </section>
@@ -647,6 +733,38 @@
       }
     </script>
     <script>
+      // ═══════════════════════════════════════════════════════════
+      // Auto-sort blog cards newest first, and mark the newest as
+      // the featured card (first column, first row). Add new posts
+      // anywhere in the grid above with a data-date attribute and
+      // this handles the rest automatically.
+      // ═══════════════════════════════════════════════════════════
+      (function () {
+        var grid = document.getElementById("blog-listing-grid");
+        if (!grid) return;
+        var cards = Array.prototype.slice.call(
+          grid.querySelectorAll(".blog-listing-card")
+        );
+        if (!cards.length) return;
+
+        cards.sort(function (a, b) {
+          var dateA = new Date(a.getAttribute("data-date") || 0);
+          var dateB = new Date(b.getAttribute("data-date") || 0);
+          return dateB - dateA;
+        });
+
+        cards.forEach(function (card, index) {
+          card.classList.toggle("blog-listing-card--featured", index === 0);
+          grid.appendChild(card);
+        });
+
+        // Re-render icons in case reordering changed which are on screen
+        if (typeof lucide !== "undefined") {
+          lucide.createIcons();
+        }
+      })();
+    </script>
+    <script>
       // Live blog card search
       (function () {
         var input = document.getElementById("blog-search-input");
@@ -699,6 +817,7 @@
 
         input.addEventListener("input", filterCards);
       })();
+      
     </script>
   </body>
 </html>

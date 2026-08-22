@@ -25,16 +25,39 @@ document.addEventListener('DOMContentLoaded', function () {
       mobileMenu.classList.remove('hidden');
       menuIcon.classList.add('hidden');
       closeIcon.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
     } else {
       mobileMenu.classList.add('hidden');
       menuIcon.classList.remove('hidden');
       closeIcon.classList.add('hidden');
+      document.body.style.overflow = '';
     }
   }
 
   function closeMobileMenu() {
     if (isMobileMenuOpen) toggleMobileMenu();
   }
+
+  const mobileMenuCloseBtn = document.getElementById('mobile-menu-close');
+  if (mobileMenuCloseBtn) {
+    mobileMenuCloseBtn.addEventListener('click', closeMobileMenu);
+  }
+
+  // Clicking anywhere outside the open panel (the dimmed backdrop area,
+  // since it's a box-shadow, not a real element) closes it
+  document.addEventListener('click', function (e) {
+    if (
+      isMobileMenuOpen &&
+      !mobileMenu.contains(e.target) &&
+      !mobileMenuBtn.contains(e.target)
+    ) {
+      closeMobileMenu();
+    }
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeMobileMenu();
+  });
 
   function scrollToSection(sectionId) {
     const element = document.getElementById(sectionId);
@@ -49,6 +72,12 @@ document.addEventListener('DOMContentLoaded', function () {
   const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link, .mobile-nav-sublink, .nav-dropdown-item');
   navLinks.forEach(link => {
     link.addEventListener('click', function (e) {
+      // Dropdown triggers (Destinations/Services/Programs) only expand
+      // their submenu, they should never close the whole drawer/menu
+      if (this.classList.contains('mobile-nav-dropdown-trigger') ||
+          this.classList.contains('nav-dropdown-trigger')) {
+        return;
+      }
       const href = this.getAttribute('href');
       if (href && href.startsWith('#')) {
         e.preventDefault();

@@ -47,16 +47,12 @@ body {
   --dark-foreground: hsl(220, 15%, 95%);
 
   /* Gradients */
-  --gradient-accent: linear-gradient(
-    135deg,
-    hsl(45, 100%, 50%),
-    hsl(45, 100%, 60%)
-  );
-  --gradient-primary: linear-gradient(
-    135deg,
-    hsl(220, 100%, 50%),
-    hsl(220, 100%, 70%)
-  );
+  --gradient-accent: linear-gradient(135deg,
+      hsl(45, 100%, 50%),
+      hsl(45, 100%, 60%));
+  --gradient-primary: linear-gradient(135deg,
+      hsl(220, 100%, 50%),
+      hsl(220, 100%, 70%));
 
   /* Shadows */
   --shadow-card:
@@ -668,6 +664,7 @@ body {
 }
 
 @keyframes ring {
+
   0%,
   100% {
     transform: rotate(0deg);
@@ -738,11 +735,9 @@ body {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(8, 27, 73, 0.9),
-    rgba(10, 35, 85, 0.7)
-  );
+  background: linear-gradient(135deg,
+      rgba(8, 27, 73, 0.9),
+      rgba(10, 35, 85, 0.7));
 }
 
 .hero-content {
@@ -966,6 +961,7 @@ body {
 }
 
 @keyframes bounceArrow {
+
   0%,
   20%,
   50%,
@@ -1214,6 +1210,50 @@ body {
   text-align: left;
 }
 
+@media (max-width: 1024px) {
+  .feature-card {
+    padding: 22px;
+  }
+
+  .feature-image {
+    max-width: 150px;
+    height: 150px;
+    margin-bottom: 1rem;
+  }
+
+  .feature-title {
+    font-size: 22px;
+    margin-bottom: 0.75rem;
+  }
+
+  .feature-description {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+}
+
+@media (max-width: 768px) {
+  .feature-card {
+    padding: 16px;
+  }
+
+  .feature-image {
+    max-width: 110px;
+    height: 110px;
+    margin-bottom: 0.75rem;
+  }
+
+  .feature-title {
+    font-size: 18px;
+    margin-bottom: 0.5rem;
+  }
+
+  .feature-description {
+    font-size: 13.5px;
+    line-height: 1.55;
+  }
+}
+
 .feature-divider {
   border: none;
   border-top: 1px solid #ddd;
@@ -1289,6 +1329,12 @@ body {
   text-align: center;
   margin-top: 3rem;
   margin-bottom: 3rem;
+}
+
+@media (max-width: 768px) {
+  .service-secondary {
+    display: none;
+  }
 }
 
 .cta-btn {
@@ -1773,12 +1819,25 @@ body {
 
 @media (max-width: 768px) {
   .destinations-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 0 1rem;
+    display: flex;
+    grid-template-columns: unset;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1rem;
+    padding: 0 1.25rem 1rem;
+    margin-bottom: 24px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .destinations-grid::-webkit-scrollbar {
+    display: none;
   }
 
   .destination-card {
+    flex: 0 0 82%;
+    max-width: 300px;
+    scroll-snap-align: center;
     padding: 30px 20px;
     box-shadow: 4px 4px 0px #000000;
   }
@@ -1795,6 +1854,7 @@ body {
 
 @media (max-width: 480px) {
   .destination-card {
+    flex: 0 0 88%;
     padding: 25px 15px;
   }
 
@@ -1890,6 +1950,7 @@ body {
 }
 
 @keyframes moveArrowHorizontal {
+
   0%,
   100% {
     transform: translateX(0);
@@ -2557,9 +2618,8 @@ body {
   width: 15rem;
   height: auto;
   display: block;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   margin-top: -2rem;
-  margin-left: -1.4rem;
 }
 
 @media (max-width: 900px) {
@@ -2886,11 +2946,9 @@ body {
 }
 
 .contact-info-section {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 193, 7, 0.1),
-    rgba(255, 255, 255, 0.05)
-  );
+  background: linear-gradient(135deg,
+      rgba(255, 193, 7, 0.1),
+      rgba(255, 255, 255, 0.05));
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -3064,18 +3122,14 @@ body {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(
-      ellipse 60% 70% at 30% 50%,
+    radial-gradient(ellipse 60% 70% at 30% 50%,
       rgba(255, 193, 7, 0.06) 0%,
-      transparent 65%
-    ),
-    repeating-linear-gradient(
-      60deg,
+      transparent 65%),
+    repeating-linear-gradient(60deg,
       transparent,
       transparent 50px,
       rgba(255, 255, 255, 0.012) 50px,
-      rgba(255, 255, 255, 0.012) 100px
-    );
+      rgba(255, 255, 255, 0.012) 100px);
   pointer-events: none;
 }
 
@@ -3229,6 +3283,7 @@ body {
 }
 
 @media (max-width: 720px) {
+
   .about-grid-page,
   .ach-grid-page {
     grid-template-columns: 1fr;
@@ -4004,13 +4059,11 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: repeating-linear-gradient(
-    -45deg,
-    transparent,
-    transparent 24px,
-    rgba(0, 0, 0, 0.03) 24px,
-    rgba(0, 0, 0, 0.03) 48px
-  );
+  background: repeating-linear-gradient(-45deg,
+      transparent,
+      transparent 24px,
+      rgba(0, 0, 0, 0.03) 24px,
+      rgba(0, 0, 0, 0.03) 48px);
   pointer-events: none;
 }
 
@@ -5445,6 +5498,7 @@ section {
 }
 
 @media (max-width: 600px) {
+
   .world-cards-grid,
   .world-cards-grid-2,
   .world-related-grid {
@@ -5475,13 +5529,11 @@ section {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: repeating-linear-gradient(
-    -45deg,
-    transparent,
-    transparent 30px,
-    rgba(255, 193, 7, 0.04) 30px,
-    rgba(255, 193, 7, 0.04) 60px
-  );
+  background-image: repeating-linear-gradient(-45deg,
+      transparent,
+      transparent 30px,
+      rgba(255, 193, 7, 0.04) 30px,
+      rgba(255, 193, 7, 0.04) 60px);
   pointer-events: none;
 }
 
@@ -5768,6 +5820,7 @@ section {
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 860px) {
+
   .zz-row,
   .zz-row.left,
   .zz-row.right {
@@ -5796,13 +5849,11 @@ section {
 }
 
 .service-hero-banner {
-  background: linear-gradient(
-    135deg,
-    #0a1640 0%,
-    #0f2460 40%,
-    #1a3a7a 75%,
-    #0d1e52 100%
-  );
+  background: linear-gradient(135deg,
+      #0a1640 0%,
+      #0f2460 40%,
+      #1a3a7a 75%,
+      #0d1e52 100%);
   padding: 150px 60px 130px;
   position: relative;
   overflow: hidden;
@@ -5815,18 +5866,14 @@ section {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(
-      ellipse 60% 70% at 70% 50%,
+    radial-gradient(ellipse 60% 70% at 70% 50%,
       rgba(255, 193, 7, 0.06) 0%,
-      transparent 65%
-    ),
-    repeating-linear-gradient(
-      60deg,
+      transparent 65%),
+    repeating-linear-gradient(60deg,
       transparent,
       transparent 50px,
       rgba(255, 255, 255, 0.012) 50px,
-      rgba(255, 255, 255, 0.012) 100px
-    );
+      rgba(255, 255, 255, 0.012) 100px);
   pointer-events: none;
 }
 
@@ -6215,13 +6262,11 @@ section {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: repeating-linear-gradient(
-    -45deg,
-    transparent,
-    transparent 40px,
-    rgba(255, 255, 255, 0.015) 40px,
-    rgba(255, 255, 255, 0.015) 80px
-  );
+  background-image: repeating-linear-gradient(-45deg,
+      transparent,
+      transparent 40px,
+      rgba(255, 255, 255, 0.015) 40px,
+      rgba(255, 255, 255, 0.015) 80px);
   pointer-events: none;
 }
 
@@ -6364,18 +6409,14 @@ section {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(
-      ellipse 60% 70% at 30% 50%,
+    radial-gradient(ellipse 60% 70% at 30% 50%,
       rgba(255, 193, 7, 0.06) 0%,
-      transparent 65%
-    ),
-    repeating-linear-gradient(
-      60deg,
+      transparent 65%),
+    repeating-linear-gradient(60deg,
       transparent,
       transparent 50px,
       rgba(255, 255, 255, 0.012) 50px,
-      rgba(255, 255, 255, 0.012) 100px
-    );
+      rgba(255, 255, 255, 0.012) 100px);
   pointer-events: none;
 }
 
@@ -6429,21 +6470,21 @@ section {
 }
 
 /* Entrance fade-up */
-.sh-center > * {
+.sh-center>* {
   opacity: 0;
   transform: translateY(18px);
   animation: up 0.65s ease forwards;
 }
 
-.sh-center > *:nth-child(1) {
+.sh-center>*:nth-child(1) {
   animation-delay: 0.08s;
 }
 
-.sh-center > *:nth-child(2) {
+.sh-center>*:nth-child(2) {
   animation-delay: 0.22s;
 }
 
-.sh-center > *:nth-child(3) {
+.sh-center>*:nth-child(3) {
   animation-delay: 0.38s;
 }
 
@@ -6597,18 +6638,14 @@ section {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(
-      ellipse 55% 60% at 75% 40%,
+    radial-gradient(ellipse 55% 60% at 75% 40%,
       rgba(255, 193, 7, 0.08) 0%,
-      transparent 65%
-    ),
-    repeating-linear-gradient(
-      60deg,
+      transparent 65%),
+    repeating-linear-gradient(60deg,
       transparent,
       transparent 50px,
       rgba(255, 255, 255, 0.012) 50px,
-      rgba(255, 255, 255, 0.012) 100px
-    );
+      rgba(255, 255, 255, 0.012) 100px);
   pointer-events: none;
 }
 
@@ -6651,6 +6688,7 @@ section {
 }
 
 @keyframes etp-pulse {
+
   0%,
   100% {
     opacity: 1;
@@ -7071,13 +7109,11 @@ section {
   left: calc(40px + 10%);
   right: calc(40px + 10%);
   height: 2px;
-  background: repeating-linear-gradient(
-    90deg,
-    #000 0,
-    #000 6px,
-    transparent 6px,
-    transparent 12px
-  );
+  background: repeating-linear-gradient(90deg,
+      #000 0,
+      #000 6px,
+      transparent 6px,
+      transparent 12px);
   z-index: 0;
 }
 
@@ -7512,18 +7548,14 @@ section {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(
-      ellipse 60% 70% at 80% 30%,
+    radial-gradient(ellipse 60% 70% at 80% 30%,
       rgba(255, 193, 7, 0.09) 0%,
-      transparent 65%
-    ),
-    repeating-linear-gradient(
-      60deg,
+      transparent 65%),
+    repeating-linear-gradient(60deg,
       transparent,
       transparent 50px,
       rgba(255, 255, 255, 0.012) 50px,
-      rgba(255, 255, 255, 0.012) 100px
-    );
+      rgba(255, 255, 255, 0.012) 100px);
   pointer-events: none;
 }
 
@@ -7564,6 +7596,7 @@ section {
 }
 
 @keyframes sap-pulse {
+
   0%,
   100% {
     opacity: 1;
@@ -8032,13 +8065,11 @@ section {
   left: calc(40px + 12.5%);
   right: calc(40px + 12.5%);
   height: 2px;
-  background: repeating-linear-gradient(
-    90deg,
-    #000 0,
-    #000 6px,
-    transparent 6px,
-    transparent 12px
-  );
+  background: repeating-linear-gradient(90deg,
+      #000 0,
+      #000 6px,
+      transparent 6px,
+      transparent 12px);
   z-index: 0;
 }
 
@@ -8449,18 +8480,14 @@ section {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(
-      ellipse 55% 60% at 75% 40%,
+    radial-gradient(ellipse 55% 60% at 75% 40%,
       rgba(255, 193, 7, 0.08) 0%,
-      transparent 65%
-    ),
-    repeating-linear-gradient(
-      60deg,
+      transparent 65%),
+    repeating-linear-gradient(60deg,
       transparent,
       transparent 50px,
       rgba(255, 255, 255, 0.012) 50px,
-      rgba(255, 255, 255, 0.012) 100px
-    );
+      rgba(255, 255, 255, 0.012) 100px);
   pointer-events: none;
 }
 
@@ -8741,13 +8768,11 @@ section {
   content: "";
   position: absolute;
   inset: 0;
-  background: repeating-linear-gradient(
-    60deg,
-    transparent,
-    transparent 50px,
-    rgba(255, 255, 255, 0.012) 50px,
-    rgba(255, 255, 255, 0.012) 100px
-  );
+  background: repeating-linear-gradient(60deg,
+      transparent,
+      transparent 50px,
+      rgba(255, 255, 255, 0.012) 50px,
+      rgba(255, 255, 255, 0.012) 100px);
   pointer-events: none;
 }
 
@@ -8835,18 +8860,14 @@ section {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(
-      ellipse 55% 65% at 80% 30%,
+    radial-gradient(ellipse 55% 65% at 80% 30%,
       rgba(255, 193, 7, 0.09) 0%,
-      transparent 65%
-    ),
-    repeating-linear-gradient(
-      60deg,
+      transparent 65%),
+    repeating-linear-gradient(60deg,
       transparent,
       transparent 50px,
       rgba(255, 255, 255, 0.012) 50px,
-      rgba(255, 255, 255, 0.012) 100px
-    );
+      rgba(255, 255, 255, 0.012) 100px);
   pointer-events: none;
 }
 
@@ -9304,11 +9325,9 @@ section {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    ellipse 70% 70% at 100% 0%,
-    rgba(255, 193, 7, 0.1),
-    transparent 65%
-  );
+  background: radial-gradient(ellipse 70% 70% at 100% 0%,
+      rgba(255, 193, 7, 0.1),
+      transparent 65%);
   pointer-events: none;
 }
 
@@ -9460,6 +9479,7 @@ section {
 }
 
 @media (max-width: 768px) {
+
   .pd-inner,
   .pd-nav-inner,
   .pd-breadcrumb-inner,
@@ -10036,18 +10056,14 @@ section {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(
-      ellipse 55% 65% at 80% 30%,
+    radial-gradient(ellipse 55% 65% at 80% 30%,
       rgba(255, 193, 7, 0.09) 0%,
-      transparent 65%
-    ),
-    repeating-linear-gradient(
-      60deg,
+      transparent 65%),
+    repeating-linear-gradient(60deg,
       transparent,
       transparent 50px,
       rgba(255, 255, 255, 0.012) 50px,
-      rgba(255, 255, 255, 0.012) 100px
-    );
+      rgba(255, 255, 255, 0.012) 100px);
   pointer-events: none;
 }
 
@@ -10297,11 +10313,9 @@ section {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    ellipse 80% 80% at 110% 110%,
-    rgba(255, 193, 7, 0.12),
-    transparent 70%
-  );
+  background: radial-gradient(ellipse 80% 80% at 110% 110%,
+      rgba(255, 193, 7, 0.12),
+      transparent 70%);
   pointer-events: none;
 }
 
@@ -10520,11 +10534,9 @@ section {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    ellipse 70% 70% at 100% 0%,
-    rgba(255, 193, 7, 0.1),
-    transparent 65%
-  );
+  background: radial-gradient(ellipse 70% 70% at 100% 0%,
+      rgba(255, 193, 7, 0.1),
+      transparent 65%);
   pointer-events: none;
 }
 
@@ -10676,6 +10688,7 @@ section {
 }
 
 @media (max-width: 768px) {
+
   .etp-pd-inner,
   .etp-pd-nav-inner,
   .etp-pd-breadcrumb-inner,
@@ -11175,11 +11188,9 @@ body {
 .pgi-hero {
   background: #081b49;
   background-image:
-    radial-gradient(
-      circle at 82% 18%,
+    radial-gradient(circle at 82% 18%,
       rgba(231, 163, 59, 0.18),
-      transparent 55%
-    ),
+      transparent 55%),
     radial-gradient(circle at 10% 90%, rgba(255, 191, 0, 0.2), transparent 45%);
   color: #fff;
   padding: 96px 0 70px;
@@ -11419,7 +11430,7 @@ body {
   margin-top: 14px;
 }
 
-.pgi-coverage > .pgi-wrap > p {
+.pgi-coverage>.pgi-wrap>p {
   font-family:
     "avenir-lt-w01_35-light1475496", "avenir-lt-w05_35-light", sans-serif;
   color: black;
@@ -11432,7 +11443,7 @@ body {
   padding-top: 10px;
 }
 
-.pgi-coverage > .pgi-wrap > h2 {
+.pgi-coverage>.pgi-wrap>h2 {
   font-family: "Bebas Neue", sans-serif;
   color: black;
   max-width: 64ch;
@@ -11853,6 +11864,7 @@ body {
 
 /* ===== INDIA PAGE – mobile section spacing ===== */
 @media (max-width: 768px) {
+
   .pgi-intro,
   .pgi-why,
   .pgi-coverage,
@@ -12976,7 +12988,7 @@ body {
   color: var(--foreground);
 }
 
-.article-body > p {
+.article-body>p {
   font-size: 17px;
   line-height: 1.85;
   margin-bottom: 24px;
@@ -13166,6 +13178,109 @@ body {
   text-decoration: underline;
 }
 
+
+
+/* ═══════════════════════════════════════════════════════════════
+   Reusable blog-post components (destination comparison cards,
+   cost tables, warning callouts, back-to-blog link). Centralized
+   here so any post can use them without an embedded <style> block.
+   ═══════════════════════════════════════════════════════════════ */
+
+.back-to-blog {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--foreground-muted);
+  text-decoration: none;
+  margin-bottom: 32px;
+  transition: color 0.2s;
+}
+
+.back-to-blog:hover {
+  color: var(--accent);
+}
+
+.back-to-blog i {
+  width: 18px;
+  height: 18px;
+}
+
+/* Cost breakdown comparison table */
+.cost-breakdown-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 32px 0;
+  border: 2.5px solid black;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 5px 5px 0 black;
+}
+
+.cost-breakdown-table th,
+.cost-breakdown-table td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 2px solid var(--dark-bg);
+}
+
+.cost-breakdown-table th {
+  background: var(--dark-bg);
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 16px;
+  color: var(--accent);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.cost-breakdown-table tr:last-child td {
+  border-bottom: none;
+}
+
+.cost-breakdown-table tr:hover {
+  background: var(--dark-bg);
+}
+
+/* Warning / caution callout box */
+.warning-box {
+  background: linear-gradient(135deg, var(--accent) 0%, #ff8c42 100%);
+  color: #1a1a2e;
+  padding: 24px;
+  border-radius: 16px;
+  border: 2.5px solid black;
+  box-shadow: 5px 5px 0 black;
+  margin: 32px 0;
+}
+
+.warning-box-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 20px;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.warning-box i {
+  width: 24px;
+  height: 24px;
+  stroke-width: 2.5;
+}
+
+.warning-box ul {
+  margin: 16px 0 0 24px;
+}
+
+.warning-box li {
+  margin-bottom: 8px;
+}
+
+@media (max-width: 768px) {
+  .cost-breakdown-table {
+    font-size: 13px;
+  }
+}
+
 /* Tablet */
 @media (max-width: 1024px) {
   .article-title {
@@ -13192,7 +13307,7 @@ body {
     font-size: 19px;
   }
 
-  .article-body > p,
+  .article-body>p,
   .article-body li {
     font-size: 15.5px;
   }
@@ -13284,6 +13399,7 @@ body {
 }
 
 @media (max-width: 767px) {
+
   /* Slightly wider breakpoint for phones like iPhone 12 in general */
   .sap-hero-title {
     font-size: clamp(2rem, 8vw, 2.75rem);

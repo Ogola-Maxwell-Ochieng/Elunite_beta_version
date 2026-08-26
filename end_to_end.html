@@ -22,26 +22,31 @@
     />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png" />
-    <link rel="icon" type="image/png" sizes="48x48" href="images/favicon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.webp" />
+    <link rel="icon" type="image/png" sizes="48x48" href="images/favicon.webp" />
     <link
       rel="icon"
       type="image/png"
       sizes="192x192"
-      href="images/favicon.png"
+      href="images/favicon.webp"
     />
-    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon.webp" />
 
     <!-- Stylesheet -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="styles.css" as="style">
     <link rel="stylesheet" href="styles.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
-      rel="stylesheet"
-    />
+<link 
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" 
+      rel="stylesheet" 
+      media="print" 
+      onload="this.media='all'"
+    >
 
     <!-- Other Links -->
     <link
@@ -49,7 +54,7 @@
       rel="stylesheet"
     />
 
-    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="icon" type="image/png" href="images/favicon.webp">
     
     <link rel="canonical" href="https://www.elunite.com/end_to_end.html" />
     <script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
@@ -99,11 +104,11 @@
               aria-label="Elunite Study Abroad Consultants Home"
             >
               <img
-                src="images/logo.png"
+                src="images/logo.webp"
                 alt="Elunite Study Abroad Consultants Africa Logo"
                 width="auto"
                 height="120"
-              />
+               loading="lazy" />
             </a>
           </div>
 
@@ -350,7 +355,7 @@
           <div class="etp-why-right">
             <div class="etp-why-mini">
               <div class="etp-why-mini-ico">
-                <img src="images/Success factors-amico.svg" alt="Success" />
+                <img src="images/Success factors-amico.svg" alt="Success"  loading="lazy" />
               </div>
               <h4>97% Success Rate</h4>
               <p>
@@ -361,7 +366,7 @@
 
             <div class="etp-why-mini">
               <div class="etp-why-mini-ico">
-                <img src="images/Fast loading-rafiki.svg" alt="Fast" />
+                <img src="images/Fast loading-rafiki.svg" alt="Fast"  loading="lazy" />
               </div>
               <h4>Fast & Streamlined</h4>
               <p>
@@ -375,7 +380,7 @@
                 <img
                   src="images/Shared goals-amico.svg"
                   alt="Tailored Strategy"
-                />
+                 loading="lazy" />
               </div>
               <h4>Tailored Strategy</h4>
               <p>
@@ -389,7 +394,7 @@
                 <img
                   src="images/Flying around the world-amico.svg"
                   alt="Visa"
-                />
+                 loading="lazy" />
               </div>
               <h4>Visa Mastery</h4>
               <p>
@@ -403,7 +408,7 @@
                 <img
                   src="images/Business challenge-amico.svg"
                   alt="Track Record"
-                />
+                 loading="lazy" />
               </div>
               <div class="etp-why-mini-text">
                 <h4>Proven Track Record</h4>
@@ -671,12 +676,12 @@
             <!-- About Section -->
             <div class="footer-about">
               <img
-                src="images/logo.png"
+                src="images/logo-footer.webp"
                 alt="footer-logo"
                 class="footer-logo"
                 width="150"
                 height="150"
-              />
+               loading="lazy" />
               <p class="footer-description">
                 Committed to guiding students toward global academic success
                 through tailored support and access to premier International

@@ -16,33 +16,38 @@
     />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png" />
-    <link rel="icon" type="image/png" sizes="48x48" href="images/favicon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.webp" />
+    <link rel="icon" type="image/png" sizes="48x48" href="images/favicon.webp" />
     <link
       rel="icon"
       type="image/png"
       sizes="192x192"
-      href="images/favicon.png"
+      href="images/favicon.webp"
     />
-    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon.webp" />
 
     <!-- Stylesheet -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="styles.css" as="style">
     <link rel="stylesheet" href="styles.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
-      rel="stylesheet"
-    />
+<link 
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" 
+      rel="stylesheet" 
+      media="print" 
+      onload="this.media='all'"
+    >
 
     <!-- Other Links -->
     <link
       href="https://unpkg.com/lucide@0.462.0/dist/lucide.min.css"
       rel="stylesheet"
     />
-    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="icon" type="image/png" href="images/favicon.webp">
     <link rel="canonical" href="https://www.elunite.com/scholar.html" />
     <script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
     <script type="application/ld+json">
@@ -91,11 +96,11 @@
               aria-label="Elunite Study Abroad Consultants Home"
             >
               <img
-                src="images/logo.png"
+                src="images/logo.webp"
                 alt="Elunite Study Abroad Consultants Africa Logo"
                 width="auto"
                 height="120"
-              />
+               loading="lazy" />
             </a>
           </div>
 
@@ -323,7 +328,7 @@
 
             <div class="sap-solve-row">
               <div class="sap-solve-ico">
-                <img src="images/Time management-cuate.svg" alt="Time" />
+                <img src="images/Time management-cuate.svg" alt="Time"  loading="lazy" />
               </div>
               <div>
                 <h4>Expert-Led Strategy</h4>
@@ -335,7 +340,7 @@
             </div>
             <div class="sap-solve-row">
               <div class="sap-solve-ico">
-                <img src="images/File searching-rafiki.svg" alt="Checklist" />
+                <img src="images/File searching-rafiki.svg" alt="Checklist"  loading="lazy" />
               </div>
               <div>
                 <h4>Up to 5 School Applications</h4>
@@ -347,7 +352,7 @@
             </div>
             <div class="sap-solve-row">
               <div class="sap-solve-ico">
-                <img src="images/Documents-amico.svg" alt="Documents" />
+                <img src="images/Documents-amico.svg" alt="Documents"  loading="lazy" />
               </div>
               <div>
                 <h4>Documents & CV Revamp</h4>
@@ -359,7 +364,7 @@
             </div>
             <div class="sap-solve-row">
               <div class="sap-solve-ico">
-                <img src="images/Study abroad-amico.svg" alt="Worldwide" />
+                <img src="images/Study abroad-amico.svg" alt="Worldwide"  loading="lazy" />
               </div>
               <div>
                 <h4>3-Month Intensive Support</h4>
@@ -371,7 +376,7 @@
             </div>
             <div class="sap-solve-row">
               <div class="sap-solve-ico">
-                <img src="images/Graduation-bro.svg" alt="Graduation" />
+                <img src="images/Graduation-bro.svg" alt="Graduation"  loading="lazy" />
               </div>
               <div>
                 <h4>Top Graduate Programs</h4>
@@ -483,7 +488,7 @@
           <div class="sap-why-right">
             <div class="sap-why-mini">
               <div class="sap-why-ico">
-                <img src="images/Success factors-amico.svg" alt="Success" />
+                <img src="images/Success factors-amico.svg" alt="Success"  loading="lazy" />
               </div>
               <h4>Proven Success Stories</h4>
               <p>
@@ -497,7 +502,7 @@
                 <img
                   src="images/Customer relationship management-pana.svg"
                   alt="Support"
-                />
+                 loading="lazy" />
               </div>
               <h4>Comprehensive Support</h4>
               <p>
@@ -507,7 +512,7 @@
             </div>
             <div class="sap-why-mini">
               <div class="sap-why-ico">
-                <img src="images/File searching-rafiki.svg" alt="Resource" />
+                <img src="images/File searching-rafiki.svg" alt="Resource"  loading="lazy" />
               </div>
               <h4>High-Impact Resources</h4>
               <p>
@@ -517,7 +522,7 @@
             </div>
             <div class="sap-why-mini">
               <div class="sap-why-ico">
-                <img src="images/Shared goals-amico.svg" alt="Strategy" />
+                <img src="images/Shared goals-amico.svg" alt="Strategy"  loading="lazy" />
               </div>
               <h4>Expert-Led Strategies</h4>
               <p>
@@ -527,7 +532,7 @@
             </div>
             <div class="sap-why-mini">
               <div class="sap-why-ico">
-                <img src="images/Partnership-pana.svg" alt="Mentorship" />
+                <img src="images/Partnership-pana.svg" alt="Mentorship"  loading="lazy" />
               </div>
               <div class="sap-why-mini-text">
                 <h4>Tailored Mentorship</h4>
@@ -715,12 +720,12 @@
             <!-- About Section -->
             <div class="footer-about">
               <img
-                src="images/logo.png"
+                src="images/logo-footer.webp"
                 alt="footer-logo"
                 class="footer-logo"
                 width="150"
                 height="150"
-              />
+               loading="lazy" />
               <p class="footer-description">
                 Committed to guiding students toward global academic success
                 through tailored support and access to premier International

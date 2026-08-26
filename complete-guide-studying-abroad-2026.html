@@ -58,26 +58,31 @@
     />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png" />
-    <link rel="icon" type="image/png" sizes="48x48" href="images/favicon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.webp" />
+    <link rel="icon" type="image/png" sizes="48x48" href="images/favicon.webp" />
     <link
       rel="icon"
       type="image/png"
       sizes="192x192"
-      href="images/favicon.png"
+      href="images/favicon.webp"
     />
-    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon.webp" />
 
     <!-- Stylesheet -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="styles.css" as="style">
     <link rel="stylesheet" href="styles.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;display=swap"
-      rel="stylesheet"
-    />
+<link 
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" 
+      rel="stylesheet" 
+      media="print" 
+      onload="this.media='all'"
+    >
 
     <!-- Other Links -->
     <link
@@ -85,7 +90,7 @@
       rel="stylesheet"
     />
 
-    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="icon" type="image/png" href="images/favicon.webp">
     
     <link
       rel="canonical"
@@ -113,7 +118,7 @@
           "name": "Elunite Consulting",
           "logo": {
             "@type": "ImageObject",
-            "url": "https://www.elunite.com/images/logo.png"
+            "url": "https://www.elunite.com/images/logo.webp"
           }
         },
         "datePublished": "2026-08-13",
@@ -201,11 +206,11 @@
               aria-label="Elunite Study Abroad Consultants Home"
             >
               <img
-                src="images/logo.png"
+                src="images/logo.webp"
                 alt="Elunite Study Abroad Consultants Africa Logo"
                 width="auto"
                 height="120"
-              />
+               loading="lazy" />
             </a>
           </div>
 
@@ -357,28 +362,28 @@
     </nav>
 
     <!-- Article Hero -->
-    <section class="article-hero">
+        <section class="article-hero">
       <div class="container">
         <div class="article-hero-card">
           <div class="article-hero-inner">
-            <span class="article-tag">Complete Guide</span>
+            <span class="article-tag">Scholarships</span>
             <h1 class="article-title">
-              Complete Guide to Studying Abroad in 2026: Top Countries,
-              Universities, and Application Tips
+              Study Abroad Scholarships 2026: How to Apply, Eligibility
+              Requirements &amp; Tips to Get Approved
             </h1>
             <p class="article-meta">
               <i data-lucide="calendar"></i>
-              Updated August 18, 2026 &nbsp;•&nbsp;
+              Updated August 12, 2026 &nbsp;•&nbsp;
               <i data-lucide="clock"></i>
-              5 min read &nbsp;•&nbsp;
+              8 min read &nbsp;•&nbsp;
               <i data-lucide="user"></i>
               Elunite Advisory Team
             </p>
           </div>
           <div class="article-cover">
             <img
-              src="images/Complete Guide to Studying Abroad in 2026 Top Countries, Universities, and Application Tips.png"
-              alt="Students planning their study abroad journey for 2026"
+              src="images/blogs/Study Abroad Scholarships 2026 How to Apply, Eligibility Requirements & Tips to Get Approved.webp"
+              alt="Study Abroad Scholarships 2026"
               loading="lazy"
             />
           </div>
@@ -718,7 +723,16 @@
           >
           answers the safety and cost questions they're likely asking.
         </p>
-      </div>
+      
+        <div class="article-share">
+          <p>Share this article:</p>
+          <div class="article-share-icons">
+            <a href="#" class="share-icon" aria-label="Share on LinkedIn" onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(window.location.href), '_blank', 'width=600,height=400'); return false;"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" class="share-icon" aria-label="Share on X (Twitter)" onclick="window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(window.location.href), '_blank', 'width=600,height=400'); return false;"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" class="share-icon" aria-label="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank', 'width=600,height=400'); return false;"><i class="fa-brands fa-facebook-f"></i></a>
+          </div>
+        </div>
+</div>
     </section>
 
     <footer id="footer" class="footer-section">
@@ -733,12 +747,12 @@
             <!-- About Section -->
             <div class="footer-about">
               <img
-                src="images/logo.png"
+                src="images/logo.webp"
                 alt="footer-logo"
                 class="footer-logo"
                 width="150"
                 height="150"
-              />
+               loading="lazy" />
               <p class="footer-description">
                 Committed to guiding students toward global academic success
                 through tailored support and access to premier International

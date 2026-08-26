@@ -53,33 +53,48 @@
     />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png" />
-    <link rel="icon" type="image/png" sizes="48x48" href="images/favicon.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="images/favicon.webp"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="48x48"
+      href="images/favicon.webp"
+    />
     <link
       rel="icon"
       type="image/png"
       sizes="192x192"
-      href="images/favicon.png"
+      href="images/favicon.webp"
     />
-    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon.webp" />
 
     <!-- Stylesheet -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="styles.css" as="style">
     <link rel="stylesheet" href="styles.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
-      rel="stylesheet"
-    />
+<link 
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" 
+      rel="stylesheet" 
+      media="print" 
+      onload="this.media='all'"
+    >
 
     <!-- Other Links -->
     <link
       href="https://unpkg.com/lucide@0.462.0/dist/lucide.min.css"
       rel="stylesheet"
     />
-    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="icon" type="image/png" href="images/favicon.webp" />
 
     <!-- Canonical for this specific program page -->
     <link rel="canonical" href="https://www.elunite.com/visa_purchase.html" />
@@ -132,10 +147,10 @@
               aria-label="Elunite Study Abroad Consultants Home"
             >
               <img
-                src="images/logo.png"
+                src="images/logo.webp"
                 alt="Elunite Study Abroad Consultants Africa Logo"
                 height="120"
-              />
+               loading="lazy" />
             </a>
           </div>
 
@@ -145,48 +160,159 @@
               <a href="index.html" class="nav-link">Home</a>
               <a href="about.html" class="nav-link">About Us</a>
               <div class="nav-dropdown" id="nav-services-dropdown">
-                <button type="button" class="nav-link nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+                <button
+                  type="button"
+                  class="nav-link nav-dropdown-trigger"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
                   Services
                   <i data-lucide="chevron-down" class="nav-dropdown-caret"></i>
                 </button>
                 <div class="nav-dropdown-menu" role="menu">
-                  <a href="study-abroad-services.html" class="nav-dropdown-item" role="menuitem">Study Abroad</a>
-                  <a href="visa_purchase.html" class="nav-dropdown-item" role="menuitem">Visa Assistance</a>
-                  <a href="work-abroad-relocation.html" class="nav-dropdown-item" role="menuitem">Work Abroad</a>
-                  <a href="scholarships-exchange-programs.html" class="nav-dropdown-item" role="menuitem">Scholarship Programs</a>
-                  <a href="business-strategy-development.html" class="nav-dropdown-item" role="menuitem">Business Strategy</a>
-                  <a href="mentorship-capacity-building.html" class="nav-dropdown-item" role="menuitem">Career Mentorship</a>
-                  <a href="corporate-institutional-training.html" class="nav-dropdown-item" role="menuitem">Corporate Training</a>
-                  <a href="service.html" class="nav-dropdown-item nav-dropdown-viewall" role="menuitem">View all services →</a>
+                  <a
+                    href="study-abroad-services.html"
+                    class="nav-dropdown-item"
+                    role="menuitem"
+                    >Study Abroad</a
+                  >
+                  <a
+                    href="visa_purchase.html"
+                    class="nav-dropdown-item"
+                    role="menuitem"
+                    >Visa Assistance</a
+                  >
+                  <a
+                    href="work-abroad-relocation.html"
+                    class="nav-dropdown-item"
+                    role="menuitem"
+                    >Work Abroad</a
+                  >
+                  <a
+                    href="scholarships-exchange-programs.html"
+                    class="nav-dropdown-item"
+                    role="menuitem"
+                    >Scholarship Programs</a
+                  >
+                  <a
+                    href="business-strategy-development.html"
+                    class="nav-dropdown-item"
+                    role="menuitem"
+                    >Business Strategy</a
+                  >
+                  <a
+                    href="mentorship-capacity-building.html"
+                    class="nav-dropdown-item"
+                    role="menuitem"
+                    >Career Mentorship</a
+                  >
+                  <a
+                    href="corporate-institutional-training.html"
+                    class="nav-dropdown-item"
+                    role="menuitem"
+                    >Corporate Training</a
+                  >
+                  <a
+                    href="service.html"
+                    class="nav-dropdown-item nav-dropdown-viewall"
+                    role="menuitem"
+                    >View all services →</a
+                  >
                 </div>
               </div>
               <div class="nav-dropdown" id="nav-destinations-dropdown">
-                <button type="button" class="nav-link nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+                <button
+                  type="button"
+                  class="nav-link nav-dropdown-trigger"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
                   Destinations
                   <i data-lucide="chevron-down" class="nav-dropdown-caret"></i>
                 </button>
                 <div class="nav-dropdown-menu" role="menu">
-                  <a href="india.html" class="nav-dropdown-item" role="menuitem">India</a>
-                  <a href="usa.html" class="nav-dropdown-item" role="menuitem">USA</a>
-                  <a href="china.html" class="nav-dropdown-item" role="menuitem">China</a>
-                  <a href="germany.html" class="nav-dropdown-item" role="menuitem">Germany</a>
-                  <a href="australia.html" class="nav-dropdown-item" role="menuitem">Australia</a>
-                  <a href="ireland.html" class="nav-dropdown-item" role="menuitem">Ireland</a>
-                  <a href="destination.html" class="nav-dropdown-item nav-dropdown-viewall" role="menuitem">View all destinations →</a>
+                  <a href="india.html" class="nav-dropdown-item" role="menuitem"
+                    >India</a
+                  >
+                  <a href="usa.html" class="nav-dropdown-item" role="menuitem"
+                    >USA</a
+                  >
+                  <a href="china.html" class="nav-dropdown-item" role="menuitem"
+                    >China</a
+                  >
+                  <a
+                    href="germany.html"
+                    class="nav-dropdown-item"
+                    role="menuitem"
+                    >Germany</a
+                  >
+                  <a
+                    href="australia.html"
+                    class="nav-dropdown-item"
+                    role="menuitem"
+                    >Australia</a
+                  >
+                  <a
+                    href="ireland.html"
+                    class="nav-dropdown-item"
+                    role="menuitem"
+                    >Ireland</a
+                  >
+                  <a
+                    href="destination.html"
+                    class="nav-dropdown-item nav-dropdown-viewall"
+                    role="menuitem"
+                    >View all destinations →</a
+                  >
                 </div>
               </div>
               <div class="nav-dropdown" id="nav-programs-dropdown">
-                <button type="button" class="nav-link nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+                <button
+                  type="button"
+                  class="nav-link nav-dropdown-trigger"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
                   Programs
                   <i data-lucide="chevron-down" class="nav-dropdown-caret"></i>
                 </button>
                 <div class="nav-dropdown-menu" role="menu">
-                  <a href="end_to_end_purchase.html" class="nav-dropdown-item" role="menuitem">End-to-End Admission</a>
-                  <a href="scholarship_purchase.html" class="nav-dropdown-item" role="menuitem">Scholarship Application</a>
-                  <a href="visa_purchase.html" class="nav-dropdown-item" role="menuitem">Visa Sponsorship</a>
-                  <a href="graduate_training.html" class="nav-dropdown-item" role="menuitem">Global Pathways Program</a>
-                  <a href="strategic_program.html" class="nav-dropdown-item" role="menuitem">Free Strategy Session</a>
-                  <a href="programs.html" class="nav-dropdown-item nav-dropdown-viewall" role="menuitem">View all programs →</a>
+                  <a
+                    href="end_to_end_purchase.html"
+                    class="nav-dropdown-item"
+                    role="menuitem"
+                    >End-to-End Admission</a
+                  >
+                  <a
+                    href="scholarship_purchase.html"
+                    class="nav-dropdown-item"
+                    role="menuitem"
+                    >Scholarship Application</a
+                  >
+                  <a
+                    href="visa_purchase.html"
+                    class="nav-dropdown-item"
+                    role="menuitem"
+                    >Visa Sponsorship</a
+                  >
+                  <a
+                    href="graduate_training.html"
+                    class="nav-dropdown-item"
+                    role="menuitem"
+                    >Global Pathways Program</a
+                  >
+                  <a
+                    href="strategic_program.html"
+                    class="nav-dropdown-item"
+                    role="menuitem"
+                    >Free Strategy Session</a
+                  >
+                  <a
+                    href="programs.html"
+                    class="nav-dropdown-item nav-dropdown-viewall"
+                    role="menuitem"
+                    >View all programs →</a
+                  >
                 </div>
               </div>
               <a href="blog.html" class="nav-link">Blogs</a>
@@ -225,30 +351,67 @@
 
         <!-- Mobile Navigation -->
         <div id="mobile-menu" class="mobile-menu hidden">
-          <button type="button" id="mobile-menu-close" class="mobile-menu-close" aria-label="Close menu">
+          <button
+            type="button"
+            id="mobile-menu-close"
+            class="mobile-menu-close"
+            aria-label="Close menu"
+          >
             <i data-lucide="x"></i>
           </button>
           <div class="mobile-menu-content">
             <a href="index.html" class="mobile-nav-link">Home</a>
             <a href="about.html" class="mobile-nav-link">About Us</a>
             <div class="mobile-nav-group">
-              <button type="button" class="mobile-nav-link mobile-nav-dropdown-trigger" aria-expanded="false">
+              <button
+                type="button"
+                class="mobile-nav-link mobile-nav-dropdown-trigger"
+                aria-expanded="false"
+              >
                 Services
                 <i data-lucide="chevron-down" class="nav-dropdown-caret"></i>
               </button>
               <div class="mobile-nav-submenu">
-                <a href="study-abroad-services.html" class="mobile-nav-sublink">Study Abroad</a>
-                <a href="visa_purchase.html" class="mobile-nav-sublink">Visa Assistance</a>
-                <a href="work-abroad-relocation.html" class="mobile-nav-sublink">Work Abroad</a>
-                <a href="scholarships-exchange-programs.html" class="mobile-nav-sublink">Scholarship Programs</a>
-                <a href="business-strategy-development.html" class="mobile-nav-sublink">Business Strategy</a>
-                <a href="mentorship-capacity-building.html" class="mobile-nav-sublink">Career Mentorship</a>
-                <a href="corporate-institutional-training.html" class="mobile-nav-sublink">Corporate Training</a>
-                <a href="service.html" class="mobile-nav-sublink">View all services →</a>
+                <a href="study-abroad-services.html" class="mobile-nav-sublink"
+                  >Study Abroad</a
+                >
+                <a href="visa_purchase.html" class="mobile-nav-sublink"
+                  >Visa Assistance</a
+                >
+                <a href="work-abroad-relocation.html" class="mobile-nav-sublink"
+                  >Work Abroad</a
+                >
+                <a
+                  href="scholarships-exchange-programs.html"
+                  class="mobile-nav-sublink"
+                  >Scholarship Programs</a
+                >
+                <a
+                  href="business-strategy-development.html"
+                  class="mobile-nav-sublink"
+                  >Business Strategy</a
+                >
+                <a
+                  href="mentorship-capacity-building.html"
+                  class="mobile-nav-sublink"
+                  >Career Mentorship</a
+                >
+                <a
+                  href="corporate-institutional-training.html"
+                  class="mobile-nav-sublink"
+                  >Corporate Training</a
+                >
+                <a href="service.html" class="mobile-nav-sublink"
+                  >View all services →</a
+                >
               </div>
             </div>
             <div class="mobile-nav-group">
-              <button type="button" class="mobile-nav-link mobile-nav-dropdown-trigger" aria-expanded="false">
+              <button
+                type="button"
+                class="mobile-nav-link mobile-nav-dropdown-trigger"
+                aria-expanded="false"
+              >
                 Destinations
                 <i data-lucide="chevron-down" class="nav-dropdown-caret"></i>
               </button>
@@ -257,23 +420,43 @@
                 <a href="usa.html" class="mobile-nav-sublink">USA</a>
                 <a href="china.html" class="mobile-nav-sublink">China</a>
                 <a href="germany.html" class="mobile-nav-sublink">Germany</a>
-                <a href="australia.html" class="mobile-nav-sublink">Australia</a>
+                <a href="australia.html" class="mobile-nav-sublink"
+                  >Australia</a
+                >
                 <a href="ireland.html" class="mobile-nav-sublink">Ireland</a>
-                <a href="destination.html" class="mobile-nav-sublink">View all destinations →</a>
+                <a href="destination.html" class="mobile-nav-sublink"
+                  >View all destinations →</a
+                >
               </div>
             </div>
             <div class="mobile-nav-group">
-              <button type="button" class="mobile-nav-link mobile-nav-dropdown-trigger" aria-expanded="false">
+              <button
+                type="button"
+                class="mobile-nav-link mobile-nav-dropdown-trigger"
+                aria-expanded="false"
+              >
                 Programs
                 <i data-lucide="chevron-down" class="nav-dropdown-caret"></i>
               </button>
               <div class="mobile-nav-submenu">
-                <a href="end_to_end_purchase.html" class="mobile-nav-sublink">End-to-End Admission</a>
-                <a href="scholarship_purchase.html" class="mobile-nav-sublink">Scholarship Application</a>
-                <a href="visa_purchase.html" class="mobile-nav-sublink">Visa Sponsorship</a>
-                <a href="graduate_training.html" class="mobile-nav-sublink">Global Pathways Program</a>
-                <a href="strategic_program.html" class="mobile-nav-sublink">Free Strategy Session</a>
-                <a href="programs.html" class="mobile-nav-sublink">View all programs →</a>
+                <a href="end_to_end_purchase.html" class="mobile-nav-sublink"
+                  >End-to-End Admission</a
+                >
+                <a href="scholarship_purchase.html" class="mobile-nav-sublink"
+                  >Scholarship Application</a
+                >
+                <a href="visa_purchase.html" class="mobile-nav-sublink"
+                  >Visa Sponsorship</a
+                >
+                <a href="graduate_training.html" class="mobile-nav-sublink"
+                  >Global Pathways Program</a
+                >
+                <a href="strategic_program.html" class="mobile-nav-sublink"
+                  >Free Strategy Session</a
+                >
+                <a href="programs.html" class="mobile-nav-sublink"
+                  >View all programs →</a
+                >
               </div>
             </div>
             <a href="blog.html" class="mobile-nav-link">Blogs</a>
@@ -629,7 +812,7 @@
           <div class="etp-pd-left">
             <!-- Product image -->
             <div class="etp-pd-image-wrap">
-              <img src="images/Programs/Visa Program.png" alt="Visa_Program" />
+              <img src="images/Programs/Visa Program.webp" alt="Visa_Program"  loading="lazy" />
             </div>
 
             <!-- Program Overview -->
@@ -929,12 +1112,12 @@
             <!-- About Section -->
             <div class="footer-about">
               <img
-                src="images/logo.png"
+                src="images/logo-footer.webp"
                 alt="footer-logo"
                 class="footer-logo"
                 width="150"
                 height="150"
-              />
+               loading="lazy" />
               <p class="footer-description">
                 Committed to guiding students toward global academic success
                 through tailored support and access to premier International

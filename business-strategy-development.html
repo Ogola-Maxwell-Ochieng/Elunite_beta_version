@@ -61,29 +61,34 @@
     />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png" />
-    <link rel="icon" type="image/png" sizes="48x48" href="images/favicon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.webp" />
+    <link rel="icon" type="image/png" sizes="48x48" href="images/favicon.webp" />
     <link
       rel="icon"
       type="image/png"
       sizes="192x192"
-      href="images/favicon.png"
+      href="images/favicon.webp"
     />
 
-    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="icon" type="image/png" href="images/favicon.webp">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon.webp" />
 
     <!-- Stylesheet -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="styles.css" as="style">
     <link rel="stylesheet" href="styles.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;display=swap"
-      rel="stylesheet"
-    />
+<link 
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" 
+      rel="stylesheet" 
+      media="print" 
+      onload="this.media='all'"
+    >
 
     <!-- Other Links -->
     <link
@@ -133,11 +138,11 @@
               aria-label="Elunite Study Abroad Consultants Home"
             >
               <img
-                src="images/logo.png"
+                src="images/logo.webp"
                 alt="Elunite Study Abroad Consultants Africa Logo"
                 width="auto"
                 height="120"
-              />
+               loading="lazy" />
             </a>
           </div>
 
@@ -703,12 +708,12 @@
             <!-- About Section -->
             <div class="footer-about">
               <img
-                src="images/logo.png"
+                src="images/logo-footer.webp"
                 alt="footer-logo"
                 class="footer-logo"
                 width="150"
                 height="150"
-              />
+               loading="lazy" />
               <p class="footer-description">
                 Committed to guiding students toward global academic success
                 through tailored support and access to premier International

@@ -16,33 +16,38 @@
     />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png" />
-    <link rel="icon" type="image/png" sizes="48x48" href="images/favicon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.webp" />
+    <link rel="icon" type="image/png" sizes="48x48" href="images/favicon.webp" />
     <link
       rel="icon"
       type="image/png"
       sizes="192x192"
-      href="images/favicon.png"
+      href="images/favicon.webp"
     />
-    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon.webp" />
 
     <!-- Stylesheet -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="styles.css" as="style">
     <link rel="stylesheet" href="styles.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
-      rel="stylesheet"
-    />
+<link 
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" 
+      rel="stylesheet" 
+      media="print" 
+      onload="this.media='all'"
+    >
 
     <!-- Other Links -->
     <link
       href="https://unpkg.com/lucide@0.462.0/dist/lucide.min.css"
       rel="stylesheet"
     />
-    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="icon" type="image/png" href="images/favicon.webp">
     <link rel="canonical" href="https://www.elunite.com/india.html" />
     <script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
     <script type="application/ld+json">
@@ -89,11 +94,11 @@
               aria-label="Elunite Study Abroad Consultants Home"
             >
               <img
-                src="images/logo.png"
+                src="images/logo.webp"
                 alt="Elunite Study Abroad Consultants Logo"
                 width="auto"
                 height="120"
-              />
+               loading="lazy" />
             </a>
           </div>
           <div class="nav-desktop">
@@ -284,10 +289,10 @@
         </div>
         <div class="pgi-hero-map">
           <img
-            src="images/destination-images/india_map_transparent.png"
+            src="images/destination-images/india_map_transparent.webp"
             alt="Map of India illustrated in the colors of the Indian flag"
             class="pgi-hero-map-img"
-          />
+           loading="lazy" />
         </div>
       </div>
     </section>
@@ -797,12 +802,12 @@
             <!-- About Section -->
             <div class="footer-about">
               <img
-                src="images/logo.png"
+                src="images/logo-footer.webp"
                 alt="footer-logo"
                 class="footer-logo"
                 width="150"
                 height="150"
-              />
+               loading="lazy" />
               <p class="footer-description">
                 Committed to guiding students toward global academic success
                 through tailored support and access to premier International

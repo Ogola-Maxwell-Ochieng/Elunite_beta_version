@@ -13072,12 +13072,8 @@ body {
 /* ───────── Related Articles (its own full-width section, below the card) ───────── */
 
 .related-articles {
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  width: 100%;
+  box-sizing: border-box;
   margin-top: 56px;
   padding: 56px 24px 64px;
   background: var(--background-alt);
@@ -13181,6 +13177,13 @@ body {
 }
 
 @media (max-width: 900px) {
+  .related-articles-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 640px;
+  }
+}
+
+@media (max-width: 640px) {
   .related-articles-grid {
     grid-template-columns: 1fr;
     max-width: 420px;

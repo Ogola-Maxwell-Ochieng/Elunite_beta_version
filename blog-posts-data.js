@@ -27,6 +27,16 @@
 
 var ELUNITE_BLOG_POSTS = [
   {
+    url: "open-doors-scholarship-2027-russia.html",
+    title: "Open Doors Scholarship 2027 Russia: Fully Funded Guide (No IELTS)",
+    excerpt: "Full tuition plus a monthly stipend, no IELTS required. Eligibility, deadlines, and a step-by-step application guide for Africa's most generous Russian scholarship.",
+    tag: "Scholarships",
+    date: "2026-08-23",
+    readTime: "12 min read",
+    icon: "landmark",
+    image: "images/blogs/Open Doors Scholarship 2027 Russia Fully Funded Guide.webp"
+  },
+  {
     url: "financial-planning-mistakes-study-abroad.html",
     title: "12 Financial Planning Mistakes to Avoid Before Studying Abroad in 2026",
     excerpt: "Real costs across the USA, UK, Canada, Australia, Germany and Ireland, plus the 12 budgeting mistakes that turn a dream into a financial shock.",

@@ -2085,9 +2085,9 @@ body {
   }
 
   .guide-step-number {
-    width: 180px;
-    height: 180px;
-    font-size: 2.5rem;
+    width: 70px;
+    height: 70px;
+    font-size: 1.5rem;
   }
 
   .guide-step-content h3 {
@@ -12977,6 +12977,214 @@ body {
   width: 100%;
   padding: 56px 0 90px;
   background-color: var(--background-alt);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Article card wrapper — wraps the ENTIRE article in a card with
+   a faint border and box shadow, matching class names generated
+   by the inline share/related-articles script on each post.
+   ═══════════════════════════════════════════════════════════════ */
+
+.article-card-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 24px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  padding: 56px 0 48px;
+}
+
+@media (max-width: 640px) {
+  .article-card-wrap {
+    border-radius: 16px;
+    padding: 32px 0 32px;
+    margin: 0 16px;
+  }
+}
+
+/* ───────── Share buttons (rendered inside the card, below the article) ───────── */
+
+.article-share {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  max-width: 780px;
+  margin: 48px auto 0;
+  padding: 32px 24px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.article-share-label {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  color: var(--foreground-muted);
+  margin-right: 4px;
+}
+
+.article-share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(0, 0, 0, 0.12);
+  background: #ffffff;
+  color: var(--foreground);
+  text-decoration: none;
+  font-size: 13.5px;
+  font-weight: 600;
+  transition: var(--transition-all);
+}
+
+.article-share-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+.article-share-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+.share-btn--facebook:hover {
+  background: #1877f2;
+  border-color: #1877f2;
+  color: #ffffff;
+}
+
+.share-btn--x:hover {
+  background: #000000;
+  border-color: #000000;
+  color: #ffffff;
+}
+
+.share-btn--linkedin:hover {
+  background: #0a66c2;
+  border-color: #0a66c2;
+  color: #ffffff;
+}
+
+/* ───────── Related Articles (its own full-width section, below the card) ───────── */
+
+.related-articles {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-top: 56px;
+  padding: 56px 24px 64px;
+  background: var(--background-alt);
+}
+
+.related-articles-heading {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 28px;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--foreground);
+  margin: 0 auto 24px;
+  max-width: 1100px;
+}
+
+.related-articles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.related-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-all);
+}
+
+.related-card:hover {
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+  transform: translateY(-3px);
+}
+
+.related-card-img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+}
+
+.related-card-img-placeholder {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient-accent);
+}
+
+.related-card-img-placeholder i {
+  width: 34px;
+  height: 34px;
+  color: #1a1a2e;
+}
+
+.related-card-body {
+  padding: 18px 20px 22px;
+}
+
+.related-card-tag {
+  display: inline-block;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #1a1a2e;
+  background: var(--accent);
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+
+.related-card-title {
+  font-size: 15.5px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 0 0 8px;
+  color: var(--foreground);
+}
+
+.related-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  color: var(--foreground-muted);
+  margin: 0;
+}
+
+.related-card-meta i {
+  width: 13px;
+  height: 13px;
+}
+
+@media (max-width: 900px) {
+  .related-articles-grid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+  }
 }
 
 .article-body {

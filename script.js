@@ -236,11 +236,11 @@ document.addEventListener('DOMContentLoaded', function () {
 // ===== TESTIMONIALS DATA =====
 const testimonials = [
   {
-    name: 'Mulhat Ibrahim',
-    image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150',
-    program: 'Pharmaceutical Science',
-    university: 'Guru Kashi University, India',
-    quote: 'Elunite made my dream of studying abroad a reality. Their guidance through the application process was invaluable, and I received a partial scholarship too!',
+    name: 'Steven Gideon',
+    image: 'images/students/Steven_Gideon.webp',
+    program: 'Petroleum Engineering',
+    university: 'Kazan University, Russia',
+    quote: 'Elunite made my dream of studying abroad a reality. Their guidance through the application process was invaluable, and I received a full scholarship too!',
     rating: 5
   },
   {

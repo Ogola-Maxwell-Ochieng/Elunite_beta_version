@@ -294,14 +294,13 @@ body {
 
 .btn-primary,
 .btn-secondary {
-  background: #081b49 !important;
-  color: #ffffff !important;
-  border: 1px solid rgba(255, 255, 255, 0.18) !important;
-  padding: 0.95rem 2.2rem;
+  background: #081b49;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 0.85rem 1.8rem;
   border-radius: 999px;
   font-family: "Bebas Neue", sans-serif;
-  font-size: 1.25rem;
-  line-break: 1rem;
+  font-size: 1.15rem;
   font-weight: 500;
   cursor: pointer;
   transition:
@@ -312,8 +311,8 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 210px;
-  height: 52px;
+  min-width: 170px;
+  height: 48px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   letter-spacing: 0.6px;
   backdrop-filter: blur(2px);
@@ -321,10 +320,10 @@ body {
 
 .btn-primary:hover,
 .btn-secondary:hover {
-  background: var(--accent) !important;
-  color: #000000 !important;
-  border-color: var(--accent) !important;
-  box-shadow: 0 6px 20px rgba(255, 193, 7, 0.5) !important;
+  background: var(--accent);
+  color: #000000;
+  border-color: var(--accent);
+  box-shadow: 0 6px 20px rgba(255, 193, 7, 0.5);
   transform: translateY(-2px);
 }
 
@@ -13618,5 +13617,169 @@ body {
 
   .sap-hero-desc {
     font-size: 1rem;
+  }
+}
+
+/* ============================================================
+   MOBILE RESPONSIVE BUTTONS & TYPOGRAPHY SYSTEM
+   ════════════════════════════════════════════════════════════
+   Ensures all buttons scale down proportionally on tablets and
+   mobile devices (≤768px and ≤480px) with comfortable touch
+   heights and appropriately sized text instead of bulky desktop
+   proportions.
+   ============================================================ */
+
+@media (max-width: 768px) {
+  /* Primary & secondary hero/CTA buttons */
+  .btn-primary,
+  .btn-secondary,
+  .cta-btn,
+  .cta-button-about {
+    font-size: 1.05rem !important;
+    padding: 0.65rem 1.4rem !important;
+    min-width: 140px !important;
+    height: 44px !important;
+    letter-spacing: 0.5px !important;
+  }
+
+  .cta-button {
+    font-size: 0.95rem !important;
+    padding: 0.55rem 1.25rem !important;
+    height: 40px !important;
+  }
+
+  .cta-button-full {
+    padding: 0.75rem 1.25rem !important;
+    font-size: 1.05rem !important;
+  }
+
+  /* Service, program & destination action buttons */
+  .etp-btn,
+  .etp-btn-outline,
+  .sap-btn,
+  .sap-btn-outline,
+  .pd-btn,
+  .pd-btn-outline,
+  .prg-btn,
+  .sa-btn,
+  .sa-btn-outline,
+  .etp-final-btn,
+  .sap-final-btn,
+  .pd-rc-btn,
+  .book-btn {
+    font-size: 15px !important;
+    padding: 9px 22px !important;
+    letter-spacing: 0.6px !important;
+    box-shadow: 3px 3px 0 #000 !important;
+  }
+
+  /* Filter buttons on programs page */
+  .prg-filter-btn {
+    font-size: 14px !important;
+    padding: 7px 16px !important;
+  }
+
+  /* Hero button group alignment & spacing */
+  .hero-buttons {
+    gap: 0.75rem !important;
+    margin-bottom: 2.5rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra compact scaling for mobile screens (≤480px) */
+  .btn-primary,
+  .btn-secondary,
+  .cta-btn,
+  .cta-button-about {
+    font-size: 0.95rem !important;
+    padding: 0.5rem 1.15rem !important;
+    min-width: auto !important;
+    height: 40px !important;
+    letter-spacing: 0.4px !important;
+    gap: 0.35rem !important;
+  }
+
+  .btn-primary svg,
+  .btn-primary i,
+  .btn-secondary svg,
+  .btn-secondary i,
+  .cta-btn svg,
+  .cta-btn i,
+  .cta-button-about svg,
+  .cta-button-about i {
+    width: 15px !important;
+    height: 15px !important;
+  }
+
+  .cta-button {
+    font-size: 0.88rem !important;
+    padding: 0.45rem 1rem !important;
+    height: 36px !important;
+    letter-spacing: 0.4px !important;
+  }
+
+  .cta-button-full {
+    padding: 0.65rem 1rem !important;
+    font-size: 0.95rem !important;
+  }
+
+  /* Service, program & destination action buttons */
+  .etp-btn,
+  .etp-btn-outline,
+  .sap-btn,
+  .sap-btn-outline,
+  .pd-btn,
+  .pd-btn-outline,
+  .prg-btn,
+  .sa-btn,
+  .sa-btn-outline,
+  .etp-final-btn,
+  .sap-final-btn,
+  .pd-rc-btn,
+  .book-btn {
+    font-size: 13.5px !important;
+    padding: 7px 15px !important;
+    letter-spacing: 0.4px !important;
+    box-shadow: 2.5px 2.5px 0 #000 !important;
+    min-width: auto !important;
+  }
+
+  /* Filter buttons on programs page */
+  .prg-filter-btn {
+    font-size: 12.5px !important;
+    padding: 6px 12px !important;
+  }
+
+  /* Blog post share buttons */
+  .article-share {
+    gap: 8px !important;
+    padding: 24px 16px 0 !important;
+  }
+
+  .article-share-btn {
+    font-size: 12px !important;
+    padding: 7px 12px !important;
+    gap: 6px !important;
+  }
+
+  .article-share-btn svg {
+    width: 13px !important;
+    height: 13px !important;
+  }
+
+  /* Hero buttons on phones: clean centered stack with max readable width */
+  .hero-buttons {
+    width: 100% !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0.6rem !important;
+    margin-bottom: 2rem !important;
+  }
+
+  .hero-buttons .btn-primary,
+  .hero-buttons .btn-secondary {
+    width: 100% !important;
+    max-width: 260px !important;
   }
 }

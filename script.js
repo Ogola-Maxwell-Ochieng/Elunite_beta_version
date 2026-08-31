@@ -253,7 +253,7 @@ const testimonials = [
   },
   {
     name: 'Oliver Odhiambo',
-    image: 'images/Students/Oliver_odhiambo.webp',
+    image: 'images/students/Oliver_odhiambo.webp',
     program: 'Economics',
     university: 'Krupanidhi, India',
     quote: 'Thanks to Elunite\'s expert counseling, I got admission to my reputed university. Their test preparation helped me achieve the required scores and secure 100% scholarship.',
@@ -261,7 +261,7 @@ const testimonials = [
   },
   {
     name: 'Debra Chebet',
-    image: 'images/Students/Debra.webp',
+    image: 'images/students/Debra.webp',
     program: 'ECE Student',
     university: 'Jain University, India',
     quote: 'The personalized approach at Elunite helped me secure admission to Cambridge Institute of Technology. Their scholarship guidance was exceptional and saved my family thousands.',
@@ -277,7 +277,7 @@ const testimonials = [
   },
   {
     name: 'Safaa Salum',
-    image: 'images/Students/Safaa_Salum.webp',
+    image: 'images/students/Safaa_Salum.webp',
     program: 'Pharmaceutical Science',
     university: 'Guru Kashi University, India',
     quote: 'Elunite\'s guidance and academic support made my transition to India smooth. Today, I am confidently pursuing my pharmaceutical course.',
@@ -285,7 +285,7 @@ const testimonials = [
   },
   {
     name: 'Petro Kipilanga',
-    image: 'images/Students/Kapingala.webp',
+    image: 'images/students/Kapingala.webp',
     program: 'Computer Science',
     university: 'University of Sydney, Australia',
     quote: 'Elunite\'s visa guidance was flawless. I faced no complications and received my student visa within the expected timeframe. Highly recommend their services!',
@@ -293,7 +293,7 @@ const testimonials = [
   },
   {
     name: 'Maddoh Yoavi',
-    image: 'images/Students/Mazama_Moddoh.webp',
+    image: 'images/students/Mazama_Moddoh.webp',
     program: 'Data Science',
     university: 'University of Waterloo, Canada',
     quote: 'The scholarship I received through Elunite\'s guidance covered 80% of my tuition. Their expertise in finding funding opportunities is unmatched.',
@@ -301,7 +301,7 @@ const testimonials = [
   },
   {
     name: 'Nathalie Juma',
-    image: 'Images/Students/Nathalie Maghembe.webp',
+    image: 'images/students/Nathalie Maghembe.webp',
     program: 'Public Health',
     university: 'NIMS University, India',
     quote: 'From application essays to interview preparation, Elunite\'s comprehensive support helped me get into LSE. Their expertise is truly world-class.',
@@ -309,7 +309,7 @@ const testimonials = [
   },
   {
     name: 'Catherine Kipeleka',
-    image: 'images/Students/Catherine.webp',
+    image: 'images/students/Catherine.webp',
     program: 'Artificial Intelligence',
     university: 'CIT University, India',
     quote: 'Elunite\'s guidance helped me navigate the complex US admission process. Now I\'m pursuing my passion for AI at Stanford — a dream come true!',

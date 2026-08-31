@@ -504,6 +504,10 @@ let currentCurrency = 'USD';
 
 // Detect user's currency based on IP location
 async function detectUserCurrency() {
+  // If the page doesn't have currency elements or dynamic prices, skip detection
+  if (!document.getElementById('currencyCode') && !document.querySelector('[data-price]')) {
+    return;
+  }
   try {
     const response = await fetch('https://ipapi.co/json/');
     const data = await response.json();
@@ -521,8 +525,12 @@ function updateCurrencyDisplay() {
   const currencyCode = document.getElementById('currencyCode');
   const currencyFlag = document.getElementById('currencyFlag');
 
-  currencyCode.textContent = currentCurrency;
-  currencyFlag.textContent = currencyData[currentCurrency].flag;
+  if (currencyCode) {
+    currencyCode.textContent = currentCurrency;
+  }
+  if (currencyFlag && currencyData[currentCurrency]) {
+    currencyFlag.textContent = currencyData[currentCurrency].flag;
+  }
 
   updateAllPrices();
   updateDropdownSelection();

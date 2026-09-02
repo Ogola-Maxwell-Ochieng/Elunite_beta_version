@@ -214,18 +214,34 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 4px;
+  position: relative;
 }
 
-.nav-dropdown-caret {
+.nav-dropdown-trigger::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -21px;
   width: 14px;
   height: 14px;
-  transition: transform 0.25s ease;
+  background: #ffffff;
+  transform: translateX(-50%) rotate(45deg) scale(0.4);
+  transform-origin: center;
+  box-shadow: -2px -2px 4px rgba(8, 27, 73, 0.05);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  pointer-events: none;
+  z-index: 61;
 }
 
-.nav-dropdown:hover .nav-dropdown-caret,
-.nav-dropdown.open .nav-dropdown-caret {
-  transform: rotate(180deg);
+.nav-dropdown:hover .nav-dropdown-trigger::after,
+.nav-dropdown.open .nav-dropdown-trigger::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) rotate(45deg) scale(1);
 }
+
 
 .nav-dropdown-menu {
   position: absolute;
@@ -281,6 +297,154 @@ body {
   text-transform: none;
   letter-spacing: normal;
 }
+
+/* ===== Mega menu (Destinations / Programs) ===== */
+
+/* Outer dropdown box — make it a plain wrapper */
+.nav-dropdown-mega .nav-dropdown-menu {
+  left: 0;
+  transform: translateX(0) translateY(-8px);
+  padding: 0;
+  min-width: unset;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.nav-dropdown-mega:hover .nav-dropdown-menu,
+.nav-dropdown-mega.open .nav-dropdown-menu {
+  transform: translateX(0) translateY(0);
+}
+
+/* Inner body — the actual horizontal flex row */
+.nav-dropdown-menu-body.mega-menu {
+  display: flex;
+  flex-direction: row;          /* image panel LEFT, links RIGHT */
+  gap: 0;
+  width: min(540px, 88vw);
+  max-width: 88vw;
+}
+
+/* ── LEFT side: image panel ── */
+.mega-menu-panel {
+  position: relative;
+  width: 300px;
+  flex-shrink: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 80px 1fr 1fr;
+  gap: 3px;
+  background: #f0f2f8;
+  min-width: 180px;
+}
+
+/* ── RIGHT side: text links ── */
+.mega-menu-links {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  padding: 12px 10px;
+  flex: 1;
+  min-width: 160px;
+  background: #ffffff;
+  border-left: 1px solid rgba(8,27,73,0.06);
+}
+
+/* Shared photo-tile treatment used by the banner and the 2x2 grid cells */
+.mega-tile-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.05) brightness(0.85);
+  transition: transform 0.5s ease;
+}
+
+.mega-tile-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(8, 27, 73, 0.35) 0%, rgba(8, 27, 73, 0.72) 100%);
+}
+
+.mega-menu-banner {
+  grid-column: 1 / -1;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.mega-menu-banner-title {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 20px;
+  line-height: 1.15;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.mega-menu-grid-tile {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  min-height: 110px;
+}
+
+.mega-menu-grid-tile-icon {
+  position: relative;
+  z-index: 1;
+  width: 30px;
+  height: 30px;
+  color: #ffffff;
+  transition: var(--transition-all);
+}
+
+.mega-menu-grid-tile-label {
+  position: relative;
+  z-index: 1;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  line-height: 1.2;
+  text-align: center;
+  color: #ffffff;
+  padding: 0 10px;
+}
+
+.mega-menu-grid-tile:hover .mega-tile-bg {
+  transform: scale(1.08);
+}
+
+.mega-menu-grid-tile:hover .mega-menu-grid-tile-icon {
+  color: rgb(255, 198, 26);
+}
+
+@media (max-width: 1200px) {
+  .nav-dropdown-menu-body.mega-menu {
+    min-width: 520px;
+  }
+
+  .mega-menu-panel {
+    width: 300px;
+  }
+
+  .mega-menu-banner-title {
+    font-size: 18px;
+  }
+}
+
 
 .nav-cta {
   display: none;
@@ -482,17 +646,6 @@ body {
   text-align: left;
 }
 
-.mobile-nav-dropdown-trigger .nav-dropdown-caret {
-  width: 18px;
-  height: 18px;
-  transition: transform 0.25s ease;
-  color: #081b49;
-  flex-shrink: 0;
-}
-
-.mobile-nav-group.open .nav-dropdown-caret {
-  transform: rotate(180deg);
-}
 
 .mobile-nav-submenu {
   display: flex;
@@ -13630,6 +13783,7 @@ body {
    ============================================================ */
 
 @media (max-width: 768px) {
+
   /* Primary & secondary hero/CTA buttons */
   .btn-primary,
   .btn-secondary,
@@ -13687,6 +13841,7 @@ body {
 }
 
 @media (max-width: 480px) {
+
   /* Extra compact scaling for mobile screens (≤480px) */
   .btn-primary,
   .btn-secondary,

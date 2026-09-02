@@ -396,7 +396,56 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  setInterval(nextSlide, 6000);
+  // Touch / Swipe support for mobile
+  let touchStartX = 0;
+  let touchEndX = 0;
+  let touchStartY = 0;
+  let touchEndY = 0;
+
+  carousel.addEventListener('touchstart', function (e) {
+    touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
+    stopAutoplay();
+  }, { passive: true });
+
+  carousel.addEventListener('touchend', function (e) {
+    touchEndX = e.changedTouches[0].screenX;
+    touchEndY = e.changedTouches[0].screenY;
+    handleSwipe();
+    startAutoplay();
+  }, { passive: true });
+
+  function handleSwipe() {
+    const diffX = touchEndX - touchStartX;
+    const diffY = touchEndY - touchStartY;
+    // Ensure horizontal swipe is dominant and exceeds minimum threshold (40px)
+    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 40) {
+      if (diffX < 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
+    }
+  }
+
+  // Autoplay management (pauses on interaction)
+  let autoPlayTimer = null;
+  function startAutoplay() {
+    if (autoPlayTimer) clearInterval(autoPlayTimer);
+    autoPlayTimer = setInterval(nextSlide, 6000);
+  }
+
+  function stopAutoplay() {
+    if (autoPlayTimer) clearInterval(autoPlayTimer);
+  }
+
+  const container = document.querySelector('.testimonials-carousel-container');
+  if (container) {
+    container.addEventListener('mouseenter', stopAutoplay);
+    container.addEventListener('mouseleave', startAutoplay);
+  }
+
+  startAutoplay();
   renderTestimonials();
 });
 

@@ -114,27 +114,56 @@
     <meta name="theme-color" content="#081b49" />
 
     <!-- ═══ STYLESHEETS ═══ -->
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://unpkg.com" crossorigin />
+    <link rel="preload" href="styles.min.css" as="style" />
+    <link rel="stylesheet" href="styles.min.css" />
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
-      rel="stylesheet"
-    />
-
-    <link
-      href="https://unpkg.com/lucide@0.462.0/dist/lucide.min.css"
-      rel="stylesheet"
+      rel="preload"
+      href="fonts/bebas-neue-v16-latin-regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
 
     <!-- ═══ SCRIPTS ═══ -->
-    <script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
   </head>
 
   <body>
+    <!-- ═══════════ SITE PRELOADER ═══════════ -->
+    <noscript><style>.site-preloader{display:none!important;}</style></noscript>
+    <div id="site-preloader" class="site-preloader" role="status" aria-live="polite" aria-label="Loading">
+      <div class="preloader-inner">
+        <img src="images/favicon/android-chrome-512x512.png" alt="Elunite" class="preloader-logo" />
+        <div class="preloader-spinner" aria-hidden="true"></div>
+        <div class="preloader-security">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="shield-check" aria-hidden="true" class="lucide lucide-shield-check"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>
+          <span>Secure Connection &middot; SSL / HTTPS Encrypted</span>
+        </div>
+      </div>
+    </div>
+    <script>
+      (function () {
+        var preloader = document.getElementById("site-preloader");
+        if (!preloader) return;
+        var minVisible = 500;
+        var shownAt = Date.now();
+        function hide() {
+          var wait = Math.max(0, minVisible - (Date.now() - shownAt));
+          setTimeout(function () {
+            preloader.classList.add("site-preloader-hidden");
+            setTimeout(function () {
+              if (preloader.parentNode) preloader.parentNode.removeChild(preloader);
+            }, 500);
+          }, wait);
+        }
+        if (document.readyState === "complete") {
+          hide();
+        } else {
+          window.addEventListener("load", hide);
+        }
+        setTimeout(hide, 4000);
+      })();
+    </script>
     <!-- Navigation -->
     <nav
       id="navbar"
@@ -164,29 +193,72 @@
             <div class="nav-links">
               <a href="index.html" class="nav-link">Home</a>
               <a href="about.html" class="nav-link">About Us</a>
-              <div class="nav-dropdown" id="nav-services-dropdown">
+              <div class="nav-dropdown nav-dropdown-mega nav-dropdown-services" id="nav-services-dropdown">
                 <button type="button" class="nav-link nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
                   Services
-
                 </button>
                 <div class="nav-dropdown-menu" role="menu">
                   <span class="nav-dropdown-menu-arrow" aria-hidden="true"></span>
                   <div class="nav-dropdown-menu-body services-menu">
-                  <a href="study-abroad-services.html" class="nav-dropdown-item" role="menuitem">Study Abroad</a>
-                  <a href="visa_purchase.html" class="nav-dropdown-item" role="menuitem">Visa Assistance</a>
-                  <a href="work-abroad-relocation.html" class="nav-dropdown-item" role="menuitem">Work Abroad</a>
-                  <a href="scholarships-exchange-programs.html" class="nav-dropdown-item" role="menuitem">Scholarship Programs</a>
-                  <a href="business-strategy-development.html" class="nav-dropdown-item" role="menuitem">Business Strategy</a>
-                  <a href="mentorship-capacity-building.html" class="nav-dropdown-item" role="menuitem">Career Mentorship</a>
-                  <a href="corporate-institutional-training.html" class="nav-dropdown-item" role="menuitem">Corporate Training</a>
-                  <a href="service.html" class="nav-dropdown-item nav-dropdown-viewall" role="menuitem">View all services →</a>
-                </div>
+                    <div class="services-menu-main">
+                      <div class="services-menu-search">
+                        <input type="text" id="services-menu-search-input" class="services-menu-search-input" placeholder="Search services..." autocomplete="off" aria-label="Search services" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="services-menu-search-results" />
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="search" class="lucide lucide-search services-menu-search-icon"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+                        <div class="services-menu-search-results" id="services-menu-search-results" role="listbox" aria-label="Service search results"></div>
+                      </div>
+                      <div class="services-menu-stat">
+                        <div class="services-menu-stat-number">2500+</div>
+                        <div class="services-menu-stat-text">Successful admissions guided end-to-end, from application to visa.</div>
+                        <a href="service.html" class="services-menu-stat-arrow" aria-label="View all services">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" class="lucide lucide-arrow-right"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                        </a>
+                      </div>
+                      <div class="services-menu-grid">
+                        <div class="services-menu-grid-tile">
+                          <img src="images/nav-menu/study-abroad.jpg" alt="" class="mega-tile-bg" loading="lazy" />
+                          <div class="mega-tile-overlay"></div>
+                          <span class="services-menu-grid-tile-label">Study Abroad</span>
+                        </div>
+                        <div class="services-menu-grid-tile">
+                          <img src="images/nav-menu/passport-visa.jpg" alt="" class="mega-tile-bg" loading="lazy" />
+                          <div class="mega-tile-overlay"></div>
+                          <span class="services-menu-grid-tile-label">Visa Assistance</span>
+                        </div>
+                        <div class="services-menu-grid-tile">
+                          <img src="images/nav-menu/work-abroad-office.jpg" alt="" class="mega-tile-bg" loading="lazy" />
+                          <div class="mega-tile-overlay"></div>
+                          <span class="services-menu-grid-tile-label">Work Abroad</span>
+                        </div>
+                        <div class="services-menu-grid-tile">
+                          <img src="images/nav-menu/corporate-training.jpg" alt="" class="mega-tile-bg" loading="lazy" />
+                          <div class="mega-tile-overlay"></div>
+                          <span class="services-menu-grid-tile-label">Corporate Training</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="services-menu-sidebar">
+                      <h4 class="services-menu-sidebar-title">Explore All Services</h4>
+                      <div class="services-menu-sidebar-columns">
+                        <div class="services-menu-sidebar-col">
+                          <a href="study-abroad-services.html" class="services-menu-sidebar-link">Study Abroad</a>
+                          <a href="visa_purchase.html" class="services-menu-sidebar-link">Visa Assistance</a>
+                          <a href="work-abroad-relocation.html" class="services-menu-sidebar-link">Work Abroad</a>
+                          <a href="scholarships-exchange-programs.html" class="services-menu-sidebar-link">Scholarship Programs</a>
+                        </div>
+                        <div class="services-menu-sidebar-col">
+                          <a href="business-strategy-development.html" class="services-menu-sidebar-link">Business Strategy</a>
+                          <a href="mentorship-capacity-building.html" class="services-menu-sidebar-link">Career Mentorship</a>
+                          <a href="corporate-institutional-training.html" class="services-menu-sidebar-link">Corporate Training</a>
+                          <a href="service.html" class="services-menu-sidebar-link services-menu-viewall">View all services →</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="nav-dropdown nav-dropdown-mega" id="nav-destinations-dropdown">
                 <button type="button" class="nav-link nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
                   Destinations
-
                 </button>
                 <div class="nav-dropdown-menu" role="menu">
                   <span class="nav-dropdown-menu-arrow" aria-hidden="true"></span>
@@ -202,34 +274,34 @@
                   </div>
                   <div class="mega-menu-panel">
                     <div class="mega-menu-banner">
-                      <img src="images/destination-images/bangalore.jpg" alt="" class="mega-tile-bg" />
+                      <img src="images/nav-menu/world-map.jpg" alt="" class="mega-tile-bg" loading="lazy" />
                       <div class="mega-tile-overlay"></div>
                       <h4 class="mega-menu-banner-title">Explore Study Destinations Worldwide</h4>
                     </div>
-                                          <a href="destination.html" class="mega-menu-grid-tile">
-                        <img src="images/destination-images/new-delhi-img.jpg" alt="" class="mega-tile-bg" />
+                                          <div class="mega-menu-grid-tile">
+                        <img src="images/nav-menu/study-destinations.jpg" alt="" class="mega-tile-bg" loading="lazy" />
                         <div class="mega-tile-overlay"></div>
-                        <i data-lucide="globe" class="mega-menu-grid-tile-icon"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="globe" class="lucide lucide-globe mega-menu-grid-tile-icon"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
                         <span class="mega-menu-grid-tile-label">6 Study Destinations</span>
-                      </a>
-                      <a href="visa_purchase.html" class="mega-menu-grid-tile">
-                        <img src="images/destination-images/chandigarh.jpeg" alt="" class="mega-tile-bg" />
+                      </div>
+                      <div class="mega-menu-grid-tile">
+                        <img src="images/nav-menu/passport-visa.jpg" alt="" class="mega-tile-bg" loading="lazy" />
                         <div class="mega-tile-overlay"></div>
-                        <i data-lucide="shield-check" class="mega-menu-grid-tile-icon"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="shield-check" class="lucide lucide-shield-check mega-menu-grid-tile-icon"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>
                         <span class="mega-menu-grid-tile-label">Visa Success</span>
-                      </a>
-                      <a href="scholarships-exchange-programs.html" class="mega-menu-grid-tile">
-                        <img src="images/destination-images/mumbai-city.jpg" alt="" class="mega-tile-bg" />
+                      </div>
+                      <div class="mega-menu-grid-tile">
+                        <img src="images/nav-menu/university-campus.jpg" alt="" class="mega-tile-bg" loading="lazy" />
                         <div class="mega-tile-overlay"></div>
-                        <i data-lucide="graduation-cap" class="mega-menu-grid-tile-icon"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="graduation-cap" class="lucide lucide-graduation-cap mega-menu-grid-tile-icon"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"></path><path d="M22 10v6"></path><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"></path></svg>
                         <span class="mega-menu-grid-tile-label">Top Universities</span>
-                      </a>
-                      <a href="about.html" class="mega-menu-grid-tile">
-                        <img src="images/destination-images/gujarat.jpeg" alt="" class="mega-tile-bg" />
+                      </div>
+                      <div class="mega-menu-grid-tile">
+                        <img src="images/nav-menu/global-community.jpg" alt="" class="mega-tile-bg" loading="lazy" />
                         <div class="mega-tile-overlay"></div>
-                        <i data-lucide="users" class="mega-menu-grid-tile-icon"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="users" class="lucide lucide-users mega-menu-grid-tile-icon"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                         <span class="mega-menu-grid-tile-label">Global Community</span>
-                      </a>
+                      </div>
                     
                   </div>
                 </div>
@@ -238,7 +310,6 @@
               <div class="nav-dropdown nav-dropdown-mega" id="nav-programs-dropdown">
                 <button type="button" class="nav-link nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
                   Programs
-
                 </button>
                 <div class="nav-dropdown-menu" role="menu">
                   <span class="nav-dropdown-menu-arrow" aria-hidden="true"></span>
@@ -253,34 +324,34 @@
                   </div>
                   <div class="mega-menu-panel">
                     <div class="mega-menu-banner">
-                      <img src="images/destination-images/hydrabad.jpeg" alt="" class="mega-tile-bg" />
+                      <img src="images/nav-menu/decision-path.jpg" alt="" class="mega-tile-bg" loading="lazy" />
                       <div class="mega-tile-overlay"></div>
                       <h4 class="mega-menu-banner-title">Find The Right Program For You</h4>
                     </div>
-                                          <a href="end_to_end_purchase.html" class="mega-menu-grid-tile">
-                        <img src="images/destination-images/gujarat.jpeg" alt="" class="mega-tile-bg" />
+                                          <div class="mega-menu-grid-tile">
+                        <img src="images/nav-menu/document-support.jpg" alt="" class="mega-tile-bg" loading="lazy" />
                         <div class="mega-tile-overlay"></div>
-                        <i data-lucide="file-check" class="mega-menu-grid-tile-icon"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="file-check" class="lucide lucide-file-check mega-menu-grid-tile-icon"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="m9 15 2 2 4-4"></path></svg>
                         <span class="mega-menu-grid-tile-label">End-to-End Support</span>
-                      </a>
-                      <a href="scholarship_purchase.html" class="mega-menu-grid-tile">
-                        <img src="images/destination-images/chandigarh.jpeg" alt="" class="mega-tile-bg" />
+                      </div>
+                      <div class="mega-menu-grid-tile">
+                        <img src="images/nav-menu/graduation-scholarship.jpg" alt="" class="mega-tile-bg" loading="lazy" />
                         <div class="mega-tile-overlay"></div>
-                        <i data-lucide="award" class="mega-menu-grid-tile-icon"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="award" class="lucide lucide-award mega-menu-grid-tile-icon"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path><circle cx="12" cy="8" r="6"></circle></svg>
                         <span class="mega-menu-grid-tile-label">Scholarships</span>
-                      </a>
-                      <a href="visa_purchase.html" class="mega-menu-grid-tile">
-                        <img src="images/destination-images/new-delhi-img.jpg" alt="" class="mega-tile-bg" />
+                      </div>
+                      <div class="mega-menu-grid-tile">
+                        <img src="images/nav-menu/passport-visa.jpg" alt="" class="mega-tile-bg" loading="lazy" />
                         <div class="mega-tile-overlay"></div>
-                        <i data-lucide="plane" class="mega-menu-grid-tile-icon"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="plane" class="lucide lucide-plane mega-menu-grid-tile-icon"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"></path></svg>
                         <span class="mega-menu-grid-tile-label">Visa Sponsorship</span>
-                      </a>
-                      <a href="mentorship-capacity-building.html" class="mega-menu-grid-tile">
-                        <img src="images/destination-images/bangalore.jpg" alt="" class="mega-tile-bg" />
+                      </div>
+                      <div class="mega-menu-grid-tile">
+                        <img src="images/nav-menu/mentorship.jpg" alt="" class="mega-tile-bg" loading="lazy" />
                         <div class="mega-tile-overlay"></div>
-                        <i data-lucide="users" class="mega-menu-grid-tile-icon"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="users" class="lucide lucide-users mega-menu-grid-tile-icon"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                         <span class="mega-menu-grid-tile-label">1:1 Mentorship</span>
-                      </a>
+                      </div>
                     
                   </div>
                 </div>
@@ -298,10 +369,7 @@
               class="cta-button"
               aria-label="Call Elunite at +91 8050306510"
             >
-              <i
-                data-lucide="phone"
-                style="width: 16px; height: 16px; margin-right: 8px"
-              ></i>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="phone" style="width: 16px; height: 16px; margin-right: 8px" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
               CALL NOW
             </a>
           </div>
@@ -314,8 +382,8 @@
               aria-label="Toggle mobile menu"
               aria-expanded="false"
             >
-              <i data-lucide="menu" class="menu-icon"></i>
-              <i data-lucide="x" class="close-icon hidden"></i>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="menu" class="lucide lucide-menu menu-icon"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="x" class="lucide lucide-x close-icon hidden"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
             </button>
           </div>
         </div>
@@ -323,7 +391,7 @@
         <!-- Mobile Navigation -->
         <div id="mobile-menu" class="mobile-menu hidden">
           <button type="button" id="mobile-menu-close" class="mobile-menu-close" aria-label="Close menu">
-            <i data-lucide="x"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="x" class="lucide lucide-x"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
           </button>
           <div class="mobile-menu-content">
             <a href="index.html" class="mobile-nav-link">Home</a>
@@ -331,7 +399,6 @@
             <div class="mobile-nav-group">
               <button type="button" class="mobile-nav-link mobile-nav-dropdown-trigger" aria-expanded="false">
                 Services
-
               </button>
               <div class="mobile-nav-submenu">
                 <a href="study-abroad-services.html" class="mobile-nav-sublink">Study Abroad</a>
@@ -347,7 +414,6 @@
             <div class="mobile-nav-group">
               <button type="button" class="mobile-nav-link mobile-nav-dropdown-trigger" aria-expanded="false">
                 Destinations
-
               </button>
               <div class="mobile-nav-submenu">
                 <a href="india.html" class="mobile-nav-sublink">India</a>
@@ -362,7 +428,6 @@
             <div class="mobile-nav-group">
               <button type="button" class="mobile-nav-link mobile-nav-dropdown-trigger" aria-expanded="false">
                 Programs
-
               </button>
               <div class="mobile-nav-submenu">
                 <a href="end_to_end_purchase.html" class="mobile-nav-sublink">End-to-End Admission</a>
@@ -391,12 +456,27 @@
         <div class="hero-overlay"></div>
       </div>
 
+      <!-- Faint animated world map (behind hero content) -->
+      <div class="hero-worldmap" aria-hidden="true">
+        <div class="hero-worldmap-inner">
+<svg class="hero-worldmap-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 494.7 265.7" fill="currentColor" aria-hidden="true" focusable="false">
+  <path d="m275.9 201.8-1.4 1.46h-2.36v-2.15l1.83-1.18h1.93v1.87zm4.05-6.3v2.12l-1.8-1.08v-1.65h1.8v-5.97h-4.6l-10.94 7.33-2.69-3.09v6.07h-6.65l3.86 10.57h12.67l9.75-11.28 0.44-3.05-1.84 0.03zm-171.6-119.4 2.52-1.719h3.04l-2.51 1.719h-3.05zm22.97-9.127-3.22 2.792h-7.46l-2.31 1.582h1.78l-2.48 1.692h-1.77l2.47-1.692h-4.87l-2.11 1.64-2.15 0.215 0.43-3.705h-1.66l-1.94 1.289-3.6 5.315h-2.12l4.08-6.604 4.81-1.029-0.27-0.903-3.17-0.108-1.5-0.913-1.88 0.913h-2.2l0.9-1.945-4.551-2.082h-38.81l-12.78 13.48v10.36l4.666 4.667 16.32 2.098 2.177 3.302 4.59-0.161 3.788 7.44 7.058-8.861 16.78 0.053 1.11 8.388 2.66 0.07 0.07-10.44 27.16-23.22 1.85-0.32 1.05-3.307h-2.9zm16.06-1.435h9.48l-1.97-3.138-1.78-0.425v-2.251zm-70.28 50.76-3.657-7.88 3.036-3.81-3.787-7.442-4.59 0.161-2.177-3.301-16.32-2.098 0.031 0.032 0.695 7.348 5.02 9.5 2.057-1.59-3.959-8.441v-4.751h2.335l0.091 4.419 7.5 17.62 12.23 5.1 3.052-0.81 2.686 2.74 1.338-2.38h2.818l-0.402-3.09h2.415l3.141-2.34 0.133-3.41-3.435-0.06-2.731 4.48zm135.4-76.39 4.54-2.209v-0.622l-2.25-2.282-3.15 1.046-3.78-0.08-0.8 1.09-2.15-0.05v2.02zm40.41 47.95 0.01-2.144-2.43-0.064-0.02 1.58zm-92.08-68.56v2.26l11.28 0.161 2.89 4.987v4.51l-5.41 3.073 0.16 6.12 3.4 3.437h4.02l6.14-6.489 8.67-2.557 3.25-2.489 6.56-0.405 4.59-1.355 8.65-13.75 5.33-1.09 1.88-1.89-15.37-1.546-13.28 1.546h-16.08l-9.27 3.221zm261.6 87.05-1.31-1.37-2.15 3.06 2.15 2.01zm-20.64-37.93 0.43-2.416-4.51-0.725-1.72-2.819h-8.59l-17.56-4.348-1.93 4.348-7.14-2.174-5.33 4.06 17.36 10.14 20.08 0.215 2.42-4.924zm3.81 45.98-2.58 0.57v1.52l1.05 1.27 1.53-1.91zm-9.61-51.94 1.72 2.819 4.51 0.725-0.43 2.416-6.48 1.357-2.43 4.924-20.08-0.215-17.36-10.14-7.51 5.725 1.25 5.811-7.52 2.793 2.15 5.26 8 3.65 0.32 6.443 20.94 7.242 3.86-3.538 8.22 3.538-1.13 3.06 4.35 7.25 7.62-3.86 4.98 4.26 2.11-1.2 0.08 2.05 12.48-4.46 4.08-9.132-7.28-11.98 3.74-4.079h-4.3l-1.38 0.893-2.7-4.435 3.44-3.007 2.36 4.504 3.31-2.277 6.35-4.374v-8.483l-10.52-2.684-7.73-7.571h-7.51l1.71 6.067zm43.39 12.76 2.94-0.04 1.25-2.134-6.53-2.738 0.13 5.395 1.29 0.765zm-8.12 12.47-0.48 1.659 6.47-0.955 0.5 2.498 1.47-0.624 0.16-1.966 4.34-1.115-0.23-5.673-1.97-3.439-1.96-0.568 1.12 5.154-4.01 3.637zm-1.14 3.202 2.34-0.295 0.76 1.128-0.84 2.657zm6.24-1.1-1.13 2.053-1.49-1.691zm-7.08 35.04-3.55-0.37-1.29-1.61 1.29-2.96-1.28-2.84-2.34-0.05-0.57 5 3.31 3.99 3.88 0.49zm-11.18 8.87 1.57 0.31 2.79-2.32-0.06-1.9zm12.25 3.59v2.23l2.33-0.7-0.79-1.44 1.88-0.48-1.6-4.99-1.18 3.08h-3.86zm-6.87-11.13 1.66 1.63-0.54 1-1.34-1.31zm1.66 3.99 1.18 0.8 1.29-1.95-1.72-0.21zm4.4-2.04 1.62 2.09h1.77l-1.69-2.72zm0 1.76 0.91 1.59-0.73 0.97-1.28-1.93zm-1.93 1.61 0.83 1.25-0.83 1-0.95-1.16zm3.15 32.76 1.09 1.5 3.06-0.37v-1.13zm-24.59-17.64 0.15 4.32 2.46 4.3h7.82l3.87-4.94v-8.96l-2.79 0.29-2.26 4.27-7.57 1.69-1.63-0.99zm-5.56 11.28v-3.3l-12.89-13.37-4.41-1.69 14.93 20.33zm15.06 5.88 0.24 1.12-16.11-2.73 2.42-1.94 4.02 1.53 3.63-0.8zm10.3 0h-2.49l0.48 1.61h2.38l1-0.81zm-4.35 2.61 0.73 0.89h1.73l-0.6-1.29zm9.14-2.13-2.49 2.78 1.89 0.24 1.69-1.52zm-8.29-4.91 1.85-0.57-0.56-3.26 1.09-1.21 0.92 2.42 2.22 0.77v-1.74l-1.25-2.76 2.37-1.99-3.78 0.16-0.78-1.08 1.5-1.65 2.78 0.96 1.37-0.12 2.05-2.42-1.8-0.04-1.17 0.77-3.87-0.94-2.56 2.31 0.18 3.66-1.49 1.98zm13.89-5.19-0.43 1.51 4.19-0.43v-1.08zm0.97-9.75-1.4 1.38-0.53 3.44 1.93 0.47-0.43-3.05 1.12-1.4zm9.49 9.15-0.56-2.98-4.59 0.65zm-0.31 2.48 6.4 2.67 1.15 3.27-2.13 1.3 5.48 1.9v-10.79l-4.45-2.32-4.15 3.37-4.39-1.73-0.49 2.42zm-19.06-71.18-4.32-3.535-1.91 1.764 2.58 5.584 3.12-0.215zm-4.32-3.535-1.91-1.564 2.47-0.322-0.43-4.939-6.35 4.374 1.86 3.53 2.45 0.685zm-5.53 56.98-3.44 4.63-7.94 3.67 1.63 0.99 7.57-1.69 2.26-4.27 2.79-0.29v-3.28zm-26.32 0 1.38 4.48 5.68 4.84 0.44-1.72-5.36-7.92zm68.12 27.58 3.81-3.5 4.94 4.82 4.51 0.92-5.58-5.58 0.27-2.95-9.94-5.2v10.79zm10.46-5.78 2.01 1.2 3.47-1.95v-2.02zm2.8-5.67 4.05 2.9 1.62-0.55-4.11-2.45zm-84.29-42.84-4.35-7.25 1.12-3.06-2.52-1.08-3.38 2.43-1.59 10.99 2.51 2.1 0.96 5.02 1.77 0.53 1.27-1.59 2.36 2.66 1.31 4.86-0.31 5.02 2.03-3.98-3.65-13.16 2.47-1.79zm7.3 6.18 2.92 3.97-2.73 2.74h6.12v-1.56l-5.96-6.34-1.32-4.08-4.14-2.02-2.19 1.11v1.7l2.14 1.25v3.23zm-5.16 0v-3.23l-2.14-1.25-2.47 1.79 3.65 13.16-2.03 3.98-0.12 1.98 3.54 3 0.34 1.1 2.14-0.32-3.44-5.07 0.8-7.84 3.87 3.83v-3.21l3.94-3.95-2.92-3.97zm4.14 7.92v3.21l1.93 1.92 2.17-0.3 3.23-2.42v-3.62h-6.12zm1.37-9.11 5.96 6.34v5.18l-3.23 2.42 0.08 3.46 6.18-4.08-0.21-6.07-6.45-6.81 0.32-3.73 2.3-1.3-4.98-4.26-5.43 2.75 4.14 2.02zm-25.77-13.2-1.37 0.64 1.94 6.13 1.25-1.21 5.58 4.68 0.36-2.5-2.93-2.74-0.48-3.28-2.34 0.96zm2.01-0.42-3.38-0.84 0.47-2.12-0.97-0.336-2.07 3.296-11.37-4.306 0.03-3.632-2.84-0.984-0.32-6.443-2.48-1.13h-2.29l-3.4 2.416-0.09 2.057 2.06 1.167 0.98 4.021-4.47 4.114h-2.86v3.04l2.14 0.81v2.62l-3.86 1.03 0.33 0.39 3.19 1.01-1.49 1.53 1.41 1.83 2.53 0.3 0.45-2.1 1 0.01 8.13 23.38 5.16-3.17 0.8-9.4 11.77-11.37-1.94-6.13 1.37-0.64 2.01 2.68 2.34-0.96 0.48 3.28 2.93 2.74 1.23-8.49 3.38-2.43-5.69-2.458-3.86 3.538zm-17.29-7.938-0.03 3.632 11.37 4.306 2.07-3.296zm14.38 4.978-0.47 2.12 3.38 0.84 0.81-1.68zm-64.41-27.17 2.41 2.002 3.07-0.848 2.72 2.27-0.47-5.894 4.19-0.966 5.52 3.785 4.62-0.886 3.38 4.456 3.26-0.144 3.19-2.621 7.53-0.327 4.82 2.233-1.25-5.811 7.51-5.723-4.33-2.532-25.24-8.901-9.95 2.243v4.498h-17.64v5.812l2.36 2.952 5.05-2.04 3.01 2.04-3.65 1.771zm19.32 13.88-1.69-2.737-6.6-2.094-3.9 1.3-0.07 1.737-4.97-0.003-2.74-4.835-6.55 0.647v1.933l7.95 13.49 2.36 0.226 5.48 5.717 10.09 3.01h2.8l2.03-3.49-2.25-2.821-3.22-9.341zm-11.12-10.45-2.72-2.27-3.07 0.848 4.9 4.058-0.18 4.286 3.9-1.3 6.61 2.094 1.69 2.737 6.28-3.221-10.35-8.283h-4.39zm26.12 23.98h2.86l4.47-4.114-0.98-4.021-2.06-1.167 0.09-2.057 3.4-2.416h2.29l-4.77-2.179-5.08 0.733-1.61 6.978-5.87 5.427-6.3-0.063 0.5 1.428 2.25 2.821-2.03 3.49h8.8l2.32 2.64 3.86-1.03v-2.62l-2.14-0.81zm-16.88-27.06-5.52-3.785-4.19 0.966 0.47 5.894 2.67-1.051h4.39l10.35 8.283 3.39 0.907-1.54-4.53 4.81-1.38 0.27-2.048-7.1 0.314-3.38-4.456zm1.88 13.53-1.28 2.739 2.72 7.913 6.3 0.063 5.87-5.427 1.61-6.978-1.04-2.94-4.5 2.316-3.39-0.907zm13.75-5.985-4.04-1.311-1.57 0.452 1.54 4.53 4.5-2.316 1.04 2.94 5.08-0.733-0.75-0.341-1.48-3.631zm-1.18-6.738-3.19 2.621 3.84-0.17-0.27 2.048-3.24 0.928 4.04 1.311 4.32-0.41-0.67-1.629 7.52-2.793-4.82-2.233zm-38.55 3.772 2.88 2.628 3.13-0.309-2.18-3.841-2.36-0.584zm-6.19-1.087 4.27 1.087h1.92l1.47-2.106-5.45-2.471-2.21 0.478zm5.65 4.053 3.42-0.338-2.88-2.628h-1.92zm-32.55-32.75-1.13 0.267 0.29 0.217-0.32 1.45-3.17-1.45 0.01 1.882 4.32 1.102 3.11 1.423 1.2-1.026-0.43-3.056-1.58 0.48zm-4.31 4.517 2.41 0.803 0.66 1.364 0.52 1.455 3.83-3.248-3.11-1.423-4.32-1.102zm12.24-0.652h-3.62l-5.03 4.274 0.8 2.205 7.21 1.15 4.5-0.982-2.68-1.09 1.61-1.027zm-10.04-5.588-0.38 0.966 1.36 1.024 1.13-0.267 2.3 1.289 1.58-0.48-0.49-3.481-0.9 0.845zm9.4 13.22-7.21-1.15 0.45 1.252-2.58 3.217v1.82h9.75l0.94 1.782-1.69 2.649 1.48 0.619 0.4-1.228h5.78l-1.28 1.328 1.78 1.007 2.4-0.188-2.28-2.912 6-1.275 1.53-3.436-10.97-4.467zm-13.73-28.16-10.1 7.408v6.589l-1.39 2.177 3.8 4.375 6.2-5.49-2.9-3.6 6.53-7.137h1.29l-1.78-4.322zm-17.81 16.67 5.91-0.966 0.41 0.471 1.39-2.177v-6.589l10.11-7.408h5.59v-1.845l-5.73 0.292-19.65 13.6zm23.41-16.67h-3.94l1.77 4.322h1.04l-3.14 7.113 3.67 1.852h5.59l3.14-3.624-5.21-11.66-2.92 0.148zm169.4 32.4h1.93l-6.81-6.979-1.93-0.055 5.47 6.765 2.68 4.993h1.99zm-170.5-10.41-2.41-0.803 0.01 1.603 3.06 0.564zm144.1-24.13-1.85-2.513-11.44-1.87-3.22 2.899h-9.26l-3.86-2.899h-20.94l-1.29-4.616h-19.33l-17.04 7.622 3.73 4.618-3.22 3.328-2.91-9.511-5.14-0.407 2.47 5.623-19.87 0.537-18.57 7.623-2.45-4.668 7.06 0.266 3.44-1.718-13.53-4.314-2.88 0.147 5.21 11.66-3.14 3.624-0.76 0.71 0.49 3.481 0.43 3.056h3.62l2.79 4.53-1.61 1.027 2.68 1.09 10.97 4.467-1.53 3.436 0.72 1.717-1.77 0.483 0.31 2.824 6.41 2.245 2.21-0.478 5.45 2.471 2.36 0.584-1.47-2.577v-5.229l-2.36-2.952v-5.812h17.64v-4.498l9.95-2.243 25.24 8.901 4.33 2.53 5.33-4.06 7.14 2.174 1.93-4.348 17.56 4.348h8.59l3.22-0.644-1.72-6.067h7.52l7.73 7.571 10.52 2.684v8.483l4.61-0.81 2.48-3.7v-6.872l-7.09-8.053-6.87-0.107 1.18-8.482 14.17 0.107 1.54-4.814 5.98 2.263 0.02-2.219 1.48 0.153 2.58 2.469-2.49 1.695-0.3 5.069 10.09 9.557v-9.234l-5.69-5.477 13.48-4.268 0.17-1.376-6.78-1.845 2.64-2.057 6.06 1.252 4.11 0.081-3.3-3.541-21.16-4.191zm-151.1 35.94-2.49 2.041 3.62 1.345 3.86-0.666 3.06-3.218h-1.21v-0.761zm-1.85-1.75 1.85 1.75 6.84-1.259v-1.059l-6.2-0.753-0.26-0.102zm-13.06 4.977 2.22 0.159 2.01-0.464-0.72-2.175h-1.89l-1.23 0.567zm8.5-4.977h4.56l2.23-1.423-4.36-1.718-3.9 1.208zm-30.64 20.96 0.9 0.068 1.04-8.736-3.38-0.565-0.17 6.388zm52.89-15.28 1.69-2.649-0.94-1.782h-2.89zm-8.19-14.38-3.06-0.564-3.22 0.106-0.73-0.669-4.62 1.127-0.41-0.005 0.41 5.561 4.37 1.718 0.25 0.102 6.2 0.753 2.58-3.217-0.45-1.252-0.8-2.205zm0.4 9.949-3.06 3.218 2.74 4.55 6.84-0.779 1.95 0.537 0.8-2.476-1.48-0.619-2.14-4.431zm-12.45-9.954-5.93-0.068-0.27-1.054h-2.08l0.42 1.015-3.12 1.869-0.28 5.385 1.89 0.987-0.75 3.632 1.23-0.567h4.4l0.38-0.111 3.19-0.936-1.09-1.45-1.47-1.933 3.9-1.208zm-8.28-1.122h2.08l-0.11-0.446 0.68-3.822-1.87-0.026-1.33 2.998zm5.55-1.338-1.17-1.159-1.04 0.427-0.32 1.643 1.94-0.019zm1.81 12.61-3.57 1.047h-2.51l0.72 2.175 3.81-0.881h4.38l1.83-1.504 0.66-0.537-1.85-1.75h-4.56zm2.18 17.39h-3.87v0.967l1.45 0.993 2.42 0.375zm-10.15-5.449v3.973h1.85v-3.436zm-1.62-8.418-0.35 1.707 2.24 1.021h2.6l8 7.983 0.41 3.397 1.47-0.859 0.46-2.442 1.82-0.365-9.76-8.447 2.77-0.166-1.62-3.015-5.82 1.345zm2.55 5.681v1.638l0.92 0.347 0.41-1.985zm-18.46-10.04v1.181l3.32 1.794 0.44 5.883 4.92 3.147 1.52-1.965 7.2 0.052 0.21-3.005h0.19l-2.24-1.021 1.49-7.252-6.55-3.417-7.68 4.603zm12.33-5.696-1.83 1.093 3.67 1.914 1.05-0.566 0.04-0.886zm2.93 1.555 0.18-3.417-3.11 1.862zm-1.09 1.452 0.99 0.516 0.05-1.082zm-12.02-8.37 0.04 2.469-1.69 0.926 1.49 2.169-3.02 2.864 3.99-0.725 4.06-0.644 0.26-1.49h0.83l0.18-1.663-2.63-0.555-3.29-7.56-2.51-0.077v4.071zm-3.18 1.784v-1.613l-2.94-0.199 1.69 2.255zm-5.92 0.373v4.403l1.69-0.011v-1.503l3.22 0.443-0.24-3.262-1.69-2.255zm1.62 29.32 7.05 0.527 6.96-8.936-4.92-3.147-11.38 0.082-0.05 2.173 3.38 0.565zm15.62-3.76v-1.891l-2.18 1.891zm25.76-2.199 4.47-1.446-1.03-2.402-3.68 0.72zm-2.83-10.16 0.82 4.56 1.77 2.469 3.68-0.72-0.94-2.205-2.74-4.55zm-7.65 1.89 0.41-0.024 2.1-1.099 0.95-1.63-0.7-0.262h-4.38zm22.32 8.844-3.33-0.027 2.74 5.506 12.59 0.695 12.37-2.523v-1.933l-1.38-2.966-4.27-1.087-17.24 0.564zm-3.34-1.248h3.07l-1.24-2.67-1.86 0.601zm-13.75-3.57 1.11 0.275 2.13-1.631-0.6-3.354-4.55 0.616zm3.59 4.777 1.42 1.64 2.74 0.766-1.67 0.708 2.21 2.778 1.39-2.2-1.55-3.383 3.08-1.516h2.54l-0.03-2.069zm-2.44-10.47-2.92-1.083-0.95 1.63-2.1 1.099 0.73-0.044 3.39 3.92 0.7 0.174-1.91-4.094 4.55-0.616-0.22-1.206zm1.29 6.3 1.6-0.851-0.8-1.109-2.13 1.631zl0.9 3.881 0.25 0.292 1.66-0.536-0.24-3.128-0.97-1.36zm7.28 2.191 5.86-1.895 0.96-2.954-1.95-0.537-6.84 0.779zm43.73 28.14 1.36 0.9 0.89-0.92-1.56-2.2zm-27.13-18.53-3.59 1.329 2.57 0.644zm2.31 4.593v6.453l1.35 0.161 2.01-0.94 0.62-3.624 1.57-0.664 0.08-0.034-0.46-1.925-3.23 1.925zm24.38 13.65-3.55-5.8h-1.55l-1.11-1.439-3.03-0.01-9.59-5.013-1.58 0.664-0.61 3.624-2.02 0.94-1.34-0.161 12.51 21.74 0.25 0.81 1.3-2.23 4.44 0.56-0.41 1.69 6.29-3.3 8.85-2.37v-4.61l-4.61-0.65-1.4-2.57zm-7.61-7.244 1.41 0.005 1.1 1.439h1.55l-1.88-3.06h-1.77zm-8.98-8.541-2.62 1.564 0.48 2.011 9.49 4.961 1.63 0.005 0.41-1.616 3.49-0.021-7.84-13.29-3.6 0.735zm22.79 18.32-3.36-0.66 1.4 2.57 2.6 0.37 3.7-3.76-1.69-1.5zm0.64 2.28 2.01 0.28v4.61l-4.45 1.19v2.68l2.48 1.68 8.2-10.16-4.54-4.04-3.7 3.76zm-29.76-21.17-1.46 2.701 1.94 1.352 5.85-3.489 1.44-5.653-8.77 1.788-0.59 2.75zm22.92 28.43-6.29 3.3 0.41-1.69-4.44-0.56-1.3 2.23 2.22 7.24 16.28-7.34-2.48-1.68v-2.68zm-24.38-25.73 1.46-2.701-1.59-0.551-0.58 2.748zm-0.04 6.548 0.04-0.095v-6.453l-0.71-0.504-1.12 4.135zm13.38 92.14 1.7 4.02 4.07 0.18 6.93-22.23h-2.47l-8.05 8.36-0.81 5.8zm-44.74-54.6-1.18-3.49h2.36l-2.91-6.18v3.42l-4.18 8.66-3.65 0.21-0.51 3.56h1.58l-0.08 3.64h10.07l0.45-1.29h-0.02l-3.01-4.24zm-5.8 12.47h-2.83l-0.09 4.33 3.63 4.85v-4.15h4.66l-2.38-7.68h-2.99zv-2.65h-2.76l-0.07 2.65zm-9.45-9.14 0.64 2.85h4.54l0.51-3.56 3.65-0.21 4.18-8.66v-3.42h-15.65l-2.54 12.32zm-23.09-2.36 1.15 1.29v5.37l8.52-2.46v-7.88l-8.32-1.64v4.14zm1.15 6.66v-5.37l-3.08-3.47-2.73 2.57zm51.29 25.06-2.94-1.45v-5.36h-3.32l-0.67 2.36-3.31 0.11-0.86-2.97-5.26 0.04v11.73l-3 4.94 0.26 3.22h18.55l-3.03-3.76v-4.19h3.7zm-36.99-29.19-1.38-8.44h-4.4v10.11zm20.08 6.32 2.38 7.68h-4.66v4.15l1.83 2.44 4.44-2.03 4.67-7.75 0.74-5.78h-4.64l-0.45 1.29zm43.4-21.29 2.75 4.35 1.05-0.88-6.97-11.97-3.6 8.5zm-83.58 12.83 2.72-2.57-2.79-3.14-2.71 2.72zm87.06-5.64 1.75-1.26-1.43-2.46-2.09 1.75zm-12.94 39.06v2.58l2.26 1.51v3.22l-2.15 1.88v-3.77l-2.15-1.76-0.06 0.04-4.06 2.83 4.06 2.66v3.72l-2.54 5.94v6.58l1.84-0.03 0.12-0.89 3.81-2.66-0.28-8.01 8.94-7.33-0.89-8.36zm14.69-40.32-1.75 1.26 1.78 2 7.09 2.51-11.07 9.22v8.02l17.35-20.18-0.71-3.54-12.06 1.79zm-44.21 69.48h6.66v-17.03h8.84l-1.15-1.6h-20.96zm32.98-58.29-3.04 0.43 0.87 3.74-0.43 3.17-1.36 2.4 8.32 5.49 2.92-3.41v-8.02l3.22-2.69h-9.44zm-3.96 9.74-0.52 0.91h-2.99l0.77-1.32h-1.36l-3.06 7.58 5.56 7.83h2.1v4.39l8.9-1.85-1.08-12.05zm-68.11-47.5h-4.94v5.67l-1.82 2.76h-6.1l-0.22 6.37 7.5 5.39v-1.93h9.02l-0.86-15.38h4.75l-7.33-5.41zm62.77 50.17 1.24-3.08h-2.64l-0.84 3.55zm-1.82 4.5 1.82-4.5-2.24 0.47-0.61 2.57zm-72.13-27.31 2.89 3.12 2.71-2.72 2.79 3.14 1.93 2.18 1.35-1.18v-4.14l-0.65-2.95h-8.59zm14.62-9.1h-9.02v1.93l2.04 4.62h3.38l0.65 2.95 4.16 0.82v-4.17l15.97-6.47v-5.27l-13.29-9.79h-4.75zm55.51 47.67 3.22 1.29-1.12 2.25-9.47-4.67 0.12 4.67h-3.7v4.19l3.03 3.76h5.67l9.81-6.83v-8.09l-1.23-1.73-5.36 0.81zm-13.2 24.05 2.68 3.09 10.94-7.33-4.78-6.72h-8.84zm-41.1-61.4 4.16 0.82v-2.23h4.4l5.11-1.88-4.88-4.44-8.79 3.56zm61.86 33.92v8.09l0.06-0.04 2.15 1.76v3.77l2.15-1.88v-3.22l-2.26-1.51v-6.97zm14.31-37.51-2.75-4.35h-6.77l-4.79 11.31 6.62 6.92h9.44l7.85-6.53-7.09-2.51-3.55-3.97zm-19.45 22.1h4l1.14-1.99h2.96l0.43-3.17-0.87-3.74-5.73 0.8zm-40.75-34.42v5.27l-7.18 2.91 4.89 4.44 1.28-0.47 0.49-2.38h15.65l3.53-7.24-1.39-9.53h-6.96zm-33.47-4.24h6.09l1.83-2.76v-5.67h4.94v-3.439h-5.44l-7.34 9.559zm-0.45 12.57 4.93 1.44h-4.98l-0.09 2.37h9.9l-2.04-4.62-7.5-5.39zm4.93 1.44-4.93-1.44-0.05 1.44zm47.64-7.24-3.52 7.24 2.91 6.18h-2.36l1.18 3.49 11.68-5.52v-6.01l2.6-2.56 0.26-5.84-10.14-6.51h-3.99zm0.03-23.68-2.13-2.582-4.57-1.097-4.25 4.571 2.76 13.26h10.77l10.14 6.51 0.99-22.44-5.9-0.8-2.44 3.651zm-40.15 5.038h0.86v-0.731l12.24-6.681v-4.794l-9.02 0.94-8.66 11.27zm13.1-12.2v4.794l-12.24 6.681v1.64l20.61 15.2 10.31-7h0.18l-5.03-24.17-5.92-0.171zm13.83-2.859 2.27 10.92 4.25-4.571-1.67-0.4 0.21-5.8zm27.36 95.92 5.93 8.32h4.6l2.54-5.94v-3.72l-4.06-2.66-5.75 4zm2.72 22.66h2.36l1.4-1.46v-1.87h-1.93l-1.83 1.18zm7.81-8.37h-1.8v1.65l1.8 1.08zm4.84-97.06 0.03-0.084-1.79-2.917-14.04-1.908-0.75 17.02h15.39l3.1-1.77-6.38-10.96 3.49 2.845zm1.94 10.35-3.1 1.77h-15.4l-0.49 11.25-2.6 2.56v6.01l9.21 10.6 4.93 1.8 8.76-1.23-5.55-5.81 4.79-11.31 3.6-8.5zm-10.83 48.21 3.38-14.22-4.93-1.8-13.91 0.39-1.13 8.84-4.67 7.75-4.44 2.03 1 1.33 5.26-0.04 0.86 2.97 3.31-0.11 0.67-2.36h3.32v5.36l12.41 6.12 1.12-2.25-3.22-1.29 0.97-4.35 5.36-0.81zm-23.52-16.81 3.01 4.24h4.66l0.39-3.06 13.91-0.39-9.21-10.6-11.68 5.52zm-16.79-11.58-4.36 1.6 1.43 8.59 0.88-0.25zm-4.36 1.6-2.04 0.75 1.38 8.44 2.09-0.6zm-26.43 0.94 2.43-2.55h-4.68l-0.01 0.11zm-136.3-100.3-3.65-1.504-19.11 0.108-7.73 3.114v3.436l-8.696-0.107-1.65 2.303 7.339-0.264-9.448 3.544-4.565 6.185 3.921-0.065-7.517 4.939 2.748 0.215 14.39-6.871 16.61-0.58 5.046 5.047 1.906-2.052-1.665-1.719h-1.878l-1.834-2.102 15.79-13.63zm-12.49 31.96-2.631-2.148-1.128 0.967 1.834 2.398h1.925zm100.8 3.325-1.97-3.138-1.78-0.425v-2.251l-5.73 5.814zm-3-36.32-11.54-4.713-1.72-0.018-4.01 3.294 1.34-3.314-1.94-0.015-4.67 4.965 11.35-0.617 6.93 6.201-4.66-0.08-2.35 1.925h-5.29v1.512h5.37l4.55 3.763 1.24-0.542-1.08-2.39 3.13 1.49 1.02-0.443v-4.671l3.6 1.281 2.07-1.381-1.17-2.185-2.08-0.758zm-38.86 42.13h3.33l2.31-1.582h7.46l3.22-2.792h2.9l-1.05 3.304 5.15-0.888-3.38 1.61 0.32 1.397 9.18-3.225-4.48-0.213-2.09-1.883 2.07-3.21-1.01-0.964-6.49 2.945v-1.691l6.21-2.98 9.95-0.429 7.48-3.981 0.04-1.817-5.45-0.944-0.66-8.91-7.13 2.806 0.05-4.192-3.44-2.926h-4.67l-12.63 18.38-3.06 0.01 0.06-6.045-10.88-5.905 10.88-8.053 6.17-1.126-1.29-1.908 9.5-1.047 3.87-4.026-3.63-0.402-4.99 3.301 0.56-2.818-2.33-0.242-0.55-3.405-4.04 1.794 1.05 2.175-5.4 2.576-9.42-1.771-4.98 2.335-12.09-4.831-23.11 0.483-15.79 13.63 1.834 2.102h1.878l1.665 1.719-1.906 2.052-1.933 8.846 3.463 3.141v1.691h38.82l4.56 2.081 7.72-1.639 0.97 3.423 1.56 1.152 2.62-0.185zm13.93-34.5-2.96 2.407 5.85 0.619 0.62-1.514zm-11.42-6.123 1.09 1.407 2.76-1.407-0.82-1.306zm2.09-4.726 1.76 1.784 3.78-1.262 0.99-2.642zm7.21-1.062 0.48 1.691 5.15-1.369-1.04-1.38zm13.13-3.503-2.82-1.168-2.74 2.335 11.11 0.875 2.9-2.042zm27.05-6.241 5.8-3.273-23.03 1.708v1.243l7.77-0.161-1.09 1.45-8.05 0.16 1.05 1.853-3.47-0.564 1.37 1.771h-5.96l0.89 0.886h6.52l1.05 0.886 9.5-4.429zm-28.18 1.344 4.29 0.811 2.46-1.575-1.78-1.329zm-45.31 11.25 10.08-3.429-2.32-1.075-9.53 2.427zm11.38-2.803-5.431 1.847 3.201 1.348-4.993 1.272 6.203 2.416 4.27-1.853 4.75 1.128 3.56-0.817-3.48-1.607 2.68-3.46h-2.68l-1.61 2.082-0.65-2.082-2.84 1.102zm-7.867 84.83h4.947l3.99 2.66-1.52 1.69h6.92l-8.27-5.96h-4.376zm6.927 7.41 1.04 0.89h2.98v-1.05l-1.04-1.05h-2.98zm18.35-0.82-0.61 1.01h1.67l0.61-1.01zm-36.79 4.32h-2.818l-1.338 2.38 3.99 2.01 2.703-4.88-0.524-2.6h-2.415zm3.141 3.95-0.485 1.71 0.726 0.33 6.665-5.58-8.032 0.08-1.325 2.37zm-0.485 1.71 0.485-1.71-2.451-1.09-0.856 1.53zm2.498-11.09-3.141 2.34 0.524 2.6zm0.764 14.84 4.345 0.46-0.216-9.46-6.665 5.58zm7 26.34 3.555 1.7 6.34-7.78-6.46-3.69-3.065 3.86zm13.06-27.54-1.72-0.01-3.59 4.85-1.83 0.12 0.52 1.76-0.96 1.36 0.74 2.46-0.7 4.59-2.09 2.64 14.76 8.43v-9.46l3.43-0.23v-7.51l-5.63-0.58-2.45-2.71zm23.44 114.8 2.2 2.02 6.78 0.25-7.32-3.82zm10.42-48.75-2.96 1.8h-3.98v-3.54l-8.13-5.5-0.46 0.84h-6.78l-1.82 16.9 3.83 16.75 3.46 6.16 0.16 4.62 5.14 7.87 1.87 0.19-0.97-20.13 10.9-4.72-4.94-6.88v-7.57l4.81-4.94zm1.2 16.52 2.36-4.09-8.24-5.64v7.57zm-22.95-79.89-3.65-2.6-8.46-0.08 0.48 5.71 2.45 2.71 5.63 0.58v7.51l0.9-0.06 1.14 2.55 3.66-1.18-0.3-3.96 4.9-1.8 1.45-7.16-1.65-1.58zm-32.18-1.48 2.893 3.91 1.044 0.37 1.466-1.9-1.027-0.57-0.031-1.35zm45.48 8.56-5.11-4.86-1.45 7.16 2.13-0.78-0.29 6.11 4.89-0.55-1.67-4.28zm-12.64 29.49-4.99 1.41v11.41l3.76 7.58h6.78l2.64-4.84 5.11-0.03-0.12-3.82-8.7-7.11zm17.2-22.89 3.28-0.37 0.97-2.75-1.29-2.83-2.74-0.23zm-3.9 38.42-5.11 0.03-2.18 4 8.13 5.5v3.54h3.98l2.96-1.8-0.2-2.8-7.44-3.97zm-0.49-37.94 4.39-0.48 0.22-6.18-4.78-0.42-1.5 2.8zm20.55 6.13-3.72-1.61-3.72 2.18 1.21-3.26-2.47-1.07-3.51 2.7 2.55-3.76-2.25-4.91-0.97 2.75-12.56 1.4 0.29-6.11-2.13 0.78-4.9 1.8 0.3 3.96-3.66 1.18-1.14-2.55-4.33 0.29v11.17l-4.4 0.54-1.94 6.33 7.36 6.34 6.63-1.87 4.48 4.6 8.7 7.11 0.26 8.32 7.44 3.97 0.33 4.65-4.81 4.94 8.24 5.64 4.8-8.37 1.13-7.25 11.66-5.16 2.17-16.12 5.03-6.58v-3.98l-8.23-5.36-8.05-0.49zm-57.62-19.53-1.366 1.14-1.812-1-1.466 1.9 4.313 1.54 1.045-1.56 2.47 0.24 0.72 2.38 0.96-1.36-0.45-1.65-0.54-1.97zm12.21 25.01 4.4-0.54v-1.71l-8.3-4.74-6.34 7.78-3.555-1.7-0.114 1.82 10.8 18.39 9.33 6.25 0.84-1.93v-11.41l-1.64 0.46-7.36-6.34zm12.83 64.85-3.83-16.75 1.82-16.9-3.76-7.58-0.84 1.93 1.57 38.25 4.13 3.34 0.19 6.86 7.16 9.26 2.32 0.24-5.14-7.87-0.16-4.62zm-5-107.2-4.87-0.54v2.69l1.63-1.21h2.6zm-4.87 1.49v-2.03h-3.04l0.99 1.4h-1.77v0.63z"/>
+  <path d="m481.4 220-1 3.2 7.3-5.2-2.1-2.8v-3.2l-1.2 0.5v4.5zm-19.2 10.5 15.2-7.7v2l-11.7 7.7zm-62.3-39.5 12.8-6 9.5-10.5 5.2 2.3 2.3-4.8 8.7-0.2-2.2 4 7.2 6.2 4.8-4.8v-6.7l2.2 0.7 2.5 12 7.8 11-0.8 8.3-14.2 14.7-12.3-0.7-1.5-8.3-4.2 1.8-4-3.5-24.3 5.3-1.5-1.8 2-4.8z"/>
+</svg>
+        <span class="hero-worldmap-dot hero-worldmap-dot-1"></span>
+        <span class="hero-worldmap-dot hero-worldmap-dot-2"></span>
+        <span class="hero-worldmap-dot hero-worldmap-dot-3"></span>
+        <span class="hero-worldmap-dot hero-worldmap-dot-4"></span>
+        <span class="hero-worldmap-dot hero-worldmap-dot-5"></span>
+        </div>
+      </div>
+
       <!-- Content -->
       <div class="hero-content">
         <div class="hero-inner">
           <!-- Badge -->
           <div class="hero-badge-home">
-            <i data-lucide="globe" class="badge-icon-home"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="globe" class="lucide lucide-globe badge-icon-home"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
             <span>Connecting Talents to Global Opportunities</span>
           </div>
 
@@ -427,7 +507,7 @@
                 gap: 8px;
               "
             >
-              <i data-lucide="message-circle"></i>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="message-circle" class="lucide lucide-message-circle"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>
               Book Free Consultation
             </a>
 
@@ -444,7 +524,7 @@
               "
             >
               Explore Services
-              <i data-lucide="arrow-right"></i>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" class="lucide lucide-arrow-right"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
             </a>
           </div>
 
@@ -471,7 +551,7 @@
               window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })
             "
           >
-            <i data-lucide="chevron-down" style="width: 32px; height: 32px"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-down" style="width: 32px; height: 32px" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"></path></svg>
           </div>
         </div>
       </div>
@@ -481,7 +561,7 @@
     <section class="announcement-banner">
       <div class="announcement-container">
         <div class="announcement-content">
-          <i data-lucide="bell" class="announcement-icon"></i>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="bell" class="lucide lucide-bell announcement-icon"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg>
           <span class="announcement-text">
             <strong class="scroll-texts"
               >Apply Now for Winter 2026 Intake:</strong
@@ -778,73 +858,77 @@
         </p>
       </div>
 
-      <div class="destinations-grid">
-        <div class="destination-card">
-          <div class="icon-wrapper">
-            <img src="https://flagcdn.com/w320/in.png" alt="India Flag" />
+      <div class="destinations-carousel">
+        <div class="destinations-grid" id="destinations-grid">
+          <div class="destination-card">
+            <div class="icon-wrapper">
+              <img src="https://flagcdn.com/w320/in.png" alt="India Flag" />
+            </div>
+            <h3 class="destination-name">India</h3>
+            <p class="destination-description">
+              Quality education, affordable tuition fees and a rich cultural
+              experience all in one place.
+            </p>
           </div>
-          <h3 class="destination-name">India</h3>
-          <p class="destination-description">
-            Quality education, affordable tuition fees and a rich cultural
-            experience all in one place.
-          </p>
-        </div>
 
-        <div class="destination-card">
-          <div class="icon-wrapper">
-            <img src="https://flagcdn.com/w320/cn.png" alt="China Flag" />
+          <div class="destination-card">
+            <div class="icon-wrapper">
+              <img src="https://flagcdn.com/w320/cn.png" alt="China Flag" />
+            </div>
+            <h3 class="destination-name">China</h3>
+            <p class="destination-description">
+              World-class universities, cutting-edge technology programs and
+              scholarships worth exploring.
+            </p>
           </div>
-          <h3 class="destination-name">China</h3>
-          <p class="destination-description">
-            World-class universities, cutting-edge technology programs and
-            scholarships worth exploring.
-          </p>
-        </div>
 
-        <div class="destination-card">
-          <div class="icon-wrapper">
-            <img src="https://flagcdn.com/w320/tr.png" alt="Turkey Flag" />
+          <div class="destination-card">
+            <div class="icon-wrapper">
+              <img src="https://flagcdn.com/w320/tr.png" alt="Turkey Flag" />
+            </div>
+            <h3 class="destination-name">Turkey</h3>
+            <p class="destination-description">
+              Where cultures meet, with excellent higher education and modern
+              world-class facilities.
+            </p>
           </div>
-          <h3 class="destination-name">Turkey</h3>
-          <p class="destination-description">
-            Where cultures meet, with excellent higher education and modern
-            world-class facilities.
-          </p>
-        </div>
 
-        <div class="destination-card">
-          <div class="icon-wrapper">
-            <img src="https://flagcdn.com/w320/de.png" alt="Germany Flag" />
+          <div class="destination-card">
+            <div class="icon-wrapper">
+              <img src="https://flagcdn.com/w320/de.png" alt="Germany Flag" />
+            </div>
+            <h3 class="destination-name">Germany</h3>
+            <p class="destination-description">
+              Top-ranked universities, tuition-free education and some of the
+              strongest industry connections in the world.
+            </p>
           </div>
-          <h3 class="destination-name">Germany</h3>
-          <p class="destination-description">
-            Top-ranked universities, tuition-free education and some of the
-            strongest industry connections in the world.
-          </p>
-        </div>
 
-        <div class="destination-card">
-          <div class="icon-wrapper">
-            <img src="https://flagcdn.com/w320/us.png" alt="USA Flag" />
+          <div class="destination-card">
+            <div class="icon-wrapper">
+              <img src="https://flagcdn.com/w320/us.png" alt="USA Flag" />
+            </div>
+            <h3 class="destination-name">USA</h3>
+            <p class="destination-description">
+              Premier institutions, groundbreaking research opportunities and a
+              global network that opens doors worldwide.
+            </p>
           </div>
-          <h3 class="destination-name">USA</h3>
-          <p class="destination-description">
-            Premier institutions, groundbreaking research opportunities and a
-            global network that opens doors worldwide.
-          </p>
-        </div>
 
-        <div class="destination-card">
-          <div class="icon-wrapper">
-            <img src="https://flagcdn.com/w320/ie.png" alt="Ireland Flag" />
+          <div class="destination-card">
+            <div class="icon-wrapper">
+              <img src="https://flagcdn.com/w320/ie.png" alt="Ireland Flag" />
+            </div>
+            <h3 class="destination-name">Ireland</h3>
+            <p class="destination-description">
+              An English-speaking education hub with a welcoming culture and
+              post-study work opportunities that keep your career moving.
+            </p>
           </div>
-          <h3 class="destination-name">Ireland</h3>
-          <p class="destination-description">
-            An English-speaking education hub with a welcoming culture and
-            post-study work opportunities that keep your career moving.
-          </p>
         </div>
       </div>
+
+      <div class="destinations-dots" id="destinations-dots" aria-hidden="true"></div>
 
       <div class="cta-section-about">
         <a
@@ -942,7 +1026,7 @@
 
         <div class="testimonials-carousel-container">
           <button class="carousel-btn carousel-prev" id="testimonials-prev">
-            <i class="fas fa-chevron-left"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-left" class="lucide lucide-chevron-left"><path d="m15 18-6-6 6-6"></path></svg>
           </button>
 
           <div class="testimonials-stage" id="testimonials-carousel">
@@ -950,7 +1034,7 @@
           </div>
 
           <button class="carousel-btn carousel-next" id="testimonials-next">
-            <i class="fas fa-chevron-right"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-right" class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6"></path></svg>
           </button>
 
           <!-- Dots Navigation -->
@@ -1073,7 +1157,7 @@
               <span
                 >What English test do I need, and can I study without one?</span
               >
-              <span class="faq-icon"><i data-lucide="chevron-down"></i></span>
+              <span class="faq-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-down" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"></path></svg></span>
             </button>
             <div class="faq-answer">
               <div class="faq-rich-content">
@@ -1101,7 +1185,7 @@
               <span
                 >How do I choose the right country and university for me?</span
               >
-              <span class="faq-icon"><i data-lucide="chevron-down"></i></span>
+              <span class="faq-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-down" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"></path></svg></span>
             </button>
             <div class="faq-answer">
               <div class="faq-rich-content">
@@ -1126,7 +1210,7 @@
           <div class="faq-item">
             <button class="faq-question" aria-expanded="false">
               <span>What documents do I need to get started?</span>
-              <span class="faq-icon"><i data-lucide="chevron-down"></i></span>
+              <span class="faq-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-down" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"></path></svg></span>
             </button>
             <div class="faq-answer">
               <div class="faq-rich-content">
@@ -1151,7 +1235,7 @@
                 >Are scholarships and financial aid available for international
                 students?</span
               >
-              <span class="faq-icon"><i data-lucide="chevron-down"></i></span>
+              <span class="faq-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-down" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"></path></svg></span>
             </button>
             <div class="faq-answer">
               <div class="faq-rich-content">
@@ -1179,7 +1263,7 @@
           <div class="faq-item">
             <button class="faq-question" aria-expanded="false">
               <span>How do I get started with Elunite?</span>
-              <span class="faq-icon"><i data-lucide="chevron-down"></i></span>
+              <span class="faq-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-down" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"></path></svg></span>
             </button>
             <div class="faq-answer">
               <div class="faq-rich-content">
@@ -1209,7 +1293,7 @@
     <footer id="footer" class="footer-section">
       <!-- Scroll to Top Button -->
       <button class="scroll-to-top" onclick="scrollToTop()">
-        <i data-lucide="arrow-up"></i>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-up" class="lucide lucide-arrow-up"><path d="m5 12 7-7 7 7"></path><path d="M12 19V5"></path></svg>
       </button>
 
       <div class="container">
@@ -1231,16 +1315,16 @@
               </p>
               <div class="social-links">
                 <button class="social-btn" data-platform="facebook">
-                  <i data-lucide="facebook"></i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="facebook" class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
                 </button>
                 <button class="social-btn" data-platform="instagram">
-                  <i data-lucide="instagram"></i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="instagram" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
                 </button>
                 <button class="social-btn" data-platform="linkedin">
-                  <i data-lucide="linkedin"></i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="linkedin" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                 </button>
                 <button class="social-btn" data-platform="twitter">
-                  <i data-lucide="twitter"></i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="twitter" class="lucide lucide-twitter"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
                 </button>
               </div>
             </div>
@@ -1367,16 +1451,49 @@
       </div>
     </footer>
 
-    <script src="blog-posts-data.js"></script>
-    <script src="blog-teaser.js"></script>
-    <script src="script.js"></script>
-    <script>
-      // Initialize Lucide icons
-      if (typeof lucide !== "undefined") {
-        lucide.createIcons();
-      } else {
-        console.error("Lucide library failed to load");
-      }
-    </script>
+    <script src="blog-posts-data.min.js"></script>
+    <script src="blog-teaser.min.js"></script>
+    <script src="script.min.js"></script>
+    <!-- ═══════════ WHATSAPP FLOATING WIDGET ═══════════ -->
+    <div class="whatsapp-widget">
+      <div id="whatsapp-popup" class="whatsapp-popup" role="dialog" aria-label="Chat with Elunite on WhatsApp" aria-hidden="true">
+        <button type="button" class="whatsapp-popup-close" aria-label="Close">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+        </button>
+        <div class="whatsapp-popup-header">
+          <div class="whatsapp-popup-avatar">
+            <img src="images/favicon/android-chrome-512x512.png" alt="Elunite" />
+            <span class="whatsapp-popup-online" aria-hidden="true"></span>
+          </div>
+          <h4 class="whatsapp-popup-title">Need Help? Let&#39;s Chat!</h4>
+          <p class="whatsapp-popup-subtitle">Got questions about studying or working abroad? Tap below to chat with an expert now — it's free and we reply in minutes!</p>
+        </div>
+        <a
+          href="https://wa.me/918050306510?text=Hi%20Elunite%2C%20I%27d%20like%20to%20know%20more%20about%20studying%20abroad."
+          class="whatsapp-popup-cta"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Start Chat</a>
+      </div>
+
+      <div id="whatsapp-teaser" class="whatsapp-teaser" role="status" aria-hidden="true">
+        <button type="button" class="whatsapp-teaser-close" aria-label="Dismiss">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+        </button>
+        <span>How can we help you?</span>
+      </div>
+
+      <button type="button" id="whatsapp-toggle" class="whatsapp-float" aria-label="Chat with Elunite on WhatsApp">
+        <span class="whatsapp-badge" aria-hidden="true">1</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"
+          />
+          <path
+            d="M12 0C5.373 0 0 5.373 0 12c0 2.116.552 4.152 1.601 5.947L0 24l6.201-1.578C7.936 23.436 9.938 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-1.85 0-3.667-.497-5.25-1.437l-.377-.223-3.905.994.996-3.804-.246-.394A9.706 9.706 0 012.25 12C2.25 6.624 6.624 2.25 12 2.25S21.75 6.624 21.75 12 17.376 21.75 12 21.75z"
+          />
+        </svg>
+      </button>
+    </div>
   </body>
 </html>

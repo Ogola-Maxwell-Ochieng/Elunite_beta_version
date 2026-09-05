@@ -72,27 +72,19 @@
     <link rel="manifest" href="site.webmanifest" />
     <meta name="theme-color" content="#081b49" />
 
-    <!-- Stylesheet -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="styles.css" as="style">
-    <link rel="stylesheet" href="styles.css" />
+    <!-- ═══ STYLESHEETS ═══ -->
+    <link rel="preconnect" href="https://unpkg.com" crossorigin />
+    <link rel="preload" href="styles.min.css" as="style" />
+    <link rel="stylesheet" href="styles.min.css" />
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="preload"
+      href="fonts/bebas-neue-v16-latin-regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
-<link 
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" 
-      rel="stylesheet" 
-      media="print" 
-      onload="this.media='all'"
-    >
 
     <!-- Other Links -->
-    <link
-      href="https://unpkg.com/lucide@0.462.0/dist/lucide.min.css"
-      rel="stylesheet"
-    />
     <!-- Adjust canonical to this program page -->
     <link
       rel="canonical"
@@ -100,7 +92,6 @@
     />
 
     <!-- Lucide Icons Script  -->
-    <script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -130,6 +121,41 @@
   </head>
 
   <body>
+    <!-- ═══════════ SITE PRELOADER ═══════════ -->
+    <noscript><style>.site-preloader{display:none!important;}</style></noscript>
+    <div id="site-preloader" class="site-preloader" role="status" aria-live="polite" aria-label="Loading">
+      <div class="preloader-inner">
+        <img src="images/favicon/android-chrome-512x512.png" alt="Elunite" class="preloader-logo" />
+        <div class="preloader-spinner" aria-hidden="true"></div>
+        <div class="preloader-security">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="shield-check" aria-hidden="true" class="lucide lucide-shield-check"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>
+          <span>Secure Connection &middot; SSL / HTTPS Encrypted</span>
+        </div>
+      </div>
+    </div>
+    <script>
+      (function () {
+        var preloader = document.getElementById("site-preloader");
+        if (!preloader) return;
+        var minVisible = 500;
+        var shownAt = Date.now();
+        function hide() {
+          var wait = Math.max(0, minVisible - (Date.now() - shownAt));
+          setTimeout(function () {
+            preloader.classList.add("site-preloader-hidden");
+            setTimeout(function () {
+              if (preloader.parentNode) preloader.parentNode.removeChild(preloader);
+            }, 500);
+          }, wait);
+        }
+        if (document.readyState === "complete") {
+          hide();
+        } else {
+          window.addEventListener("load", hide);
+        }
+        setTimeout(hide, 4000);
+      })();
+    </script>
     <!-- ═══════════ ELUNITE NAVBAR ═══════════ -->
     <!-- Navigation -->
     <nav
@@ -150,7 +176,7 @@
                 src="images/logo.webp"
                 alt="Elunite Study Abroad Consultants Africa Logo"
                 height="120"
-               loading="lazy" />
+                />
             </a>
           </div>
 
@@ -159,29 +185,72 @@
             <div class="nav-links">
               <a href="index.html" class="nav-link">Home</a>
               <a href="about.html" class="nav-link">About Us</a>
-              <div class="nav-dropdown" id="nav-services-dropdown">
+              <div class="nav-dropdown nav-dropdown-mega nav-dropdown-services" id="nav-services-dropdown">
                 <button type="button" class="nav-link nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
                   Services
-
                 </button>
                 <div class="nav-dropdown-menu" role="menu">
                   <span class="nav-dropdown-menu-arrow" aria-hidden="true"></span>
                   <div class="nav-dropdown-menu-body services-menu">
-                  <a href="study-abroad-services.html" class="nav-dropdown-item" role="menuitem">Study Abroad</a>
-                  <a href="visa_purchase.html" class="nav-dropdown-item" role="menuitem">Visa Assistance</a>
-                  <a href="work-abroad-relocation.html" class="nav-dropdown-item" role="menuitem">Work Abroad</a>
-                  <a href="scholarships-exchange-programs.html" class="nav-dropdown-item" role="menuitem">Scholarship Programs</a>
-                  <a href="business-strategy-development.html" class="nav-dropdown-item" role="menuitem">Business Strategy</a>
-                  <a href="mentorship-capacity-building.html" class="nav-dropdown-item" role="menuitem">Career Mentorship</a>
-                  <a href="corporate-institutional-training.html" class="nav-dropdown-item" role="menuitem">Corporate Training</a>
-                  <a href="service.html" class="nav-dropdown-item nav-dropdown-viewall" role="menuitem">View all services →</a>
-                </div>
+                    <div class="services-menu-main">
+                      <div class="services-menu-search">
+                        <input type="text" id="services-menu-search-input" class="services-menu-search-input" placeholder="Search services..." autocomplete="off" aria-label="Search services" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="services-menu-search-results" />
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="search" class="lucide lucide-search services-menu-search-icon"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+                        <div class="services-menu-search-results" id="services-menu-search-results" role="listbox" aria-label="Service search results"></div>
+                      </div>
+                      <div class="services-menu-stat">
+                        <div class="services-menu-stat-number">2500+</div>
+                        <div class="services-menu-stat-text">Successful admissions guided end-to-end, from application to visa.</div>
+                        <a href="service.html" class="services-menu-stat-arrow" aria-label="View all services">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" class="lucide lucide-arrow-right"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                        </a>
+                      </div>
+                      <div class="services-menu-grid">
+                        <div class="services-menu-grid-tile">
+                          <img src="images/nav-menu/study-abroad.jpg" alt="" class="mega-tile-bg" loading="lazy" />
+                          <div class="mega-tile-overlay"></div>
+                          <span class="services-menu-grid-tile-label">Study Abroad</span>
+                        </div>
+                        <div class="services-menu-grid-tile">
+                          <img src="images/nav-menu/passport-visa.jpg" alt="" class="mega-tile-bg" loading="lazy" />
+                          <div class="mega-tile-overlay"></div>
+                          <span class="services-menu-grid-tile-label">Visa Assistance</span>
+                        </div>
+                        <div class="services-menu-grid-tile">
+                          <img src="images/nav-menu/work-abroad-office.jpg" alt="" class="mega-tile-bg" loading="lazy" />
+                          <div class="mega-tile-overlay"></div>
+                          <span class="services-menu-grid-tile-label">Work Abroad</span>
+                        </div>
+                        <div class="services-menu-grid-tile">
+                          <img src="images/nav-menu/corporate-training.jpg" alt="" class="mega-tile-bg" loading="lazy" />
+                          <div class="mega-tile-overlay"></div>
+                          <span class="services-menu-grid-tile-label">Corporate Training</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="services-menu-sidebar">
+                      <h4 class="services-menu-sidebar-title">Explore All Services</h4>
+                      <div class="services-menu-sidebar-columns">
+                        <div class="services-menu-sidebar-col">
+                          <a href="study-abroad-services.html" class="services-menu-sidebar-link">Study Abroad</a>
+                          <a href="visa_purchase.html" class="services-menu-sidebar-link">Visa Assistance</a>
+                          <a href="work-abroad-relocation.html" class="services-menu-sidebar-link">Work Abroad</a>
+                          <a href="scholarships-exchange-programs.html" class="services-menu-sidebar-link">Scholarship Programs</a>
+                        </div>
+                        <div class="services-menu-sidebar-col">
+                          <a href="business-strategy-development.html" class="services-menu-sidebar-link">Business Strategy</a>
+                          <a href="mentorship-capacity-building.html" class="services-menu-sidebar-link">Career Mentorship</a>
+                          <a href="corporate-institutional-training.html" class="services-menu-sidebar-link">Corporate Training</a>
+                          <a href="service.html" class="services-menu-sidebar-link services-menu-viewall">View all services →</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="nav-dropdown nav-dropdown-mega" id="nav-destinations-dropdown">
                 <button type="button" class="nav-link nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
                   Destinations
-
                 </button>
                 <div class="nav-dropdown-menu" role="menu">
                   <span class="nav-dropdown-menu-arrow" aria-hidden="true"></span>
@@ -197,34 +266,34 @@
                   </div>
                   <div class="mega-menu-panel">
                     <div class="mega-menu-banner">
-                      <img src="images/destination-images/bangalore.jpg" alt="" class="mega-tile-bg" />
+                      <img src="images/nav-menu/world-map.jpg" alt="" class="mega-tile-bg" loading="lazy" />
                       <div class="mega-tile-overlay"></div>
                       <h4 class="mega-menu-banner-title">Explore Study Destinations Worldwide</h4>
                     </div>
-                                          <a href="destination.html" class="mega-menu-grid-tile">
-                        <img src="images/destination-images/new-delhi-img.jpg" alt="" class="mega-tile-bg" />
+                                          <div class="mega-menu-grid-tile">
+                        <img src="images/nav-menu/study-destinations.jpg" alt="" class="mega-tile-bg" loading="lazy" />
                         <div class="mega-tile-overlay"></div>
-                        <i data-lucide="globe" class="mega-menu-grid-tile-icon"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="globe" class="lucide lucide-globe mega-menu-grid-tile-icon"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
                         <span class="mega-menu-grid-tile-label">6 Study Destinations</span>
-                      </a>
-                      <a href="visa_purchase.html" class="mega-menu-grid-tile">
-                        <img src="images/destination-images/chandigarh.jpeg" alt="" class="mega-tile-bg" />
+                      </div>
+                      <div class="mega-menu-grid-tile">
+                        <img src="images/nav-menu/passport-visa.jpg" alt="" class="mega-tile-bg" loading="lazy" />
                         <div class="mega-tile-overlay"></div>
-                        <i data-lucide="shield-check" class="mega-menu-grid-tile-icon"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="shield-check" class="lucide lucide-shield-check mega-menu-grid-tile-icon"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>
                         <span class="mega-menu-grid-tile-label">Visa Success</span>
-                      </a>
-                      <a href="scholarships-exchange-programs.html" class="mega-menu-grid-tile">
-                        <img src="images/destination-images/mumbai-city.jpg" alt="" class="mega-tile-bg" />
+                      </div>
+                      <div class="mega-menu-grid-tile">
+                        <img src="images/nav-menu/university-campus.jpg" alt="" class="mega-tile-bg" loading="lazy" />
                         <div class="mega-tile-overlay"></div>
-                        <i data-lucide="graduation-cap" class="mega-menu-grid-tile-icon"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="graduation-cap" class="lucide lucide-graduation-cap mega-menu-grid-tile-icon"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"></path><path d="M22 10v6"></path><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"></path></svg>
                         <span class="mega-menu-grid-tile-label">Top Universities</span>
-                      </a>
-                      <a href="about.html" class="mega-menu-grid-tile">
-                        <img src="images/destination-images/gujarat.jpeg" alt="" class="mega-tile-bg" />
+                      </div>
+                      <div class="mega-menu-grid-tile">
+                        <img src="images/nav-menu/global-community.jpg" alt="" class="mega-tile-bg" loading="lazy" />
                         <div class="mega-tile-overlay"></div>
-                        <i data-lucide="users" class="mega-menu-grid-tile-icon"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="users" class="lucide lucide-users mega-menu-grid-tile-icon"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                         <span class="mega-menu-grid-tile-label">Global Community</span>
-                      </a>
+                      </div>
                     
                   </div>
                 </div>
@@ -233,7 +302,6 @@
               <div class="nav-dropdown nav-dropdown-mega" id="nav-programs-dropdown">
                 <button type="button" class="nav-link nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
                   Programs
-
                 </button>
                 <div class="nav-dropdown-menu" role="menu">
                   <span class="nav-dropdown-menu-arrow" aria-hidden="true"></span>
@@ -248,34 +316,34 @@
                   </div>
                   <div class="mega-menu-panel">
                     <div class="mega-menu-banner">
-                      <img src="images/destination-images/hydrabad.jpeg" alt="" class="mega-tile-bg" />
+                      <img src="images/nav-menu/decision-path.jpg" alt="" class="mega-tile-bg" loading="lazy" />
                       <div class="mega-tile-overlay"></div>
                       <h4 class="mega-menu-banner-title">Find The Right Program For You</h4>
                     </div>
-                                          <a href="end_to_end_purchase.html" class="mega-menu-grid-tile">
-                        <img src="images/destination-images/gujarat.jpeg" alt="" class="mega-tile-bg" />
+                                          <div class="mega-menu-grid-tile">
+                        <img src="images/nav-menu/document-support.jpg" alt="" class="mega-tile-bg" loading="lazy" />
                         <div class="mega-tile-overlay"></div>
-                        <i data-lucide="file-check" class="mega-menu-grid-tile-icon"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="file-check" class="lucide lucide-file-check mega-menu-grid-tile-icon"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="m9 15 2 2 4-4"></path></svg>
                         <span class="mega-menu-grid-tile-label">End-to-End Support</span>
-                      </a>
-                      <a href="scholarship_purchase.html" class="mega-menu-grid-tile">
-                        <img src="images/destination-images/chandigarh.jpeg" alt="" class="mega-tile-bg" />
+                      </div>
+                      <div class="mega-menu-grid-tile">
+                        <img src="images/nav-menu/graduation-scholarship.jpg" alt="" class="mega-tile-bg" loading="lazy" />
                         <div class="mega-tile-overlay"></div>
-                        <i data-lucide="award" class="mega-menu-grid-tile-icon"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="award" class="lucide lucide-award mega-menu-grid-tile-icon"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path><circle cx="12" cy="8" r="6"></circle></svg>
                         <span class="mega-menu-grid-tile-label">Scholarships</span>
-                      </a>
-                      <a href="visa_purchase.html" class="mega-menu-grid-tile">
-                        <img src="images/destination-images/new-delhi-img.jpg" alt="" class="mega-tile-bg" />
+                      </div>
+                      <div class="mega-menu-grid-tile">
+                        <img src="images/nav-menu/passport-visa.jpg" alt="" class="mega-tile-bg" loading="lazy" />
                         <div class="mega-tile-overlay"></div>
-                        <i data-lucide="plane" class="mega-menu-grid-tile-icon"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="plane" class="lucide lucide-plane mega-menu-grid-tile-icon"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"></path></svg>
                         <span class="mega-menu-grid-tile-label">Visa Sponsorship</span>
-                      </a>
-                      <a href="mentorship-capacity-building.html" class="mega-menu-grid-tile">
-                        <img src="images/destination-images/bangalore.jpg" alt="" class="mega-tile-bg" />
+                      </div>
+                      <div class="mega-menu-grid-tile">
+                        <img src="images/nav-menu/mentorship.jpg" alt="" class="mega-tile-bg" loading="lazy" />
                         <div class="mega-tile-overlay"></div>
-                        <i data-lucide="users" class="mega-menu-grid-tile-icon"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="users" class="lucide lucide-users mega-menu-grid-tile-icon"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                         <span class="mega-menu-grid-tile-label">1:1 Mentorship</span>
-                      </a>
+                      </div>
                     
                   </div>
                 </div>
@@ -293,10 +361,7 @@
               class="cta-button"
               aria-label="Call Elunite at +91 8050306510"
             >
-              <i
-                data-lucide="phone"
-                style="width: 16px; height: 16px; margin-right: 8px"
-              ></i>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="phone" style="width: 16px; height: 16px; margin-right: 8px" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
               CALL NOW
             </a>
           </div>
@@ -309,8 +374,8 @@
               aria-label="Toggle mobile menu"
               aria-expanded="false"
             >
-              <i data-lucide="menu" class="menu-icon"></i>
-              <i data-lucide="x" class="close-icon hidden"></i>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="menu" class="lucide lucide-menu menu-icon"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="x" class="lucide lucide-x close-icon hidden"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
             </button>
           </div>
         </div>
@@ -318,7 +383,7 @@
         <!-- Mobile Navigation -->
         <div id="mobile-menu" class="mobile-menu hidden">
           <button type="button" id="mobile-menu-close" class="mobile-menu-close" aria-label="Close menu">
-            <i data-lucide="x"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="x" class="lucide lucide-x"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
           </button>
           <div class="mobile-menu-content">
             <a href="index.html" class="mobile-nav-link">Home</a>
@@ -326,7 +391,6 @@
             <div class="mobile-nav-group">
               <button type="button" class="mobile-nav-link mobile-nav-dropdown-trigger" aria-expanded="false">
                 Services
-
               </button>
               <div class="mobile-nav-submenu">
                 <a href="study-abroad-services.html" class="mobile-nav-sublink">Study Abroad</a>
@@ -342,7 +406,6 @@
             <div class="mobile-nav-group">
               <button type="button" class="mobile-nav-link mobile-nav-dropdown-trigger" aria-expanded="false">
                 Destinations
-
               </button>
               <div class="mobile-nav-submenu">
                 <a href="india.html" class="mobile-nav-sublink">India</a>
@@ -357,7 +420,6 @@
             <div class="mobile-nav-group">
               <button type="button" class="mobile-nav-link mobile-nav-dropdown-trigger" aria-expanded="false">
                 Programs
-
               </button>
               <div class="mobile-nav-submenu">
                 <a href="end_to_end_purchase.html" class="mobile-nav-sublink">End-to-End Admission</a>
@@ -986,7 +1048,7 @@
     <footer id="footer" class="footer-section">
       <!-- Scroll to Top Button -->
       <button class="scroll-to-top" onclick="scrollToTop()">
-        <i data-lucide="arrow-up"></i>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-up" class="lucide lucide-arrow-up"><path d="m5 12 7-7 7 7"></path><path d="M12 19V5"></path></svg>
       </button>
 
       <div class="container">
@@ -1008,16 +1070,16 @@
               </p>
               <div class="social-links">
                 <button class="social-btn" data-platform="facebook">
-                  <i data-lucide="facebook"></i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="facebook" class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
                 </button>
                 <button class="social-btn" data-platform="instagram">
-                  <i data-lucide="instagram"></i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="instagram" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
                 </button>
                 <button class="social-btn" data-platform="linkedin">
-                  <i data-lucide="linkedin"></i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="linkedin" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                 </button>
                 <button class="social-btn" data-platform="twitter">
-                  <i data-lucide="twitter"></i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="twitter" class="lucide lucide-twitter"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
                 </button>
               </div>
             </div>
@@ -1144,14 +1206,47 @@
       </div>
     </footer>
 
-    <script src="script.js"></script>
-    <script>
-      // Initialize Lucide icons
-      if (typeof lucide !== "undefined") {
-        lucide.createIcons();
-      } else {
-        console.error("Lucide library failed to load");
-      }
-    </script>
+    <script src="script.min.js"></script>
+    <!-- ═══════════ WHATSAPP FLOATING WIDGET ═══════════ -->
+    <div class="whatsapp-widget">
+      <div id="whatsapp-popup" class="whatsapp-popup" role="dialog" aria-label="Chat with Elunite on WhatsApp" aria-hidden="true">
+        <button type="button" class="whatsapp-popup-close" aria-label="Close">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+        </button>
+        <div class="whatsapp-popup-header">
+          <div class="whatsapp-popup-avatar">
+            <img src="images/favicon/android-chrome-512x512.png" alt="Elunite" />
+            <span class="whatsapp-popup-online" aria-hidden="true"></span>
+          </div>
+          <h4 class="whatsapp-popup-title">Need Help? Let&#39;s Chat!</h4>
+          <p class="whatsapp-popup-subtitle">Got questions about studying or working abroad? Tap below to chat with an expert now — it's free and we reply in minutes!</p>
+        </div>
+        <a
+          href="https://wa.me/918050306510?text=Hi%20Elunite%2C%20I%27d%20like%20to%20know%20more%20about%20studying%20abroad."
+          class="whatsapp-popup-cta"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Start Chat</a>
+      </div>
+
+      <div id="whatsapp-teaser" class="whatsapp-teaser" role="status" aria-hidden="true">
+        <button type="button" class="whatsapp-teaser-close" aria-label="Dismiss">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+        </button>
+        <span>How can we help you?</span>
+      </div>
+
+      <button type="button" id="whatsapp-toggle" class="whatsapp-float" aria-label="Chat with Elunite on WhatsApp">
+        <span class="whatsapp-badge" aria-hidden="true">1</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"
+          />
+          <path
+            d="M12 0C5.373 0 0 5.373 0 12c0 2.116.552 4.152 1.601 5.947L0 24l6.201-1.578C7.936 23.436 9.938 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-1.85 0-3.667-.497-5.25-1.437l-.377-.223-3.905.994.996-3.804-.246-.394A9.706 9.706 0 012.25 12C2.25 6.624 6.624 2.25 12 2.25S21.75 6.624 21.75 12 17.376 21.75 12 21.75z"
+          />
+        </svg>
+      </button>
+    </div>
   </body>
 </html>

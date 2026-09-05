@@ -64,10 +64,5 @@
     grid.appendChild(card);
   });
 
-  // Re-initialize Lucide icons after DOM changes
-  if (typeof lucide !== 'undefined') {
-    lucide.createIcons();
-  }
-
   console.log('Blog sorter: Sorted ' + cards.length + ' cards by date');
 })();

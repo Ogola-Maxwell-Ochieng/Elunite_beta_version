@@ -161,6 +161,146 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+// ===== SERVICES MEGA-MENU SEARCH =====
+document.addEventListener('DOMContentLoaded', function () {
+  const searchInput = document.getElementById('services-menu-search-input');
+  const resultsBox = document.getElementById('services-menu-search-results');
+  const servicesDropdown = document.getElementById('nav-services-dropdown');
+  if (!searchInput || !resultsBox) return;
+
+  // Mirrors the service groups and individual offerings listed on service.html,
+  // so a query like "visa interview" or "immigration" surfaces the specific
+  // bullet point, not just the parent service page.
+  const SERVICES = [
+    { title: 'Study Abroad Services', href: 'study-abroad-services.html' },
+    { title: 'Academic profiling and long-term career mapping', group: 'Study Abroad Services', href: 'study-abroad-services.html' },
+    { title: 'Course and institution selection aligned with global demand', group: 'Study Abroad Services', href: 'study-abroad-services.html' },
+    { title: 'Undergraduate, postgraduate, and professional program placement', group: 'Study Abroad Services', href: 'study-abroad-services.html' },
+    { title: 'Scholarship identification and application positioning', group: 'Study Abroad Services', href: 'study-abroad-services.html' },
+    { title: 'Documentation preparation, visa advisory, and interview prep', group: 'Study Abroad Services', href: 'study-abroad-services.html' },
+    { title: 'Pre-departure readiness and post-arrival support', group: 'Study Abroad Services', href: 'study-abroad-services.html' },
+
+    { title: 'Visa Assistance', href: 'visa_purchase.html' },
+
+    { title: 'Work Abroad & Relocation', href: 'work-abroad-relocation.html' },
+    { title: 'Candidate skills profiling and documentation optimization', group: 'Work Abroad & Relocation', href: 'work-abroad-relocation.html' },
+    { title: 'Skilled and semi-skilled workforce deployment', group: 'Work Abroad & Relocation', href: 'work-abroad-relocation.html' },
+    { title: 'Immigration and work permit advisory', group: 'Work Abroad & Relocation', href: 'work-abroad-relocation.html' },
+    { title: 'Employment contract coordination', group: 'Work Abroad & Relocation', href: 'work-abroad-relocation.html' },
+    { title: 'Relocation planning and settlement support', group: 'Work Abroad & Relocation', href: 'work-abroad-relocation.html' },
+    { title: 'Workplace integration coaching', group: 'Work Abroad & Relocation', href: 'work-abroad-relocation.html' },
+
+    { title: 'Scholarships & Exchange Programs', href: 'scholarships-exchange-programs.html' },
+    { title: 'Fully funded and partial scholarship programs', group: 'Scholarships & Exchange Programs', href: 'scholarships-exchange-programs.html' },
+    { title: 'International internship placements', group: 'Scholarships & Exchange Programs', href: 'scholarships-exchange-programs.html' },
+    { title: 'Academic exchange initiatives', group: 'Scholarships & Exchange Programs', href: 'scholarships-exchange-programs.html' },
+    { title: 'Short-term mobility and research programs', group: 'Scholarships & Exchange Programs', href: 'scholarships-exchange-programs.html' },
+    { title: 'Professional training attachments abroad', group: 'Scholarships & Exchange Programs', href: 'scholarships-exchange-programs.html' },
+
+    { title: 'Business Strategy & Development', href: 'business-strategy-development.html' },
+    { title: 'Strategic advisory for international positioning', group: 'Business Strategy & Development', href: 'business-strategy-development.html' },
+    { title: 'Organizational readiness assessments', group: 'Business Strategy & Development', href: 'business-strategy-development.html' },
+    { title: 'Development of recruitment compliance frameworks', group: 'Business Strategy & Development', href: 'business-strategy-development.html' },
+    { title: 'Risk and documentation control systems', group: 'Business Strategy & Development', href: 'business-strategy-development.html' },
+    { title: 'Cross-border institutional partnership structuring', group: 'Business Strategy & Development', href: 'business-strategy-development.html' },
+
+    { title: 'Mentorship & Capacity Building', href: 'mentorship-capacity-building.html' },
+    { title: 'Personalized academic and professional mentoring', group: 'Mentorship & Capacity Building', href: 'mentorship-capacity-building.html' },
+    { title: 'Career strategy planning and professional branding', group: 'Mentorship & Capacity Building', href: 'mentorship-capacity-building.html' },
+    { title: 'Interview preparation and leadership development', group: 'Mentorship & Capacity Building', href: 'mentorship-capacity-building.html' },
+    { title: 'Youth empowerment initiatives', group: 'Mentorship & Capacity Building', href: 'mentorship-capacity-building.html' },
+    { title: 'Capacity-building workshops aligned with global standards', group: 'Mentorship & Capacity Building', href: 'mentorship-capacity-building.html' },
+
+    { title: 'Corporate & Institutional Training', href: 'corporate-institutional-training.html' },
+    { title: 'Advisory on international recruitment compliance', group: 'Corporate & Institutional Training', href: 'corporate-institutional-training.html' },
+    { title: 'Workforce readiness and institutional transformation', group: 'Corporate & Institutional Training', href: 'corporate-institutional-training.html' },
+    { title: 'International partnership development plans', group: 'Corporate & Institutional Training', href: 'corporate-institutional-training.html' },
+    { title: 'Leadership workshops on mobility governance', group: 'Corporate & Institutional Training', href: 'corporate-institutional-training.html' }
+  ];
+
+  const MAX_RESULTS = 8;
+  const ESCAPE_MAP = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
+
+  function escapeHtml(str) {
+    return str.replace(/[&<>"']/g, function (ch) { return ESCAPE_MAP[ch]; });
+  }
+
+  function highlight(text, query) {
+    const idx = text.toLowerCase().indexOf(query.toLowerCase());
+    if (idx === -1) return escapeHtml(text);
+    return escapeHtml(text.slice(0, idx)) +
+      '<mark>' + escapeHtml(text.slice(idx, idx + query.length)) + '</mark>' +
+      escapeHtml(text.slice(idx + query.length));
+  }
+
+  function closeResults() {
+    resultsBox.classList.remove('is-open');
+    resultsBox.innerHTML = '';
+    searchInput.setAttribute('aria-expanded', 'false');
+  }
+
+  function renderResults(rawQuery) {
+    const query = rawQuery.trim();
+    if (!query) {
+      closeResults();
+      return;
+    }
+
+    const q = query.toLowerCase();
+    const matches = SERVICES.filter(function (service) {
+      return service.title.toLowerCase().includes(q) ||
+        (service.group && service.group.toLowerCase().includes(q));
+    }).slice(0, MAX_RESULTS);
+
+    if (!matches.length) {
+      resultsBox.innerHTML = '<div class="services-menu-search-empty">No services found for "' + escapeHtml(query) + '"</div>';
+    } else {
+      resultsBox.innerHTML = matches.map(function (service) {
+        return '<a href="' + service.href + '" class="services-menu-search-result" role="option">' +
+          '<span class="services-menu-search-result-title">' + highlight(service.title, query) + '</span>' +
+          (service.group ? '<span class="services-menu-search-result-sub">' + escapeHtml(service.group) + '</span>' : '') +
+          '</a>';
+      }).join('');
+    }
+    resultsBox.classList.add('is-open');
+    searchInput.setAttribute('aria-expanded', 'true');
+  }
+
+  searchInput.addEventListener('input', function () {
+    renderResults(searchInput.value);
+  });
+
+  searchInput.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      searchInput.value = '';
+      closeResults();
+      searchInput.blur();
+    } else if (e.key === 'Enter') {
+      const first = resultsBox.querySelector('.services-menu-search-result');
+      if (first) {
+        e.preventDefault();
+        window.location.href = first.getAttribute('href');
+      }
+    }
+  });
+
+  // Clear the search whenever the Services panel is dismissed, so reopening
+  // it later starts fresh instead of showing a stale query/result list.
+  if (servicesDropdown) {
+    servicesDropdown.addEventListener('mouseleave', function () {
+      searchInput.value = '';
+      closeResults();
+    });
+  }
+  document.addEventListener('click', function (e) {
+    if (servicesDropdown && !servicesDropdown.contains(e.target)) {
+      searchInput.value = '';
+      closeResults();
+    }
+  });
+});
+
+
 // ===== CONTACT FORM =====
 document.addEventListener('DOMContentLoaded', function () {
   const form = document.getElementById('contact-form');
@@ -318,6 +458,57 @@ const testimonials = [
 ];
 
 
+// ===== DESTINATIONS MOBILE CAROUSEL =====
+document.addEventListener('DOMContentLoaded', function () {
+  const grid = document.getElementById('destinations-grid');
+  const dotsContainer = document.getElementById('destinations-dots');
+
+  if (!grid || !dotsContainer) return;
+
+  const cards = Array.from(grid.querySelectorAll('.destination-card'));
+  if (!cards.length) return;
+
+  dotsContainer.innerHTML = cards
+    .map(function (_, i) {
+      return '<span class="dot' + (i === 0 ? ' active' : '') + '" data-slide="' + i + '"></span>';
+    })
+    .join('');
+  const dots = Array.from(dotsContainer.querySelectorAll('.dot'));
+
+  function setActive(index) {
+    cards.forEach(function (card, i) {
+      card.classList.toggle('is-active', i === index);
+    });
+    dots.forEach(function (dot, i) {
+      dot.classList.toggle('active', i === index);
+    });
+  }
+
+  setActive(0);
+
+  const observer = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.6) {
+          setActive(cards.indexOf(entry.target));
+        }
+      });
+    },
+    { root: grid, threshold: [0.6] }
+  );
+
+  cards.forEach(function (card) {
+    observer.observe(card);
+  });
+
+  dotsContainer.addEventListener('click', function (e) {
+    const dot = e.target.closest('.dot');
+    if (!dot) return;
+    const index = parseInt(dot.dataset.slide, 10);
+    cards[index].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+  });
+});
+
 // ===== TESTIMONIALS CAROUSEL =====
 document.addEventListener('DOMContentLoaded', function () {
   const carousel = document.getElementById('testimonials-carousel');
@@ -396,57 +587,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // Touch / Swipe support for mobile
-  let touchStartX = 0;
-  let touchEndX = 0;
-  let touchStartY = 0;
-  let touchEndY = 0;
-
-  carousel.addEventListener('touchstart', function (e) {
-    touchStartX = e.changedTouches[0].screenX;
-    touchStartY = e.changedTouches[0].screenY;
-    stopAutoplay();
-  }, { passive: true });
-
-  carousel.addEventListener('touchend', function (e) {
-    touchEndX = e.changedTouches[0].screenX;
-    touchEndY = e.changedTouches[0].screenY;
-    handleSwipe();
-    startAutoplay();
-  }, { passive: true });
-
-  function handleSwipe() {
-    const diffX = touchEndX - touchStartX;
-    const diffY = touchEndY - touchStartY;
-    // Ensure horizontal swipe is dominant and exceeds minimum threshold (40px)
-    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 40) {
-      if (diffX < 0) {
-        nextSlide();
-      } else {
-        prevSlide();
-      }
-    }
-  }
-
-  // Autoplay management (pauses on interaction)
-  let autoPlayTimer = null;
-  function startAutoplay() {
-    if (autoPlayTimer) clearInterval(autoPlayTimer);
-    autoPlayTimer = setInterval(nextSlide, 6000);
-  }
-
-  function stopAutoplay() {
-    if (autoPlayTimer) clearInterval(autoPlayTimer);
-  }
-
-  const container = document.querySelector('.testimonials-carousel-container');
-  if (container) {
-    container.addEventListener('mouseenter', stopAutoplay);
-    container.addEventListener('mouseleave', startAutoplay);
-  }
-
-  startAutoplay();
-  renderTestimonials();
+  // Defer the actual card render (10 cards + images via innerHTML) off the
+  // critical rendering path so it doesn't block first paint / interactivity.
+  var scheduleIdle = window.requestIdleCallback || function (fn) { setTimeout(fn, 200); };
+  scheduleIdle(function () {
+    renderTestimonials();
+    setInterval(nextSlide, 6000);
+  });
 });
 
 
@@ -485,8 +632,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
-
-if (typeof lucide !== "undefined") lucide.createIcons();
 
 // Scroll-in animation
 const rows = document.querySelectorAll(".zz-row");
@@ -742,6 +887,159 @@ document.addEventListener('click', function (event) {
     answer.style.maxHeight = '0px';
     btn.setAttribute('aria-expanded', 'false');
   }
+});
+
+// ===== WhatsApp floating widget =====
+document.addEventListener('DOMContentLoaded', function () {
+  const widget = document.querySelector('.whatsapp-widget');
+  const toggleBtn = document.getElementById('whatsapp-toggle');
+  const popup = document.getElementById('whatsapp-popup');
+  const teaser = document.getElementById('whatsapp-teaser');
+  const closeBtn = popup ? popup.querySelector('.whatsapp-popup-close') : null;
+  const teaserCloseBtn = teaser ? teaser.querySelector('.whatsapp-teaser-close') : null;
+  const badge = toggleBtn ? toggleBtn.querySelector('.whatsapp-badge') : null;
+
+  if (!widget || !toggleBtn || !popup) return;
+
+  let audioCtx = null;
+  let soundPending = false;
+  let teaserTimer = null;
+
+  function ensureAudioCtx() {
+    if (!audioCtx) {
+      try {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      } catch (e) {
+        audioCtx = null;
+      }
+    }
+    return audioCtx;
+  }
+
+  function emitTone() {
+    if (!audioCtx) return;
+    const now = audioCtx.currentTime;
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(660, now);
+    osc.frequency.exponentialRampToValueAtTime(880, now + 0.09);
+    gain.gain.setValueAtTime(0.0001, now);
+    gain.gain.exponentialRampToValueAtTime(0.18, now + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.25);
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.start(now);
+    osc.stop(now + 0.28);
+  }
+
+  function playPop() {
+    const ctx = ensureAudioCtx();
+    if (!ctx) return; // Web Audio unavailable — widget still works fine without sound
+    if (ctx.state === 'suspended') {
+      // Browser is blocking audio until the visitor interacts — queue it so the
+      // very next click/tap/key/scroll plays it immediately (see unlock listeners below)
+      soundPending = true;
+      ctx.resume().then(function () {
+        if (soundPending) {
+          soundPending = false;
+          emitTone();
+        }
+      }).catch(function () {});
+      return;
+    }
+    emitTone();
+  }
+
+  // Prime the audio context on the visitor's very first interaction with the
+  // page (not just when the teaser tries to play), so that by the time the
+  // auto-greet fires the sound is already unlocked and plays right away.
+  ['pointerdown', 'touchstart', 'keydown'].forEach(function (evt) {
+    window.addEventListener(
+      evt,
+      function () {
+        const ctx = ensureAudioCtx();
+        if (!ctx) return;
+        if (ctx.state === 'suspended') {
+          ctx.resume().then(function () {
+            if (soundPending) {
+              soundPending = false;
+              emitTone();
+            }
+          }).catch(function () {});
+        }
+      },
+      { passive: true }
+    );
+  });
+
+  function openTeaser(withSound) {
+    if (!teaser) return;
+    teaser.classList.add('is-open');
+    teaser.setAttribute('aria-hidden', 'false');
+    if (withSound) playPop();
+    window.clearTimeout(teaserTimer);
+    teaserTimer = window.setTimeout(closeTeaser, 9000);
+  }
+
+  function closeTeaser() {
+    if (!teaser) return;
+    window.clearTimeout(teaserTimer);
+    teaser.classList.remove('is-open');
+    teaser.setAttribute('aria-hidden', 'true');
+  }
+
+  function openPopup() {
+    closeTeaser();
+    popup.classList.add('is-open');
+    popup.setAttribute('aria-hidden', 'false');
+    if (badge) badge.hidden = true;
+  }
+
+  function closePopup() {
+    popup.classList.remove('is-open');
+    popup.setAttribute('aria-hidden', 'true');
+  }
+
+  toggleBtn.addEventListener('click', function () {
+    if (popup.classList.contains('is-open')) {
+      closePopup();
+    } else {
+      openPopup();
+    }
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      closePopup();
+    });
+  }
+
+  if (teaserCloseBtn) {
+    teaserCloseBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      closeTeaser();
+    });
+  }
+
+  document.addEventListener('click', function (e) {
+    if (widget.contains(e.target)) return;
+    if (popup.classList.contains('is-open')) closePopup();
+    if (teaser && teaser.classList.contains('is-open')) closeTeaser();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    closePopup();
+    closeTeaser();
+  });
+
+  // Greet with a small teaser bubble + sound on every page view;
+  // the full card only opens when the visitor actually clicks the icon.
+  window.setTimeout(function () {
+    openTeaser(true);
+  }, 3000);
 });
 
 document.addEventListener('DOMContentLoaded', function () {

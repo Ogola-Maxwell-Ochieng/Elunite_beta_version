@@ -148,7 +148,7 @@
     var cards = related
       .map(function (p) {
         var imgHtml = p.image
-          ? '<img class="related-card-img" src="' + p.image + '" alt="' + p.title.replace(/"/g, '&quot;') + '" width="1920" height="1080" loading="lazy" onerror="this.style.display=\'none\'; if(this.nextElementSibling) this.nextElementSibling.style.display=\'flex\';">' +
+          ? '<img class="related-card-img" src="' + p.image + '" alt="' + p.title.replace(/"/g, '&quot;') + '" width="1920" height="1080" loading="lazy">' +
             '<div class="related-card-img-placeholder" style="display:none;">' + iconSvg(p.icon || 'file-text') + '</div>'
           : '<div class="related-card-img-placeholder">' + iconSvg(p.icon || 'file-text') + '</div>';
 
@@ -175,6 +175,12 @@
           '<div class="related-articles-grid">' + cards + '</div>' +
         '</div>';
       section.insertAdjacentHTML('beforeend', relatedHtml);
+      section.querySelectorAll('.related-card-img').forEach(function (img) {
+        img.addEventListener('error', function () {
+          img.style.display = 'none';
+          if (img.nextElementSibling) img.nextElementSibling.style.display = 'flex';
+        });
+      });
     }
   }
 

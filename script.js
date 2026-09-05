@@ -309,9 +309,37 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (form) {
     const submitBtn = form.querySelector('.form-submit-btn');
+    const formRenderedAt = Date.now();
+    const MIN_FILL_TIME_MS = 3000; // real people can't fill 3 fields faster than this
+    const RESUBMIT_COOLDOWN_MS = 60000; // 1 minute between submissions from this browser
+    const COOLDOWN_KEY = 'elunite_contact_last_submit';
 
     form.addEventListener('submit', async function (e) {
       e.preventDefault();
+
+      // Honeypot: real visitors never see or fill this field, bots that
+      // auto-fill every input do. Silently drop the submission.
+      if (form._gotcha && form._gotcha.value) {
+        form.reset();
+        return;
+      }
+
+      // Time trap: a submission faster than a human could type is almost
+      // certainly a bot script. Silently drop it.
+      if (Date.now() - formRenderedAt < MIN_FILL_TIME_MS) {
+        form.reset();
+        return;
+      }
+
+      // Cooldown: block rapid repeat submissions from the same browser.
+      const lastSubmit = Number(localStorage.getItem(COOLDOWN_KEY) || 0);
+      if (Date.now() - lastSubmit < RESUBMIT_COOLDOWN_MS) {
+        thankYouMsg.style.display = 'block';
+        thankYouMsg.textContent =
+          "You've already sent a message — our team has it. Please wait a moment before sending another.";
+        setTimeout(() => { thankYouMsg.style.display = 'none'; }, 6000);
+        return;
+      }
 
       const name = form.name.value.trim();
       const email = form.email.value.trim();
@@ -347,6 +375,8 @@ document.addEventListener('DOMContentLoaded', function () {
         `Hi ELUNITE! My name is ${name}.\nEmail: ${email}\nMessage: ${message}`
       );
       const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${waText}`;
+
+      localStorage.setItem(COOLDOWN_KEY, String(Date.now()));
 
       thankYouMsg.style.display = 'block';
       if (!emailSent) {
@@ -385,7 +415,7 @@ const testimonials = [
   },
   {
     name: 'Joel Yaovi',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150',
+    image: 'images/students/Joel_Yaovi.webp',
     program: 'Cyber Security',
     university: 'Jessup University, USA',
     quote: 'Elunite guided me through the entire admission application process and helped me secure admission with an affordable tuition fee. Their support was exceptional!',
@@ -409,7 +439,7 @@ const testimonials = [
   },
   {
     name: 'Faraj Lema',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150',
+    image: 'images/students/Faraj_Lema.webp',
     program: 'Cardiovascular Technology',
     university: 'South Carolina University, USA',
     quote: 'Studying in USA was always my goal. Elunite\'s counselors understood my aspirations and guided me perfectly through the entrance exams and interviews.',
@@ -602,6 +632,11 @@ function scrollToTop() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+  var scrollBtn = document.querySelector('.scroll-to-top');
+  if (scrollBtn) scrollBtn.addEventListener('click', scrollToTop);
+});
+
 
 // ===== SOCIAL MEDIA LINKS =====
 document.addEventListener('DOMContentLoaded', function () {
@@ -614,7 +649,7 @@ document.addEventListener('DOMContentLoaded', function () {
         linkedin: 'https://linkedin.com/company/elunite',
         twitter: 'https://x.com/EluniteEd'
       };
-      if (urls[platform]) window.open(urls[platform], '_blank');
+      if (urls[platform]) window.open(urls[platform], '_blank', 'noopener,noreferrer');
     });
   });
 });

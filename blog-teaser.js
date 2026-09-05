@@ -80,7 +80,7 @@
         escapeHtml(post.image) +
         '" alt="' +
         escapeHtml(post.title) +
-        '" />'
+        '" width="1920" height="1080" />'
       );
     }
     return (

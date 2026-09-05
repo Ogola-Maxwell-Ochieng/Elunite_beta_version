@@ -148,7 +148,7 @@
     var cards = related
       .map(function (p) {
         var imgHtml = p.image
-          ? '<img class="related-card-img" src="' + p.image + '" alt="' + p.title.replace(/"/g, '&quot;') + '" loading="lazy" onerror="this.style.display=\'none\'; if(this.nextElementSibling) this.nextElementSibling.style.display=\'flex\';">' +
+          ? '<img class="related-card-img" src="' + p.image + '" alt="' + p.title.replace(/"/g, '&quot;') + '" width="1920" height="1080" loading="lazy" onerror="this.style.display=\'none\'; if(this.nextElementSibling) this.nextElementSibling.style.display=\'flex\';">' +
             '<div class="related-card-img-placeholder" style="display:none;">' + iconSvg(p.icon || 'file-text') + '</div>'
           : '<div class="related-card-img-placeholder">' + iconSvg(p.icon || 'file-text') + '</div>';
 

@@ -47,12 +47,11 @@ body {
   align-items: center;
   justify-content: center;
   background: #081b49;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
+  transition: opacity 0.5s ease;
 }
 
 .site-preloader-hidden {
   opacity: 0;
-  visibility: hidden;
   pointer-events: none;
 }
 
@@ -467,6 +466,9 @@ body {
   --primary-glow: hsl(220, 100%, 70%);
   --accent: hsl(45, 100%, 50%);
   --accent-bright: hsl(45, 100%, 45%);
+  /* Darkened accent for text on light backgrounds — hsl(45,100%,50%) fails
+     WCAG contrast (1.65:1) on light cards; this variant passes (4.99:1). */
+  --accent-dark: hsl(45, 100%, 27%);
 
   /* Light theme (main content) */
   --background: #f1f5f9;
@@ -3423,9 +3425,7 @@ body {
     transform: scale(0.92);
     transition:
       transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-      opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-      border-color 0.35s ease,
-      box-shadow 0.35s ease;
+      opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .destination-card.is-active {
@@ -4495,7 +4495,7 @@ body {
   letter-spacing: 1px;
 }
 
-.form-description {
+.contact-form-section .form-description {
   font-family:
     "avenir-lt-w01_35-light1475496", "avenir-lt-w05_35-light", sans-serif;
   font-size: 18px;
@@ -4526,6 +4526,7 @@ body {
 .form-group input,
 .form-group textarea {
   background: rgba(255, 255, 255, 0.5);
+  color: var(--foreground);
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 0.5rem;
   padding: 0.75rem;
@@ -4619,7 +4620,7 @@ body {
   font-size: 1.5rem;
 }
 
-.info-content h4 {
+.info-content h3 {
   font-weight: 600;
   color: #ffffff;
   margin-bottom: 0.25rem;
@@ -4647,7 +4648,7 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.consultation-cta h4 {
+.consultation-cta h3 {
   font-weight: 600;
   color: #ffffff;
   margin-bottom: 0.5rem;
@@ -5315,7 +5316,7 @@ body {
 
 .blog-meta {
   font-size: 14px;
-  color: #888;
+  color: var(--foreground-muted);
   margin-bottom: 10px;
 }
 
@@ -6356,7 +6357,7 @@ body {
 }
 
 .bangalore-services-list li strong {
-  color: var(--accent);
+  color: var(--accent-dark);
   font-weight: 600;
   margin-right: 4px;
 }
@@ -6407,7 +6408,7 @@ body {
 }
 
 .bangalore-why-list li strong {
-  color: var(--accent);
+  color: var(--accent-dark);
   font-weight: 600;
   margin-right: 4px;
 }
@@ -6719,7 +6720,7 @@ body {
 
 .bangalore-uni-badge {
   background: var(--accent);
-  color: var(--background-alt);
+  color: #000;
   font-family:
     "avenir-lt-w01_35-light1475496", "avenir-lt-w05_35-light", sans-serif;
   font-size: 10px;
@@ -6757,7 +6758,7 @@ body {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-dark);
   text-decoration: none;
   margin-top: auto;
   padding-top: 6px;
@@ -7283,7 +7284,7 @@ section {
   font-weight: 600;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-dark);
   transition: gap 0.18s ease;
 }
 
@@ -8540,7 +8541,7 @@ section {
   flex-shrink: 0;
 }
 
-.etp-why-mini h4 {
+.etp-why-mini h3 {
   font-family: "Bebas Neue", sans-serif;
   font-size: 18px;
   letter-spacing: 1px;
@@ -8926,7 +8927,7 @@ section {
 }
 
 .etp-final-title span {
-  color: var(--accent);
+  color: var(--accent-dark);
 }
 
 .etp-final-desc {
@@ -9409,6 +9410,7 @@ section {
   margin-top: 2px;
 }
 
+.sap-solve-row h3,
 .sap-solve-row h4 {
   font-family: "Bebas Neue", sans-serif;
   font-size: 15px;
@@ -9642,7 +9644,7 @@ section {
   flex-shrink: 0;
 }
 
-.sap-why-mini h4 {
+.sap-why-mini h3 {
   font-family: "Bebas Neue", sans-serif;
   font-size: 16px;
   letter-spacing: 0.5px;
@@ -9881,7 +9883,7 @@ section {
 }
 
 .sap-final-title span {
-  color: var(--accent);
+  color: var(--accent-dark);
 }
 
 .sap-final-desc {
@@ -10274,7 +10276,7 @@ section {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.55);
   margin-bottom: 8px;
   position: relative;
   z-index: 2;
@@ -10774,7 +10776,7 @@ section {
 
 .pd-price-note {
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.55);
   line-height: 1.4;
 }
 
@@ -12489,7 +12491,7 @@ section {
 .prg-how-number {
   font-size: 3.4rem;
   font-weight: 800;
-  color: var(--accent);
+  color: var(--accent-dark);
   line-height: 1;
   font-family: "Bebas Neue", sans-serif;
   letter-spacing: 0.02em;
@@ -12710,18 +12712,22 @@ section {
 /* ===================================================
            ELUNITE DESIGN TOKENS — copied verbatim from styles.css
            so the borrowed navbar renders with its native colors.
+           Scoped to the PGI sections only — this used to be a bare
+           `body` rule that leaked its color/font-family sitewide and
+           broke text contrast on unrelated pages (e.g. contact.html).
            =================================================== */
-* {
-  box-sizing: border-box;
-}
-
 html {
   scroll-behavior: smooth;
 }
 
-body {
-  margin: 0;
-  background: #f8fafc;
+.pgi-hero,
+.pgi-intro,
+.pgi-why,
+.pgi-coverage,
+.pgi-courses,
+.pgi-process,
+.pgi-cost,
+.pgi-faq {
   color: #201a12;
   font-family:
     "Work Sans",
@@ -13246,6 +13252,10 @@ body {
   font-size: 16px;
 }
 
+.pgi-cost p.pgi-eyebrow {
+  color: black;
+}
+
 .pgi-cost-list {
   list-style: none;
   padding: 0;
@@ -13730,7 +13740,7 @@ body {
 }
 
 .sa-h2 span {
-  color: var(--accent);
+  color: var(--accent-dark);
 }
 
 .sa-lede {
@@ -13747,7 +13757,7 @@ body {
   font-weight: 700;
   letter-spacing: 2.5px;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-dark);
   margin-bottom: 12px;
 }
 
@@ -13805,7 +13815,7 @@ body {
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.3px;
-  color: var(--accent);
+  color: var(--accent-dark);
   text-decoration: none;
   padding-bottom: 2px;
   border-bottom: 2px dotted black;
@@ -14038,7 +14048,7 @@ body {
 
 .blog-meta {
   font-size: 14px;
-  color: #888;
+  color: var(--foreground-muted);
   margin-bottom: 10px;
 }
 
@@ -14374,12 +14384,12 @@ body {
   align-items: center;
   gap: 6px;
   font-size: 13px;
-  color: #888;
+  color: var(--foreground-muted);
   margin-top: auto;
 }
 
 .blog-listing-meta i {
-  color: #888;
+  color: var(--foreground-muted);
 }
 
 .blog-listing-img[href] {
@@ -14827,8 +14837,8 @@ body {
   margin-bottom: 24px;
 }
 
-.article-body a {
-  color: var(--accent);
+.article-body a:not(.btn-primary) {
+  color: var(--accent-dark);
   text-decoration: none;
   font-weight: 600;
 }

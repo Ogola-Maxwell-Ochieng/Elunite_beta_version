@@ -158,6 +158,20 @@ document.addEventListener('DOMContentLoaded', function () {
       mobileTrigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
   });
+
+  // When the browser restores this page from bfcache (e.g. the user opened
+  // a dropdown, clicked a link inside it, then hit Back), the DOM is
+  // restored exactly as it was left — dropdown still open. Force every
+  // nav toggle closed so Back always lands on a clean, collapsed nav.
+  window.addEventListener('pageshow', function (event) {
+    if (!event.persisted) return;
+    closeAllNavDropdowns();
+    mobileNavGroups.forEach(function (group) {
+      group.classList.remove('open');
+      group.querySelector('.mobile-nav-dropdown-trigger').setAttribute('aria-expanded', 'false');
+    });
+    closeMobileMenu();
+  });
 });
 
 

@@ -1,5 +1,5 @@
 /**
- * ELUNITE BLOG POSTS — SINGLE SOURCE OF TRUTH
+ * ELUNITE BLOG POSTS, SINGLE SOURCE OF TRUTH
  * ═══════════════════════════════════════════════════════════════
  * Every blog post on the site is listed here ONCE. blog.html and
  * the "Latest Blogs" teaser widgets on index.html, about.html,
@@ -26,6 +26,16 @@
  */
 
 var ELUNITE_BLOG_POSTS = [
+  {
+    url: "studienkolleg-germany-application-visa-guide.html",
+    title: "What Is a Studienkolleg? Applications, Visa and Student Life",
+    excerpt: "Planning a Bachelor's in Germany? Here's how Studienkolleg bridges the gap to German universities, course types, application steps, visa basics, and costs.",
+    tag: "Study in Germany",
+    date: "2026-09-10",
+    readTime: "11 min read",
+    icon: "graduation-cap",
+    image: "images/blogs/What Is a Studienkolleg Applications, Visa and Student Life.webp"
+  },
   {
     url: "how-to-avoid-wrong-course-trap-study-abroad.html",
     title: "How to Avoid the \"Wrong Course\" Trap When You Study Abroad",

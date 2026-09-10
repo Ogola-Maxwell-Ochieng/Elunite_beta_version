@@ -27,6 +27,16 @@
 
 var ELUNITE_BLOG_POSTS = [
   {
+    url: "how-to-avoid-wrong-course-trap-study-abroad.html",
+    title: "How to Avoid the \"Wrong Course\" Trap When You Study Abroad",
+    excerpt: "Many students choose trending degrees abroad that don't match their strengths or career goals. 7 warning signs you're picking the wrong course, and a framework to pick the right one.",
+    tag: "Course Selection",
+    date: "2026-09-10",
+    readTime: "10 min read",
+    icon: "compass",
+    image: "images/blogs/How to Avoid the Wrong Course Trap When You Study Abroad.webp"
+  },
+  {
     url: "open-doors-scholarship-2027-russia.html",
     title: "Open Doors Scholarship 2027 Russia: Fully Funded Guide (No IELTS)",
     excerpt: "Full tuition plus a monthly stipend, no IELTS required. Eligibility, deadlines, and a step-by-step application guide for Africa's most generous Russian scholarship.",

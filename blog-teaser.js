@@ -45,6 +45,8 @@
       '<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path>',
     wallet:
       '<path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"></path><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"></path>',
+    compass:
+      '<path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"></path><circle cx="12" cy="12" r="10"></circle>',
   };
 
   function iconSvg(name, styleAttr) {
@@ -60,17 +62,14 @@
     );
   }
 
-  function shortDate(dateStr) {
+  // Shares logic with blog.html and individual post pages (blog-date.js):
+  // "X hours/days ago" for the first 3 days, then an absolute date.
+  function formatDate(dateStr) {
+    if (window.EluniteBlogDate) {
+      return window.EluniteBlogDate.formatUpdated(dateStr, "");
+    }
     var d = new Date(dateStr + "T00:00:00");
     return d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
-  }
-
-  function timeAgo(dateStr) {
-    var diffMs = Date.now() - new Date(dateStr + "T00:00:00").getTime();
-    var diffDays = Math.max(0, Math.round(diffMs / 86400000));
-    if (diffDays === 0) return "Today";
-    if (diffDays === 1) return "1 day ago";
-    return diffDays + " days ago";
   }
 
   function coverMarkup(post) {
@@ -107,7 +106,7 @@
       "</a>" +
       '<div class="blog-featured-body">' +
       '<p class="blog-meta">' +
-      timeAgo(featured.date) +
+      formatDate(featured.date) +
       " &nbsp;\u2022&nbsp; " +
       escapeHtml(featured.readTime) +
       "</p>" +
@@ -134,7 +133,7 @@
         "</a>" +
         "</h4>" +
         '<p class="blog-meta">' +
-        shortDate(post.date) +
+        formatDate(post.date) +
         " &nbsp;\u2022&nbsp; " +
         escapeHtml(post.readTime) +
         "</p>" +

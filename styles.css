@@ -7492,11 +7492,20 @@ section {
 
 .serve-band-grid {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 24px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
   max-width: 1100px;
   margin: 0 auto;
+  padding: 4px 4px 12px;
+}
+
+.serve-band-grid::-webkit-scrollbar {
+  display: none;
 }
 
 .serve-band-icon {
@@ -7527,11 +7536,6 @@ section {
 
   .zigzag-wrap {
     padding: 0 20px;
-  }
-
-  .serve-band-grid {
-    flex-direction: column;
-    align-items: stretch;
   }
 }
 
@@ -7870,6 +7874,7 @@ section {
   display: block !important;
   text-decoration: none !important;
   padding: 32px 24px !important;
+  scroll-snap-align: start;
   flex: 1;
   min-width: 280px;
   max-width: 400px;
@@ -12471,16 +12476,25 @@ section {
 }
 
 .process-timeline {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: flex;
   gap: 24px;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 40px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 4px 40px 12px;
+}
+
+.process-timeline::-webkit-scrollbar {
+  display: none;
 }
 
 .process-step {
   position: relative;
+  flex: 0 0 280px;
+  scroll-snap-align: start;
   padding: 28px;
   background: #f8fafc;
   border-right: 2px solid #000;
@@ -12488,6 +12502,41 @@ section {
   border-radius: 16px;
   text-align: center;
   box-shadow: 8px 8px 0 #000;
+}
+
+.process-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.process-dots .dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: none;
+  border-radius: 4px;
+  background: #cbd5e1;
+  cursor: pointer;
+  transition: var(--transition-all);
+}
+
+.process-dots .dot.active {
+  width: 24px;
+  background: #081b49;
+}
+
+@media (max-width: 768px) {
+  .process-timeline {
+    padding: 4px 4px 12px;
+  }
+
+  .process-step {
+    flex: 0 0 82%;
+    max-width: 300px;
+  }
 }
 
 .process-step-num {

@@ -553,24 +553,28 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-// ===== GENERIC SCROLL-SNAP CAROUSEL (dots + autoplay, no arrows) =====
-// Tracks position by scroll offset rather than an intersection-ratio
-// threshold, so it works the same whether the track shows 1 card
-// (mobile) or several at once (desktop) — a visibility threshold can't
-// reliably tell which single card is "active" once more than one
-// crosses it at the same time.
-function initScrollCarousel(trackEl, dotsEl, cardSelector, autoplayMs) {
-  if (!trackEl || !dotsEl) return;
+// ===== SERVICES "OUR PROCESS" CAROUSEL =====
+// Desktop shows several cards at once, so an intersection-ratio threshold
+// (fine for the destinations carousel, one card per view) can't reliably
+// tell which single card is "active" here. Track position by scroll
+// offset instead: works the same whether 1 or 4 cards are in view.
+document.addEventListener('DOMContentLoaded', function () {
+  const track = document.getElementById('process-timeline');
+  const dotsContainer = document.getElementById('process-dots');
+  const prevBtn = document.getElementById('process-prev');
+  const nextBtn = document.getElementById('process-next');
 
-  const cards = Array.from(trackEl.querySelectorAll(cardSelector));
-  if (!cards.length) return;
+  if (!track || !dotsContainer) return;
 
-  dotsEl.innerHTML = cards
+  const steps = Array.from(track.querySelectorAll('.process-step'));
+  if (!steps.length) return;
+
+  dotsContainer.innerHTML = steps
     .map(function (_, i) {
-      return '<button type="button" class="dot' + (i === 0 ? ' active' : '') + '" data-slide="' + i + '" aria-label="Go to slide ' + (i + 1) + '"></button>';
+      return '<button type="button" class="dot' + (i === 0 ? ' active' : '') + '" data-slide="' + i + '" aria-label="Go to step ' + (i + 1) + '"></button>';
     })
     .join('');
-  const dots = Array.from(dotsEl.querySelectorAll('.dot'));
+  const dots = Array.from(dotsContainer.querySelectorAll('.dot'));
 
   function setActive(index) {
     dots.forEach(function (dot, i) {
@@ -578,82 +582,38 @@ function initScrollCarousel(trackEl, dotsEl, cardSelector, autoplayMs) {
     });
   }
 
-  function cardStep() {
-    return cards.length > 1 ? cards[1].offsetLeft - cards[0].offsetLeft : cards[0].offsetWidth;
+  function stepWidth() {
+    return steps.length > 1 ? steps[1].offsetLeft - steps[0].offsetLeft : steps[0].offsetWidth;
   }
 
   function currentIndex() {
-    const width = cardStep();
+    const width = stepWidth();
     if (!width) return 0;
-    const raw = Math.round(trackEl.scrollLeft / width);
-    return Math.max(0, Math.min(cards.length - 1, raw));
+    const raw = Math.round(track.scrollLeft / width);
+    return Math.max(0, Math.min(steps.length - 1, raw));
   }
 
   function goTo(index) {
-    const clamped = Math.max(0, Math.min(cards.length - 1, index));
-    cards[clamped].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+    const clamped = Math.max(0, Math.min(steps.length - 1, index));
+    steps[clamped].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
   }
 
   let scrollTimeout;
-  trackEl.addEventListener('scroll', function () {
+  track.addEventListener('scroll', function () {
     clearTimeout(scrollTimeout);
     scrollTimeout = setTimeout(function () {
       setActive(currentIndex());
     }, 100);
   });
 
-  dotsEl.addEventListener('click', function (e) {
+  dotsContainer.addEventListener('click', function (e) {
     const dot = e.target.closest('.dot');
     if (!dot) return;
-    stopAutoplay();
     goTo(parseInt(dot.dataset.slide, 10));
-    startAutoplay();
   });
 
-  // Moves by itself; pauses while the user is hovering/touching/dragging
-  // so it never fights a manual swipe, then picks back up after.
-  let autoplayTimer = null;
-
-  function tick() {
-    const next = currentIndex() + 1;
-    goTo(next > cards.length - 1 ? 0 : next);
-  }
-
-  function startAutoplay() {
-    if (!autoplayMs || autoplayTimer) return;
-    autoplayTimer = setInterval(tick, autoplayMs);
-  }
-
-  function stopAutoplay() {
-    clearInterval(autoplayTimer);
-    autoplayTimer = null;
-  }
-
-  if (autoplayMs) {
-    startAutoplay();
-    trackEl.addEventListener('mouseenter', stopAutoplay);
-    trackEl.addEventListener('mouseleave', startAutoplay);
-    trackEl.addEventListener('touchstart', stopAutoplay, { passive: true });
-    trackEl.addEventListener('touchend', function () {
-      setTimeout(startAutoplay, 2000);
-    }, { passive: true });
-  }
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-  initScrollCarousel(
-    document.getElementById('process-timeline'),
-    document.getElementById('process-dots'),
-    '.process-step',
-    4000
-  );
-
-  initScrollCarousel(
-    document.getElementById('serve-band-grid'),
-    document.getElementById('serve-band-dots'),
-    '.serve-band-card',
-    4000
-  );
+  if (prevBtn) prevBtn.addEventListener('click', function () { goTo(currentIndex() - 1); });
+  if (nextBtn) nextBtn.addEventListener('click', function () { goTo(currentIndex() + 1); });
 });
 
 // ===== TESTIMONIALS CAROUSEL =====

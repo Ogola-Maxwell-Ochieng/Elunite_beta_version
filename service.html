@@ -423,20 +423,6 @@
           <span class="outline">Global</span> Stage
         </h1>
       </div>
-
-      <!-- New wave: layered smooth S-curves with a secondary undercrest -->
-      <div class="dest-hero-wave">
-        <svg
-          viewBox="0 0 1440 70"
-          preserveAspectRatio="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M0,40 C360,80 1080,0 1440,40 L1440,70 L0,70 Z"
-            fill="#f8fafc"
-          />
-        </svg>
-      </div>
     </section>
 
     <main id="main-content">
@@ -628,47 +614,57 @@
           </p>
         </div>
 
-        <div class="process-timeline" id="process-timeline">
-          <div class="process-step">
-            <div class="process-step-num">A</div>
-            <h3>Consultation</h3>
-            <p>
-              Free strategy session to understand your goals, background, and
-              aspirations.
-            </p>
+        <div class="process-carousel-wrap">
+          <button type="button" class="process-nav process-prev" id="process-prev" aria-label="Previous step">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg>
+          </button>
+
+          <div class="process-timeline" id="process-timeline">
+            <div class="process-step">
+              <div class="process-step-num">A</div>
+              <h3>Consultation</h3>
+              <p>
+                Free strategy session to understand your goals, background, and
+                aspirations.
+              </p>
+            </div>
+            <div class="process-step">
+              <div class="process-step-num">B</div>
+              <h3>Assessment</h3>
+              <p>
+                Detailed evaluation of your profile and eligibility for various
+                opportunities.
+              </p>
+            </div>
+            <div class="process-step">
+              <div class="process-step-num">C</div>
+              <h3>Planning</h3>
+              <p>
+                Personalized roadmap created specifically for your unique
+                situation and goals.
+              </p>
+            </div>
+            <div class="process-step">
+              <div class="process-step-num">D</div>
+              <h3>Execution</h3>
+              <p>
+                Expert support through application, scholarship, and visa
+                processes.
+              </p>
+            </div>
+            <div class="process-step">
+              <div class="process-step-num">E</div>
+              <h3>Success</h3>
+              <p>
+                Guidance doesn't stop at acceptance—we support your entire
+                transition journey.
+              </p>
+            </div>
           </div>
-          <div class="process-step">
-            <div class="process-step-num">B</div>
-            <h3>Assessment</h3>
-            <p>
-              Detailed evaluation of your profile and eligibility for various
-              opportunities.
-            </p>
-          </div>
-          <div class="process-step">
-            <div class="process-step-num">C</div>
-            <h3>Planning</h3>
-            <p>
-              Personalized roadmap created specifically for your unique
-              situation and goals.
-            </p>
-          </div>
-          <div class="process-step">
-            <div class="process-step-num">D</div>
-            <h3>Execution</h3>
-            <p>
-              Expert support through application, scholarship, and visa
-              processes.
-            </p>
-          </div>
-          <div class="process-step">
-            <div class="process-step-num">E</div>
-            <h3>Success</h3>
-            <p>
-              Guidance doesn't stop at acceptance—we support your entire
-              transition journey.
-            </p>
-          </div>
+
+          <button type="button" class="process-nav process-next" id="process-next" aria-label="Next step">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
+          </button>
         </div>
 
         <div class="process-dots" id="process-dots"></div>
@@ -680,7 +676,7 @@
           Opening Doors to a World of Possibilities
         </h2>
 
-        <div class="serve-band-grid" id="serve-band-grid">
+        <div class="serve-band-grid">
           <div class="serve-band-card">
             <img src="images/services-images/Education-bro.svg" width="750" height="500"
               alt="Students"
@@ -705,8 +701,6 @@
             <p>Strategic growth and development</p>
           </div>
         </div>
-
-        <div class="process-dots" id="serve-band-dots"></div>
       </div>
 
       <!-- ── BLOG ── -->

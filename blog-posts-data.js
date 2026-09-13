@@ -27,6 +27,16 @@
 
 var ELUNITE_BLOG_POSTS = [
   {
+    url: "new-rules-global-hiring-2026.html",
+    title: "The New Rules of Global Hiring: What Employers in 2026 Expect from International Graduates",
+    excerpt: "Skills, AI readiness, communication, and internships now matter as much as the degree itself. What career-ready actually looks like for international graduates in 2026.",
+    tag: "Career Readiness",
+    date: "2026-09-13",
+    readTime: "4 min read",
+    icon: "briefcase",
+    image: "images/blogs/The New Rules of Global Hiring What Employers in 2026 Expect from International Graduates.webp"
+  },
+  {
     url: "studienkolleg-germany-application-visa-guide.html",
     title: "What Is a Studienkolleg? Applications, Visa and Student Life",
     excerpt: "Planning a Bachelor's in Germany? Here's how Studienkolleg bridges the gap to German universities, course types, application steps, visa basics, and costs.",

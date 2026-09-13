@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function toggleMobileMenu() {
     isMobileMenuOpen = !isMobileMenuOpen;
+    mobileMenuBtn.setAttribute('aria-expanded', String(isMobileMenuOpen));
     if (isMobileMenuOpen) {
       mobileMenu.classList.remove('hidden');
       menuIcon.classList.add('hidden');
@@ -441,6 +442,12 @@ document.addEventListener('DOMContentLoaded', function () {
   const panel = document.getElementById('enquiry-panel');
   if (!tab || !panel) return;
 
+  // Tracks when the panel was last opened, so the bot time-trap below
+  // measures fill speed from when the form actually appeared to the
+  // visitor — not from page load, which could be long before they ever
+  // clicked the tab and would falsely flag a genuinely fast fill as a bot.
+  let formRenderedAt = Date.now();
+
   function closePanel() {
     panel.classList.remove('open');
     tab.classList.remove('active');
@@ -452,6 +459,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const isOpen = panel.classList.toggle('open');
     tab.classList.toggle('active', isOpen);
     tab.setAttribute('aria-expanded', String(isOpen));
+    if (isOpen) formRenderedAt = Date.now();
   });
 
   document.addEventListener('click', function (e) {
@@ -473,7 +481,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const WHATSAPP_NUMBER = '918050306510';
   const submitBtn = form.querySelector('.enquiry-submit');
-  const formRenderedAt = Date.now();
   const MIN_FILL_TIME_MS = 3000;
   const RESUBMIT_COOLDOWN_MS = 60000;
   const COOLDOWN_KEY = 'elunite_enquiry_last_submit';
@@ -969,25 +976,6 @@ const io = new IntersectionObserver(
 );
 rows.forEach((r) => io.observe(r));
 
-// Mobile menu
-const btn = document.getElementById("mobile-menu-btn");
-const menu = document.getElementById("mobile-menu");
-if (btn && menu) {
-  btn.addEventListener("click", () => {
-    const open = menu.classList.toggle("hidden") === false;
-    btn.setAttribute("aria-expanded", open);
-    btn.querySelector(".menu-icon").classList.toggle("hidden", open);
-    btn.querySelector(".close-icon").classList.toggle("hidden", !open);
-  });
-}
-
-// Navbar scroll
-window.addEventListener("scroll", () => {
-  document
-    .getElementById("navbar")
-    ?.classList.toggle("scrolled", window.scrollY > 50);
-});
-
 
 // ============================================================
 // CURRENCY CONVERTER
@@ -1397,6 +1385,11 @@ document.addEventListener('DOMContentLoaded', function () {
   var successEl = document.getElementById('lead-modal-success');
   var closeEls = modal.querySelectorAll('[data-lead-modal-close]');
   var lastFocusedEl = null;
+  // Tracks when the modal was last opened, so the bot time-trap below
+  // measures fill speed from when the form actually appeared to the
+  // visitor — not from page load, which could be long before they ever
+  // clicked the CTA and would falsely flag a genuinely fast fill as a bot.
+  var formRenderedAt = Date.now();
 
   function getFocusable() {
     return Array.prototype.slice
@@ -1428,6 +1421,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function openModal(trigger) {
     lastFocusedEl = trigger || document.activeElement;
+    formRenderedAt = Date.now();
     modal.hidden = false;
     document.body.style.overflow = 'hidden';
     form.hidden = false;
@@ -1532,7 +1526,6 @@ document.addEventListener('DOMContentLoaded', function () {
   // ----- Submission (same anti-spam + Formspree pattern used elsewhere
   // on the site, minus the WhatsApp handoff — this modal shows its own
   // in-place success state instead) -----
-  var formRenderedAt = Date.now();
   var MIN_FILL_TIME_MS = 3000;
   var RESUBMIT_COOLDOWN_MS = 60000;
   var COOLDOWN_KEY = 'elunite_lead_modal_last_submit';

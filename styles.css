@@ -362,17 +362,9 @@ body {
 }
 
 @media (max-width: 560px) {
-  .lead-modal {
-    padding: 0;
-  }
-
   .lead-modal-card {
-    max-width: none;
-    width: 100%;
-    height: 100%;
-    max-height: none;
-    border-radius: 0;
-    padding: 32px 20px;
+    max-width: 400px;
+    padding: 26px 18px;
   }
 }
 
@@ -1895,13 +1887,13 @@ body {
   right: 10px;
   bottom: calc(12px + env(safe-area-inset-bottom));
   z-index: 55;
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(8, 27, 73, 0.78);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.32);
-  box-shadow: 0 10px 30px rgba(8, 27, 73, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 10px 30px rgba(8, 27, 73, 0.35);
   border-radius: 60px;
-  padding: 6px 4px;
+  padding: 4px 4px;
 }
 
 .mobile-tabbar-item {
@@ -1910,27 +1902,27 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3px;
+  gap: 2px;
   background: none;
   border: none;
   cursor: pointer;
-  color: #1f305c;
+  color: #ffffff;
   text-decoration: none;
-  padding: 8px 2px;
+  padding: 6px 2px;
   border-radius: 60px;
   font-family: "Bebas Neue", sans-serif;
-  font-size: 15px;
+  font-size: 12px;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   transition: var(--transition-all);
 }
 
 .mobile-tabbar-item:not(:last-child) {
-  border-right: 1px solid rgba(255, 255, 255, 0.4);
+  border-right: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .mobile-tabbar-item svg {
-  height: 32px;
+  height: 22px;
   width: auto;
   color: var(--accent);
   transition: var(--transition-all);
@@ -1944,7 +1936,7 @@ body {
 /* Persistent "this tab's panel is open" state — dark pill behind icon+label.
    The icon stays accent-colored either way; only the label switches to white. */
 .mobile-tabbar-item.active {
-  background: #343434;
+  background: rgba(255, 255, 255, 0.16);
   color: #ffffff;
 }
 
@@ -2339,6 +2331,13 @@ a.site-menu-row {
 
   .whatsapp-widget {
     bottom: 104px;
+  }
+
+  /* Keep the enquiry form from popping up flush against the
+     "Get in Touch" tab — give it a little breathing room instead
+     of sharing the exact same edge as the button. */
+  .enquiry-panel {
+    right: 72px;
   }
 
   /* Top bar becomes a plain, full-width header with just the

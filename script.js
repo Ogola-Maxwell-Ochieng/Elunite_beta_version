@@ -19,6 +19,19 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
+  // Mobile-only: header sits in normal flow until the hero
+  // announcement pill has scrolled fully out of view (~120px), then
+  // it pops to fixed + glassmorphism. Instant toggle, same threshold
+  // both ways — no direction-based show/hide, no smoothing.
+  var MOBILE_STICKY_THRESHOLD = 120;
+  function handleMobileStickyHeader() {
+    if (window.scrollY > MOBILE_STICKY_THRESHOLD) {
+      navbar.classList.add('mobile-stuck');
+    } else {
+      navbar.classList.remove('mobile-stuck');
+    }
+  }
+
   function toggleMobileMenu() {
     isMobileMenuOpen = !isMobileMenuOpen;
     if (isMobileMenuOpen) {
@@ -67,7 +80,13 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   window.addEventListener('scroll', handleScroll);
+  window.addEventListener('scroll', handleMobileStickyHeader);
   mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+  // Same bfcache pitfall as the bottom tab bar's panels: if this drawer
+  // was open when the user navigated away, Back would otherwise restore
+  // it open (and body scroll still locked) instead of the plain page.
+  window.addEventListener('pageshow', closeMobileMenu);
 
   const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link, .mobile-nav-sublink, .nav-dropdown-item');
   navLinks.forEach(link => {
@@ -415,6 +434,199 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
+
+// ===== GET IN TOUCH — SLIDE-IN ENQUIRY PANEL =====
+document.addEventListener('DOMContentLoaded', function () {
+  const tab = document.getElementById('enquiry-tab');
+  const panel = document.getElementById('enquiry-panel');
+  if (!tab || !panel) return;
+
+  function closePanel() {
+    panel.classList.remove('open');
+    tab.classList.remove('active');
+    tab.setAttribute('aria-expanded', 'false');
+  }
+
+  tab.addEventListener('click', function (e) {
+    e.stopPropagation();
+    const isOpen = panel.classList.toggle('open');
+    tab.classList.toggle('active', isOpen);
+    tab.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  document.addEventListener('click', function (e) {
+    if (
+      panel.classList.contains('open') &&
+      !panel.contains(e.target) &&
+      !tab.contains(e.target)
+    ) {
+      closePanel();
+    }
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closePanel();
+  });
+
+  const form = document.getElementById('enquiry-form');
+  if (!form) return;
+
+  const WHATSAPP_NUMBER = '918050306510';
+  const submitBtn = form.querySelector('.enquiry-submit');
+  const formRenderedAt = Date.now();
+  const MIN_FILL_TIME_MS = 3000;
+  const RESUBMIT_COOLDOWN_MS = 60000;
+  const COOLDOWN_KEY = 'elunite_enquiry_last_submit';
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    // Honeypot — bots fill every field, real visitors never see this one
+    if (form._gotcha && form._gotcha.value) {
+      form.reset();
+      return;
+    }
+
+    // Time trap — faster than a human could type is almost certainly a bot
+    if (Date.now() - formRenderedAt < MIN_FILL_TIME_MS) {
+      form.reset();
+      return;
+    }
+
+    const lastSubmit = Number(localStorage.getItem(COOLDOWN_KEY) || 0);
+    if (Date.now() - lastSubmit < RESUBMIT_COOLDOWN_MS) {
+      if (submitBtn) {
+        const original = submitBtn.textContent;
+        submitBtn.textContent = 'Already sent — please wait';
+        setTimeout(() => { submitBtn.textContent = original; }, 3000);
+      }
+      return;
+    }
+
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const fullPhone = `${form.country_code.value} ${form.phone.value.trim()}`;
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.dataset.originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Sending...';
+    }
+
+    const formData = new FormData(form);
+    let emailSent = false;
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: { Accept: 'application/json' },
+      });
+      emailSent = response.ok;
+      if (!response.ok) {
+        console.error('Formspree submission failed:', response.status);
+      }
+    } catch (error) {
+      console.error('Enquiry form submission error:', error);
+    }
+
+    const waText = encodeURIComponent(
+      `Hi ELUNITE! My name is ${name}.\nEmail: ${email}\nPhone: ${fullPhone}`
+    );
+    const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${waText}`;
+
+    localStorage.setItem(COOLDOWN_KEY, String(Date.now()));
+    form.reset();
+
+    setTimeout(() => {
+      window.open(waUrl, '_blank', 'noopener');
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = submitBtn.dataset.originalText || 'Submit';
+      }
+      closePanel();
+    }, 800);
+
+    void emailSent; // outcome doesn't change the flow — WhatsApp is the fallback either way
+  });
+});
+
+
+// ===== MOBILE TAB BAR — full-screen slide-in panels =====
+document.addEventListener('DOMContentLoaded', function () {
+  const tabButtons = document.querySelectorAll('.mobile-tabbar-item[data-panel-target]');
+  if (!tabButtons.length) return;
+
+  function closeAllPanels() {
+    document.querySelectorAll('.tab-panel.open').forEach(function (p) {
+      p.classList.remove('open');
+    });
+    tabButtons.forEach(function (btn) {
+      btn.classList.remove('active');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  // Tapping a program/service/etc. card navigates to a new page while a
+  // panel is open. Browsers restore that frozen DOM (bfcache) on Back,
+  // panel-open state and all — reset it so Back lands on the plain page
+  // you started from, not back inside the panel you had open.
+  window.addEventListener('pageshow', closeAllPanels);
+
+  tabButtons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      const targetId = btn.dataset.panelTarget;
+      const target = document.getElementById(targetId);
+      if (!target) return;
+
+      const alreadyOpen = target.classList.contains('open');
+      closeAllPanels();
+
+      // Tapping the already-active tab closes it; tapping any other tab
+      // opens its panel directly (no intermediate closed state needed
+      // since only one panel is ever open at a time).
+      if (!alreadyOpen) {
+        target.classList.add('open');
+        btn.classList.add('active');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // Segmented "By Category" / "By Destination" style toggles inside panels
+  document.querySelectorAll('.panel-segmented').forEach(function (group) {
+    const segments = group.querySelectorAll('.panel-segment');
+    segments.forEach(function (seg) {
+      seg.addEventListener('click', function () {
+        const targetId = seg.dataset.segmentTarget;
+        const target = document.getElementById(targetId);
+        if (!target) return;
+
+        segments.forEach(function (s) {
+          s.classList.remove('active');
+          s.setAttribute('aria-selected', 'false');
+        });
+        seg.classList.add('active');
+        seg.setAttribute('aria-selected', 'true');
+
+        segments.forEach(function (s) {
+          const otherTarget = document.getElementById(s.dataset.segmentTarget);
+          if (otherTarget) otherTarget.hidden = otherTarget !== target;
+        });
+      });
+    });
+  });
+
+  // Site Menu panel — expandable sections. Independent: opening one
+  // never closes another that's already open.
+  document.querySelectorAll('.site-menu-group').forEach(function (group) {
+    const trigger = group.querySelector('.site-menu-trigger');
+    if (!trigger) return;
+    trigger.addEventListener('click', function () {
+      const isOpen = group.classList.toggle('open');
+      trigger.setAttribute('aria-expanded', String(isOpen));
+    });
+  });
+});
 
 
 // ===== TESTIMONIALS DATA =====
@@ -1171,5 +1383,219 @@ document.addEventListener('DOMContentLoaded', function () {
         btn.setAttribute('aria-expanded', 'true');
       }
     });
+  });
+});
+
+
+// ===== LEAD CAPTURE MODAL — "Book Free Counselling" =====
+document.addEventListener('DOMContentLoaded', function () {
+  var modal = document.getElementById('lead-modal');
+  var form = document.getElementById('lead-modal-form');
+  if (!modal || !form) return;
+
+  var card = modal.querySelector('.lead-modal-card');
+  var successEl = document.getElementById('lead-modal-success');
+  var closeEls = modal.querySelectorAll('[data-lead-modal-close]');
+  var lastFocusedEl = null;
+
+  function getFocusable() {
+    return Array.prototype.slice
+      .call(card.querySelectorAll('button, a[href], input, select, textarea, [tabindex]:not([tabindex="-1"])'))
+      .filter(function (el) {
+        return !el.disabled && el.offsetParent !== null;
+      });
+  }
+
+  function handleKeydown(e) {
+    if (e.key === 'Escape') {
+      closeModal();
+      return;
+    }
+    if (e.key === 'Tab') {
+      var focusables = getFocusable();
+      if (!focusables.length) return;
+      var first = focusables[0];
+      var last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  }
+
+  function openModal(trigger) {
+    lastFocusedEl = trigger || document.activeElement;
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    form.hidden = false;
+    successEl.hidden = true;
+    var focusables = getFocusable();
+    if (focusables.length) focusables[0].focus();
+    document.addEventListener('keydown', handleKeydown);
+  }
+
+  function closeModal() {
+    modal.hidden = true;
+    document.body.style.overflow = '';
+    document.removeEventListener('keydown', handleKeydown);
+    if (lastFocusedEl && typeof lastFocusedEl.focus === 'function') {
+      lastFocusedEl.focus();
+    }
+  }
+
+  closeEls.forEach(function (el) {
+    el.addEventListener('click', closeModal);
+  });
+
+  // Only CTA buttons that express booking/consultation intent open the
+  // modal — the plain "Contact" nav link (desktop menu, mobile drawer,
+  // footer, Site Menu panel) still navigates to the real contact page.
+  var TRIGGER_SELECTOR = [
+    'a[href="contact.html"].btn-primary',
+    'a[href="contact.html"].service-btn-primary',
+    'a[href="contact.html"].success-cta-btn-solid',
+    'a[href="contact.html"].sa-btn-outline',
+    'a[href="contact.html"].sap-btn',
+    'a[href="contact.html"].prg-btn',
+    'a[href="contact.html"].services-callout-btn-outline',
+    'a[href="contact.html"].elu-inline-link',
+  ].join(', ');
+
+  document.querySelectorAll(TRIGGER_SELECTOR).forEach(function (trigger) {
+    trigger.addEventListener('click', function (e) {
+      e.preventDefault();
+      openModal(trigger);
+    });
+  });
+
+  // ----- Validation -----
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  var PHONE_RE = /^[0-9+\-\s()]{7,20}$/;
+
+  function setFieldError(field, message) {
+    if (!field) return;
+    var errorEl = field.querySelector('.lead-field-error');
+    field.classList.toggle('lead-field-invalid', !!message);
+    if (errorEl) errorEl.textContent = message || '';
+  }
+
+  function validateForm() {
+    var valid = true;
+
+    var nameInput = document.getElementById('lead-name');
+    if (!nameInput.value.trim()) {
+      setFieldError(nameInput.closest('.lead-field'), 'Please enter your first name');
+      valid = false;
+    } else {
+      setFieldError(nameInput.closest('.lead-field'), '');
+    }
+
+    var cityInput = document.getElementById('lead-home-country');
+    if (!cityInput.value) {
+      setFieldError(cityInput.closest('.lead-field'), 'Please select your country');
+      valid = false;
+    } else {
+      setFieldError(cityInput.closest('.lead-field'), '');
+    }
+
+    var emailInput = document.getElementById('lead-email');
+    if (!EMAIL_RE.test(emailInput.value.trim())) {
+      setFieldError(emailInput.closest('.lead-field'), 'Enter a valid email address');
+      valid = false;
+    } else {
+      setFieldError(emailInput.closest('.lead-field'), '');
+    }
+
+    var phoneInput = document.getElementById('lead-phone');
+    var digitsOnly = phoneInput.value.replace(/[^0-9]/g, '');
+    if (!PHONE_RE.test(phoneInput.value.trim()) || digitsOnly.length < 7 || digitsOnly.length > 15) {
+      setFieldError(phoneInput.closest('.lead-field'), 'Enter a valid phone number');
+      valid = false;
+    } else {
+      setFieldError(phoneInput.closest('.lead-field'), '');
+    }
+
+    var countryInput = document.getElementById('lead-country');
+    if (!countryInput.value) {
+      setFieldError(countryInput.closest('.lead-field'), 'Please choose a country');
+      valid = false;
+    } else {
+      setFieldError(countryInput.closest('.lead-field'), '');
+    }
+
+    return valid;
+  }
+
+  // ----- Submission (same anti-spam + Formspree pattern used elsewhere
+  // on the site, minus the WhatsApp handoff — this modal shows its own
+  // in-place success state instead) -----
+  var formRenderedAt = Date.now();
+  var MIN_FILL_TIME_MS = 3000;
+  var RESUBMIT_COOLDOWN_MS = 60000;
+  var COOLDOWN_KEY = 'elunite_lead_modal_last_submit';
+  var submitBtn = form.querySelector('.lead-modal-submit');
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    if (form._gotcha && form._gotcha.value) {
+      form.reset();
+      return;
+    }
+    if (Date.now() - formRenderedAt < MIN_FILL_TIME_MS) {
+      form.reset();
+      return;
+    }
+    if (!validateForm()) return;
+
+    var lastSubmit = Number(localStorage.getItem(COOLDOWN_KEY) || 0);
+    if (Date.now() - lastSubmit < RESUBMIT_COOLDOWN_MS) {
+      if (submitBtn) {
+        var original = submitBtn.textContent;
+        submitBtn.textContent = 'Already sent — please wait';
+        setTimeout(function () {
+          submitBtn.textContent = original;
+        }, 3000);
+      }
+      return;
+    }
+
+    form.querySelector('.lead-modal-timestamp').value = new Date().toISOString();
+    form.querySelector('.lead-modal-source-page').value = window.location.pathname;
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.dataset.originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Sending...';
+    }
+
+    var formData = new FormData(form);
+    try {
+      var response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: { Accept: 'application/json' },
+      });
+      if (!response.ok) {
+        console.error('Formspree submission failed:', response.status);
+      }
+    } catch (error) {
+      console.error('Lead modal submission error:', error);
+    }
+
+    localStorage.setItem(COOLDOWN_KEY, String(Date.now()));
+
+    form.hidden = true;
+    successEl.hidden = false;
+    var focusables = getFocusable();
+    if (focusables.length) focusables[0].focus();
+
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = submitBtn.dataset.originalText || 'Book Free Counselling';
+    }
   });
 });

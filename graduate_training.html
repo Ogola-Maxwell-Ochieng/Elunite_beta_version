@@ -35,14 +35,7 @@
     <!-- ═══ STYLESHEETS ═══ -->
     <link rel="preload" href="styles.css" as="style" />
     <link rel="stylesheet" href="styles.css" />
-    <link
-      rel="preload"
-      href="fonts/bebas-neue-v16-latin-regular.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-
+    
     <!-- Other Links -->
     <link
       rel="canonical"
@@ -383,50 +376,7 @@
           <div class="mobile-menu-content">
             <a href="index.html" class="mobile-nav-link">Home</a>
             <a href="about.html" class="mobile-nav-link">About Us</a>
-            <div class="mobile-nav-group">
-              <button type="button" class="mobile-nav-link mobile-nav-dropdown-trigger" aria-expanded="false">
-                Services
-              </button>
-              <div class="mobile-nav-submenu">
-                <a href="study-abroad-services.html" class="mobile-nav-sublink">Study Abroad</a>
-                <a href="visa_purchase.html" class="mobile-nav-sublink">Visa Assistance</a>
-                <a href="work-abroad-relocation.html" class="mobile-nav-sublink">Work Abroad</a>
-                <a href="scholarships-exchange-programs.html" class="mobile-nav-sublink">Scholarship Programs</a>
-                <a href="business-strategy-development.html" class="mobile-nav-sublink">Business Strategy</a>
-                <a href="mentorship-capacity-building.html" class="mobile-nav-sublink">Career Mentorship</a>
-                <a href="corporate-institutional-training.html" class="mobile-nav-sublink">Corporate Training</a>
-                <a href="service.html" class="mobile-nav-sublink">View all services →</a>
-              </div>
-            </div>
-            <div class="mobile-nav-group">
-              <button type="button" class="mobile-nav-link mobile-nav-dropdown-trigger" aria-expanded="false">
-                Destinations
-              </button>
-              <div class="mobile-nav-submenu">
-                <a href="india.html" class="mobile-nav-sublink">India</a>
-                <a href="usa.html" class="mobile-nav-sublink">USA</a>
-                <a href="china.html" class="mobile-nav-sublink">China</a>
-                <a href="germany.html" class="mobile-nav-sublink">Germany</a>
-                <a href="australia.html" class="mobile-nav-sublink">Australia</a>
-                <a href="ireland.html" class="mobile-nav-sublink">Ireland</a>
-                <a href="destination.html" class="mobile-nav-sublink">View all destinations →</a>
-              </div>
-            </div>
-            <div class="mobile-nav-group">
-              <button type="button" class="mobile-nav-link mobile-nav-dropdown-trigger" aria-expanded="false">
-                Programs
-              </button>
-              <div class="mobile-nav-submenu">
-                <a href="end_to_end_purchase.html" class="mobile-nav-sublink">End-to-End Admission</a>
-                <a href="scholarship_purchase.html" class="mobile-nav-sublink">Scholarship Application</a>
-                <a href="visa_purchase.html" class="mobile-nav-sublink">Visa Sponsorship</a>
-                <a href="graduate_training.html" class="mobile-nav-sublink">Global Pathways Program</a>
-                <a href="strategic_program.html" class="mobile-nav-sublink">Free Strategy Session</a>
-                <a href="programs.html" class="mobile-nav-sublink">View all programs →</a>
-              </div>
-            </div>
             <a href="blog.html" class="mobile-nav-link">Blogs</a>
-            <a href="contact.html" class="mobile-nav-link">Contact</a>
             <div class="mobile-cta">
               <a href="tel:+918050306510" class="cta-button-full">CALL NOW</a>
             </div>
@@ -434,6 +384,199 @@
         </div>
       </div>
     </nav>
+
+<!-- ═══════════ PROGRAMS — full-screen slide-in panel ═══════════ -->
+    <div id="panel-programs" class="tab-panel" role="region" aria-label="Programs">
+      <div class="tab-panel-inner">
+        <p class="panel-eyebrow">Browse By</p>
+
+        <div class="panel-segmented" role="tablist">
+          <button type="button" class="panel-segment active" data-segment-target="panel-programs-category" role="tab" aria-selected="true">By Category</button>
+          <button type="button" class="panel-segment" data-segment-target="panel-programs-destination" role="tab" aria-selected="false">By Destination</button>
+        </div>
+
+        <div id="panel-programs-category" class="panel-grid">
+          <a href="end_to_end_purchase.html" class="panel-card">
+            <img src="images/Programs/End-to-End%20Application%20Program.webp" alt="" width="1080" height="1080" loading="lazy" />
+            <span class="panel-card-label">End-to-End Admission</span>
+          </a>
+          <a href="scholarship_purchase.html" class="panel-card">
+            <img src="images/Programs/Scholarship%20Program%20Application.webp" alt="" width="1080" height="1080" loading="lazy" />
+            <span class="panel-card-label">Scholarship Application</span>
+          </a>
+          <a href="visa_purchase.html" class="panel-card">
+            <img src="images/Programs/Visa%20Program.webp" alt="" width="1080" height="1080" loading="lazy" />
+            <span class="panel-card-label">Visa Sponsorship</span>
+          </a>
+          <a href="graduate_training.html" class="panel-card">
+            <img src="images/Programs/Application%20Training%20Module.webp" alt="" width="1200" height="1200" loading="lazy" />
+            <span class="panel-card-label">Global Pathways Program</span>
+          </a>
+          <a href="strategic_program.html" class="panel-card">
+            <img src="images/Programs/Strategic_training.webp" alt="" width="1080" height="1350" loading="lazy" />
+            <span class="panel-card-label">Free Strategy Session</span>
+          </a>
+        </div>
+
+        <div id="panel-programs-destination" class="panel-grid" hidden>
+          <a href="india.html" class="panel-card">
+            <img src="images/destination-images/india-photo.webp" alt="" width="900" height="602" loading="lazy" />
+            <span class="panel-card-label">India</span>
+          </a>
+          <a href="usa.html" class="panel-card">
+            <img src="images/destination-images/usa-photo.webp" alt="" width="900" height="503" loading="lazy" />
+            <span class="panel-card-label">USA</span>
+          </a>
+          <a href="china.html" class="panel-card">
+            <img src="images/destination-images/china-photo.webp" alt="" width="900" height="598" loading="lazy" />
+            <span class="panel-card-label">China</span>
+          </a>
+          <a href="germany.html" class="panel-card">
+            <img src="images/destination-images/germany-photo.webp" alt="" width="900" height="589" loading="lazy" />
+            <span class="panel-card-label">Germany</span>
+          </a>
+          <a href="australia.html" class="panel-card">
+            <img src="images/destination-images/australia-photo.webp" alt="" width="900" height="601" loading="lazy" />
+            <span class="panel-card-label">Australia</span>
+          </a>
+          <a href="ireland.html" class="panel-card">
+            <img src="images/destination-images/ireland-photo.webp" alt="" width="900" height="675" loading="lazy" />
+            <span class="panel-card-label">Ireland</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    
+
+
+    <!-- ═════════════ MOBILE TAB BAR (phone widths only) ═════════════ -->
+    <nav class="mobile-tabbar" aria-label="Mobile quick navigation">
+      <button type="button" class="mobile-tabbar-item" data-panel-target="panel-programs" aria-expanded="false" aria-controls="panel-programs">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20.7" height="25.5" viewBox="0 0 20.7 25.5" class="mobile-tabbar-icon"><g transform="translate(-62.449 -14.25)"><path d="M67.2,35h-2a2,2,0,0,0-2,2h0V17a2,2,0,0,1,2-2h2V35Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M82.4,420.667H65.2a2,2,0,0,1-2-2v0a2,2,0,0,1,2-2H82.4v4Z" transform="translate(-0.001 -381.667)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><rect width="15.2" height="20" transform="translate(67.199 15)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><line x2="7.2" transform="translate(71.199 23)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><line x2="5.6" transform="translate(71.999 27)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></g></svg>
+        <span>Programs</span>
+      </button>
+      <button type="button" class="mobile-tabbar-item" data-panel-target="panel-service" aria-expanded="false" aria-controls="panel-service">
+        <svg xmlns="http://www.w3.org/2000/svg" width="34.328" height="23.5" viewBox="0 0 34.328 23.5" class="mobile-tabbar-icon"><g transform="translate(-102.126 -721.5)"><path d="M-134.636-145.239l-6.91-2.247,16.012-5.207,16.012,5.207-6.91,2.247-9.1,2.96Z" transform="translate(244.422 874.943)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M0,0V9.438c0,1.438,4.08,2.6,9.113,2.6s9.113-1.166,9.113-2.6V0" transform="translate(109.775 729.735)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M-25.365,0a1.3,1.3,0,0,1,1.3,1.3,1.3,1.3,0,0,1-1.3,1.3,1.3,1.3,0,0,1-1.3-1.3A1.3,1.3,0,0,1-25.365,0Z" transform="translate(158.962 737.631)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M0,0V9.632" transform="translate(133.598 727.999)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M-49.121-129.318l-2.106-4.015-2.106,4.015Z" transform="translate(184.825 873.568)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></g></svg>
+        <span>Service</span>
+      </button>
+      <button type="button" class="mobile-tabbar-item" data-panel-target="panel-contact" aria-expanded="false" aria-controls="panel-contact">
+        <svg xmlns="http://www.w3.org/2000/svg" width="21.462" height="21.502" viewBox="0 0 21.462 21.502" class="mobile-tabbar-icon"><path d="M23.128,17.335v3.011a2.007,2.007,0,0,1-2.188,2.007,19.861,19.861,0,0,1-8.661-3.081,19.57,19.57,0,0,1-6.022-6.022,19.861,19.861,0,0,1-3.081-8.7,2.007,2.007,0,0,1,2-2.188H8.184a2.007,2.007,0,0,1,2.007,1.726,12.886,12.886,0,0,0,.7,2.82,2.007,2.007,0,0,1-.452,2.118L9.167,10.3a16.058,16.058,0,0,0,6.022,6.022l1.275-1.275a2.007,2.007,0,0,1,2.118-.452,12.886,12.886,0,0,0,2.82.7A2.007,2.007,0,0,1,23.128,17.335Z" transform="translate(-2.417 -1.612)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+        <span>Contact</span>
+      </button>
+      <button type="button" class="mobile-tabbar-item" data-panel-target="panel-menu" aria-expanded="false" aria-controls="panel-menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="19.788" height="16.721" viewBox="0 0 19.788 16.721" class="mobile-tabbar-icon"><g transform="translate(-310.5 -73.75)"><line x2="19.788" transform="translate(310.5 74.5)" fill="none" stroke="currentColor" stroke-width="1.5"/><line x2="19.788" transform="translate(310.5 82.111)" fill="none" stroke="currentColor" stroke-width="1.5"/><line x2="19.788" transform="translate(310.5 89.721)" fill="none" stroke="currentColor" stroke-width="1.5"/></g></svg>
+        <span>Menu</span>
+      </button>
+    </nav>
+
+    <!-- ═══════════ CONTACT — full-screen slide-in panel ═══════════ -->
+    <div id="panel-contact" class="tab-panel" role="region" aria-label="Contact">
+      <div class="tab-panel-inner">
+        <div class="contact-card">
+          <img src="images/contact_image.png" alt="Elunite admission open" class="contact-card-logo" width="1152" height="576" loading="lazy" />
+        </div>
+
+        <div class="contact-info-rows">
+          <div class="contact-info-row">
+            <span class="contact-info-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            </span>
+            <p class="contact-info-text">St. Peter's Muthiga, Waiyaki Highway, Kiambu, Kenya</p>
+          </div>
+
+          <a href="mailto:contact@elunite.com" class="contact-info-link">
+            <span class="contact-info-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+            </span>
+            <p class="contact-info-text">contact@elunite.com</p>
+          </a>
+
+          <a href="tel:+918050306510" class="contact-info-link">
+            <span class="contact-info-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            </span>
+            <p class="contact-info-text">+91 80503 06510</p>
+          </a>
+        </div>
+
+        <div class="contact-social-row">
+          <a href="https://wa.me/918050306510" class="contact-social-icon" aria-label="Chat with Elunite on WhatsApp" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#081b49"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.552 4.152 1.601 5.947L0 24l6.201-1.578C7.936 23.436 9.938 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-1.85 0-3.667-.497-5.25-1.437l-.377-.223-3.905.994.996-3.804-.246-.394A9.706 9.706 0 012.25 12C2.25 6.624 6.624 2.25 12 2.25S21.75 6.624 21.75 12 17.376 21.75 12 21.75z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/elunite" class="contact-social-icon" aria-label="Elunite on Facebook" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#081b49" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          </a>
+          <a href="https://www.instagram.com/elunite" class="contact-social-icon" aria-label="Elunite on Instagram" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#081b49" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/elunite" class="contact-social-icon" aria-label="Elunite on LinkedIn" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#081b49" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    
+
+
+<!-- ═══════════ SERVICE — full-screen slide-in panel ═══════════ -->
+    <div id="panel-service" class="tab-panel" role="region" aria-label="Service">
+      <div class="tab-panel-inner">
+        <h2 class="service-panel-headline">Study Abroad For<br />2026 Intake</h2>
+
+        <div class="service-quicklinks">
+          <a href="service.html" class="service-quicklink">Overview</a>
+          <a href="study-abroad-services.html" class="service-quicklink">Study Abroad</a>
+          <a href="visa_purchase.html" class="service-quicklink">Visa Assistance</a>
+          <a href="work-abroad-relocation.html" class="service-quicklink">Work Abroad</a>
+          <a href="scholarships-exchange-programs.html" class="service-quicklink">Scholarship Programs</a>
+          <a href="business-strategy-development.html" class="service-quicklink">Business Strategy</a>
+          <a href="mentorship-capacity-building.html" class="service-quicklink">Career Mentorship</a>
+          <a href="corporate-institutional-training.html" class="service-quicklink">Corporate Training</a>
+        </div>
+
+        <div class="service-actions">
+          <a href="service.html" class="service-btn service-btn-outline">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line><line x1="10" x2="8" y1="9" y2="9"></line></svg>
+            View Full Service Guide
+          </a>
+          <a href="contact.html" class="service-btn service-btn-primary">Book a Consultation</a>
+        </div>
+      </div>
+    </div>
+
+    
+
+    <!-- ═══════════ MENU — full-screen slide-in panel ═══════════ -->
+    <div id="panel-menu" class="tab-panel" role="region" aria-label="Site Menu">
+      <div class="tab-panel-inner">
+        <nav class="site-menu-list">
+          <a href="index.html" class="site-menu-row">Home</a>
+          <a href="about.html" class="site-menu-row">About Us</a>
+
+          <a href="destination.html" class="site-menu-row">Destinations</a>
+
+          <a href="programs.html" class="site-menu-row">Programs</a>
+
+          <a href="blog.html" class="site-menu-row">Blog</a>
+
+          <div class="site-menu-group">
+            <button type="button" class="site-menu-row site-menu-trigger" aria-expanded="false">
+              Quick Links
+              <svg class="site-menu-chevron" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg>
+            </button>
+            <div class="site-menu-sublist">
+              <a href="contact.html" class="site-menu-subitem">Contact Us</a>
+              <a href="privacy-policy.html" class="site-menu-subitem">Privacy Policy</a>
+              <a href="terms-of-service.html" class="site-menu-subitem">Terms of Service</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    
 
     <main id="main-content">
       <!-- ══════════════════════════════════════
@@ -1177,7 +1320,7 @@
                 </div>
                 <div class="contact-item">
                   <div class="contact-value">
-                    <div><strong>📍 Offices:</strong> TBD, Global Startup</div>
+                    <div><strong>📍 Offices:</strong> St. Peter’s Muthiga, Waiyaki Highway, Kiambu, Kenya</div>
                   </div>
                 </div>
               </div>
@@ -1205,6 +1348,100 @@
     </footer>
 
     <script src="script.js"></script>
+    <!-- ═══════════ LEAD CAPTURE MODAL — "Book Free Counselling" ═══════════ -->
+    <div id="lead-modal" class="lead-modal" role="dialog" aria-modal="true" aria-labelledby="lead-modal-title" hidden>
+      <div class="lead-modal-backdrop" data-lead-modal-close></div>
+      <div class="lead-modal-card">
+        <button type="button" class="lead-modal-close" aria-label="Close" data-lead-modal-close>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+        </button>
+
+        <div class="lead-modal-body">
+          <span class="lead-modal-badge">Winter 2026 Intake &mdash; Limited Slots</span>
+          <h2 id="lead-modal-title" class="lead-modal-headline">Book Your Free Call With<br /><span class="lead-modal-accent">Our Experts!</span></h2>
+          <p class="lead-modal-subtext">Get advice on countries, intakes, deadlines, tests, eligibility, and more &mdash; tailored to you.</p>
+
+          <form id="lead-modal-form" class="lead-modal-form" novalidate action="https://formspree.io/f/xkjwyrrg" method="POST">
+            <input type="hidden" name="_subject" value="New Book Free Counselling lead" />
+            <input
+              type="text"
+              name="_gotcha"
+              tabindex="-1"
+              autocomplete="off"
+              aria-hidden="true"
+              style="position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0"
+            />
+            <input type="hidden" name="timestamp" class="lead-modal-timestamp" />
+            <input type="hidden" name="source_page" class="lead-modal-source-page" />
+
+            <div class="lead-field">
+              <input type="text" id="lead-name" name="first_name" placeholder=" " required autocomplete="given-name" />
+              <label for="lead-name">First Name</label>
+              <span class="lead-field-error"></span>
+            </div>
+
+            <div class="lead-field lead-field-select">
+              <select id="lead-home-country" name="home_country" autocomplete="country" required>
+                <option value="" disabled selected hidden></option>
+                <option>Nigeria</option>
+                <option>Kenya</option>
+                <option>Ghana</option>
+                <option>Ethiopia</option>
+                <option>Uganda</option>
+                <option>Tanzania</option>
+                <option>Rwanda</option>
+                <option>Zambia</option>
+                <option>Zimbabwe</option>
+                <option>Sudan</option>
+                <option>Other</option>
+              </select>
+              <label for="lead-home-country">Your Country</label>
+              <span class="lead-field-error"></span>
+            </div>
+
+            <div class="lead-field">
+              <input type="email" id="lead-email" name="email" placeholder=" " required autocomplete="email" />
+              <label for="lead-email">Email</label>
+              <span class="lead-field-error"></span>
+            </div>
+
+            <div class="lead-field">
+              <input type="tel" id="lead-phone" name="phone" placeholder=" " required autocomplete="tel" />
+              <label for="lead-phone">Phone</label>
+              <span class="lead-field-error"></span>
+            </div>
+
+            <div class="lead-field lead-field-select">
+              <select id="lead-country" name="destination_country" autocomplete="off" required>
+                <option value="" disabled selected hidden></option>
+                <option>India</option>
+                <option>USA</option>
+                <option>China</option>
+                <option>Germany</option>
+                <option>Australia</option>
+                <option>Ireland</option>
+                <option>Other</option>
+              </select>
+              <label for="lead-country">Choose Country</label>
+              <span class="lead-field-error"></span>
+            </div>
+
+            <div class="lead-field lead-field-full">
+              <textarea id="lead-message" name="message" placeholder=" " rows="3"></textarea>
+              <label for="lead-message">Message (optional)</label>
+            </div>
+
+            <button type="submit" class="lead-modal-submit lead-field-full">Book Free Counselling</button>
+          </form>
+
+          <div id="lead-modal-success" class="lead-modal-success" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m22 4-10 10-3-3"></path></svg>
+            <p>Thanks! Our counsellor will call you within 24 hours.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- ═══════════ WHATSAPP FLOATING WIDGET ═══════════ -->
     <div class="whatsapp-widget">
       <div id="whatsapp-popup" class="whatsapp-popup" role="dialog" aria-label="Chat with Elunite on WhatsApp" aria-hidden="true">
@@ -1245,6 +1482,57 @@
           />
         </svg>
       </button>
+    </div>
+  
+    <button type="button" id="enquiry-tab" class="get-in-touch-tab" aria-label="Open enquiry form" aria-expanded="false" aria-controls="enquiry-panel"><span>Get in Touch</span></button>
+
+    <div id="enquiry-panel" class="enquiry-panel" role="dialog" aria-label="Enquiry form">
+      <div class="enquiry-header">
+        <h3 class="enquiry-heading">Have a Query?</h3>
+        <p class="enquiry-subtext">Fill in your details and our team will get back to you shortly.</p>
+      </div>
+
+      <form id="enquiry-form" class="enquiry-form" action="https://formspree.io/f/xkjwyrrg" method="POST">
+        <input type="hidden" name="_subject" value="New enquiry from elunite.com side panel" />
+        <input
+          type="text"
+          name="_gotcha"
+          tabindex="-1"
+          autocomplete="off"
+          aria-hidden="true"
+          style="position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0"
+        />
+
+        <div class="enquiry-field">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          <input type="text" name="name" placeholder="Enter Your Full Name" autocomplete="name" required />
+        </div>
+
+        <div class="enquiry-field">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+          <input type="email" name="email" placeholder="Enter Your Email ID" autocomplete="email" required />
+        </div>
+
+        <div class="enquiry-field enquiry-field-phone">
+          <select name="country_code" class="enquiry-country-code" aria-label="Country code" autocomplete="tel-country-code">
+            <option value="+91" selected>+91</option>
+            <option value="+254">+254</option>
+            <option value="+234">+234</option>
+            <option value="+233">+233</option>
+            <option value="+251">+251</option>
+            <option value="+249">+249</option>
+            <option value="+256">+256</option>
+            <option value="+255">+255</option>
+            <option value="+27">+27</option>
+            <option value="+44">+44</option>
+            <option value="+1">+1</option>
+          </select>
+          <input type="tel" name="phone" placeholder="Your Mobile Number" autocomplete="tel-national" required />
+        </div>
+
+        <button type="submit" class="enquiry-submit">Submit</button>
+        <p class="enquiry-privacy">We respect your privacy and use your information only to respond to your enquiry.</p>
+      </form>
     </div>
   </body>
 </html>

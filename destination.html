@@ -17,27 +17,54 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="48x48" href="images/favicon/favicon-48x48.png" />
-    <link rel="icon" type="image/png" sizes="96x96" href="images/favicon/favicon-96x96.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="images/favicon/android-chrome-192x192.png" />
-    <link rel="icon" type="image/png" sizes="512x512" href="images/favicon/android-chrome-512x512.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="images/favicon/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="images/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="48x48"
+      href="images/favicon/favicon-48x48.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="images/favicon/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="images/favicon/android-chrome-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="images/favicon/android-chrome-512x512.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="images/favicon/apple-touch-icon.png"
+    />
     <link rel="manifest" href="site.webmanifest" />
     <meta name="theme-color" content="#081b49" />
 
     <!-- ═══ STYLESHEETS ═══ -->
     <link rel="preload" href="styles.css" as="style" />
     <link rel="stylesheet" href="styles.css" />
-    <link
-      rel="preload"
-      href="fonts/bebas-neue-v16-latin-regular.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-
+    
     <!-- Other Links -->
     <link rel="canonical" href="https://www.elunite.com/destination.html" />
     <!--Lucide Icons Script  -->
@@ -72,13 +99,49 @@
 
   <body>
     <!-- ═══════════ SITE PRELOADER ═══════════ -->
-    <noscript><style>.site-preloader{display:none!important;}</style></noscript>
-    <div id="site-preloader" class="site-preloader" role="status" aria-live="polite" aria-label="Loading">
+    <noscript
+      ><style>
+        .site-preloader {
+          display: none !important;
+        }
+      </style></noscript
+    >
+    <div
+      id="site-preloader"
+      class="site-preloader"
+      role="status"
+      aria-live="polite"
+      aria-label="Loading"
+    >
       <div class="preloader-inner">
-        <img src="images/preloader-logo.webp" alt="Elunite" class="preloader-logo" width="152" height="152" />
+        <img
+          src="images/preloader-logo.webp"
+          alt="Elunite"
+          class="preloader-logo"
+          width="152"
+          height="152"
+        />
         <div class="preloader-spinner" aria-hidden="true"></div>
         <div class="preloader-security">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="shield-check" aria-hidden="true" class="lucide lucide-shield-check"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            data-lucide="shield-check"
+            aria-hidden="true"
+            class="lucide lucide-shield-check"
+          >
+            <path
+              d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+            ></path>
+            <path d="m9 12 2 2 4-4"></path>
+          </svg>
           <span>Secure Connection &middot; SSL / HTTPS Encrypted</span>
         </div>
       </div>
@@ -94,7 +157,8 @@
           setTimeout(function () {
             preloader.classList.add("site-preloader-hidden");
             setTimeout(function () {
-              if (preloader.parentNode) preloader.parentNode.removeChild(preloader);
+              if (preloader.parentNode)
+                preloader.parentNode.removeChild(preloader);
             }, 500);
           }, wait);
         }
@@ -136,168 +200,619 @@
             <div class="nav-links">
               <a href="index.html" class="nav-link">Home</a>
               <a href="about.html" class="nav-link">About Us</a>
-              <div class="nav-dropdown nav-dropdown-mega nav-dropdown-services" id="nav-services-dropdown">
-                <button type="button" class="nav-link nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+              <div
+                class="nav-dropdown nav-dropdown-mega nav-dropdown-services"
+                id="nav-services-dropdown"
+              >
+                <button
+                  type="button"
+                  class="nav-link nav-dropdown-trigger"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
                   Services
                 </button>
                 <div class="nav-dropdown-menu" role="menu">
-                  <span class="nav-dropdown-menu-arrow" aria-hidden="true"></span>
+                  <span
+                    class="nav-dropdown-menu-arrow"
+                    aria-hidden="true"
+                  ></span>
                   <div class="nav-dropdown-menu-body services-menu">
                     <div class="services-menu-main">
                       <div class="services-menu-search">
-                        <input type="text" id="services-menu-search-input" class="services-menu-search-input" placeholder="Search services..." autocomplete="off" aria-label="Search services" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="services-menu-search-results" />
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="search" class="lucide lucide-search services-menu-search-icon"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
-                        <div class="services-menu-search-results" id="services-menu-search-results" role="listbox" aria-label="Service search results"></div>
+                        <input
+                          type="text"
+                          id="services-menu-search-input"
+                          class="services-menu-search-input"
+                          placeholder="Search services..."
+                          autocomplete="off"
+                          aria-label="Search services"
+                          role="combobox"
+                          aria-expanded="false"
+                          aria-autocomplete="list"
+                          aria-controls="services-menu-search-results"
+                        />
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          data-lucide="search"
+                          class="lucide lucide-search services-menu-search-icon"
+                        >
+                          <circle cx="11" cy="11" r="8"></circle>
+                          <path d="m21 21-4.3-4.3"></path>
+                        </svg>
+                        <div
+                          class="services-menu-search-results"
+                          id="services-menu-search-results"
+                          role="listbox"
+                          aria-label="Service search results"
+                        ></div>
                       </div>
                       <div class="services-menu-stat">
                         <div class="services-menu-stat-number">2500+</div>
-                        <div class="services-menu-stat-text">Successful admissions guided end-to-end, from application to visa.</div>
-                        <a href="service.html" class="services-menu-stat-arrow" aria-label="View all services">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" class="lucide lucide-arrow-right"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                        <div class="services-menu-stat-text">
+                          Successful admissions guided end-to-end, from
+                          application to visa.
+                        </div>
+                        <a
+                          href="service.html"
+                          class="services-menu-stat-arrow"
+                          aria-label="View all services"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            data-lucide="arrow-right"
+                            class="lucide lucide-arrow-right"
+                          >
+                            <path d="M5 12h14"></path>
+                            <path d="m12 5 7 7-7 7"></path>
+                          </svg>
                         </a>
                       </div>
                       <div class="services-menu-grid">
                         <div class="services-menu-grid-tile">
-                          <img src="images/nav-menu/study-abroad.jpg" alt="" class="mega-tile-bg" width="700" height="467" loading="lazy" />
+                          <img
+                            src="images/nav-menu/study-abroad.jpg"
+                            alt=""
+                            class="mega-tile-bg"
+                            width="700"
+                            height="467"
+                            loading="lazy"
+                          />
                           <div class="mega-tile-overlay"></div>
-                          <span class="services-menu-grid-tile-label">Study Abroad</span>
+                          <span class="services-menu-grid-tile-label"
+                            >Study Abroad</span
+                          >
                         </div>
                         <div class="services-menu-grid-tile">
-                          <img src="images/nav-menu/passport-visa.jpg" alt="" class="mega-tile-bg" width="700" height="1050" loading="lazy" />
+                          <img
+                            src="images/nav-menu/passport-visa.jpg"
+                            alt=""
+                            class="mega-tile-bg"
+                            width="700"
+                            height="1050"
+                            loading="lazy"
+                          />
                           <div class="mega-tile-overlay"></div>
-                          <span class="services-menu-grid-tile-label">Visa Assistance</span>
+                          <span class="services-menu-grid-tile-label"
+                            >Visa Assistance</span
+                          >
                         </div>
                         <div class="services-menu-grid-tile">
-                          <img src="images/nav-menu/work-abroad-office.jpg" alt="" class="mega-tile-bg" width="700" height="467" loading="lazy" />
+                          <img
+                            src="images/nav-menu/work-abroad-office.jpg"
+                            alt=""
+                            class="mega-tile-bg"
+                            width="700"
+                            height="467"
+                            loading="lazy"
+                          />
                           <div class="mega-tile-overlay"></div>
-                          <span class="services-menu-grid-tile-label">Work Abroad</span>
+                          <span class="services-menu-grid-tile-label"
+                            >Work Abroad</span
+                          >
                         </div>
                         <div class="services-menu-grid-tile">
-                          <img src="images/nav-menu/corporate-training.jpg" alt="" class="mega-tile-bg" width="700" height="467" loading="lazy" />
+                          <img
+                            src="images/nav-menu/corporate-training.jpg"
+                            alt=""
+                            class="mega-tile-bg"
+                            width="700"
+                            height="467"
+                            loading="lazy"
+                          />
                           <div class="mega-tile-overlay"></div>
-                          <span class="services-menu-grid-tile-label">Corporate Training</span>
+                          <span class="services-menu-grid-tile-label"
+                            >Corporate Training</span
+                          >
                         </div>
                       </div>
                     </div>
                     <div class="services-menu-sidebar">
-                      <h4 class="services-menu-sidebar-title">Explore All Services</h4>
+                      <h4 class="services-menu-sidebar-title">
+                        Explore All Services
+                      </h4>
                       <div class="services-menu-sidebar-columns">
                         <div class="services-menu-sidebar-col">
-                          <a href="study-abroad-services.html" class="services-menu-sidebar-link">Study Abroad</a>
-                          <a href="visa_purchase.html" class="services-menu-sidebar-link">Visa Assistance</a>
-                          <a href="work-abroad-relocation.html" class="services-menu-sidebar-link">Work Abroad</a>
-                          <a href="scholarships-exchange-programs.html" class="services-menu-sidebar-link">Scholarship Programs</a>
+                          <a
+                            href="study-abroad-services.html"
+                            class="services-menu-sidebar-link"
+                            >Study Abroad</a
+                          >
+                          <a
+                            href="visa_purchase.html"
+                            class="services-menu-sidebar-link"
+                            >Visa Assistance</a
+                          >
+                          <a
+                            href="work-abroad-relocation.html"
+                            class="services-menu-sidebar-link"
+                            >Work Abroad</a
+                          >
+                          <a
+                            href="scholarships-exchange-programs.html"
+                            class="services-menu-sidebar-link"
+                            >Scholarship Programs</a
+                          >
                         </div>
                         <div class="services-menu-sidebar-col">
-                          <a href="business-strategy-development.html" class="services-menu-sidebar-link">Business Strategy</a>
-                          <a href="mentorship-capacity-building.html" class="services-menu-sidebar-link">Career Mentorship</a>
-                          <a href="corporate-institutional-training.html" class="services-menu-sidebar-link">Corporate Training</a>
-                          <a href="service.html" class="services-menu-sidebar-link services-menu-viewall">View all services →</a>
+                          <a
+                            href="business-strategy-development.html"
+                            class="services-menu-sidebar-link"
+                            >Business Strategy</a
+                          >
+                          <a
+                            href="mentorship-capacity-building.html"
+                            class="services-menu-sidebar-link"
+                            >Career Mentorship</a
+                          >
+                          <a
+                            href="corporate-institutional-training.html"
+                            class="services-menu-sidebar-link"
+                            >Corporate Training</a
+                          >
+                          <a
+                            href="service.html"
+                            class="services-menu-sidebar-link services-menu-viewall"
+                            >View all services →</a
+                          >
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="nav-dropdown nav-dropdown-mega" id="nav-destinations-dropdown">
-                <button type="button" class="nav-link nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+              <div
+                class="nav-dropdown nav-dropdown-mega"
+                id="nav-destinations-dropdown"
+              >
+                <button
+                  type="button"
+                  class="nav-link nav-dropdown-trigger"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
                   Destinations
                 </button>
                 <div class="nav-dropdown-menu" role="menu">
-                  <span class="nav-dropdown-menu-arrow" aria-hidden="true"></span>
+                  <span
+                    class="nav-dropdown-menu-arrow"
+                    aria-hidden="true"
+                  ></span>
                   <div class="nav-dropdown-menu-body mega-menu">
-                  <div class="mega-menu-links">
-                    <a href="india.html" class="nav-dropdown-item" role="menuitem">India</a>
-                    <a href="usa.html" class="nav-dropdown-item" role="menuitem">USA</a>
-                    <a href="china.html" class="nav-dropdown-item" role="menuitem">China</a>
-                    <a href="germany.html" class="nav-dropdown-item" role="menuitem">Germany</a>
-                    <a href="australia.html" class="nav-dropdown-item" role="menuitem">Australia</a>
-                    <a href="ireland.html" class="nav-dropdown-item" role="menuitem">Ireland</a>
-                    <a href="destination.html" class="nav-dropdown-item nav-dropdown-viewall" role="menuitem">View all destinations →</a>
-                  </div>
-                  <div class="mega-menu-panel">
-                    <div class="mega-menu-banner">
-                      <img src="images/nav-menu/world-map.jpg" alt="" class="mega-tile-bg" width="700" height="467" loading="lazy" />
-                      <div class="mega-tile-overlay"></div>
-                      <h4 class="mega-menu-banner-title">Explore Study Destinations Worldwide</h4>
+                    <div class="mega-menu-links">
+                      <a
+                        href="india.html"
+                        class="nav-dropdown-item"
+                        role="menuitem"
+                        >India</a
+                      >
+                      <a
+                        href="usa.html"
+                        class="nav-dropdown-item"
+                        role="menuitem"
+                        >USA</a
+                      >
+                      <a
+                        href="china.html"
+                        class="nav-dropdown-item"
+                        role="menuitem"
+                        >China</a
+                      >
+                      <a
+                        href="germany.html"
+                        class="nav-dropdown-item"
+                        role="menuitem"
+                        >Germany</a
+                      >
+                      <a
+                        href="australia.html"
+                        class="nav-dropdown-item"
+                        role="menuitem"
+                        >Australia</a
+                      >
+                      <a
+                        href="ireland.html"
+                        class="nav-dropdown-item"
+                        role="menuitem"
+                        >Ireland</a
+                      >
+                      <a
+                        href="destination.html"
+                        class="nav-dropdown-item nav-dropdown-viewall"
+                        role="menuitem"
+                        >View all destinations →</a
+                      >
                     </div>
-                                          <div class="mega-menu-grid-tile">
-                        <img src="images/nav-menu/study-destinations.jpg" alt="" class="mega-tile-bg" width="700" height="467" loading="lazy" />
+                    <div class="mega-menu-panel">
+                      <div class="mega-menu-banner">
+                        <img
+                          src="images/nav-menu/world-map.jpg"
+                          alt=""
+                          class="mega-tile-bg"
+                          width="700"
+                          height="467"
+                          loading="lazy"
+                        />
                         <div class="mega-tile-overlay"></div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="globe" class="lucide lucide-globe mega-menu-grid-tile-icon"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
-                        <span class="mega-menu-grid-tile-label">6 Study Destinations</span>
+                        <h4 class="mega-menu-banner-title">
+                          Explore Study Destinations Worldwide
+                        </h4>
                       </div>
                       <div class="mega-menu-grid-tile">
-                        <img src="images/nav-menu/passport-visa.jpg" alt="" class="mega-tile-bg" width="700" height="1050" loading="lazy" />
+                        <img
+                          src="images/nav-menu/study-destinations.jpg"
+                          alt=""
+                          class="mega-tile-bg"
+                          width="700"
+                          height="467"
+                          loading="lazy"
+                        />
                         <div class="mega-tile-overlay"></div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="shield-check" class="lucide lucide-shield-check mega-menu-grid-tile-icon"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>
-                        <span class="mega-menu-grid-tile-label">Visa Success</span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          data-lucide="globe"
+                          class="lucide lucide-globe mega-menu-grid-tile-icon"
+                        >
+                          <circle cx="12" cy="12" r="10"></circle>
+                          <path
+                            d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"
+                          ></path>
+                          <path d="M2 12h20"></path>
+                        </svg>
+                        <span class="mega-menu-grid-tile-label"
+                          >6 Study Destinations</span
+                        >
                       </div>
                       <div class="mega-menu-grid-tile">
-                        <img src="images/nav-menu/university-campus.jpg" alt="" class="mega-tile-bg" width="700" height="451" loading="lazy" />
+                        <img
+                          src="images/nav-menu/passport-visa.jpg"
+                          alt=""
+                          class="mega-tile-bg"
+                          width="700"
+                          height="1050"
+                          loading="lazy"
+                        />
                         <div class="mega-tile-overlay"></div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="graduation-cap" class="lucide lucide-graduation-cap mega-menu-grid-tile-icon"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"></path><path d="M22 10v6"></path><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"></path></svg>
-                        <span class="mega-menu-grid-tile-label">Top Universities</span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          data-lucide="shield-check"
+                          class="lucide lucide-shield-check mega-menu-grid-tile-icon"
+                        >
+                          <path
+                            d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+                          ></path>
+                          <path d="m9 12 2 2 4-4"></path>
+                        </svg>
+                        <span class="mega-menu-grid-tile-label"
+                          >Visa Success</span
+                        >
                       </div>
                       <div class="mega-menu-grid-tile">
-                        <img src="images/nav-menu/global-community.jpg" alt="" class="mega-tile-bg" width="700" height="1050" loading="lazy" />
+                        <img
+                          src="images/nav-menu/university-campus.jpg"
+                          alt=""
+                          class="mega-tile-bg"
+                          width="700"
+                          height="451"
+                          loading="lazy"
+                        />
                         <div class="mega-tile-overlay"></div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="users" class="lucide lucide-users mega-menu-grid-tile-icon"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                        <span class="mega-menu-grid-tile-label">Global Community</span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          data-lucide="graduation-cap"
+                          class="lucide lucide-graduation-cap mega-menu-grid-tile-icon"
+                        >
+                          <path
+                            d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"
+                          ></path>
+                          <path d="M22 10v6"></path>
+                          <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"></path>
+                        </svg>
+                        <span class="mega-menu-grid-tile-label"
+                          >Top Universities</span
+                        >
                       </div>
-                    
+                      <div class="mega-menu-grid-tile">
+                        <img
+                          src="images/nav-menu/global-community.jpg"
+                          alt=""
+                          class="mega-tile-bg"
+                          width="700"
+                          height="1050"
+                          loading="lazy"
+                        />
+                        <div class="mega-tile-overlay"></div>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          data-lucide="users"
+                          class="lucide lucide-users mega-menu-grid-tile-icon"
+                        >
+                          <path
+                            d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"
+                          ></path>
+                          <circle cx="9" cy="7" r="4"></circle>
+                          <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                          <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                        <span class="mega-menu-grid-tile-label"
+                          >Global Community</span
+                        >
+                      </div>
+                    </div>
                   </div>
-                </div>
                 </div>
               </div>
-              <div class="nav-dropdown nav-dropdown-mega" id="nav-programs-dropdown">
-                <button type="button" class="nav-link nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+              <div
+                class="nav-dropdown nav-dropdown-mega"
+                id="nav-programs-dropdown"
+              >
+                <button
+                  type="button"
+                  class="nav-link nav-dropdown-trigger"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
                   Programs
                 </button>
                 <div class="nav-dropdown-menu" role="menu">
-                  <span class="nav-dropdown-menu-arrow" aria-hidden="true"></span>
+                  <span
+                    class="nav-dropdown-menu-arrow"
+                    aria-hidden="true"
+                  ></span>
                   <div class="nav-dropdown-menu-body mega-menu">
-                  <div class="mega-menu-links">
-                    <a href="end_to_end_purchase.html" class="nav-dropdown-item" role="menuitem">End-to-End Admission</a>
-                    <a href="scholarship_purchase.html" class="nav-dropdown-item" role="menuitem">Scholarship Application</a>
-                    <a href="visa_purchase.html" class="nav-dropdown-item" role="menuitem">Visa Sponsorship</a>
-                    <a href="graduate_training.html" class="nav-dropdown-item" role="menuitem">Global Pathways Program</a>
-                    <a href="strategic_program.html" class="nav-dropdown-item" role="menuitem">Free Strategy Session</a>
-                    <a href="programs.html" class="nav-dropdown-item nav-dropdown-viewall" role="menuitem">View all programs →</a>
-                  </div>
-                  <div class="mega-menu-panel">
-                    <div class="mega-menu-banner">
-                      <img src="images/nav-menu/decision-path.jpg" alt="" class="mega-tile-bg" width="700" height="471" loading="lazy" />
-                      <div class="mega-tile-overlay"></div>
-                      <h4 class="mega-menu-banner-title">Find The Right Program For You</h4>
+                    <div class="mega-menu-links">
+                      <a
+                        href="end_to_end_purchase.html"
+                        class="nav-dropdown-item"
+                        role="menuitem"
+                        >End-to-End Admission</a
+                      >
+                      <a
+                        href="scholarship_purchase.html"
+                        class="nav-dropdown-item"
+                        role="menuitem"
+                        >Scholarship Application</a
+                      >
+                      <a
+                        href="visa_purchase.html"
+                        class="nav-dropdown-item"
+                        role="menuitem"
+                        >Visa Sponsorship</a
+                      >
+                      <a
+                        href="graduate_training.html"
+                        class="nav-dropdown-item"
+                        role="menuitem"
+                        >Global Pathways Program</a
+                      >
+                      <a
+                        href="strategic_program.html"
+                        class="nav-dropdown-item"
+                        role="menuitem"
+                        >Free Strategy Session</a
+                      >
+                      <a
+                        href="programs.html"
+                        class="nav-dropdown-item nav-dropdown-viewall"
+                        role="menuitem"
+                        >View all programs →</a
+                      >
                     </div>
-                                          <div class="mega-menu-grid-tile">
-                        <img src="images/nav-menu/document-support.jpg" alt="" class="mega-tile-bg" width="700" height="467" loading="lazy" />
+                    <div class="mega-menu-panel">
+                      <div class="mega-menu-banner">
+                        <img
+                          src="images/nav-menu/decision-path.jpg"
+                          alt=""
+                          class="mega-tile-bg"
+                          width="700"
+                          height="471"
+                          loading="lazy"
+                        />
                         <div class="mega-tile-overlay"></div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="file-check" class="lucide lucide-file-check mega-menu-grid-tile-icon"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="m9 15 2 2 4-4"></path></svg>
-                        <span class="mega-menu-grid-tile-label">End-to-End Support</span>
+                        <h4 class="mega-menu-banner-title">
+                          Find The Right Program For You
+                        </h4>
                       </div>
                       <div class="mega-menu-grid-tile">
-                        <img src="images/nav-menu/graduation-scholarship.jpg" alt="" class="mega-tile-bg" width="700" height="467" loading="lazy" />
+                        <img
+                          src="images/nav-menu/document-support.jpg"
+                          alt=""
+                          class="mega-tile-bg"
+                          width="700"
+                          height="467"
+                          loading="lazy"
+                        />
                         <div class="mega-tile-overlay"></div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="award" class="lucide lucide-award mega-menu-grid-tile-icon"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path><circle cx="12" cy="8" r="6"></circle></svg>
-                        <span class="mega-menu-grid-tile-label">Scholarships</span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          data-lucide="file-check"
+                          class="lucide lucide-file-check mega-menu-grid-tile-icon"
+                        >
+                          <path
+                            d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                          ></path>
+                          <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+                          <path d="m9 15 2 2 4-4"></path>
+                        </svg>
+                        <span class="mega-menu-grid-tile-label"
+                          >End-to-End Support</span
+                        >
                       </div>
                       <div class="mega-menu-grid-tile">
-                        <img src="images/nav-menu/passport-visa.jpg" alt="" class="mega-tile-bg" width="700" height="1050" loading="lazy" />
+                        <img
+                          src="images/nav-menu/graduation-scholarship.jpg"
+                          alt=""
+                          class="mega-tile-bg"
+                          width="700"
+                          height="467"
+                          loading="lazy"
+                        />
                         <div class="mega-tile-overlay"></div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="plane" class="lucide lucide-plane mega-menu-grid-tile-icon"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"></path></svg>
-                        <span class="mega-menu-grid-tile-label">Visa Sponsorship</span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          data-lucide="award"
+                          class="lucide lucide-award mega-menu-grid-tile-icon"
+                        >
+                          <path
+                            d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"
+                          ></path>
+                          <circle cx="12" cy="8" r="6"></circle>
+                        </svg>
+                        <span class="mega-menu-grid-tile-label"
+                          >Scholarships</span
+                        >
                       </div>
                       <div class="mega-menu-grid-tile">
-                        <img src="images/nav-menu/mentorship.jpg" alt="" class="mega-tile-bg" width="700" height="467" loading="lazy" />
+                        <img
+                          src="images/nav-menu/passport-visa.jpg"
+                          alt=""
+                          class="mega-tile-bg"
+                          width="700"
+                          height="1050"
+                          loading="lazy"
+                        />
                         <div class="mega-tile-overlay"></div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="users" class="lucide lucide-users mega-menu-grid-tile-icon"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                        <span class="mega-menu-grid-tile-label">1:1 Mentorship</span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          data-lucide="plane"
+                          class="lucide lucide-plane mega-menu-grid-tile-icon"
+                        >
+                          <path
+                            d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"
+                          ></path>
+                        </svg>
+                        <span class="mega-menu-grid-tile-label"
+                          >Visa Sponsorship</span
+                        >
                       </div>
-                    
+                      <div class="mega-menu-grid-tile">
+                        <img
+                          src="images/nav-menu/mentorship.jpg"
+                          alt=""
+                          class="mega-tile-bg"
+                          width="700"
+                          height="467"
+                          loading="lazy"
+                        />
+                        <div class="mega-tile-overlay"></div>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          data-lucide="users"
+                          class="lucide lucide-users mega-menu-grid-tile-icon"
+                        >
+                          <path
+                            d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"
+                          ></path>
+                          <circle cx="9" cy="7" r="4"></circle>
+                          <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                          <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                        <span class="mega-menu-grid-tile-label"
+                          >1:1 Mentorship</span
+                        >
+                      </div>
+                    </div>
                   </div>
-                </div>
                 </div>
               </div>
               <a href="blog.html" class="nav-link">Blogs</a>
@@ -312,7 +827,24 @@
               class="cta-button"
               aria-label="Call Elunite at +91 8050306510"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="phone" style="width: 16px; height: 16px; margin-right: 8px" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                data-lucide="phone"
+                style="width: 16px; height: 16px; margin-right: 8px"
+                class="lucide lucide-phone"
+              >
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                ></path>
+              </svg>
               CALL NOW
             </a>
           </div>
@@ -325,64 +857,72 @@
               aria-label="Toggle mobile menu"
               aria-expanded="false"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="menu" class="lucide lucide-menu menu-icon"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="x" class="lucide lucide-x close-icon hidden"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                data-lucide="menu"
+                class="lucide lucide-menu menu-icon"
+              >
+                <line x1="4" x2="20" y1="12" y2="12"></line>
+                <line x1="4" x2="20" y1="6" y2="6"></line>
+                <line x1="4" x2="20" y1="18" y2="18"></line>
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                data-lucide="x"
+                class="lucide lucide-x close-icon hidden"
+              >
+                <path d="M18 6 6 18"></path>
+                <path d="m6 6 12 12"></path>
+              </svg>
             </button>
           </div>
         </div>
 
         <!-- Mobile Navigation -->
         <div id="mobile-menu" class="mobile-menu hidden">
-          <button type="button" id="mobile-menu-close" class="mobile-menu-close" aria-label="Close menu">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="x" class="lucide lucide-x"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+          <button
+            type="button"
+            id="mobile-menu-close"
+            class="mobile-menu-close"
+            aria-label="Close menu"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              data-lucide="x"
+              class="lucide lucide-x"
+            >
+              <path d="M18 6 6 18"></path>
+              <path d="m6 6 12 12"></path>
+            </svg>
           </button>
           <div class="mobile-menu-content">
             <a href="index.html" class="mobile-nav-link">Home</a>
             <a href="about.html" class="mobile-nav-link">About Us</a>
-            <div class="mobile-nav-group">
-              <button type="button" class="mobile-nav-link mobile-nav-dropdown-trigger" aria-expanded="false">
-                Services
-              </button>
-              <div class="mobile-nav-submenu">
-                <a href="study-abroad-services.html" class="mobile-nav-sublink">Study Abroad</a>
-                <a href="visa_purchase.html" class="mobile-nav-sublink">Visa Assistance</a>
-                <a href="work-abroad-relocation.html" class="mobile-nav-sublink">Work Abroad</a>
-                <a href="scholarships-exchange-programs.html" class="mobile-nav-sublink">Scholarship Programs</a>
-                <a href="business-strategy-development.html" class="mobile-nav-sublink">Business Strategy</a>
-                <a href="mentorship-capacity-building.html" class="mobile-nav-sublink">Career Mentorship</a>
-                <a href="corporate-institutional-training.html" class="mobile-nav-sublink">Corporate Training</a>
-                <a href="service.html" class="mobile-nav-sublink">View all services →</a>
-              </div>
-            </div>
-            <div class="mobile-nav-group">
-              <button type="button" class="mobile-nav-link mobile-nav-dropdown-trigger" aria-expanded="false">
-                Destinations
-              </button>
-              <div class="mobile-nav-submenu">
-                <a href="india.html" class="mobile-nav-sublink">India</a>
-                <a href="usa.html" class="mobile-nav-sublink">USA</a>
-                <a href="china.html" class="mobile-nav-sublink">China</a>
-                <a href="germany.html" class="mobile-nav-sublink">Germany</a>
-                <a href="australia.html" class="mobile-nav-sublink">Australia</a>
-                <a href="ireland.html" class="mobile-nav-sublink">Ireland</a>
-                <a href="destination.html" class="mobile-nav-sublink">View all destinations →</a>
-              </div>
-            </div>
-            <div class="mobile-nav-group">
-              <button type="button" class="mobile-nav-link mobile-nav-dropdown-trigger" aria-expanded="false">
-                Programs
-              </button>
-              <div class="mobile-nav-submenu">
-                <a href="end_to_end_purchase.html" class="mobile-nav-sublink">End-to-End Admission</a>
-                <a href="scholarship_purchase.html" class="mobile-nav-sublink">Scholarship Application</a>
-                <a href="visa_purchase.html" class="mobile-nav-sublink">Visa Sponsorship</a>
-                <a href="graduate_training.html" class="mobile-nav-sublink">Global Pathways Program</a>
-                <a href="strategic_program.html" class="mobile-nav-sublink">Free Strategy Session</a>
-                <a href="programs.html" class="mobile-nav-sublink">View all programs →</a>
-              </div>
-            </div>
             <a href="blog.html" class="mobile-nav-link">Blogs</a>
-            <a href="contact.html" class="mobile-nav-link">Contact</a>
             <div class="mobile-cta">
               <a href="tel:+918050306510" class="cta-button-full">CALL NOW</a>
             </div>
@@ -391,43 +931,252 @@
       </div>
     </nav>
 
+<!-- ═══════════ PROGRAMS — full-screen slide-in panel ═══════════ -->
+    <div id="panel-programs" class="tab-panel" role="region" aria-label="Programs">
+      <div class="tab-panel-inner">
+        <p class="panel-eyebrow">Browse By</p>
+
+        <div class="panel-segmented" role="tablist">
+          <button type="button" class="panel-segment active" data-segment-target="panel-programs-category" role="tab" aria-selected="true">By Category</button>
+          <button type="button" class="panel-segment" data-segment-target="panel-programs-destination" role="tab" aria-selected="false">By Destination</button>
+        </div>
+
+        <div id="panel-programs-category" class="panel-grid">
+          <a href="end_to_end_purchase.html" class="panel-card">
+            <img src="images/Programs/End-to-End%20Application%20Program.webp" alt="" width="1080" height="1080" loading="lazy" />
+            <span class="panel-card-label">End-to-End Admission</span>
+          </a>
+          <a href="scholarship_purchase.html" class="panel-card">
+            <img src="images/Programs/Scholarship%20Program%20Application.webp" alt="" width="1080" height="1080" loading="lazy" />
+            <span class="panel-card-label">Scholarship Application</span>
+          </a>
+          <a href="visa_purchase.html" class="panel-card">
+            <img src="images/Programs/Visa%20Program.webp" alt="" width="1080" height="1080" loading="lazy" />
+            <span class="panel-card-label">Visa Sponsorship</span>
+          </a>
+          <a href="graduate_training.html" class="panel-card">
+            <img src="images/Programs/Application%20Training%20Module.webp" alt="" width="1200" height="1200" loading="lazy" />
+            <span class="panel-card-label">Global Pathways Program</span>
+          </a>
+          <a href="strategic_program.html" class="panel-card">
+            <img src="images/Programs/Strategic_training.webp" alt="" width="1080" height="1350" loading="lazy" />
+            <span class="panel-card-label">Free Strategy Session</span>
+          </a>
+        </div>
+
+        <div id="panel-programs-destination" class="panel-grid" hidden>
+          <a href="india.html" class="panel-card">
+            <img src="images/destination-images/india-photo.webp" alt="" width="900" height="602" loading="lazy" />
+            <span class="panel-card-label">India</span>
+          </a>
+          <a href="usa.html" class="panel-card">
+            <img src="images/destination-images/usa-photo.webp" alt="" width="900" height="503" loading="lazy" />
+            <span class="panel-card-label">USA</span>
+          </a>
+          <a href="china.html" class="panel-card">
+            <img src="images/destination-images/china-photo.webp" alt="" width="900" height="598" loading="lazy" />
+            <span class="panel-card-label">China</span>
+          </a>
+          <a href="germany.html" class="panel-card">
+            <img src="images/destination-images/germany-photo.webp" alt="" width="900" height="589" loading="lazy" />
+            <span class="panel-card-label">Germany</span>
+          </a>
+          <a href="australia.html" class="panel-card">
+            <img src="images/destination-images/australia-photo.webp" alt="" width="900" height="601" loading="lazy" />
+            <span class="panel-card-label">Australia</span>
+          </a>
+          <a href="ireland.html" class="panel-card">
+            <img src="images/destination-images/ireland-photo.webp" alt="" width="900" height="675" loading="lazy" />
+            <span class="panel-card-label">Ireland</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    
+
+
+    <!-- ═════════════ MOBILE TAB BAR (phone widths only) ═════════════ -->
+    <nav class="mobile-tabbar" aria-label="Mobile quick navigation">
+      <button type="button" class="mobile-tabbar-item" data-panel-target="panel-programs" aria-expanded="false" aria-controls="panel-programs">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20.7" height="25.5" viewBox="0 0 20.7 25.5" class="mobile-tabbar-icon"><g transform="translate(-62.449 -14.25)"><path d="M67.2,35h-2a2,2,0,0,0-2,2h0V17a2,2,0,0,1,2-2h2V35Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M82.4,420.667H65.2a2,2,0,0,1-2-2v0a2,2,0,0,1,2-2H82.4v4Z" transform="translate(-0.001 -381.667)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><rect width="15.2" height="20" transform="translate(67.199 15)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><line x2="7.2" transform="translate(71.199 23)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><line x2="5.6" transform="translate(71.999 27)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></g></svg>
+        <span>Programs</span>
+      </button>
+      <button type="button" class="mobile-tabbar-item" data-panel-target="panel-service" aria-expanded="false" aria-controls="panel-service">
+        <svg xmlns="http://www.w3.org/2000/svg" width="34.328" height="23.5" viewBox="0 0 34.328 23.5" class="mobile-tabbar-icon"><g transform="translate(-102.126 -721.5)"><path d="M-134.636-145.239l-6.91-2.247,16.012-5.207,16.012,5.207-6.91,2.247-9.1,2.96Z" transform="translate(244.422 874.943)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M0,0V9.438c0,1.438,4.08,2.6,9.113,2.6s9.113-1.166,9.113-2.6V0" transform="translate(109.775 729.735)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M-25.365,0a1.3,1.3,0,0,1,1.3,1.3,1.3,1.3,0,0,1-1.3,1.3,1.3,1.3,0,0,1-1.3-1.3A1.3,1.3,0,0,1-25.365,0Z" transform="translate(158.962 737.631)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M0,0V9.632" transform="translate(133.598 727.999)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M-49.121-129.318l-2.106-4.015-2.106,4.015Z" transform="translate(184.825 873.568)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></g></svg>
+        <span>Service</span>
+      </button>
+      <button type="button" class="mobile-tabbar-item" data-panel-target="panel-contact" aria-expanded="false" aria-controls="panel-contact">
+        <svg xmlns="http://www.w3.org/2000/svg" width="21.462" height="21.502" viewBox="0 0 21.462 21.502" class="mobile-tabbar-icon"><path d="M23.128,17.335v3.011a2.007,2.007,0,0,1-2.188,2.007,19.861,19.861,0,0,1-8.661-3.081,19.57,19.57,0,0,1-6.022-6.022,19.861,19.861,0,0,1-3.081-8.7,2.007,2.007,0,0,1,2-2.188H8.184a2.007,2.007,0,0,1,2.007,1.726,12.886,12.886,0,0,0,.7,2.82,2.007,2.007,0,0,1-.452,2.118L9.167,10.3a16.058,16.058,0,0,0,6.022,6.022l1.275-1.275a2.007,2.007,0,0,1,2.118-.452,12.886,12.886,0,0,0,2.82.7A2.007,2.007,0,0,1,23.128,17.335Z" transform="translate(-2.417 -1.612)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+        <span>Contact</span>
+      </button>
+      <button type="button" class="mobile-tabbar-item" data-panel-target="panel-menu" aria-expanded="false" aria-controls="panel-menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="19.788" height="16.721" viewBox="0 0 19.788 16.721" class="mobile-tabbar-icon"><g transform="translate(-310.5 -73.75)"><line x2="19.788" transform="translate(310.5 74.5)" fill="none" stroke="currentColor" stroke-width="1.5"/><line x2="19.788" transform="translate(310.5 82.111)" fill="none" stroke="currentColor" stroke-width="1.5"/><line x2="19.788" transform="translate(310.5 89.721)" fill="none" stroke="currentColor" stroke-width="1.5"/></g></svg>
+        <span>Menu</span>
+      </button>
+    </nav>
+
+    <!-- ═══════════ CONTACT — full-screen slide-in panel ═══════════ -->
+    <div id="panel-contact" class="tab-panel" role="region" aria-label="Contact">
+      <div class="tab-panel-inner">
+        <div class="contact-card">
+          <img src="images/contact_image.png" alt="Elunite admission open" class="contact-card-logo" width="1152" height="576" loading="lazy" />
+        </div>
+
+        <div class="contact-info-rows">
+          <div class="contact-info-row">
+            <span class="contact-info-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            </span>
+            <p class="contact-info-text">St. Peter's Muthiga, Waiyaki Highway, Kiambu, Kenya</p>
+          </div>
+
+          <a href="mailto:contact@elunite.com" class="contact-info-link">
+            <span class="contact-info-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+            </span>
+            <p class="contact-info-text">contact@elunite.com</p>
+          </a>
+
+          <a href="tel:+918050306510" class="contact-info-link">
+            <span class="contact-info-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            </span>
+            <p class="contact-info-text">+91 80503 06510</p>
+          </a>
+        </div>
+
+        <div class="contact-social-row">
+          <a href="https://wa.me/918050306510" class="contact-social-icon" aria-label="Chat with Elunite on WhatsApp" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#081b49"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.552 4.152 1.601 5.947L0 24l6.201-1.578C7.936 23.436 9.938 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-1.85 0-3.667-.497-5.25-1.437l-.377-.223-3.905.994.996-3.804-.246-.394A9.706 9.706 0 012.25 12C2.25 6.624 6.624 2.25 12 2.25S21.75 6.624 21.75 12 17.376 21.75 12 21.75z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/elunite" class="contact-social-icon" aria-label="Elunite on Facebook" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#081b49" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          </a>
+          <a href="https://www.instagram.com/elunite" class="contact-social-icon" aria-label="Elunite on Instagram" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#081b49" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/elunite" class="contact-social-icon" aria-label="Elunite on LinkedIn" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#081b49" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    
+
+
+<!-- ═══════════ SERVICE — full-screen slide-in panel ═══════════ -->
+    <div id="panel-service" class="tab-panel" role="region" aria-label="Service">
+      <div class="tab-panel-inner">
+        <h2 class="service-panel-headline">Study Abroad For<br />2026 Intake</h2>
+
+        <div class="service-quicklinks">
+          <a href="service.html" class="service-quicklink">Overview</a>
+          <a href="study-abroad-services.html" class="service-quicklink">Study Abroad</a>
+          <a href="visa_purchase.html" class="service-quicklink">Visa Assistance</a>
+          <a href="work-abroad-relocation.html" class="service-quicklink">Work Abroad</a>
+          <a href="scholarships-exchange-programs.html" class="service-quicklink">Scholarship Programs</a>
+          <a href="business-strategy-development.html" class="service-quicklink">Business Strategy</a>
+          <a href="mentorship-capacity-building.html" class="service-quicklink">Career Mentorship</a>
+          <a href="corporate-institutional-training.html" class="service-quicklink">Corporate Training</a>
+        </div>
+
+        <div class="service-actions">
+          <a href="service.html" class="service-btn service-btn-outline">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line><line x1="10" x2="8" y1="9" y2="9"></line></svg>
+            View Full Service Guide
+          </a>
+          <a href="contact.html" class="service-btn service-btn-primary">Book a Consultation</a>
+        </div>
+      </div>
+    </div>
+
+    
+
+    <!-- ═══════════ MENU — full-screen slide-in panel ═══════════ -->
+    <div id="panel-menu" class="tab-panel" role="region" aria-label="Site Menu">
+      <div class="tab-panel-inner">
+        <nav class="site-menu-list">
+          <a href="index.html" class="site-menu-row">Home</a>
+          <a href="about.html" class="site-menu-row">About Us</a>
+
+          <a href="destination.html" class="site-menu-row">Destinations</a>
+
+          <a href="programs.html" class="site-menu-row">Programs</a>
+
+          <a href="blog.html" class="site-menu-row">Blog</a>
+
+          <div class="site-menu-group">
+            <button type="button" class="site-menu-row site-menu-trigger" aria-expanded="false">
+              Quick Links
+              <svg class="site-menu-chevron" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg>
+            </button>
+            <div class="site-menu-sublist">
+              <a href="contact.html" class="site-menu-subitem">Contact Us</a>
+              <a href="privacy-policy.html" class="site-menu-subitem">Privacy Policy</a>
+              <a href="terms-of-service.html" class="site-menu-subitem">Terms of Service</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    
+
     <main id="main-content">
       <!-- ── OUR DESTINATIONS ── -->
       <div class="content-wrapper">
         <section class="dest-hero-banner">
-          <h1 class="dest-hero-title">
-            Explore Global Study <br />
-            Destinations With Elunite
-          </h1>
+          <div class="hero-inner">
+            <div class="hero-stage">
+              <div class="hero-copy">
+                <h1 class="headline">
+                  <span class="line">Find your</span>
+
+                  <span class="marquee-wrap full">
+                    <span class="marquee-track serif lime">
+                      <span>perfect study</span><span>perfect study</span
+                      ><span>perfect study</span>
+                    </span>
+                  </span>
+
+                  <span class="marquee-row">
+                    <span class="marquee-wrap inline">
+                      <span class="marquee-track reverse serif lime">
+                        <span>destination</span><span>destination</span
+                        ><span>destination</span>
+                      </span>
+                    </span>
+                    <span class="muted-white">worldwide.</span>
+                  </span>
+                </h1>
+
+                <p class="subcopy">
+                  Compare countries, scholarships, costs and career pathways —
+                  then let our experts turn your choice into an offer letter.
+                </p>
+
+                <div class="cta-row">
+                  <a class="btn btn-solid" href="contact.html">Book Free Counselling</a>
+                  <a class="btn btn-outline" href="blog.html">Watch More Stories</a>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
 
-        <section class="dest-intro-section">
-          <div class="dest-intro-inner">
-            <div style="text-align: center; margin-bottom: 40px">
-              <h2
-                class="dlp-section-heading section-badge"
-                style="font-size: 24px"
-              >
-                Education Without Borders
-              </h2>
-            </div>
-            <p class="dest-intro-body">
-              At <strong>Elunite Consultancy</strong>, we don't just open doors,
-              we help you walk through the right ones. As a dedicated study
-              abroad consultancy, we connect ambitious students with
-              world-ranked universities across Australia, the USA, India, China,
-              Germany, and Europe, crafting pathways that align with your
-              academic goals, career ambitions, and financial reality. Our
-              certified advisors bring deep, destination-specific expertise:
-              whether you're pursuing internationally recognised degrees in the
-              USA, tapping into India's affordable tuition and post-graduation
-              opportunities, unlocking Australia's migration-friendly education
-              system, or navigating tuition-free programmes across European
-              universities, we've guided students through every route. From your
-              first scholarship search to your student visa approval and
-              pre-departure checklist, Elunite delivers fast, personalised,
-              end-to-end support so you arrive confident, prepared, and ready to
-              thrive on the global stage.
+        <!-- ── ALL COUNTRIES GRID ── -->
+        <section class="dlp-section" style="margin-top: 50px">
+          <div class="dlp-choice-heading-row">
+            <h2 class="dlp-choice-title">
+              Make Your Choice for the
+              <span class="dlp-choice-script">preferred destination</span>
+            </h2>
+            <p class="dlp-choice-copy">
+              Choosing the right study abroad destination is a pivotal
+              decision that can shape your academic journey and future
+              career path.
             </p>
           </div>
         </section>
@@ -822,18 +1571,24 @@
             </div>
             <div class="blog-layout">
               <article class="blog-featured" id="blog-teaser-featured">
-                <a href="complete-guide-studying-abroad-2026.html" class="blog-featured-img">
+                <a
+                  href="complete-guide-studying-abroad-2026.html"
+                  class="blog-featured-img"
+                >
                   <img
                     src="images/blogs/Complete Guide to Studying Abroad in 2026 Top Countries, Universities, and Application Tips.webp"
                     alt="blog-featured"
-                  width="1920"
-                height="1080"
-                />
+                    width="1920"
+                    height="1080"
+                  />
                 </a>
                 <div class="blog-featured-body">
                   <p class="blog-meta">1 days ago &nbsp;•&nbsp; 5 min read</p>
                   <h3 class="blog-featured-title">
-                    <a href="complete-guide-studying-abroad-2026.html" style="text-decoration: none; color: inherit;">
+                    <a
+                      href="complete-guide-studying-abroad-2026.html"
+                      style="text-decoration: none; color: inherit"
+                    >
                       Complete Guide to Studying Abroad in 2026: Top Countries,
                       Universities, and Application Tips
                     </a>
@@ -891,7 +1646,22 @@
     <footer id="footer" class="footer-section">
       <!-- Scroll to Top Button -->
       <button type="button" class="scroll-to-top" aria-label="Scroll to top">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-up" class="lucide lucide-arrow-up"><path d="m5 12 7-7 7 7"></path><path d="M12 19V5"></path></svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          data-lucide="arrow-up"
+          class="lucide lucide-arrow-up"
+        >
+          <path d="m5 12 7-7 7 7"></path>
+          <path d="M12 19V5"></path>
+        </svg>
       </button>
 
       <div class="container">
@@ -912,21 +1682,114 @@
                 Education Opportunities.
               </p>
               <div class="social-links">
-                <button class="social-btn" data-platform="facebook" aria-label="Facebook">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="facebook" class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                <button
+                  class="social-btn"
+                  data-platform="facebook"
+                  aria-label="Facebook"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    data-lucide="facebook"
+                    class="lucide lucide-facebook"
+                  >
+                    <path
+                      d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                    ></path>
+                  </svg>
                 </button>
-                <button class="social-btn" data-platform="instagram" aria-label="Instagram">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="instagram" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+                <button
+                  class="social-btn"
+                  data-platform="instagram"
+                  aria-label="Instagram"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    data-lucide="instagram"
+                    class="lucide lucide-instagram"
+                  >
+                    <rect
+                      width="20"
+                      height="20"
+                      x="2"
+                      y="2"
+                      rx="5"
+                      ry="5"
+                    ></rect>
+                    <path
+                      d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                    ></path>
+                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                  </svg>
                 </button>
-                <button class="social-btn" data-platform="linkedin" aria-label="LinkedIn">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="linkedin" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                <button
+                  class="social-btn"
+                  data-platform="linkedin"
+                  aria-label="LinkedIn"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    data-lucide="linkedin"
+                    class="lucide lucide-linkedin"
+                  >
+                    <path
+                      d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                    ></path>
+                    <rect width="4" height="12" x="2" y="9"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                  </svg>
                 </button>
-                <button class="social-btn" data-platform="twitter" aria-label="Twitter">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="twitter" class="lucide lucide-twitter"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+                <button
+                  class="social-btn"
+                  data-platform="twitter"
+                  aria-label="Twitter"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    data-lucide="twitter"
+                    class="lucide lucide-twitter"
+                  >
+                    <path
+                      d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"
+                    ></path>
+                  </svg>
                 </button>
               </div>
               <div class="preferred-source">
-                <span class="preferred-source-label">Like our articles? Tell Google:</span>
+                <span class="preferred-source-label"
+                  >Like our articles? Tell Google:</span
+                >
                 <div google-add-preferred-source-btn data-theme="dark"></div>
               </div>
             </div>
@@ -960,25 +1823,47 @@
               <h3 class="footer-heading">Our Consultations</h3>
               <ul class="services-list">
                 <li>
-                  <a href="study-abroad-services.html" class="footer-link">Study Abroad</a>
+                  <a href="study-abroad-services.html" class="footer-link"
+                    >Study Abroad</a
+                  >
                 </li>
                 <li>
-                  <a href="visa_purchase.html" class="footer-link">Visa Assistance</a>
+                  <a href="visa_purchase.html" class="footer-link"
+                    >Visa Assistance</a
+                  >
                 </li>
                 <li>
-                  <a href="work-abroad-relocation.html" class="footer-link">Work Abroad</a>
+                  <a href="work-abroad-relocation.html" class="footer-link"
+                    >Work Abroad</a
+                  >
                 </li>
                 <li>
-                  <a href="scholarships-exchange-programs.html" class="footer-link">Scholarship Programs</a>
+                  <a
+                    href="scholarships-exchange-programs.html"
+                    class="footer-link"
+                    >Scholarship Programs</a
+                  >
                 </li>
                 <li>
-                  <a href="business-strategy-development.html" class="footer-link">Business Strategy</a>
+                  <a
+                    href="business-strategy-development.html"
+                    class="footer-link"
+                    >Business Strategy</a
+                  >
                 </li>
                 <li>
-                  <a href="mentorship-capacity-building.html" class="footer-link">Career Mentorship</a>
+                  <a
+                    href="mentorship-capacity-building.html"
+                    class="footer-link"
+                    >Career Mentorship</a
+                  >
                 </li>
                 <li>
-                  <a href="corporate-institutional-training.html" class="footer-link">Corporate Training</a>
+                  <a
+                    href="corporate-institutional-training.html"
+                    class="footer-link"
+                    >Corporate Training</a
+                  >
                 </li>
               </ul>
             </div>
@@ -1004,7 +1889,7 @@
                 </div>
                 <div class="contact-item">
                   <div class="contact-value">
-                    <div><strong>📍 Offices:</strong> TBD, Global Startup</div>
+                    <div><strong>📍 Offices:</strong> St. Peter’s Muthiga, Waiyaki Highway, Kiambu, Kenya</div>
                   </div>
                 </div>
               </div>
@@ -1035,36 +1920,173 @@
     <script src="blog-date.js?v=1"></script>
     <script src="blog-teaser.js"></script>
     <script src="script.js"></script>
+    <!-- ═══════════ LEAD CAPTURE MODAL — "Book Free Counselling" ═══════════ -->
+    <div id="lead-modal" class="lead-modal" role="dialog" aria-modal="true" aria-labelledby="lead-modal-title" hidden>
+      <div class="lead-modal-backdrop" data-lead-modal-close></div>
+      <div class="lead-modal-card">
+        <button type="button" class="lead-modal-close" aria-label="Close" data-lead-modal-close>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+        </button>
+
+        <div class="lead-modal-body">
+          <span class="lead-modal-badge">Winter 2026 Intake &mdash; Limited Slots</span>
+          <h2 id="lead-modal-title" class="lead-modal-headline">Book Your Free Call With<br /><span class="lead-modal-accent">Our Experts!</span></h2>
+          <p class="lead-modal-subtext">Get advice on countries, intakes, deadlines, tests, eligibility, and more &mdash; tailored to you.</p>
+
+          <form id="lead-modal-form" class="lead-modal-form" novalidate action="https://formspree.io/f/xkjwyrrg" method="POST">
+            <input type="hidden" name="_subject" value="New Book Free Counselling lead" />
+            <input
+              type="text"
+              name="_gotcha"
+              tabindex="-1"
+              autocomplete="off"
+              aria-hidden="true"
+              style="position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0"
+            />
+            <input type="hidden" name="timestamp" class="lead-modal-timestamp" />
+            <input type="hidden" name="source_page" class="lead-modal-source-page" />
+
+            <div class="lead-field">
+              <input type="text" id="lead-name" name="first_name" placeholder=" " required autocomplete="given-name" />
+              <label for="lead-name">First Name</label>
+              <span class="lead-field-error"></span>
+            </div>
+
+            <div class="lead-field lead-field-select">
+              <select id="lead-home-country" name="home_country" autocomplete="country" required>
+                <option value="" disabled selected hidden></option>
+                <option>Nigeria</option>
+                <option>Kenya</option>
+                <option>Ghana</option>
+                <option>Ethiopia</option>
+                <option>Uganda</option>
+                <option>Tanzania</option>
+                <option>Rwanda</option>
+                <option>Zambia</option>
+                <option>Zimbabwe</option>
+                <option>Sudan</option>
+                <option>Other</option>
+              </select>
+              <label for="lead-home-country">Your Country</label>
+              <span class="lead-field-error"></span>
+            </div>
+
+            <div class="lead-field">
+              <input type="email" id="lead-email" name="email" placeholder=" " required autocomplete="email" />
+              <label for="lead-email">Email</label>
+              <span class="lead-field-error"></span>
+            </div>
+
+            <div class="lead-field">
+              <input type="tel" id="lead-phone" name="phone" placeholder=" " required autocomplete="tel" />
+              <label for="lead-phone">Phone</label>
+              <span class="lead-field-error"></span>
+            </div>
+
+            <div class="lead-field lead-field-select">
+              <select id="lead-country" name="destination_country" autocomplete="off" required>
+                <option value="" disabled selected hidden></option>
+                <option>India</option>
+                <option>USA</option>
+                <option>China</option>
+                <option>Germany</option>
+                <option>Australia</option>
+                <option>Ireland</option>
+                <option>Other</option>
+              </select>
+              <label for="lead-country">Choose Country</label>
+              <span class="lead-field-error"></span>
+            </div>
+
+            <div class="lead-field lead-field-full">
+              <textarea id="lead-message" name="message" placeholder=" " rows="3"></textarea>
+              <label for="lead-message">Message (optional)</label>
+            </div>
+
+            <button type="submit" class="lead-modal-submit lead-field-full">Book Free Counselling</button>
+          </form>
+
+          <div id="lead-modal-success" class="lead-modal-success" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m22 4-10 10-3-3"></path></svg>
+            <p>Thanks! Our counsellor will call you within 24 hours.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- ═══════════ WHATSAPP FLOATING WIDGET ═══════════ -->
     <div class="whatsapp-widget">
-      <div id="whatsapp-popup" class="whatsapp-popup" role="dialog" aria-label="Chat with Elunite on WhatsApp" aria-hidden="true">
+      <div
+        id="whatsapp-popup"
+        class="whatsapp-popup"
+        role="dialog"
+        aria-label="Chat with Elunite on WhatsApp"
+        aria-hidden="true"
+      >
         <button type="button" class="whatsapp-popup-close" aria-label="Close">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M6 6l12 12M18 6L6 18"
+              stroke="currentColor"
+              stroke-width="2.4"
+              stroke-linecap="round"
+            />
+          </svg>
         </button>
         <div class="whatsapp-popup-header">
           <div class="whatsapp-popup-avatar">
-            <img src="images/favicon/android-chrome-192x192.png" alt="Elunite" width="64" height="64" />
+            <img
+              src="images/favicon/android-chrome-192x192.png"
+              alt="Elunite"
+              width="64"
+              height="64"
+            />
             <span class="whatsapp-popup-online" aria-hidden="true"></span>
           </div>
           <h4 class="whatsapp-popup-title">Need Help? Let&#39;s Chat!</h4>
-          <p class="whatsapp-popup-subtitle">Got questions about studying or working abroad? Tap below to chat with an expert now — it's free and we reply in minutes!</p>
+          <p class="whatsapp-popup-subtitle">
+            Got questions about studying or working abroad? Tap below to chat
+            with an expert now — it's free and we reply in minutes!
+          </p>
         </div>
         <a
           href="https://wa.me/918050306510?text=Hi%20Elunite%2C%20I%27d%20like%20to%20know%20more%20about%20studying%20abroad."
           class="whatsapp-popup-cta"
           target="_blank"
           rel="noopener noreferrer"
-        >Start Chat</a>
+          >Start Chat</a
+        >
       </div>
 
-      <div id="whatsapp-teaser" class="whatsapp-teaser" role="status" aria-hidden="true">
-        <button type="button" class="whatsapp-teaser-close" aria-label="Dismiss">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+      <div
+        id="whatsapp-teaser"
+        class="whatsapp-teaser"
+        role="status"
+        aria-hidden="true"
+      >
+        <button
+          type="button"
+          class="whatsapp-teaser-close"
+          aria-label="Dismiss"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M6 6l12 12M18 6L6 18"
+              stroke="currentColor"
+              stroke-width="2.4"
+              stroke-linecap="round"
+            />
+          </svg>
         </button>
         <span>How can we help you?</span>
       </div>
 
-      <button type="button" id="whatsapp-toggle" class="whatsapp-float" aria-label="Chat with Elunite on WhatsApp">
+      <button
+        type="button"
+        id="whatsapp-toggle"
+        class="whatsapp-float"
+        aria-label="Chat with Elunite on WhatsApp"
+      >
         <span class="whatsapp-badge" aria-hidden="true">1</span>
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path
@@ -1075,6 +2097,57 @@
           />
         </svg>
       </button>
+    </div>
+  
+    <button type="button" id="enquiry-tab" class="get-in-touch-tab" aria-label="Open enquiry form" aria-expanded="false" aria-controls="enquiry-panel"><span>Get in Touch</span></button>
+
+    <div id="enquiry-panel" class="enquiry-panel" role="dialog" aria-label="Enquiry form">
+      <div class="enquiry-header">
+        <h3 class="enquiry-heading">Have a Query?</h3>
+        <p class="enquiry-subtext">Fill in your details and our team will get back to you shortly.</p>
+      </div>
+
+      <form id="enquiry-form" class="enquiry-form" action="https://formspree.io/f/xkjwyrrg" method="POST">
+        <input type="hidden" name="_subject" value="New enquiry from elunite.com side panel" />
+        <input
+          type="text"
+          name="_gotcha"
+          tabindex="-1"
+          autocomplete="off"
+          aria-hidden="true"
+          style="position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0"
+        />
+
+        <div class="enquiry-field">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          <input type="text" name="name" placeholder="Enter Your Full Name" autocomplete="name" required />
+        </div>
+
+        <div class="enquiry-field">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+          <input type="email" name="email" placeholder="Enter Your Email ID" autocomplete="email" required />
+        </div>
+
+        <div class="enquiry-field enquiry-field-phone">
+          <select name="country_code" class="enquiry-country-code" aria-label="Country code" autocomplete="tel-country-code">
+            <option value="+91" selected>+91</option>
+            <option value="+254">+254</option>
+            <option value="+234">+234</option>
+            <option value="+233">+233</option>
+            <option value="+251">+251</option>
+            <option value="+249">+249</option>
+            <option value="+256">+256</option>
+            <option value="+255">+255</option>
+            <option value="+27">+27</option>
+            <option value="+44">+44</option>
+            <option value="+1">+1</option>
+          </select>
+          <input type="tel" name="phone" placeholder="Your Mobile Number" autocomplete="tel-national" required />
+        </div>
+
+        <button type="submit" class="enquiry-submit">Submit</button>
+        <p class="enquiry-privacy">We respect your privacy and use your information only to respond to your enquiry.</p>
+      </form>
     </div>
   </body>
 </html>

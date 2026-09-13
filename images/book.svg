@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20.7" height="25.5" viewBox="0 0 20.7 25.5">
+  <g id="book" transform="translate(-62.449 -14.25)">
+    <path id="Path_13887" data-name="Path 13887" d="M67.2,35h-2a2,2,0,0,0-2,2h0V17a2,2,0,0,1,2-2h2V35Z" fill="none" stroke="#9f2b2c" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <path id="Path_13888" data-name="Path 13888" d="M82.4,420.667H65.2a2,2,0,0,1-2-2v0a2,2,0,0,1,2-2H82.4v4Z" transform="translate(-0.001 -381.667)" fill="none" stroke="#9f2b2c" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <rect id="Rectangle_2205" data-name="Rectangle 2205" width="15.2" height="20" transform="translate(67.199 15)" fill="none" stroke="#9f2b2c" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <line id="Line_1095" data-name="Line 1095" x2="7.2" transform="translate(71.199 23)" fill="none" stroke="#9f2b2c" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <line id="Line_1096" data-name="Line 1096" x2="5.6" transform="translate(71.999 27)" fill="none" stroke="#9f2b2c" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+  </g>
+</svg>

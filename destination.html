@@ -157,8 +157,7 @@
           setTimeout(function () {
             preloader.classList.add("site-preloader-hidden");
             setTimeout(function () {
-              if (preloader.parentNode)
-                preloader.parentNode.removeChild(preloader);
+              if (preloader.parentNode) preloader.parentNode.removeChild(preloader);
             }, 500);
           }, wait);
         }

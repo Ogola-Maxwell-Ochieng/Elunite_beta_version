@@ -1454,6 +1454,7 @@ document.addEventListener('DOMContentLoaded', function () {
     'a[href="contact.html"].sa-btn-outline',
     'a[href="contact.html"].sap-btn',
     'a[href="contact.html"].prg-btn',
+    'a[href="contact.html"].btn-solid',
     'a[href="contact.html"].services-callout-btn-outline',
     'a[href="contact.html"].elu-inline-link',
   ].join(', ');

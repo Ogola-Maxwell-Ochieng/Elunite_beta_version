@@ -6968,6 +6968,34 @@ a.site-menu-row {
     grid-template-columns: 1fr;
     min-height: unset;
   }
+
+  /* The section below is a flex box with min-height:100vh + centered
+     content — fine on desktop where the grid nearly fills that height,
+     but once stacked to one column here it left a huge vertical gap
+     both from the centering itself and from the two images below,
+     which use width:100% with an effectively-auto height and so grew
+     taller (not shorter) as the viewport got wider. Cap both. */
+  .bangalore-section-page {
+    min-height: unset !important;
+    padding: 3rem 1.25rem;
+  }
+
+  .bangalore-card-cover {
+    flex: none !important;
+    height: 220px !important;
+    min-height: unset !important;
+  }
+
+  .bangalore-card-illustration {
+    min-height: unset !important;
+    padding: 1.5rem 1.5rem 1rem;
+  }
+
+  .bangalore-card-illustration img {
+    width: auto !important;
+    height: auto !important;
+    max-height: 130px !important;
+  }
 }
 
 .bangalore-card {
@@ -15824,7 +15852,19 @@ html {
 /* Mobile */
 @media (max-width: 1024px) {
   .article-hero {
-    padding: 76px 0 48px;
+    padding: 56px 0 48px;
+  }
+
+  /* Desktop's 40px top margin + 50px tag margin (below) assume a tall
+     side-by-side cover image; single-column mobile doesn't need either —
+     the section's own padding-top already clears the navbar. */
+  .article-hero-card {
+    margin-top: 0;
+    padding: 16px 20px;
+  }
+
+  .article-tag {
+    margin-top: 0;
   }
 
   .article-title {
@@ -15863,9 +15903,11 @@ html {
     height: auto;
   }
 
-  /* Hero orbs — decorative, often absolutely positioned and oversized on mobile */
+  /* Hero orbs — decorative background blobs; must be taken out of flow or
+     they sit as 140px empty static blocks and shove the hero content down */
   .sap-hero-orb-1,
   .sap-hero-orb-2 {
+    position: absolute;
     width: 140px;
     height: 140px;
   }

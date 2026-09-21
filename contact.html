@@ -101,6 +101,28 @@
     <!--Lucide Icons Script  -->
   </head>
   <body>
+    <!-- ══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════ ANNOUNCEMENT TICKER ══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════ -->
+    <div class="blog-ticker" aria-hidden="true">
+      <div class="blog-ticker-track">
+        <span class="blog-ticker-item">2,500+ African students placed abroad</span>
+        <span class="blog-ticker-dot">&bull;</span>
+        <span class="blog-ticker-item">Free strategy session, this week only</span>
+        <span class="blog-ticker-dot">&bull;</span>
+        <span class="blog-ticker-item">98% visa success rate</span>
+        <span class="blog-ticker-dot">&bull;</span>
+        <span class="blog-ticker-item">6 study destinations, 1 trusted guide</span>
+        <span class="blog-ticker-dot">&bull;</span>
+        <span class="blog-ticker-item">2,500+ African students placed abroad</span>
+        <span class="blog-ticker-dot">&bull;</span>
+        <span class="blog-ticker-item">Free strategy session, this week only</span>
+        <span class="blog-ticker-dot">&bull;</span>
+        <span class="blog-ticker-item">98% visa success rate</span>
+        <span class="blog-ticker-dot">&bull;</span>
+        <span class="blog-ticker-item">6 study destinations, 1 trusted guide</span>
+        <span class="blog-ticker-dot">&bull;</span>
+      </div>
+    </div>
+
     <!-- ═══════════ SITE PRELOADER ═══════════ -->
     <noscript><style>.site-preloader{display:none!important;}</style></noscript>
     <div id="site-preloader" class="site-preloader" role="status" aria-live="polite" aria-label="Loading">
@@ -162,10 +184,10 @@
               <a href="index.html" class="nav-link">Home</a>
               <a href="about.html" class="nav-link">About Us</a>
               <div class="nav-dropdown nav-dropdown-mega nav-dropdown-services" id="nav-services-dropdown">
-                <button type="button" class="nav-link nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+                <button type="button" class="nav-link nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" aria-controls="nav-services-menu">
                   Services
                 </button>
-                <div class="nav-dropdown-menu" role="menu">
+                <div class="nav-dropdown-menu" id="nav-services-menu" role="menu">
                   <span class="nav-dropdown-menu-arrow" aria-hidden="true"></span>
                   <div class="nav-dropdown-menu-body services-menu">
                     <div class="services-menu-main">
@@ -190,7 +212,7 @@
                         <div class="services-menu-grid-tile">
                           <img src="images/nav-menu/passport-visa.jpg" alt="" class="mega-tile-bg" width="700" height="1050" loading="lazy" />
                           <div class="mega-tile-overlay"></div>
-                          <span class="services-menu-grid-tile-label">Visa Assistance</span>
+                          <span class="services-menu-grid-tile-label">Visa Application Support</span>
                         </div>
                         <div class="services-menu-grid-tile">
                           <img src="images/nav-menu/work-abroad-office.jpg" alt="" class="mega-tile-bg" width="700" height="467" loading="lazy" />
@@ -205,11 +227,11 @@
                       </div>
                     </div>
                     <div class="services-menu-sidebar">
-                      <h4 class="services-menu-sidebar-title">Explore All Services</h4>
+                      <p class="services-menu-sidebar-title">Explore All Services</p>
                       <div class="services-menu-sidebar-columns">
                         <div class="services-menu-sidebar-col">
                           <a href="study-abroad-services.html" class="services-menu-sidebar-link">Study Abroad</a>
-                          <a href="visa_purchase.html" class="services-menu-sidebar-link">Visa Assistance</a>
+                          <a href="visa-purchase.html" class="services-menu-sidebar-link">Visa Application Support</a>
                           <a href="work-abroad-relocation.html" class="services-menu-sidebar-link">Work Abroad</a>
                           <a href="scholarships-exchange-programs.html" class="services-menu-sidebar-link">Scholarship Programs</a>
                         </div>
@@ -225,10 +247,10 @@
                 </div>
               </div>
               <div class="nav-dropdown nav-dropdown-mega" id="nav-destinations-dropdown">
-                <button type="button" class="nav-link nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+                <button type="button" class="nav-link nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" aria-controls="nav-destinations-menu">
                   Destinations
                 </button>
-                <div class="nav-dropdown-menu" role="menu">
+                <div class="nav-dropdown-menu" id="nav-destinations-menu" role="menu">
                   <span class="nav-dropdown-menu-arrow" aria-hidden="true"></span>
                   <div class="nav-dropdown-menu-body mega-menu">
                   <div class="mega-menu-links">
@@ -244,7 +266,7 @@
                     <div class="mega-menu-banner">
                       <img src="images/nav-menu/world-map.jpg" alt="" class="mega-tile-bg" width="700" height="467" loading="lazy" />
                       <div class="mega-tile-overlay"></div>
-                      <h4 class="mega-menu-banner-title">Explore Study Destinations Worldwide</h4>
+                      <p class="mega-menu-banner-title">Explore Study Destinations Worldwide</p>
                     </div>
                                           <div class="mega-menu-grid-tile">
                         <img src="images/nav-menu/study-destinations.jpg" alt="" class="mega-tile-bg" width="700" height="467" loading="lazy" />
@@ -276,25 +298,25 @@
                 </div>
               </div>
               <div class="nav-dropdown nav-dropdown-mega" id="nav-programs-dropdown">
-                <button type="button" class="nav-link nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+                <button type="button" class="nav-link nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" aria-controls="nav-programs-menu">
                   Programs
                 </button>
-                <div class="nav-dropdown-menu" role="menu">
+                <div class="nav-dropdown-menu" id="nav-programs-menu" role="menu">
                   <span class="nav-dropdown-menu-arrow" aria-hidden="true"></span>
                   <div class="nav-dropdown-menu-body mega-menu">
                   <div class="mega-menu-links">
-                    <a href="end_to_end_purchase.html" class="nav-dropdown-item" role="menuitem">End-to-End Admission</a>
-                    <a href="scholarship_purchase.html" class="nav-dropdown-item" role="menuitem">Scholarship Application</a>
-                    <a href="visa_purchase.html" class="nav-dropdown-item" role="menuitem">Visa Sponsorship</a>
-                    <a href="graduate_training.html" class="nav-dropdown-item" role="menuitem">Global Pathways Program</a>
-                    <a href="strategic_program.html" class="nav-dropdown-item" role="menuitem">Free Strategy Session</a>
+                    <a href="end-to-end-purchase.html" class="nav-dropdown-item" role="menuitem">End-to-End Admission</a>
+                    <a href="scholarship-purchase.html" class="nav-dropdown-item" role="menuitem">Scholarship Application</a>
+                    <a href="visa-purchase.html" class="nav-dropdown-item" role="menuitem">Visa Application Support</a>
+                    <a href="graduate-training.html" class="nav-dropdown-item" role="menuitem">Global Pathways Program</a>
+                    <a href="strategic-program.html" class="nav-dropdown-item" role="menuitem">Free Strategy Session</a>
                     <a href="programs.html" class="nav-dropdown-item nav-dropdown-viewall" role="menuitem">View all programs →</a>
                   </div>
                   <div class="mega-menu-panel">
                     <div class="mega-menu-banner">
                       <img src="images/nav-menu/decision-path.jpg" alt="" class="mega-tile-bg" width="700" height="471" loading="lazy" />
                       <div class="mega-tile-overlay"></div>
-                      <h4 class="mega-menu-banner-title">Find The Right Program For You</h4>
+                      <p class="mega-menu-banner-title">Find The Right Program For You</p>
                     </div>
                                           <div class="mega-menu-grid-tile">
                         <img src="images/nav-menu/document-support.jpg" alt="" class="mega-tile-bg" width="700" height="467" loading="lazy" />
@@ -312,7 +334,7 @@
                         <img src="images/nav-menu/passport-visa.jpg" alt="" class="mega-tile-bg" width="700" height="1050" loading="lazy" />
                         <div class="mega-tile-overlay"></div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="plane" class="lucide lucide-plane mega-menu-grid-tile-icon"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"></path></svg>
-                        <span class="mega-menu-grid-tile-label">Visa Sponsorship</span>
+                        <span class="mega-menu-grid-tile-label">Visa Application Support</span>
                       </div>
                       <div class="mega-menu-grid-tile">
                         <img src="images/nav-menu/mentorship.jpg" alt="" class="mega-tile-bg" width="700" height="467" loading="lazy" />
@@ -384,23 +406,23 @@
         </div>
 
         <div id="panel-programs-category" class="panel-grid">
-          <a href="end_to_end_purchase.html" class="panel-card">
+          <a href="end-to-end-purchase.html" class="panel-card">
             <img src="images/Programs/End-to-End%20Application%20Program.webp" alt="" width="1080" height="1080" loading="lazy" />
             <span class="panel-card-label">End-to-End Admission</span>
           </a>
-          <a href="scholarship_purchase.html" class="panel-card">
+          <a href="scholarship-purchase.html" class="panel-card">
             <img src="images/Programs/Scholarship%20Program%20Application.webp" alt="" width="1080" height="1080" loading="lazy" />
             <span class="panel-card-label">Scholarship Application</span>
           </a>
-          <a href="visa_purchase.html" class="panel-card">
+          <a href="visa-purchase.html" class="panel-card">
             <img src="images/Programs/Visa%20Program.webp" alt="" width="1080" height="1080" loading="lazy" />
-            <span class="panel-card-label">Visa Sponsorship</span>
+            <span class="panel-card-label">Visa Application Support</span>
           </a>
-          <a href="graduate_training.html" class="panel-card">
+          <a href="graduate-training.html" class="panel-card">
             <img src="images/Programs/Application%20Training%20Module.webp" alt="" width="1200" height="1200" loading="lazy" />
             <span class="panel-card-label">Global Pathways Program</span>
           </a>
-          <a href="strategic_program.html" class="panel-card">
+          <a href="strategic-program.html" class="panel-card">
             <img src="images/Programs/Strategic_training.webp" alt="" width="1080" height="1350" loading="lazy" />
             <span class="panel-card-label">Free Strategy Session</span>
           </a>
@@ -494,10 +516,10 @@
           <a href="https://www.facebook.com/elunite" class="contact-social-icon" aria-label="Elunite on Facebook" target="_blank" rel="noopener noreferrer">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#081b49" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
           </a>
-          <a href="https://www.instagram.com/elunite" class="contact-social-icon" aria-label="Elunite on Instagram" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.instagram.com/elunite_education/" class="contact-social-icon" aria-label="Elunite on Instagram" target="_blank" rel="noopener noreferrer">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#081b49" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
           </a>
-          <a href="https://www.linkedin.com/company/elunite" class="contact-social-icon" aria-label="Elunite on LinkedIn" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.linkedin.com/company/elunite/?viewAsMember=true" class="contact-social-icon" aria-label="Elunite on LinkedIn" target="_blank" rel="noopener noreferrer">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#081b49" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
           </a>
         </div>
@@ -515,7 +537,7 @@
         <div class="service-quicklinks">
           <a href="service.html" class="service-quicklink">Overview</a>
           <a href="study-abroad-services.html" class="service-quicklink">Study Abroad</a>
-          <a href="visa_purchase.html" class="service-quicklink">Visa Assistance</a>
+          <a href="visa-purchase.html" class="service-quicklink">Visa Application Support</a>
           <a href="work-abroad-relocation.html" class="service-quicklink">Work Abroad</a>
           <a href="scholarships-exchange-programs.html" class="service-quicklink">Scholarship Programs</a>
           <a href="business-strategy-development.html" class="service-quicklink">Business Strategy</a>
@@ -744,7 +766,7 @@
     <!-- Footer Section -->
     </main>
 
-    <footer id="footer" class="footer-section">
+                                    <footer id="footer" class="footer-section">
       <!-- Scroll to Top Button -->
       <button type="button" class="scroll-to-top" aria-label="Scroll to top">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-up" class="lucide lucide-arrow-up"><path d="m5 12 7-7 7 7"></path><path d="M12 19V5"></path></svg>
@@ -753,134 +775,96 @@
       <div class="container">
         <div class="footer-content">
           <div class="footer-grid">
-            <!-- About Section -->
-            <div class="footer-about">
+            <!-- Brand Block -->
+            <div class="footer-brand">
               <img
                 src="images/logo-footer.webp"
-                alt="footer-logo"
+                alt="Elunite Study Abroad Consultants logo"
                 class="footer-logo"
                 width="150"
                 height="150"
-               loading="lazy" />
+              />
+
+              <a href="tel:+918050306510" class="footer-phone">[+91] 8050306510</a>
+
               <p class="footer-description">
                 Committed to guiding students toward global academic success
                 through tailored support and access to premier International
                 Education Opportunities.
               </p>
-              <div class="social-links">
-                <button class="social-btn" data-platform="facebook" aria-label="Facebook">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="facebook" class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-                </button>
-                <button class="social-btn" data-platform="instagram" aria-label="Instagram">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="instagram" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
-                </button>
-                <button class="social-btn" data-platform="linkedin" aria-label="LinkedIn">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="linkedin" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                </button>
-                <button class="social-btn" data-platform="twitter" aria-label="Twitter">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="twitter" class="lucide lucide-twitter"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
-                </button>
-              </div>
-              <div class="preferred-source">
-                <span class="preferred-source-label">Like our articles? Tell Google:</span>
-                <div google-add-preferred-source-btn data-theme="dark"></div>
-              </div>
             </div>
 
-            <!-- Quick Links -->
-            <div class="footer-links">
-              <h3 class="footer-heading">Company</h3>
-              <ul class="footer-nav">
-                <li><a href="index.html" class="footer-link">Home</a></li>
-                <li><a href="about.html" class="footer-link">About Us</a></li>
-                <li><a href="service.html" class="footer-link">Services</a></li>
-                <li>
-                  <a href="destination.html" class="footer-link"
-                    >Destinations</a
-                  >
-                </li>
-                <li>
-                  <a href="programs.html" class="footer-link">Programs</a>
-                </li>
-                <li>
-                  <a href="blog.html" class="footer-link">Blogs</a>
-                </li>
-                <li>
-                  <a href="contact.html" class="footer-link">Contact Us</a>
-                </li>
-              </ul>
-            </div>
-
-            <!-- Services -->
-            <div class="footer-services">
-              <h3 class="footer-heading">Our Consultations</h3>
-              <ul class="services-list">
-                <li>
-                  <a href="study-abroad-services.html" class="footer-link">Study Abroad</a>
-                </li>
-                <li>
-                  <a href="visa_purchase.html" class="footer-link">Visa Assistance</a>
-                </li>
-                <li>
-                  <a href="work-abroad-relocation.html" class="footer-link">Work Abroad</a>
-                </li>
-                <li>
-                  <a href="scholarships-exchange-programs.html" class="footer-link">Scholarship Programs</a>
-                </li>
-                <li>
-                  <a href="business-strategy-development.html" class="footer-link">Business Strategy</a>
-                </li>
-                <li>
-                  <a href="mentorship-capacity-building.html" class="footer-link">Career Mentorship</a>
-                </li>
-                <li>
-                  <a href="corporate-institutional-training.html" class="footer-link">Corporate Training</a>
-                </li>
-              </ul>
-            </div>
-
-            <!-- Contact Info -->
-            <div class="footer-contact">
-              <h3 class="footer-heading">Contact Info</h3>
-              <div class="contact-list">
-                <div class="contact-item">
-                  <div class="contact-value">
-                    <strong>📞 Phone:</strong> +918050306510
-                  </div>
-                </div>
-                <div class="contact-item">
-                  <div class="contact-value">
-                    <strong>💬 WhatsApp:</strong> +918050306510
-                  </div>
-                </div>
-                <div class="contact-item">
-                  <div class="contact-value">
-                    <strong>📧 Email:</strong> contact@elunite.com
-                  </div>
-                </div>
-                <div class="contact-item">
-                  <div class="contact-value">
-                    <div><strong>📍 Offices:</strong> St. Peter’s Muthiga, Waiyaki Highway, Kiambu, Kenya</div>
-                  </div>
-                </div>
+            <!-- Link Columns -->
+            <nav class="footer-columns" aria-label="Footer">
+              <div class="footer-col">
+                <h3 class="footer-heading">Services</h3>
+                <ul class="footer-nav">
+                  <li><a href="study-abroad-services.html" class="footer-link">Study Abroad</a></li>
+                  <li><a href="visa-purchase.html" class="footer-link">Visa Application Support</a></li>
+                  <li><a href="work-abroad-relocation.html" class="footer-link">Work Abroad</a></li>
+                  <li><a href="scholarships-exchange-programs.html" class="footer-link">Scholarship Programs</a></li>
+                  <li><a href="business-strategy-development.html" class="footer-link">Business Strategy</a></li>
+                  <li><a href="mentorship-capacity-building.html" class="footer-link">Career Mentorship</a></li>
+                  <li><a href="corporate-institutional-training.html" class="footer-link">Corporate Training</a></li>
+                  <li><a href="service.html" class="footer-link">All Services &rarr;</a></li>
+                </ul>
               </div>
-            </div>
+
+              <div class="footer-col">
+                <h3 class="footer-heading">Destinations</h3>
+                <ul class="footer-nav">
+                  <li><a href="india.html" class="footer-link">India</a></li>
+                  <li><a href="usa.html" class="footer-link">USA</a></li>
+                  <li><a href="china.html" class="footer-link">China</a></li>
+                  <li><a href="germany.html" class="footer-link">Germany</a></li>
+                  <li><a href="australia.html" class="footer-link">Australia</a></li>
+                  <li><a href="ireland.html" class="footer-link">Ireland</a></li>
+                  <li><a href="destination.html" class="footer-link">All Destinations &rarr;</a></li>
+                </ul>
+              </div>
+
+              <div class="footer-col">
+                <h3 class="footer-heading">Company</h3>
+                <ul class="footer-nav">
+                  <li><a href="index.html" class="footer-link">Home</a></li>
+                  <li><a href="about.html" class="footer-link">About Us</a></li>
+                  <li><a href="programs.html" class="footer-link">Programs</a></li>
+                  <li><a href="blog.html" class="footer-link">Blogs</a></li>
+                  <li><a href="contact.html" class="footer-link">Contact Us</a></li>
+                </ul>
+              </div>
+
+              <div class="footer-col">
+                <h3 class="footer-heading">Resources</h3>
+                <ul class="footer-nav">
+                  <li><a href="complete-guide-studying-abroad-2026.html" class="footer-link">Complete Guide</a></li>
+                  <li><a href="#" class="footer-link">Brochure</a></li>
+                  <li><a href="terms-of-service.html" class="footer-link">Terms of Service</a></li>
+                  <li><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li>
+                  <li><a href="terms-of-service.html" class="footer-link">Booking &amp; Refund Policy</a></li>
+                </ul>
+              </div>
+            </nav>
           </div>
 
           <!-- Bottom Bar -->
           <div class="footer-bottom">
-            <div class="footer-copyright">
-              <div class="copyright-text">
-                Copyright &copy; 2026 Elunite. All rights reserved.
-              </div>
-              <div class="footer-legal">
-                <a href="privacy-policy.html" class="legal-link"
-                  >Privacy Policy</a
-                >
-                <a href="terms-of-service.html" class="legal-link"
-                  >Booking &amp; Refund Policy</a
-                >
-              </div>
+            <p class="copyright-text">
+              Copyright &copy; 2026 Elunite. All rights reserved.
+            </p>
+            <div class="footer-social">
+              <a class="footer-social-btn" href="https://www.facebook.com/elunite" target="_blank" rel="noopener" aria-label="Facebook">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="facebook" class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+              </a>
+              <a class="footer-social-btn" href="https://www.instagram.com/elunite_education/" target="_blank" rel="noopener" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="instagram" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+              </a>
+              <a class="footer-social-btn" href="https://www.linkedin.com/company/elunite/?viewAsMember=true" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="linkedin" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+              </a>
+              <a class="footer-social-btn" href="https://x.com/EluniteEd" target="_blank" rel="noopener" aria-label="X (Twitter)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="lucide-x"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+              </a>
             </div>
           </div>
         </div>
@@ -897,7 +881,6 @@
         </button>
 
         <div class="lead-modal-body">
-          <span class="lead-modal-badge">Winter 2026 Intake &mdash; Limited Slots</span>
           <h2 id="lead-modal-title" class="lead-modal-headline">Book Your Free Call With<br /><span class="lead-modal-accent">Our Experts!</span></h2>
           <p class="lead-modal-subtext">Get advice on countries, intakes, deadlines, tests, eligibility, and more &mdash; tailored to you.</p>
 

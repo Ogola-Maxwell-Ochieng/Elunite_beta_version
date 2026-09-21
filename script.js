@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', function () {
     { title: 'Documentation preparation, visa advisory, and interview prep', group: 'Study Abroad Services', href: 'study-abroad-services.html' },
     { title: 'Pre-departure readiness and post-arrival support', group: 'Study Abroad Services', href: 'study-abroad-services.html' },
 
-    { title: 'Visa Assistance', href: 'visa_purchase.html' },
+    { title: 'Visa Application Support', href: 'visa-purchase.html' },
 
     { title: 'Work Abroad & Relocation', href: 'work-abroad-relocation.html' },
     { title: 'Candidate skills profiling and documentation optimization', group: 'Work Abroad & Relocation', href: 'work-abroad-relocation.html' },
@@ -436,6 +436,79 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+// ===== SHARED LEAD-FORM SUBMIT HANDLER =====
+// Used by all three lead-capture forms (main process card, popup modal,
+// side-panel enquiry) so the anti-spam checks, Formspree submission, and
+// button disable-during-submit logic exist in exactly one place. Each form
+// still supplies its own success/error UI via callbacks, since the three
+// forms show results differently (inline message, modal swap, WhatsApp
+// handoff).
+function initLeadFormSubmit(form, opts) {
+  opts = opts || {};
+  var submitBtn = opts.submitBtn || form.querySelector('button[type="submit"]');
+  var minFillMs = opts.minFillMs || 3000;
+  var cooldownMs = opts.cooldownMs || 60000;
+  var getRenderedAt = opts.getRenderedAt || function () { return 0; };
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    // Honeypot — bots fill every field, real visitors never see this one
+    if (form._gotcha && form._gotcha.value) {
+      form.reset();
+      return;
+    }
+
+    // Time trap — faster than a human could type is almost certainly a bot
+    if (Date.now() - getRenderedAt() < minFillMs) {
+      form.reset();
+      return;
+    }
+
+    if (opts.validate && !opts.validate()) return;
+
+    var lastSubmit = Number(localStorage.getItem(opts.cooldownKey) || 0);
+    if (Date.now() - lastSubmit < cooldownMs) {
+      if (opts.onCooldown) opts.onCooldown(submitBtn);
+      return;
+    }
+
+    if (opts.beforeSubmit) opts.beforeSubmit(form);
+
+    var originalText = submitBtn ? submitBtn.textContent : null;
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+    }
+
+    var formData = new FormData(form);
+    var ok = false;
+    try {
+      var response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: { Accept: 'application/json' },
+      });
+      ok = response.ok;
+      if (!ok) console.error('Formspree submission failed:', response.status);
+    } catch (error) {
+      ok = false;
+      console.error('Form submission error:', error);
+    }
+
+    localStorage.setItem(opts.cooldownKey, String(Date.now()));
+
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+    }
+
+    if (ok && opts.onSuccess) opts.onSuccess(formData, form);
+    if (!ok && opts.onError) opts.onError(formData, form);
+  });
+}
+
+
 // ===== GET IN TOUCH — SLIDE-IN ENQUIRY PANEL =====
 document.addEventListener('DOMContentLoaded', function () {
   const tab = document.getElementById('enquiry-tab');
@@ -480,80 +553,51 @@ document.addEventListener('DOMContentLoaded', function () {
   if (!form) return;
 
   const WHATSAPP_NUMBER = '918050306510';
-  const submitBtn = form.querySelector('.enquiry-submit');
-  const MIN_FILL_TIME_MS = 3000;
-  const RESUBMIT_COOLDOWN_MS = 60000;
-  const COOLDOWN_KEY = 'elunite_enquiry_last_submit';
+  const msgEl = form.querySelector('.enquiry-form-msg');
 
-  form.addEventListener('submit', async function (e) {
-    e.preventDefault();
+  function showMsg(text) {
+    if (!msgEl) return;
+    msgEl.textContent = text;
+    msgEl.hidden = false;
+    setTimeout(() => { msgEl.hidden = true; }, 8000);
+  }
 
-    // Honeypot — bots fill every field, real visitors never see this one
-    if (form._gotcha && form._gotcha.value) {
-      form.reset();
-      return;
-    }
-
-    // Time trap — faster than a human could type is almost certainly a bot
-    if (Date.now() - formRenderedAt < MIN_FILL_TIME_MS) {
-      form.reset();
-      return;
-    }
-
-    const lastSubmit = Number(localStorage.getItem(COOLDOWN_KEY) || 0);
-    if (Date.now() - lastSubmit < RESUBMIT_COOLDOWN_MS) {
-      if (submitBtn) {
-        const original = submitBtn.textContent;
-        submitBtn.textContent = 'Already sent — please wait';
-        setTimeout(() => { submitBtn.textContent = original; }, 3000);
-      }
-      return;
-    }
-
-    const name = form.name.value.trim();
+  function openWhatsApp() {
+    const name = form.first_name.value.trim();
     const email = form.email.value.trim();
     const fullPhone = `${form.country_code.value} ${form.phone.value.trim()}`;
-
-    if (submitBtn) {
-      submitBtn.disabled = true;
-      submitBtn.dataset.originalText = submitBtn.textContent;
-      submitBtn.textContent = 'Sending...';
-    }
-
-    const formData = new FormData(form);
-    let emailSent = false;
-    try {
-      const response = await fetch(form.action, {
-        method: 'POST',
-        body: formData,
-        headers: { Accept: 'application/json' },
-      });
-      emailSent = response.ok;
-      if (!response.ok) {
-        console.error('Formspree submission failed:', response.status);
-      }
-    } catch (error) {
-      console.error('Enquiry form submission error:', error);
-    }
-
     const waText = encodeURIComponent(
       `Hi ELUNITE! My name is ${name}.\nEmail: ${email}\nPhone: ${fullPhone}`
     );
-    const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${waText}`;
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${waText}`, '_blank', 'noopener');
+  }
 
-    localStorage.setItem(COOLDOWN_KEY, String(Date.now()));
-    form.reset();
-
-    setTimeout(() => {
-      window.open(waUrl, '_blank', 'noopener');
-      if (submitBtn) {
-        submitBtn.disabled = false;
-        submitBtn.textContent = submitBtn.dataset.originalText || 'Submit';
-      }
-      closePanel();
-    }, 800);
-
-    void emailSent; // outcome doesn't change the flow — WhatsApp is the fallback either way
+  initLeadFormSubmit(form, {
+    submitBtn: form.querySelector('.enquiry-submit'),
+    cooldownKey: 'elunite_enquiry_last_submit',
+    getRenderedAt: () => formRenderedAt,
+    beforeSubmit(form) {
+      const sourceField = form.querySelector('.enquiry-source-page');
+      if (sourceField) sourceField.value = window.location.pathname;
+    },
+    onCooldown(submitBtn) {
+      if (!submitBtn) return;
+      const original = submitBtn.textContent;
+      submitBtn.textContent = 'Already sent — please wait';
+      setTimeout(() => { submitBtn.textContent = original; }, 3000);
+    },
+    onSuccess() {
+      openWhatsApp();
+      showMsg("🎉 Thanks! We've got your details and opened WhatsApp so we can chat right away.");
+      form.reset();
+      setTimeout(closePanel, 1200);
+    },
+    onError() {
+      openWhatsApp();
+      showMsg("We couldn't confirm your message went through, but we've opened WhatsApp so we don't miss you.");
+      form.reset();
+      setTimeout(closePanel, 1200);
+    },
   });
 });
 
@@ -637,6 +681,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 // ===== TESTIMONIALS DATA =====
+// NOTE: Steven Gideon (below) and Maddoh Yoavi studied in Russia and Canada
+// respectively — neither is one of Elunite's 6 current destination pages
+// (India, USA, China, Germany, Australia, Ireland). The data itself is
+// internally consistent (no mismatch), just off-message versus what the
+// site currently promotes. TODO: confirm with owner whether to keep these,
+// swap in different real testimonials, or reword to de-emphasize the country.
 const testimonials = [
   {
     name: 'Steven Gideon',
@@ -663,6 +713,8 @@ const testimonials = [
     rating: 5
   },
   {
+    // TODO: confirm with owner — university says "Jain University, India" but
+    // the quote names "Cambridge Institute of Technology". Fix whichever is wrong.
     name: 'Debra Chebet',
     image: 'images/students/Debra.webp',
     program: 'ECE Student',
@@ -703,6 +755,8 @@ const testimonials = [
     rating: 5
   },
   {
+    // TODO: confirm with owner — university says "NIMS University, India" but
+    // the quote names "LSE" (London School of Economics). Fix whichever is wrong.
     name: 'Nathalie Juma',
     image: 'images/students/Nathalie Maghembe.webp',
     program: 'Public Health',
@@ -711,6 +765,8 @@ const testimonials = [
     rating: 5
   },
   {
+    // TODO: confirm with owner — university says "CIT University, India" but
+    // the quote describes "the complex US admission process" and Stanford. Fix whichever is wrong.
     name: 'Catherine Kipeleka',
     image: 'images/students/Catherine.webp',
     program: 'Artificial Intelligence',
@@ -836,89 +892,208 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // ===== TESTIMONIALS CAROUSEL =====
+// Inline icon strings shared by the summary card and every testimonial card.
+var TST_STAR_PATH = 'M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14 2 9.27l6.91-1.01L12 2z';
+var TST_VERIFIED_SVG =
+  '<svg class="tst-verified" viewBox="0 0 24 24" aria-hidden="true">' +
+  '<circle cx="12" cy="12" r="10" fill="#081b49"></circle>' +
+  '<path d="M8 12.5l2.5 2.5L16 9.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>' +
+  '</svg>';
+
+function tstRenderStars(rating) {
+  var html = '';
+  for (var i = 0; i < 5; i++) {
+    var pct = Math.max(0, Math.min(1, rating - i)) * 100;
+    html +=
+      '<span class="tst-star">' +
+      '<svg class="tst-star-bg" viewBox="0 0 24 24"><path d="' + TST_STAR_PATH + '"></path></svg>' +
+      '<span class="tst-star-fill" style="width:' + pct + '%">' +
+      '<svg viewBox="0 0 24 24"><path d="' + TST_STAR_PATH + '"></path></svg>' +
+      '</span>' +
+      '</span>';
+  }
+  return html;
+}
+
 document.addEventListener('DOMContentLoaded', function () {
-  const carousel = document.getElementById('testimonials-carousel');
-  const prevBtn = document.getElementById('testimonials-prev');
-  const nextBtn = document.getElementById('testimonials-next');
-  const dotsContainer = document.getElementById('testimonials-dots');
+  var viewport = document.getElementById('tst-track-viewport');
+  var track = document.getElementById('testimonials-carousel');
+  var nextBtn = document.getElementById('testimonials-next');
+  var prevBtn = document.getElementById('testimonials-prev');
+  var dotsContainer = document.getElementById('testimonials-dots');
+  var summaryStars = document.getElementById('tst-summary-stars');
 
-  if (!carousel || !prevBtn || !nextBtn || !dotsContainer) return;
+  if (!viewport || !track || !nextBtn || !dotsContainer) return;
 
-  let currentIndex = 0;
-  const total = testimonials.length;
+  if (summaryStars) {
+    // TODO: replace 4.8 with Elunite's real Google Business Profile rating
+    // (also update the score/count text next to it in index.html).
+    summaryStars.innerHTML = tstRenderStars(4.8);
+  }
 
-  function renderTestimonials() {
-    carousel.innerHTML = testimonials.map((t, index) => `
-            <div class="testimonial-carousel-card" data-index="${index}">
-                <div class="testimonial-header">
-                    <img src="${t.image}" alt="${t.name}" class="testimonial-image"/>
-                    <div class="testimonial-info">
-                        <div class="testimonial-name">${t.name}</div>
-                        <div class="testimonial-position">${t.program}</div>
-                        <div class="testimonial-university">${t.university}</div>
-                    </div>
-                </div>
-                <div class="testimonial-quote">
-                    <div class="quote-icon">&#10077;</div>
-                    <p>${t.quote}</p>
-                </div>
-                <div class="testimonial-rating">${'&#11088;'.repeat(Math.floor(t.rating))}</div>
-            </div>
-        `).join('');
+  var total = testimonials.length;
+  var currentPage = 0;
 
-    updateClasses();
+  function getPageSize() {
+    if (window.matchMedia('(max-width: 600px)').matches) return 1;
+    if (window.matchMedia('(max-width: 900px)').matches) return 2;
+    return 3;
+  }
+
+  function totalPages() {
+    return Math.max(1, Math.ceil(total / getPageSize()));
+  }
+
+  function renderCard(t, id, isClone) {
+    var meta = [t.program, t.university].filter(Boolean).join(' — ');
+    // Clones exist purely so the "next" auto-advance can slide forward
+    // seamlessly instead of snapping back — they're pixel-identical
+    // duplicates of real cards, so hide them from assistive tech and
+    // keyboard focus (inert also drops them from the tab order).
+    var hiddenAttrs = isClone ? ' aria-hidden="true" inert' : '';
+    return (
+      '<div class="tst-card"' + hiddenAttrs + '>' +
+      '<div class="tst-card-top">' +
+      '<img src="' + t.image + '" alt="' + t.name + '" class="tst-avatar" loading="lazy" />' +
+      '<div>' +
+      '<div class="tst-name-row">' +
+      '<span class="tst-name">' + t.name + '</span>' +
+      TST_VERIFIED_SVG +
+      '</div>' +
+      '<div class="tst-meta">' + meta + '</div>' +
+      '</div>' +
+      '</div>' +
+      '<div class="tst-stars">' + tstRenderStars(t.rating) + '</div>' +
+      '<p class="tst-quote" id="' + id + '">' + t.quote + '</p>' +
+      '<button type="button" class="tst-readmore" data-target="' + id + '"' + (isClone ? ' tabindex="-1"' : '') + '>Read more</button>' +
+      '</div>'
+    );
+  }
+
+  // A clone of the first (max page size) cards is appended after the real
+  // set so advancing past the last page can keep sliding forward into what
+  // looks like the start, instead of visibly snapping backwards — then once
+  // that slide finishes we jump the track back to 0 with transitions off,
+  // which is imperceptible since the clone is pixel-identical to page one.
+  var CLONE_COUNT = Math.min(3, total);
+
+  function renderCards() {
+    var real = testimonials.map(function (t, index) {
+      return renderCard(t, 'tst-quote-' + index, false);
+    }).join('');
+    var clones = testimonials.slice(0, CLONE_COUNT).map(function (t, index) {
+      return renderCard(t, 'tst-quote-clone-' + index, true);
+    }).join('');
+    track.innerHTML = real + clones;
+  }
+
+  function renderDots(activeIndex) {
+    var pages = totalPages();
+    var active = typeof activeIndex === 'number' ? activeIndex : currentPage;
+    var html = '';
+    for (var i = 0; i < pages; i++) {
+      html +=
+        '<button type="button" class="dot' + (i === active ? ' active' : '') + '"' +
+        ' data-page="' + i + '"' +
+        ' aria-label="Go to testimonials page ' + (i + 1) + ' of ' + pages + '"' +
+        (i === active ? ' aria-current="true"' : '') +
+        '></button>';
+    }
+    dotsContainer.innerHTML = html;
+  }
+
+  function applyPage() {
+    var pages = totalPages();
+    currentPage = Math.min(currentPage, pages - 1);
+    track.style.transform = 'translateX(-' + (currentPage * viewport.clientWidth) + 'px)';
     renderDots();
   }
 
-  function updateClasses() {
-    const cards = document.querySelectorAll('.testimonial-carousel-card');
-    cards.forEach(card => card.classList.remove('active', 'prev', 'next'));
-    const prevIndex = (currentIndex - 1 + total) % total;
-    const nextIndex = (currentIndex + 1) % total;
-    cards[currentIndex].classList.add('active');
-    cards[prevIndex].classList.add('prev');
-    cards[nextIndex].classList.add('next');
+  var isWrapping = false;
+
+  function goToPage(page) {
+    if (isWrapping) return;
+    var pages = totalPages();
+    currentPage = ((page % pages) + pages) % pages;
+    applyPage();
   }
 
-  function renderDots() {
-    dotsContainer.innerHTML = testimonials.map((_, i) =>
-      `<span class="dot ${i === currentIndex ? 'active' : ''}" data-slide="${i}"></span>`
-    ).join('');
+  function nextPage() {
+    if (isWrapping) return;
+    var pages = totalPages();
+
+    if (currentPage < pages - 1) {
+      currentPage++;
+      applyPage();
+      return;
+    }
+
+    // Last real page — slide into the cloned page instead of wrapping back,
+    // then silently reset to page 0 once that slide finishes.
+    isWrapping = true;
+    renderDots(0);
+    track.style.transform = 'translateX(-' + (pages * viewport.clientWidth) + 'px)';
+
+    track.addEventListener('transitionend', function handler() {
+      track.removeEventListener('transitionend', handler);
+      track.style.transition = 'none';
+      currentPage = 0;
+      track.style.transform = 'translateX(0px)';
+      void track.offsetWidth; // force reflow before re-enabling the transition
+      track.style.transition = '';
+      isWrapping = false;
+    });
   }
 
-  function nextSlide() {
-    currentIndex = (currentIndex + 1) % total;
-    updateClasses();
-    renderDots();
+  function prevPage() {
+    goToPage(currentPage - 1);
   }
 
-  function prevSlide() {
-    currentIndex = (currentIndex - 1 + total) % total;
-    updateClasses();
-    renderDots();
-  }
+  nextBtn.addEventListener('click', nextPage);
+  if (prevBtn) prevBtn.addEventListener('click', prevPage);
 
-  function goToSlide(index) {
-    currentIndex = index;
-    updateClasses();
-    renderDots();
-  }
-
-  nextBtn.addEventListener('click', nextSlide);
-  prevBtn.addEventListener('click', prevSlide);
+  track.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      nextPage();
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      prevPage();
+    }
+  });
 
   dotsContainer.addEventListener('click', function (e) {
-    if (e.target.classList.contains('dot')) {
-      goToSlide(parseInt(e.target.dataset.slide));
-    }
+    var dot = e.target.closest('.dot');
+    if (!dot) return;
+    goToPage(parseInt(dot.dataset.page, 10));
+  });
+
+  // "Read more" / "Read less" toggle — real expand/collapse of the clamped quote.
+  track.addEventListener('click', function (e) {
+    var btn = e.target.closest('.tst-readmore');
+    if (!btn) return;
+    var quote = document.getElementById(btn.dataset.target);
+    if (!quote) return;
+    var expanded = quote.classList.toggle('tst-expanded');
+    btn.textContent = expanded ? 'Read less' : 'Read more';
+  });
+
+  var resizeTimer;
+  window.addEventListener('resize', function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () {
+      if (isWrapping) return;
+      applyPage();
+    }, 150);
   });
 
   // Defer the actual card render (10 cards + images via innerHTML) off the
   // critical rendering path so it doesn't block first paint / interactivity.
   var scheduleIdle = window.requestIdleCallback || function (fn) { setTimeout(fn, 200); };
   scheduleIdle(function () {
-    renderTestimonials();
-    setInterval(nextSlide, 6000);
+    renderCards();
+    applyPage();
+    setInterval(nextPage, 6000);
   });
 });
 
@@ -935,20 +1110,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 // ===== SOCIAL MEDIA LINKS =====
-document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('.social-btn').forEach(btn => {
-    btn.addEventListener('click', function () {
-      const platform = this.dataset.platform;
-      const urls = {
-        facebook: 'https://www.facebook.com/elunite/',
-        instagram: 'https://www.instagram.com/elunite_education/',
-        linkedin: 'https://linkedin.com/company/elunite',
-        twitter: 'https://x.com/EluniteEd'
-      };
-      if (urls[platform]) window.open(urls[platform], '_blank', 'noopener,noreferrer');
-    });
-  });
-});
+// Footer social icons are now real <a href> links (see index.html), so no
+// click-to-navigate JS is needed here any more.
 
 
 // ===== FOOTER LINK NAVIGATION =====
@@ -1108,67 +1271,6 @@ document.addEventListener('click', function (e) {
 // Initialize currency detection on page load
 window.addEventListener('load', detectUserCurrency);
 
-// Filter functionality
-document.querySelectorAll('.prg-filter-btn').forEach(btn => {
-  btn.addEventListener('click', function () {
-    const filter = this.dataset.filter;
-
-    document.querySelectorAll('.prg-filter-btn').forEach(b => b.classList.remove('active'));
-    this.classList.add('active');
-
-    document.querySelectorAll('.prg-card').forEach(card => {
-      if (filter === 'all' || card.dataset.category === filter) {
-        card.style.display = '';
-        setTimeout(() => card.style.opacity = '1', 10);
-      } else {
-        card.style.opacity = '0';
-        setTimeout(() => card.style.display = 'none', 300);
-      }
-    });
-  });
-});
-
-
-// ── CONTACT POPUP ──
-function openContactModal() {
-  document.getElementById('contact-modal').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeContactModal() {
-  document.getElementById('contact-modal').classList.remove('open');
-  document.getElementById('modal-form-body').style.display = 'block';
-  document.getElementById('modal-success').style.display = 'none';
-  document.body.style.overflow = '';
-}
-function submitContactForm() {
-  const name = document.getElementById('m-name').value.trim();
-  const country = document.getElementById('m-country').value;
-  const email = document.getElementById('m-email').value.trim();
-  const phone = document.getElementById('m-phone').value.trim();
-
-  if (!name || !country || !email || !phone) {
-    alert('Please fill in all required fields.');
-    return;
-  }
-  // ── Swap below with your real API/form submission ──
-  document.getElementById('modal-form-body').style.display = 'none';
-  document.getElementById('modal-success').style.display = 'block';
-  setTimeout(closeContactModal, 2800);
-}
-
-// Close on Escape key
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeContactModal();
-});
-
-// Hook your CTA buttons — add data-open-modal to any button you want
-document.querySelectorAll('[data-open-modal]').forEach(el => {
-  el.addEventListener('click', e => {
-    e.preventDefault();
-    openContactModal();
-  });
-});
-
 document.addEventListener('click', function (event) {
   const btn = event.target.closest('.faq-question');
 
@@ -1210,6 +1312,13 @@ document.addEventListener('DOMContentLoaded', function () {
   const closeBtn = popup ? popup.querySelector('.whatsapp-popup-close') : null;
   const teaserCloseBtn = teaser ? teaser.querySelector('.whatsapp-teaser-close') : null;
   const badge = toggleBtn ? toggleBtn.querySelector('.whatsapp-badge') : null;
+  // The "1" badge is a first-visit nudge, not a real unread-message count —
+  // hide it permanently for this browser once they've ever opened the chat,
+  // instead of showing "1" again on every fresh page load.
+  var BADGE_SEEN_KEY = 'elunite_whatsapp_badge_seen';
+  if (badge && localStorage.getItem(BADGE_SEEN_KEY)) {
+    badge.hidden = true;
+  }
 
   if (!widget || !toggleBtn || !popup) return;
 
@@ -1305,7 +1414,10 @@ document.addEventListener('DOMContentLoaded', function () {
     closeTeaser();
     popup.classList.add('is-open');
     popup.setAttribute('aria-hidden', 'false');
-    if (badge) badge.hidden = true;
+    if (badge) {
+      badge.hidden = true;
+      localStorage.setItem(BADGE_SEEN_KEY, '1');
+    }
   }
 
   function closePopup() {
@@ -1383,6 +1495,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var card = modal.querySelector('.lead-modal-card');
   var successEl = document.getElementById('lead-modal-success');
+  var errorEl = document.getElementById('lead-modal-error');
   var closeEls = modal.querySelectorAll('[data-lead-modal-close]');
   var lastFocusedEl = null;
   // Tracks when the modal was last opened, so the bot time-trap below
@@ -1426,6 +1539,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.style.overflow = 'hidden';
     form.hidden = false;
     successEl.hidden = true;
+    if (errorEl) errorEl.hidden = true;
     var focusables = getFocusable();
     if (focusables.length) focusables[0].focus();
     document.addEventListener('keydown', handleKeydown);
@@ -1457,6 +1571,22 @@ document.addEventListener('DOMContentLoaded', function () {
     'a[href="contact.html"].btn-solid',
     'a[href="contact.html"].services-callout-btn-outline',
     'a[href="contact.html"].elu-inline-link',
+    'a[href="contact.html"].svd-btn-dark',
+    'a[href="contact.html"].svd-final-btn',
+    'a[href="contact.html"].sas-hero-btn-outline',
+    'a[href="contact.html"].sas-hero-btn-primary',
+    'a[href="contact.html"].sep-hero-btn-outline',
+    'a[href="contact.html"].mcb-hero-btn-outline',
+    'a[href="contact.html"].wab-hero-btn-outline',
+    'a[href="contact.html"].wab-context-cta',
+    'a[href="contact.html"].wab-final-btn-outline',
+    'a[href="contact.html"].cit-hero-btn-outline',
+    'a[href="contact.html"].cit-context-cta',
+    'a[href="contact.html"].cit-final-btn-outline',
+    '.cit-call-links a[href="contact.html"]',
+    'a[href="contact.html"].bsd-hero-btn-outline',
+    'a[href="contact.html"].bsd-context-cta',
+    'a[href="contact.html"].blog-hero-btn-primary',
   ].join(', ');
 
   document.querySelectorAll(TRIGGER_SELECTOR).forEach(function (trigger) {
@@ -1515,7 +1645,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var countryInput = document.getElementById('lead-country');
     if (!countryInput.value) {
-      setFieldError(countryInput.closest('.lead-field'), 'Please choose a country');
+      setFieldError(countryInput.closest('.lead-field'), 'Please select your preferred study destination');
       valid = false;
     } else {
       setFieldError(countryInput.closest('.lead-field'), '');
@@ -1524,72 +1654,97 @@ document.addEventListener('DOMContentLoaded', function () {
     return valid;
   }
 
-  // ----- Submission (same anti-spam + Formspree pattern used elsewhere
-  // on the site, minus the WhatsApp handoff — this modal shows its own
-  // in-place success state instead) -----
-  var MIN_FILL_TIME_MS = 3000;
-  var RESUBMIT_COOLDOWN_MS = 60000;
-  var COOLDOWN_KEY = 'elunite_lead_modal_last_submit';
-  var submitBtn = form.querySelector('.lead-modal-submit');
+  // ----- Submission (shared anti-spam + Formspree handler used by all
+  // three lead forms on the site) -----
+  initLeadFormSubmit(form, {
+    submitBtn: form.querySelector('.lead-modal-submit'),
+    cooldownKey: 'elunite_lead_modal_last_submit',
+    getRenderedAt: function () { return formRenderedAt; },
+    validate: validateForm,
+    onCooldown: function (submitBtn) {
+      if (!submitBtn) return;
+      var original = submitBtn.textContent;
+      submitBtn.textContent = 'Already sent — please wait';
+      setTimeout(function () {
+        submitBtn.textContent = original;
+      }, 3000);
+    },
+    beforeSubmit: function (form) {
+      form.querySelector('.lead-modal-timestamp').value = new Date().toISOString();
+      form.querySelector('.lead-modal-source-page').value = window.location.pathname;
+    },
+    onSuccess: function () {
+      form.hidden = true;
+      successEl.hidden = false;
+      if (errorEl) errorEl.hidden = true;
+      var focusables = getFocusable();
+      if (focusables.length) focusables[0].focus();
+    },
+    onError: function () {
+      // Keep the filled-in form visible so they can retry without
+      // re-typing everything, and show a real error instead of a fake
+      // success message.
+      if (errorEl) errorEl.hidden = false;
+    },
+  });
+});
 
-  form.addEventListener('submit', async function (e) {
-    e.preventDefault();
 
-    if (form._gotcha && form._gotcha.value) {
+// ===== PROCESS SECTION LEAD FORM (index.html "From application to
+// boarding pass" card) — same Formspree + WhatsApp fallback + anti-spam
+// pattern as the other lead forms on the site =====
+document.addEventListener('DOMContentLoaded', function () {
+  var form = document.getElementById('process-lead-form');
+  if (!form) return;
+
+  var msgEl = document.getElementById('pf-form-msg');
+  var formRenderedAt = Date.now();
+  var WHATSAPP_NUMBER = '918050306510';
+
+  function showMessage(text) {
+    if (!msgEl) return;
+    msgEl.textContent = text;
+    msgEl.hidden = false;
+    setTimeout(function () {
+      msgEl.hidden = true;
+    }, 8000);
+  }
+
+  function buildWhatsAppUrl() {
+    var name = form.first_name.value.trim();
+    var email = form.email.value.trim();
+    var phone = form.phone.value.trim();
+    var homeCountry = form.home_country.value;
+    var country = form.destination_country.value;
+    var message = form.message.value.trim();
+    var waLines = [
+      'Hi ELUNITE! My name is ' + name + '.',
+      'Email: ' + email,
+      'Phone: ' + phone,
+      'Country: ' + homeCountry,
+      'Destination: ' + country,
+    ];
+    if (message) waLines.push('Message: ' + message);
+    return 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(waLines.join('\n'));
+  }
+
+  initLeadFormSubmit(form, {
+    submitBtn: form.querySelector('.lead-modal-submit'),
+    cooldownKey: 'elunite_process_form_last_submit',
+    getRenderedAt: function () { return formRenderedAt; },
+    onCooldown: function () {
+      showMessage("You've already sent this — our team has it. Please wait a moment before sending another.");
+    },
+    onSuccess: function () {
+      var waUrl = buildWhatsAppUrl();
+      showMessage("🎉 Thanks! We've got your details — opening WhatsApp so we can chat right away.");
       form.reset();
-      return;
-    }
-    if (Date.now() - formRenderedAt < MIN_FILL_TIME_MS) {
-      form.reset();
-      return;
-    }
-    if (!validateForm()) return;
-
-    var lastSubmit = Number(localStorage.getItem(COOLDOWN_KEY) || 0);
-    if (Date.now() - lastSubmit < RESUBMIT_COOLDOWN_MS) {
-      if (submitBtn) {
-        var original = submitBtn.textContent;
-        submitBtn.textContent = 'Already sent — please wait';
-        setTimeout(function () {
-          submitBtn.textContent = original;
-        }, 3000);
-      }
-      return;
-    }
-
-    form.querySelector('.lead-modal-timestamp').value = new Date().toISOString();
-    form.querySelector('.lead-modal-source-page').value = window.location.pathname;
-
-    if (submitBtn) {
-      submitBtn.disabled = true;
-      submitBtn.dataset.originalText = submitBtn.textContent;
-      submitBtn.textContent = 'Sending...';
-    }
-
-    var formData = new FormData(form);
-    try {
-      var response = await fetch(form.action, {
-        method: 'POST',
-        body: formData,
-        headers: { Accept: 'application/json' },
-      });
-      if (!response.ok) {
-        console.error('Formspree submission failed:', response.status);
-      }
-    } catch (error) {
-      console.error('Lead modal submission error:', error);
-    }
-
-    localStorage.setItem(COOLDOWN_KEY, String(Date.now()));
-
-    form.hidden = true;
-    successEl.hidden = false;
-    var focusables = getFocusable();
-    if (focusables.length) focusables[0].focus();
-
-    if (submitBtn) {
-      submitBtn.disabled = false;
-      submitBtn.textContent = submitBtn.dataset.originalText || 'Book Free Counselling';
-    }
+      setTimeout(function () { window.open(waUrl, '_blank', 'noopener'); }, 1200);
+    },
+    onError: function () {
+      var waUrl = buildWhatsAppUrl();
+      showMessage("We couldn't confirm your message went through. Opening WhatsApp so we don't miss you — please also try again shortly.");
+      setTimeout(function () { window.open(waUrl, '_blank', 'noopener'); }, 1200);
+    },
   });
 });

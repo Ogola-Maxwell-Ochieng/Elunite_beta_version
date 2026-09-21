@@ -1,9 +1,9 @@
 /**
  * ELUNITE BLOG DATE FORMATTER — SHARED LOGIC
  * ═══════════════════════════════════════════════════════════════
- * Turns a post's "YYYY-MM-DD" date into "Updated X hours/days ago"
- * for the first 3 days, then falls back to an absolute date like
- * "Updated Sep 10th, 2026". Used by:
+ * Turns a post's "YYYY-MM-DD" date into "Updated today" / "Updated
+ * yesterday" / "Updated X days ago" for the first 3 days, then falls
+ * back to an absolute date like "Updated Sep 10th, 2026". Used by:
  *   - blog.html card grid (elements with [data-updated-date])
  *   - individual blog post hero (elements with [data-updated-date])
  *   - blog-teaser.js ("Latest Blogs" widgets, via window.EluniteBlogDate)
@@ -24,25 +24,29 @@
   }
 
   // dateStr: "YYYY-MM-DD". prefix: e.g. "Updated " (default) or "" for a bare date.
+  //
+  // Posts only store a calendar date, not a real publish timestamp, so this
+  // compares calendar days rather than raw elapsed hours. Anchoring to
+  // midnight and measuring elapsed hours from there (the previous approach)
+  // made a post look like it was hours old the moment it went up, since
+  // "hours since midnight" is just "how late in the day it is right now".
   function formatUpdated(dateStr, prefix) {
     if (prefix === undefined) prefix = "Updated ";
     var published = new Date(dateStr + "T00:00:00");
-    var diffMs = Date.now() - published.getTime();
 
-    if (isNaN(published.getTime()) || diffMs < 0) {
+    if (isNaN(published.getTime())) {
       return prefix + formatAbsolute(published);
     }
 
-    var diffHours = Math.floor(diffMs / 3600000);
-    var diffDays = Math.floor(diffHours / 24);
+    var now = new Date();
+    var startOfPublished = new Date(published.getFullYear(), published.getMonth(), published.getDate());
+    var startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var diffDays = Math.round((startOfToday - startOfPublished) / 86400000);
 
-    if (diffHours < 1) return prefix + "just now";
-    if (diffDays < 1) {
-      return prefix + diffHours + " hour" + (diffHours === 1 ? "" : "s") + " ago";
-    }
-    if (diffDays <= 3) {
-      return prefix + diffDays + " day" + (diffDays === 1 ? "" : "s") + " ago";
-    }
+    if (diffDays < 0) return prefix + formatAbsolute(published);
+    if (diffDays === 0) return prefix + "today";
+    if (diffDays === 1) return prefix + "yesterday";
+    if (diffDays <= 3) return prefix + diffDays + " days ago";
     return prefix + formatAbsolute(published);
   }
 

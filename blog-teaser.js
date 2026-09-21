@@ -63,7 +63,7 @@
   }
 
   // Shares logic with blog.html and individual post pages (blog-date.js):
-  // "X hours/days ago" for the first 3 days, then an absolute date.
+  // "today"/"yesterday"/"X days ago" for the first 3 days, then an absolute date.
   function formatDate(dateStr) {
     if (window.EluniteBlogDate) {
       return window.EluniteBlogDate.formatUpdated(dateStr, "");

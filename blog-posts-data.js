@@ -27,6 +27,36 @@
 
 var ELUNITE_BLOG_POSTS = [
   {
+    url: "stay-and-work-in-germany-after-masters-2026.html",
+    title: "Can I Stay and Work in Germany After My Master's? 2026 Guide for International Graduates",
+    excerpt: "Working during your studies, the 18-month post-study job-seeker permit, German language expectations, and 2026 EU Blue Card salary thresholds, explained step by step.",
+    tag: "Study in Germany",
+    date: "2026-09-21",
+    readTime: "11 min read",
+    icon: "briefcase",
+    image: "images/blogs/Can I Stay and Work in Germany.webp"
+  },
+  {
+    url: "germany-study-costs-2026-payment-timeline.html",
+    title: "Germany Study Costs in 2026: University Deposit, Tuition, Blocked Account and Living Expenses – A Payment Timeline for International Families",
+    excerpt: "A stage-by-stage payment timeline for Germany: semester contribution, university deposits, the €11,904 blocked account, accommodation deposits and real monthly living costs.",
+    tag: "Study in Germany",
+    date: "2026-09-20",
+    readTime: "10 min read",
+    icon: "wallet",
+    image: "images/blogs/Germany Study Costs in 2026.webp"
+  },
+  {
+    url: "india-university-rankings-african-students.html",
+    title: "India University Rankings: 10 Things African Students Should Check Before Choosing a University",
+    excerpt: "NIRF rankings are only a starting point. Ten practical checks African students should run, from subject specific rankings to recognition back home, cost and scholarships.",
+    tag: "Study in India",
+    date: "2026-09-14",
+    readTime: "9 min read",
+    icon: "landmark",
+    image: "images/blogs/India University Rankings.webp"
+  },
+  {
     url: "new-rules-global-hiring-2026.html",
     title: "The New Rules of Global Hiring: What Employers in 2026 Expect from International Graduates",
     excerpt: "Skills, AI readiness, communication, and internships now matter as much as the degree itself. What career-ready actually looks like for international graduates in 2026.",

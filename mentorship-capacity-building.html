@@ -62,6 +62,28 @@
   </head>
 
   <body>
+    <!-- ══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════ ANNOUNCEMENT TICKER ══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════ -->
+    <div class="blog-ticker" aria-hidden="true">
+      <div class="blog-ticker-track">
+        <span class="blog-ticker-item">2,500+ African students placed abroad</span>
+        <span class="blog-ticker-dot">&bull;</span>
+        <span class="blog-ticker-item">Free strategy session, this week only</span>
+        <span class="blog-ticker-dot">&bull;</span>
+        <span class="blog-ticker-item">98% visa success rate</span>
+        <span class="blog-ticker-dot">&bull;</span>
+        <span class="blog-ticker-item">6 study destinations, 1 trusted guide</span>
+        <span class="blog-ticker-dot">&bull;</span>
+        <span class="blog-ticker-item">2,500+ African students placed abroad</span>
+        <span class="blog-ticker-dot">&bull;</span>
+        <span class="blog-ticker-item">Free strategy session, this week only</span>
+        <span class="blog-ticker-dot">&bull;</span>
+        <span class="blog-ticker-item">98% visa success rate</span>
+        <span class="blog-ticker-dot">&bull;</span>
+        <span class="blog-ticker-item">6 study destinations, 1 trusted guide</span>
+        <span class="blog-ticker-dot">&bull;</span>
+      </div>
+    </div>
+
     <!-- ═══════════ SITE PRELOADER ═══════════ -->
     <noscript><style>.site-preloader{display:none!important;}</style></noscript>
     <div id="site-preloader" class="site-preloader" role="status" aria-live="polite" aria-label="Loading">
@@ -122,10 +144,10 @@
               <a href="index.html" class="nav-link">Home</a>
               <a href="about.html" class="nav-link">About Us</a>
               <div class="nav-dropdown nav-dropdown-mega nav-dropdown-services" id="nav-services-dropdown">
-                <button type="button" class="nav-link nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+                <button type="button" class="nav-link nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" aria-controls="nav-services-menu">
                   Services
                 </button>
-                <div class="nav-dropdown-menu" role="menu">
+                <div class="nav-dropdown-menu" id="nav-services-menu" role="menu">
                   <span class="nav-dropdown-menu-arrow" aria-hidden="true"></span>
                   <div class="nav-dropdown-menu-body services-menu">
                     <div class="services-menu-main">
@@ -150,7 +172,7 @@
                         <div class="services-menu-grid-tile">
                           <img src="images/nav-menu/passport-visa.jpg" alt="" class="mega-tile-bg" width="700" height="1050" loading="lazy" />
                           <div class="mega-tile-overlay"></div>
-                          <span class="services-menu-grid-tile-label">Visa Assistance</span>
+                          <span class="services-menu-grid-tile-label">Visa Application Support</span>
                         </div>
                         <div class="services-menu-grid-tile">
                           <img src="images/nav-menu/work-abroad-office.jpg" alt="" class="mega-tile-bg" width="700" height="467" loading="lazy" />
@@ -165,11 +187,11 @@
                       </div>
                     </div>
                     <div class="services-menu-sidebar">
-                      <h4 class="services-menu-sidebar-title">Explore All Services</h4>
+                      <p class="services-menu-sidebar-title">Explore All Services</p>
                       <div class="services-menu-sidebar-columns">
                         <div class="services-menu-sidebar-col">
                           <a href="study-abroad-services.html" class="services-menu-sidebar-link">Study Abroad</a>
-                          <a href="visa_purchase.html" class="services-menu-sidebar-link">Visa Assistance</a>
+                          <a href="visa-purchase.html" class="services-menu-sidebar-link">Visa Application Support</a>
                           <a href="work-abroad-relocation.html" class="services-menu-sidebar-link">Work Abroad</a>
                           <a href="scholarships-exchange-programs.html" class="services-menu-sidebar-link">Scholarship Programs</a>
                         </div>
@@ -185,10 +207,10 @@
                 </div>
               </div>
               <div class="nav-dropdown nav-dropdown-mega" id="nav-destinations-dropdown">
-                <button type="button" class="nav-link nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+                <button type="button" class="nav-link nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" aria-controls="nav-destinations-menu">
                   Destinations
                 </button>
-                <div class="nav-dropdown-menu" role="menu">
+                <div class="nav-dropdown-menu" id="nav-destinations-menu" role="menu">
                   <span class="nav-dropdown-menu-arrow" aria-hidden="true"></span>
                   <div class="nav-dropdown-menu-body mega-menu">
                   <div class="mega-menu-links">
@@ -204,7 +226,7 @@
                     <div class="mega-menu-banner">
                       <img src="images/nav-menu/world-map.jpg" alt="" class="mega-tile-bg" width="700" height="467" loading="lazy" />
                       <div class="mega-tile-overlay"></div>
-                      <h4 class="mega-menu-banner-title">Explore Study Destinations Worldwide</h4>
+                      <p class="mega-menu-banner-title">Explore Study Destinations Worldwide</p>
                     </div>
                                           <div class="mega-menu-grid-tile">
                         <img src="images/nav-menu/study-destinations.jpg" alt="" class="mega-tile-bg" width="700" height="467" loading="lazy" />
@@ -236,25 +258,25 @@
                 </div>
               </div>
               <div class="nav-dropdown nav-dropdown-mega" id="nav-programs-dropdown">
-                <button type="button" class="nav-link nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+                <button type="button" class="nav-link nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" aria-controls="nav-programs-menu">
                   Programs
                 </button>
-                <div class="nav-dropdown-menu" role="menu">
+                <div class="nav-dropdown-menu" id="nav-programs-menu" role="menu">
                   <span class="nav-dropdown-menu-arrow" aria-hidden="true"></span>
                   <div class="nav-dropdown-menu-body mega-menu">
                   <div class="mega-menu-links">
-                    <a href="end_to_end_purchase.html" class="nav-dropdown-item" role="menuitem">End-to-End Admission</a>
-                    <a href="scholarship_purchase.html" class="nav-dropdown-item" role="menuitem">Scholarship Application</a>
-                    <a href="visa_purchase.html" class="nav-dropdown-item" role="menuitem">Visa Sponsorship</a>
-                    <a href="graduate_training.html" class="nav-dropdown-item" role="menuitem">Global Pathways Program</a>
-                    <a href="strategic_program.html" class="nav-dropdown-item" role="menuitem">Free Strategy Session</a>
+                    <a href="end-to-end-purchase.html" class="nav-dropdown-item" role="menuitem">End-to-End Admission</a>
+                    <a href="scholarship-purchase.html" class="nav-dropdown-item" role="menuitem">Scholarship Application</a>
+                    <a href="visa-purchase.html" class="nav-dropdown-item" role="menuitem">Visa Application Support</a>
+                    <a href="graduate-training.html" class="nav-dropdown-item" role="menuitem">Global Pathways Program</a>
+                    <a href="strategic-program.html" class="nav-dropdown-item" role="menuitem">Free Strategy Session</a>
                     <a href="programs.html" class="nav-dropdown-item nav-dropdown-viewall" role="menuitem">View all programs →</a>
                   </div>
                   <div class="mega-menu-panel">
                     <div class="mega-menu-banner">
                       <img src="images/nav-menu/decision-path.jpg" alt="" class="mega-tile-bg" width="700" height="471" loading="lazy" />
                       <div class="mega-tile-overlay"></div>
-                      <h4 class="mega-menu-banner-title">Find The Right Program For You</h4>
+                      <p class="mega-menu-banner-title">Find The Right Program For You</p>
                     </div>
                                           <div class="mega-menu-grid-tile">
                         <img src="images/nav-menu/document-support.jpg" alt="" class="mega-tile-bg" width="700" height="467" loading="lazy" />
@@ -272,7 +294,7 @@
                         <img src="images/nav-menu/passport-visa.jpg" alt="" class="mega-tile-bg" width="700" height="1050" loading="lazy" />
                         <div class="mega-tile-overlay"></div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="plane" class="lucide lucide-plane mega-menu-grid-tile-icon"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"></path></svg>
-                        <span class="mega-menu-grid-tile-label">Visa Sponsorship</span>
+                        <span class="mega-menu-grid-tile-label">Visa Application Support</span>
                       </div>
                       <div class="mega-menu-grid-tile">
                         <img src="images/nav-menu/mentorship.jpg" alt="" class="mega-tile-bg" width="700" height="467" loading="lazy" />
@@ -344,23 +366,23 @@
         </div>
 
         <div id="panel-programs-category" class="panel-grid">
-          <a href="end_to_end_purchase.html" class="panel-card">
+          <a href="end-to-end-purchase.html" class="panel-card">
             <img src="images/Programs/End-to-End%20Application%20Program.webp" alt="" width="1080" height="1080" loading="lazy" />
             <span class="panel-card-label">End-to-End Admission</span>
           </a>
-          <a href="scholarship_purchase.html" class="panel-card">
+          <a href="scholarship-purchase.html" class="panel-card">
             <img src="images/Programs/Scholarship%20Program%20Application.webp" alt="" width="1080" height="1080" loading="lazy" />
             <span class="panel-card-label">Scholarship Application</span>
           </a>
-          <a href="visa_purchase.html" class="panel-card">
+          <a href="visa-purchase.html" class="panel-card">
             <img src="images/Programs/Visa%20Program.webp" alt="" width="1080" height="1080" loading="lazy" />
-            <span class="panel-card-label">Visa Sponsorship</span>
+            <span class="panel-card-label">Visa Application Support</span>
           </a>
-          <a href="graduate_training.html" class="panel-card">
+          <a href="graduate-training.html" class="panel-card">
             <img src="images/Programs/Application%20Training%20Module.webp" alt="" width="1200" height="1200" loading="lazy" />
             <span class="panel-card-label">Global Pathways Program</span>
           </a>
-          <a href="strategic_program.html" class="panel-card">
+          <a href="strategic-program.html" class="panel-card">
             <img src="images/Programs/Strategic_training.webp" alt="" width="1080" height="1350" loading="lazy" />
             <span class="panel-card-label">Free Strategy Session</span>
           </a>
@@ -455,10 +477,10 @@
           <a href="https://www.facebook.com/elunite" class="contact-social-icon" aria-label="Elunite on Facebook" target="_blank" rel="noopener noreferrer">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#081b49" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
           </a>
-          <a href="https://www.instagram.com/elunite" class="contact-social-icon" aria-label="Elunite on Instagram" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.instagram.com/elunite_education/" class="contact-social-icon" aria-label="Elunite on Instagram" target="_blank" rel="noopener noreferrer">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#081b49" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
           </a>
-          <a href="https://www.linkedin.com/company/elunite" class="contact-social-icon" aria-label="Elunite on LinkedIn" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.linkedin.com/company/elunite/?viewAsMember=true" class="contact-social-icon" aria-label="Elunite on LinkedIn" target="_blank" rel="noopener noreferrer">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#081b49" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
           </a>
         </div>
@@ -476,7 +498,7 @@
         <div class="service-quicklinks">
           <a href="service.html" class="service-quicklink">Overview</a>
           <a href="study-abroad-services.html" class="service-quicklink">Study Abroad</a>
-          <a href="visa_purchase.html" class="service-quicklink">Visa Assistance</a>
+          <a href="visa-purchase.html" class="service-quicklink">Visa Application Support</a>
           <a href="work-abroad-relocation.html" class="service-quicklink">Work Abroad</a>
           <a href="scholarships-exchange-programs.html" class="service-quicklink">Scholarship Programs</a>
           <a href="business-strategy-development.html" class="service-quicklink">Business Strategy</a>
@@ -527,376 +549,250 @@
     
 
     <main id="main-content">
-      <!-- ═══════════ HERO ═══════════ -->
-      <section class="sap-hero">
-        <div class="sap-hero-inner">
-          <h1 class="sap-hero-title">
-            Mentorship <span>&amp; Capacity</span> Building Services That
-            Turn Potential Into a Global-Ready Career
-          </h1>
-          <p class="sa-hero-desc strong">
+      <!-- ═══════════════════════════════════════════════════
+         HERO
+    ═══════════════════════════════════════════════════ -->
+      <section class="mcb-hero">
+        <div class="mcb-hero-bg">
+          <img src="images/Programs/Mentorship Capacity Building Hero Background.webp" alt="" width="700" height="467" loading="eager" />
+        </div>
+        <div class="mcb-hero-overlay" aria-hidden="true"></div>
+
+        <div class="mcb-hero-inner">
+          <p class="mcb-hero-breadcrumb">
+            <a href="index.html">Home</a>
+            <span class="mcb-hero-breadcrumb-sep">&rsaquo;</span>
+            <a href="service.html">Services</a>
+            <span class="mcb-hero-breadcrumb-sep">&rsaquo;</span>
+            <span class="mcb-hero-breadcrumb-current">Mentorship &amp; Capacity Building</span>
+          </p>
+
+          <span class="mcb-hero-badge">
+            <span class="mcb-hero-badge-dot" aria-hidden="true"></span>
+            Free Consultation Available
+          </span>
+
+          <h1 class="mcb-hero-title">Mentorship <span>&amp; Capacity</span> Building That Turn Potential Into Growth</h1>
+
+          <p class="mcb-hero-desc">
             Career direction, communication readiness, and leadership gaps
             need to be assessed before we know which mentorship track to
             build.
           </p>
-        </div>
 
-        <div class="sa-hero-actions">
-          <a href="tel:+918050306510" class="sa-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="phone" style="width: 16px; height: 16px" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-            Request Free Consultation
-          </a>
-          <a href="contact.html" class="sa-btn sa-btn-outline">
-            Request Service
-          </a>
+          <div class="mcb-hero-actions">
+            <a href="tel:+918050306510" class="mcb-hero-btn mcb-hero-btn-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              Call +91 80503 06510
+            </a>
+            <a href="contact.html" class="mcb-hero-btn mcb-hero-btn-outline">Request Service</a>
+          </div>
         </div>
       </section>
 
-      <!-- ═══════════ PROBLEM / SOLUTION ═══════════ -->
-      <section class="sap-intro">
-        <div class="sap-inner">
-          <div class="sap-intro-grid">
-            <!-- LEFT: pain points -->
-            <div class="sap-intro-left">
-              <span class="sap-tag">The Struggle</span>
-              <h2 class="sap-h2">
-                Work From What's Actually Holding Your
-                <span>Growth</span> Back
-              </h2>
-              <p class="sap-sub">
-                A career or leadership gap can stall someone for years
-                because of an unclear direction, weak interview and
-                communication skills, or no structured plan for building
-                capability over time. Advisory work can start with your
-                current stage, your strengths, and the direction you're
-                aiming for.
-              </p>
-              <p class="sap-sub">
-                That direction-first approach keeps the mentoring concrete:
-                identify what's holding the growth back, assess the related
-                gaps, and make the next move from where you actually stand
-                today. For broader guidance across study, work, and
-                scholarship pathways, visit the
-                <a
-                  href="service.html"
-                  style="
-                    color: var(--accent);
-                    font-weight: 600;
-                    text-decoration: underline;
-                  "
-                  >full services page</a
-                >.
-              </p>
-              <a href="contact.html" class="sap-btn">Talk to an Advisor</a>
-            </div>
+      <!-- ═══════════════════════════════════════════════════
+         CONTEXT / EDUCATION
+    ═══════════════════════════════════════════════════ -->
+      <section class="mcb-context">
+        <div class="mcb-inner">
+          <h2 class="mcb-h2">Work From What's Actually Holding Your <span>Growth</span> Back</h2>
+          <p class="mcb-lede">
+            A career or leadership gap can stall someone for years because
+            of an unclear direction, weak interview and communication
+            skills, or no structured plan for building capability over
+            time. Advisory work can start with your current stage, your
+            strengths, and the direction you're aiming for. That
+            direction-first approach keeps the mentoring concrete: identify
+            what's holding the growth back, assess the related gaps, and
+            make the next move from where you actually stand today. For
+            broader guidance across study, work, and scholarship pathways,
+            visit the <a href="service.html" style="color: var(--accent); font-weight: 600; text-decoration: none;">full services page</a>.
+          </p>
 
-            <!-- RIGHT: how we solve it -->
-            <div class="sap-intro-right">
-              <h3 class="sap-intro-right-title">How Elunite Solves It</h3>
-              <div class="sap-solve-row">
-                <div class="sap-solve-ico">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="compass" style="width: 20px; height: 20px; color: #ffc107" class="lucide lucide-compass"><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"></path><circle cx="12" cy="12" r="10"></circle></svg>
-                </div>
-                <div>
-                  <h4>Career Direction &amp; Goal Mapping</h4>
-                  <p>
-                    Your strengths, interests, and constraints are matched
-                    against realistic career and study paths — not just
-                    the most popular ones.
-                  </p>
-                </div>
+          <div class="mcb-context-grid">
+            <div class="mcb-context-card">
+              <h3>Students</h3>
+              <p>Course and career decisions, guided before they lock in a path. Strengths, interests, and constraints get matched against realistic study and career options through Career Direction and Goal Mapping, not just the popular ones.</p>
+            </div>
+            <div class="mcb-context-card">
+              <h3>Early-Career Professionals</h3>
+              <p>Building toward a specific role or a move abroad, with a concrete plan and timeline. Resumes and profiles get sharpened through Personal Branding and Positioning, backed by mock interviews under Interview and Communication Readiness.</p>
+            </div>
+            <div class="mcb-context-card">
+              <h3>Youth Program Participants</h3>
+              <p>Structured workshops and capacity-building tracks, not one-off advice, built through Leadership and Capacity Workshops and youth empowerment programs for cohorts, aligned with global standards, alongside one-on-one mentoring that steadily builds real capability over time.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════
+         WHAT'S INCLUDED
+    ═══════════════════════════════════════════════════ -->
+      <section class="mcb-features">
+        <div class="mcb-inner">
+          <h2 class="mcb-h2">What's Included</h2>
+          <p class="mcb-lede">How Elunite solves it — four pillars that make up every mentorship track.</p>
+
+          <div class="mcb-features-grid">
+            <div class="mcb-fcard">
+              <span class="mcb-fcard-num">01</span>
+              <div class="mcb-fcard-body">
+                <h3>Career Direction &amp; Goal Mapping</h3>
+                <p>Your strengths, interests, and constraints are matched against realistic career and study paths — not just the most popular ones.</p>
               </div>
-              <div class="sap-solve-row">
-                <div class="sap-solve-ico">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="badge-check" style="width: 20px; height: 20px; color: #ffc107" class="lucide lucide-badge-check"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"></path><path d="m9 12 2 2 4-4"></path></svg>
-                </div>
-                <div>
-                  <h4>Personal Branding &amp; Positioning</h4>
-                  <p>
-                    Resumes, portfolios, and profiles are shaped to
-                    represent your strengths clearly to employers and
-                    admissions committees alike.
-                  </p>
-                </div>
+            </div>
+            <div class="mcb-fcard">
+              <span class="mcb-fcard-num">02</span>
+              <div class="mcb-fcard-body">
+                <h3>Personal Branding &amp; Positioning</h3>
+                <p>Resumes, portfolios, and profiles are shaped to represent your strengths clearly to employers and admissions committees alike.</p>
               </div>
-              <div class="sap-solve-row">
-                <div class="sap-solve-ico">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="mic" style="width: 20px; height: 20px; color: #ffc107" class="lucide lucide-mic"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" x2="12" y1="19" y2="22"></line></svg>
-                </div>
-                <div>
-                  <h4>Interview &amp; Communication Readiness</h4>
-                  <p>
-                    Mock interviews and structured feedback build the
-                    confidence and clarity that actually come through in
-                    the room.
-                  </p>
-                </div>
+            </div>
+            <div class="mcb-fcard">
+              <span class="mcb-fcard-num">03</span>
+              <div class="mcb-fcard-body">
+                <h3>Interview &amp; Communication Readiness</h3>
+                <p>Mock interviews and structured feedback build the confidence and clarity that actually come through in the room.</p>
               </div>
-              <div class="sap-solve-row">
-                <div class="sap-solve-ico">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="trending-up" style="width: 20px; height: 20px; color: #ffc107" class="lucide lucide-trending-up"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>
-                </div>
-                <div>
-                  <h4>Leadership &amp; Capacity Workshops</h4>
-                  <p>
-                    Support doesn't end at one conversation — structured
-                    workshops and youth empowerment tracks build capability
-                    over time.
-                  </p>
-                </div>
+            </div>
+            <div class="mcb-fcard">
+              <span class="mcb-fcard-num">04</span>
+              <div class="mcb-fcard-body">
+                <h3>Leadership &amp; Capacity Workshops</h3>
+                <p>Support doesn't end at one conversation — structured workshops and youth empowerment tracks build capability over time.</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ═══════════ WHAT WE HANDLE / WHEN WE REFER OUT ═══════════ -->
-      <section class="sa-section">
-        <div class="sa-wrap">
-          <h2 class="sa-h2">
-            What We Handle Directly, and <span>When We Refer Out</span>
-          </h2>
-          <p class="sa-lede">
+      <!-- ═══════════════════════════════════════════════════
+         WHAT WE HANDLE / WHEN WE REFER OUT
+    ═══════════════════════════════════════════════════ -->
+      <section class="mcb-features" style="padding-top: 0;">
+        <div class="mcb-inner">
+          <h2 class="mcb-h2">What We Handle Directly, and <span>When We Refer Out</span></h2>
+          <p class="mcb-lede">
             Mentorship advisory begins with where you stand today. We can
             start directly with career mapping, branding, interview prep,
             and capacity-building workshops.
           </p>
 
-          <div class="sa-card-grid sa-cols-2">
-            <div class="zz-card">
-              <div class="zz-step-number">A</div>
-              <h3 class="zz-step-title">We Handle Directly</h3>
-              <p class="zz-step-desc">
-                The full mentorship and capacity-building track, start to
-                finish.
-              </p>
-              <ul class="zz-list">
-                <li>Personalized academic and professional mentoring</li>
-                <li>Career strategy planning and professional branding</li>
-                <li>Interview preparation and leadership development</li>
-                <li>Youth empowerment initiatives</li>
-                <li>
-                  Capacity-building workshops aligned with global standards
-                </li>
-                <li>Ongoing mentor check-ins and progress tracking</li>
-              </ul>
+          <div class="mcb-features-grid">
+            <div class="mcb-fcard">
+              <span class="mcb-fcard-num">A</span>
+              <div class="mcb-fcard-body">
+                <h3>We Handle Directly</h3>
+                <p style="margin-bottom: 10px;">The full mentorship and capacity-building track, start to finish.</p>
+                <ul>
+                  <li>Personalized academic and professional mentoring</li>
+                  <li>Career strategy planning and professional branding</li>
+                  <li>Interview preparation and leadership development</li>
+                  <li>Youth empowerment initiatives</li>
+                  <li>Capacity-building workshops aligned with global standards</li>
+                  <li>Ongoing mentor check-ins and progress tracking</li>
+                </ul>
+              </div>
             </div>
-            <div class="zz-card sa-refer-card">
-              <div class="zz-step-number">B</div>
-              <h3 class="zz-step-title">When We Refer You Elsewhere</h3>
-              <p class="zz-step-desc">
-                Outside our scope — we'll point you to the right partner.
-              </p>
-              <ul class="zz-list">
-                <li>Full university admissions applications</li>
-                <li>Work permit or immigration filing</li>
-                <li>Clinical mental health counseling</li>
-                <li>Standardized test coaching (IELTS, TOEFL, GRE, GMAT)</li>
-              </ul>
-            </div>
-          </div>
-          <p class="sa-note-bar">
-            If a request falls outside mentorship and capacity-building
-            advisory, we'll tell you directly and point you to the right
-            specialist or partner.
-          </p>
-        </div>
-      </section>
-
-      <!-- ═══════════ WHEN YOU CALL + COVERAGE (side-by-side) ═══════════ -->
-      <section class="sa-section">
-        <div class="sa-wrap">
-          <div class="sa-card-grid sa-cols-2">
-            <!-- Card 1 — When You Call -->
-            <div class="zz-card sa-info-card">
-              <span class="sa-eyebrow">When You Call</span>
-              <h2 class="sa-h2">Give Us Your Goal and Your Gap</h2>
-              <p class="sa-lede">
-                Give us your current stage — student, early professional,
-                or youth program participant — and the direction you're
-                aiming for.
-              </p>
-              <p class="sa-lede">
-                A recent resume or academic record, and a rough sense of
-                timeline can help us tell you early whether the starting
-                point is career mapping, interview prep, or a workshop
-                track.
-              </p>
-            </div>
-
-            <!-- Card 2 — Coverage -->
-            <div class="zz-card sa-info-card">
-              <span class="sa-eyebrow">Advisory Coverage</span>
-              <h2 class="sa-h2">
-                Individuals, Cohorts &amp; Youth Programs —
-                <span>At Every Stage</span>
-              </h2>
-              <p class="sa-lede">
-                Mentorship and capacity-building coverage spans one-on-one
-                mentoring, small cohorts, and structured youth empowerment
-                programs across India, Canada, the UK, and partner
-                organizations.
-              </p>
-              <div class="sa-links-row">
-                <a href="programs.html">One-on-One Mentoring</a>
-                <a href="programs.html">Youth Empowerment Programs</a>
-                <a href="programs.html">Leadership Workshops</a>
-                <a href="contact.html">Confirm Your Track</a>
+            <div class="mcb-fcard">
+              <span class="mcb-fcard-num">B</span>
+              <div class="mcb-fcard-body">
+                <h3>When We Refer You Elsewhere</h3>
+                <p style="margin-bottom: 10px;">Outside our scope — we'll point you to the right partner.</p>
+                <ul>
+                  <li>Full university admissions applications</li>
+                  <li>Work permit or immigration filing</li>
+                  <li>Clinical mental health counseling</li>
+                  <li>Standardized test coaching (IELTS, TOEFL, GRE, GMAT)</li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ═══════════ TESTIMONIAL ═══════════ -->
-      <section class="sa-section sa-testimonial">
-        <div class="sa-wrap">
-          <span class="sa-eyebrow">From a Mentorship Client</span>
-          <h2 class="sa-h2">A Client's Words About Elunite</h2>
-          <div class="sa-quote">
-            <blockquote>
-              My mentor helped me turn a vague idea of "working abroad
-              someday" into an actual plan with dates on it.
-            </blockquote>
-            <cite>— K. Iyer, Mentorship Client</cite>
+      <!-- ═══════════════════════════════════════════════════
+         WHEN YOU CALL + COVERAGE
+    ═══════════════════════════════════════════════════ -->
+      <section class="mcb-call">
+        <div class="mcb-inner mcb-call-grid">
+          <div>
+            <h2 class="mcb-h2">Give Us Your Goal and Your Gap</h2>
+            <p class="mcb-call-p">
+              Give us your current stage — student, early professional, or
+              youth program participant — and the direction you're aiming
+              for.
+            </p>
+            <p class="mcb-call-p">
+              A recent resume or academic record, and a rough sense of
+              timeline can help us tell you early whether the starting
+              point is career mapping, interview prep, or a workshop track.
+            </p>
           </div>
-        </div>
-      </section>
 
-      <!-- ═══════════ FAQ ═══════════ -->
-      <section class="sap-faq">
-        <div class="sap-inner">
-          <div class="sap-faq-hd">
-            <h2 class="sap-h2">
-              Mentorship <span>Questions</span>, Answered
-            </h2>
-          </div>
-          <div class="sap-faq-list">
-            <div class="sap-faq-item">
-              <button class="sap-faq-btn">
-                <span class="sap-faq-q"
-                  >What does Elunite's mentorship &amp; capacity building
-                  service cover?</span
-                >
-                <span class="sap-faq-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-down" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"></path></svg></span>
-              </button>
-              <div class="sap-faq-a">
-                Our service covers personalized mentoring, career strategy
-                and professional branding, interview and leadership
-                preparation, youth empowerment initiatives, and structured
-                capacity-building workshops.
-              </div>
-            </div>
-            <div class="sap-faq-item">
-              <button class="sap-faq-btn">
-                <span class="sap-faq-q"
-                  >Is this for students only, or working professionals
-                  too?</span
-                >
-                <span class="sap-faq-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-down" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"></path></svg></span>
-              </button>
-              <div class="sap-faq-a">
-                Both. We mentor students working through course and career
-                decisions as well as early-career professionals building
-                toward a specific role or move abroad.
-              </div>
-            </div>
-            <div class="sap-faq-item">
-              <button class="sap-faq-btn">
-                <span class="sap-faq-q"
-                  >Do you run youth empowerment programs?</span
-                >
-                <span class="sap-faq-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-down" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"></path></svg></span>
-              </button>
-              <div class="sap-faq-a">
-                Yes. We run structured youth empowerment initiatives and
-                capacity-building workshops for cohorts, in addition to
-                one-on-one mentoring.
-              </div>
-            </div>
-            <div class="sap-faq-item">
-              <button class="sap-faq-btn">
-                <span class="sap-faq-q"
-                  >How is mentorship different from your study or work
-                  abroad services?</span
-                >
-                <span class="sap-faq-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-down" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"></path></svg></span>
-              </button>
-              <div class="sap-faq-a">
-                Mentorship focuses on direction and readiness — deciding
-                where you're headed and building the skills to get there.
-                Study Abroad and Work Abroad handle the applications, visas,
-                and placements once that direction is clear.
-              </div>
-            </div>
-            <div class="sap-faq-item">
-              <button class="sap-faq-btn">
-                <span class="sap-faq-q"
-                  >How is Elunite's mentorship service priced?</span
-                >
-                <span class="sap-faq-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-down" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"></path></svg></span>
-              </button>
-              <div class="sap-faq-a">
-                Our initial consultation is completely free. Fees depend on
-                the mentoring track and duration you choose, and are shared
-                transparently before you commit to anything.
-              </div>
+          <div class="mcb-call-card">
+            <h2 class="mcb-h2 mcb-h2-light">Individuals, Cohorts &amp; Youth Programs <span>&mdash; At Every Stage</span></h2>
+            <p class="mcb-call-card-desc">
+              Mentorship and capacity-building coverage spans one-on-one
+              mentoring, small cohorts, and structured youth empowerment
+              programs across India, Canada, the UK, and partner
+              organizations.
+            </p>
+            <div class="mcb-call-links">
+              <a href="programs.html">One-on-One Mentoring <span>&rarr;</span></a>
+              <a href="programs.html">Youth Empowerment Programs <span>&rarr;</span></a>
+              <a href="programs.html">Leadership Workshops <span>&rarr;</span></a>
+              <a href="contact.html">Confirm Your Track <span>&rarr;</span></a>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ═══════════ MATCH THE SERVICE TO THE PROBLEM ═══════════ -->
-      <section
-        class="sa-section"
-        style="padding-bottom: 120px; border-bottom: none"
-      >
-        <div class="sa-wrap">
-          <div
-            style="
-              text-align: center;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-            "
-          >
-            <span class="sap-tag">More Specific Help</span>
-            <h2 class="sa-h2">Match the Service to the Problem</h2>
+      <!-- ═══════════════════════════════════════════════════
+         TESTIMONIAL
+    ═══════════════════════════════════════════════════ -->
+      <section class="mcb-testimonial">
+        <div class="mcb-inner">
+          <h2 class="mcb-h2 mcb-h2-light">A Client's Words About Elunite</h2>
+          <div class="mcb-testimonial-quote">
+            <blockquote>&ldquo;My mentor helped me turn a vague idea of 'working abroad someday' into an actual plan with dates on it.&rdquo;</blockquote>
+            <cite>K. Iyer &mdash; Mentorship Client</cite>
           </div>
+        </div>
+      </section>
 
-          <div class="sa-card-grid sa-cols-3">
-            <a href="study-abroad-services.html" class="zz-card">
-              <h3 class="zz-step-title">Study Abroad Services</h3>
-              <p class="zz-step-desc">
-                Choose this once your direction is clear and you need
-                university shortlisting, applications, and visa support
-                instead of career mapping.
-              </p>
-            </a>
-            <a href="work-abroad-relocation.html" class="zz-card">
-              <h3 class="zz-step-title">Work Abroad &amp; Relocation</h3>
-              <p class="zz-step-desc">
-                Choose this if you already know your target role and need
-                employer matching and work permit support instead of
-                career coaching.
-              </p>
-            </a>
-            <a href="service.html#corporate-training" class="zz-card">
-              <h3 class="zz-step-title">
-                Corporate &amp; Institutional Training
-              </h3>
-              <p class="zz-step-desc">
-                Route organization-wide workforce training requests here
-                instead of individual mentoring.
-              </p>
-            </a>
+      <!-- ═══════════════════════════════════════════════════
+         FAQ
+    ═══════════════════════════════════════════════════ -->
+      <section class="mcb-faq">
+        <div class="mcb-inner">
+          <h2 class="mcb-h2">Mentorship <span>Questions</span>, Answered</h2>
+
+          <div class="mcb-faq-grid">
+            <div class="mcb-faq-card">
+              <h3>What does Elunite's mentorship &amp; capacity building service cover?</h3>
+              <p>Our service covers personalized mentoring, career strategy and professional branding, interview and leadership preparation, youth empowerment initiatives, and structured capacity-building workshops.</p>
+            </div>
+            <div class="mcb-faq-card">
+              <h3>Do you run youth empowerment programs?</h3>
+              <p>Yes. We run structured youth empowerment initiatives and capacity-building workshops for cohorts, in addition to one-on-one mentoring.</p>
+            </div>
+            <div class="mcb-faq-card">
+              <h3>How is mentorship different from your study or work abroad services?</h3>
+              <p>Mentorship focuses on direction and readiness — deciding where you're headed and building the skills to get there. Study Abroad and Work Abroad handle the applications, visas, and placements once that direction is clear.</p>
+            </div>
+            <div class="mcb-faq-card">
+              <h3>How is Elunite's mentorship service priced?</h3>
+              <p>Our initial consultation is completely free. Fees depend on the mentoring track and duration you choose, and are shared transparently before you commit to anything.</p>
+            </div>
           </div>
         </div>
       </section>
     </main>
 
     <!-- ═══════════ ELUNITE FOOTER ═══════════ -->
-    <footer id="footer" class="footer-section">
+                                    <footer id="footer" class="footer-section">
       <!-- Scroll to Top Button -->
       <button type="button" class="scroll-to-top" aria-label="Scroll to top">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-up" class="lucide lucide-arrow-up"><path d="m5 12 7-7 7 7"></path><path d="M12 19V5"></path></svg>
@@ -905,150 +801,95 @@
       <div class="container">
         <div class="footer-content">
           <div class="footer-grid">
-            <!-- About Section -->
-            <div class="footer-about">
+            <!-- Brand Block -->
+            <div class="footer-brand">
               <img
                 src="images/logo-footer.webp"
-                alt="footer-logo"
+                alt="Elunite Study Abroad Consultants logo"
                 class="footer-logo"
                 width="150"
                 height="150"
-               loading="lazy" />
+              />
+
+              <a href="tel:+918050306510" class="footer-phone">[+91] 8050306510</a>
+
               <p class="footer-description">
                 Committed to guiding students toward global academic success
                 through tailored support and access to premier International
                 Education Opportunities.
               </p>
-              <div class="social-links">
-                <button class="social-btn" data-platform="facebook" aria-label="Facebook">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="facebook" class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-                </button>
-                <button class="social-btn" data-platform="instagram" aria-label="Instagram">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="instagram" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
-                </button>
-                <button class="social-btn" data-platform="linkedin" aria-label="LinkedIn">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="linkedin" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                </button>
-                <button class="social-btn" data-platform="twitter" aria-label="Twitter">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="twitter" class="lucide lucide-twitter"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
-                </button>
-              </div>
-              <div class="preferred-source">
-                <span class="preferred-source-label">Like our articles? Tell Google:</span>
-                <div google-add-preferred-source-btn data-theme="dark"></div>
-              </div>
             </div>
 
-            <!-- Quick Links -->
-            <div class="footer-links">
-              <h3 class="footer-heading">Company</h3>
-              <ul class="footer-nav">
-                <li><a href="index.html" class="footer-link">Home</a></li>
-                <li><a href="about.html" class="footer-link">About Us</a></li>
-                <li><a href="service.html" class="footer-link">Services</a></li>
-                <li>
-                  <a href="destination.html" class="footer-link"
-                    >Destinations</a
-                  >
-                </li>
-                <li>
-                  <a href="programs.html" class="footer-link">Programs</a>
-                </li>
-                <li>
-                  <a href="blog.html" class="footer-link">Blogs</a>
-                </li>
-                <li>
-                  <a href="contact.html" class="footer-link">Contact Us</a>
-                </li>
-              </ul>
-            </div>
-
-            <!-- Services -->
-            <div class="footer-services">
-              <h3 class="footer-heading">Our Consultations</h3>
-              <ul class="services-list">
-                <li>
-                  <a href="study-abroad-services.html" class="footer-link"
-                    >Study Abroad</a
-                  >
-                </li>
-                <li>
-                  <a href="visa_purchase.html" class="footer-link">Visa Assistance</a>
-                </li>
-                <li>
-                  <a href="work-abroad-relocation.html" class="footer-link"
-                    >Work Abroad</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="scholarships-exchange-programs.html"
-                    class="footer-link"
-                    >Scholarship Programs</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="business-strategy-development.html"
-                    class="footer-link"
-                    >Business Strategy</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="mentorship-capacity-building.html"
-                    class="footer-link"
-                    >Career Mentorship</a
-                  >
-                </li>
-                <li>
-                  <a href="corporate-institutional-training.html" class="footer-link">Corporate Training</a>
-                </li>
-              </ul>
-            </div>
-
-            <!-- Contact Info -->
-            <div class="footer-contact">
-              <h3 class="footer-heading">Contact Info</h3>
-              <div class="contact-list">
-                <div class="contact-item">
-                  <div class="contact-value">
-                    <strong>📞 Phone:</strong> +918050306510
-                  </div>
-                </div>
-                <div class="contact-item">
-                  <div class="contact-value">
-                    <strong>💬 WhatsApp:</strong> +918050306510
-                  </div>
-                </div>
-                <div class="contact-item">
-                  <div class="contact-value">
-                    <strong>📧 Email:</strong> contact@elunite.com
-                  </div>
-                </div>
-                <div class="contact-item">
-                  <div class="contact-value">
-                    <div><strong>📍 Offices:</strong> St. Peter’s Muthiga, Waiyaki Highway, Kiambu, Kenya</div>
-                  </div>
-                </div>
+            <!-- Link Columns -->
+            <nav class="footer-columns" aria-label="Footer">
+              <div class="footer-col">
+                <h3 class="footer-heading">Services</h3>
+                <ul class="footer-nav">
+                  <li><a href="study-abroad-services.html" class="footer-link">Study Abroad</a></li>
+                  <li><a href="visa-purchase.html" class="footer-link">Visa Application Support</a></li>
+                  <li><a href="work-abroad-relocation.html" class="footer-link">Work Abroad</a></li>
+                  <li><a href="scholarships-exchange-programs.html" class="footer-link">Scholarship Programs</a></li>
+                  <li><a href="business-strategy-development.html" class="footer-link">Business Strategy</a></li>
+                  <li><a href="mentorship-capacity-building.html" class="footer-link">Career Mentorship</a></li>
+                  <li><a href="corporate-institutional-training.html" class="footer-link">Corporate Training</a></li>
+                  <li><a href="service.html" class="footer-link">All Services &rarr;</a></li>
+                </ul>
               </div>
-            </div>
+
+              <div class="footer-col">
+                <h3 class="footer-heading">Destinations</h3>
+                <ul class="footer-nav">
+                  <li><a href="india.html" class="footer-link">India</a></li>
+                  <li><a href="usa.html" class="footer-link">USA</a></li>
+                  <li><a href="china.html" class="footer-link">China</a></li>
+                  <li><a href="germany.html" class="footer-link">Germany</a></li>
+                  <li><a href="australia.html" class="footer-link">Australia</a></li>
+                  <li><a href="ireland.html" class="footer-link">Ireland</a></li>
+                  <li><a href="destination.html" class="footer-link">All Destinations &rarr;</a></li>
+                </ul>
+              </div>
+
+              <div class="footer-col">
+                <h3 class="footer-heading">Company</h3>
+                <ul class="footer-nav">
+                  <li><a href="index.html" class="footer-link">Home</a></li>
+                  <li><a href="about.html" class="footer-link">About Us</a></li>
+                  <li><a href="programs.html" class="footer-link">Programs</a></li>
+                  <li><a href="blog.html" class="footer-link">Blogs</a></li>
+                  <li><a href="contact.html" class="footer-link">Contact Us</a></li>
+                </ul>
+              </div>
+
+              <div class="footer-col">
+                <h3 class="footer-heading">Resources</h3>
+                <ul class="footer-nav">
+                  <li><a href="complete-guide-studying-abroad-2026.html" class="footer-link">Complete Guide</a></li>
+                  <li><a href="#" class="footer-link">Brochure</a></li>
+                  <li><a href="terms-of-service.html" class="footer-link">Terms of Service</a></li>
+                  <li><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li>
+                </ul>
+              </div>
+            </nav>
           </div>
 
           <!-- Bottom Bar -->
           <div class="footer-bottom">
-            <div class="footer-copyright">
-              <div class="copyright-text">
-                Copyright &copy; 2026 Elunite. All rights reserved.
-              </div>
-              <div class="footer-legal">
-                <a href="privacy-policy.html" class="legal-link"
-                  >Privacy Policy</a
-                >
-                <a href="terms-of-service.html" class="legal-link"
-                  >Booking & Refund Policy</a
-                >
-              </div>
+            <p class="copyright-text">
+              Copyright &copy; 2026 Elunite. All rights reserved.
+            </p>
+            <div class="footer-social">
+              <a class="footer-social-btn" href="https://www.facebook.com/elunite" target="_blank" rel="noopener" aria-label="Facebook">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="facebook" class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+              </a>
+              <a class="footer-social-btn" href="https://www.instagram.com/elunite_education/" target="_blank" rel="noopener" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="instagram" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+              </a>
+              <a class="footer-social-btn" href="https://www.linkedin.com/company/elunite/?viewAsMember=true" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="linkedin" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+              </a>
+              <a class="footer-social-btn" href="https://x.com/EluniteEd" target="_blank" rel="noopener" aria-label="X (Twitter)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="lucide-x"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+              </a>
             </div>
           </div>
         </div>
@@ -1056,21 +897,6 @@
     </footer>
 
     <script src="script.js"></script>
-    <script>
-      // FAQ accordion
-      document.querySelectorAll(".sap-faq-item").forEach((item) => {
-        const btn = item.querySelector(".sap-faq-btn");
-        btn.addEventListener("click", () => {
-          const isOpen = item.classList.contains("open");
-          document
-            .querySelectorAll(".sap-faq-item.open")
-            .forEach((openItem) => {
-              if (openItem !== item) openItem.classList.remove("open");
-            });
-          item.classList.toggle("open", !isOpen);
-        });
-      });
-    </script>
     <!-- ═══════════ LEAD CAPTURE MODAL — "Book Free Counselling" ═══════════ -->
     <div id="lead-modal" class="lead-modal" role="dialog" aria-modal="true" aria-labelledby="lead-modal-title" hidden>
       <div class="lead-modal-backdrop" data-lead-modal-close></div>
@@ -1080,7 +906,6 @@
         </button>
 
         <div class="lead-modal-body">
-          <span class="lead-modal-badge">Winter 2026 Intake &mdash; Limited Slots</span>
           <h2 id="lead-modal-title" class="lead-modal-headline">Book Your Free Call With<br /><span class="lead-modal-accent">Our Experts!</span></h2>
           <p class="lead-modal-subtext">Get advice on countries, intakes, deadlines, tests, eligibility, and more &mdash; tailored to you.</p>
 
@@ -1217,6 +1042,7 @@
 
       <form id="enquiry-form" class="enquiry-form" action="https://formspree.io/f/xkjwyrrg" method="POST">
         <input type="hidden" name="_subject" value="New enquiry from elunite.com side panel" />
+        <input type="hidden" name="source_page" class="enquiry-source-page" />
         <input
           type="text"
           name="_gotcha"
@@ -1228,12 +1054,12 @@
 
         <div class="enquiry-field">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-          <input type="text" name="name" placeholder="Enter Your Full Name" autocomplete="name" required />
+          <input type="text" name="first_name" placeholder="Enter Your Full Name" aria-label="Your full name" autocomplete="name" required />
         </div>
 
         <div class="enquiry-field">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
-          <input type="email" name="email" placeholder="Enter Your Email ID" autocomplete="email" required />
+          <input type="email" name="email" placeholder="Enter Your Email ID" aria-label="Your email address" autocomplete="email" required />
         </div>
 
         <div class="enquiry-field enquiry-field-phone">
@@ -1246,14 +1072,23 @@
             <option value="+249">+249</option>
             <option value="+256">+256</option>
             <option value="+255">+255</option>
+            <option value="+250">+250</option>
+            <option value="+260">+260</option>
+            <option value="+263">+263</option>
             <option value="+27">+27</option>
             <option value="+44">+44</option>
             <option value="+1">+1</option>
           </select>
-          <input type="tel" name="phone" placeholder="Your Mobile Number" autocomplete="tel-national" required />
+          <input type="tel" name="phone" placeholder="Your Mobile Number" aria-label="Your phone number" inputmode="tel" autocomplete="tel-national" required />
         </div>
 
+        <label class="enquiry-consent">
+          <input type="checkbox" name="consent" required />
+          <span>I agree to be contacted about my enquiry. See <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>.</span>
+        </label>
+
         <button type="submit" class="enquiry-submit">Submit</button>
+        <p class="enquiry-form-msg" hidden></p>
         <p class="enquiry-privacy">We respect your privacy and use your information only to respond to your enquiry.</p>
       </form>
     </div>

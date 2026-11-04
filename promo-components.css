@@ -1,0 +1,631 @@
+/* =====================================================================
+   ELUNITE PROMO COMPONENTS
+   1. Promo entry pop-up (modal)            .promo-*
+   2. Festive corner greeting badge         .festive-*
+   Behaviour lives in promo-components.js (external file: the site CSP
+   blocks inline scripts). Fonts are self-hosted: the CSP's font-src
+   only allows 'self', so Google Fonts would be blocked in production.
+   ===================================================================== */
+
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700 900;
+  font-display: swap;
+  src: url("fonts/montserrat-latin-variable.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("fonts/inter-latin-variable.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Cinzel";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fonts/cinzel-latin-700.woff2") format("woff2");
+}
+
+:root {
+  --el-navy: #081b49;
+  --el-yellow: #ffc312;
+  --el-white: #ffffff;
+  --el-grey: #f4f6fa;
+  --el-gold: #b8860b;
+  --el-font-head: "Montserrat", "Poppins", system-ui, sans-serif;
+  --el-font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* =====================================================================
+   1. PROMO MODAL
+   ===================================================================== */
+.promo-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10000; /* above navbar, WhatsApp (150), Get-in-touch tab (140) */
+  display: grid;
+  place-items: center;
+  padding: 72px 16px 48px; /* room for the close button + CTA overhang */
+  overflow-y: auto;
+  font-family: var(--el-font-body);
+}
+.promo-modal[hidden] {
+  display: none;
+}
+
+.promo-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 27, 73, 0.6);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.promo-modal.is-open .promo-overlay {
+  opacity: 1;
+}
+
+/* Dialog wrapper: NOT masked, so the photo, close button and CTA can
+   break out of the scalloped card. The drop-shadow follows the scallops. */
+.promo-dialog {
+  position: relative;
+  width: min(420px, 90vw);
+  min-height: 460px;
+  filter: drop-shadow(0 22px 40px rgba(8, 27, 73, 0.35));
+  opacity: 0;
+  transform: scale(0.85);
+  outline: none;
+}
+.promo-modal.is-open .promo-dialog {
+  animation: promo-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.08s forwards;
+}
+.promo-modal.is-closing .promo-overlay {
+  opacity: 0;
+}
+.promo-modal.is-closing .promo-dialog {
+  animation: promo-out 0.22s ease-in forwards;
+}
+
+@keyframes promo-pop {
+  0% { opacity: 0; transform: scale(0.85); }
+  60% { opacity: 1; transform: scale(1.03); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes promo-out {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(0.92); }
+}
+
+/* --- Postage-stamp card (scalloped edge via radial-gradient mask) --- */
+.promo-card {
+  --r: 9px; /* scallop radius */
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle 150px at 90% 64%, var(--el-yellow) 0 98%, transparent 100%),
+    radial-gradient(rgba(8, 27, 73, 0.07) 1.2px, transparent 1.6px) 0 0 / 14px 14px,
+    linear-gradient(160deg, var(--el-white) 0%, var(--el-grey) 100%);
+  -webkit-mask:
+    radial-gradient(var(--r), #0000 97%, #000) round
+      calc(-1.5 * var(--r)) calc(-1.5 * var(--r)) / calc(3 * var(--r)) calc(3 * var(--r)),
+    linear-gradient(#000 0 0) no-repeat 50% / calc(100% - 3 * var(--r)) calc(100% - 3 * var(--r));
+  mask:
+    radial-gradient(var(--r), #0000 97%, #000) round
+      calc(-1.5 * var(--r)) calc(-1.5 * var(--r)) / calc(3 * var(--r)) calc(3 * var(--r)),
+    linear-gradient(#000 0 0) no-repeat 50% / calc(100% - 3 * var(--r)) calc(100% - 3 * var(--r));
+}
+/* Inner perforation guide line, like a real stamp */
+.promo-card::after {
+  content: "";
+  position: absolute;
+  inset: calc(var(--r) * 2.2);
+  border: 1.5px dashed rgba(8, 27, 73, 0.14);
+  border-radius: 6px;
+  pointer-events: none;
+}
+
+/* --- Left column --- */
+.promo-content {
+  position: relative;
+  z-index: 2;
+  width: 60%;
+  padding: 40px 0 92px 34px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.promo-logo {
+  width: 112px;
+  height: auto;
+  display: block;
+}
+.promo-title {
+  margin: 6px 0 0;
+  font-family: var(--el-font-head);
+  font-weight: 900;
+  font-size: 44px;
+  line-height: 0.95;
+  letter-spacing: -1.5px;
+  color: var(--el-navy);
+  text-transform: uppercase;
+}
+.promo-title > span {
+  display: block;
+}
+.promo-title-lead {
+  font-size: 0.48em;
+  letter-spacing: 0;
+}
+.promo-title-pct {
+  margin: 2px 0 -2px -2px;
+  font-size: 2em;
+  line-height: 0.9;
+  letter-spacing: -3px;
+  color: var(--el-yellow);
+  -webkit-text-stroke: 7px var(--el-navy);
+  paint-order: stroke fill;
+}
+.promo-title-off {
+  font-size: 1.15em;
+}
+.promo-sub {
+  margin: 0;
+  font-family: var(--el-font-body);
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.35;
+  color: var(--el-navy);
+}
+.promo-badges {
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+.promo-badges li {
+  display: inline-flex;
+  flex-direction: column;
+  padding: 6px 16px 7px;
+  border-radius: 16px;
+  background: var(--el-navy);
+  color: var(--el-white);
+  font-size: 13px;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+.promo-badge-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.78);
+}
+.promo-badges strong,
+.promo-badges a {
+  color: var(--el-yellow);
+  font-weight: 700;
+}
+.promo-badges a {
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+.promo-badges a:hover {
+  text-decoration: underline;
+}
+.promo-badges a:focus-visible {
+  outline: 2px solid var(--el-yellow);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* --- Right side: cut-out photo that breaks the frame --- */
+.promo-figure {
+  position: absolute;
+  z-index: 3;
+  right: -34px;
+  bottom: 0;
+  width: 58%;
+  height: 112%; /* head/cap pops above the top edge */
+  pointer-events: none;
+}
+.promo-photo {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: right bottom;
+  filter: drop-shadow(-6px 10px 14px rgba(8, 27, 73, 0.28));
+}
+/* Fallback illustration (used until a real cut-out photo is added) */
+.promo-photo.is-illustration {
+  height: 78%;
+  bottom: 8%;
+  right: 18px;
+  filter: none;
+}
+
+/* Hook text */
+.promo-hook {
+  position: absolute;
+  z-index: 4;
+  top: 92px;
+  right: -14px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  transform: rotate(-3deg);
+  font-family: var(--el-font-head);
+  font-weight: 900;
+  line-height: 0.9;
+  text-transform: uppercase;
+  pointer-events: none;
+  paint-order: stroke fill;
+}
+.promo-hook-lead {
+  font-size: 20px;
+  color: var(--el-white);
+  -webkit-text-stroke: 5px var(--el-navy);
+  paint-order: stroke fill;
+  margin-right: 6px;
+}
+.promo-hook-main {
+  font-size: 30px;
+  letter-spacing: -0.5px;
+  color: var(--el-yellow);
+  -webkit-text-stroke: 7px var(--el-navy);
+  paint-order: stroke fill;
+}
+
+/* --- Close button (round, above card's top-centre) --- */
+.promo-close {
+  position: absolute;
+  z-index: 6;
+  top: -58px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  border-radius: 50%;
+  background: var(--el-navy);
+  color: var(--el-white);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.promo-close svg {
+  width: 18px;
+  height: 18px;
+}
+.promo-close:hover {
+  background: #0d2a6e;
+  transform: translateX(-50%) rotate(90deg);
+}
+.promo-close:focus-visible,
+.promo-cta:focus-visible {
+  outline: 3px solid var(--el-yellow);
+  outline-offset: 3px;
+}
+
+/* --- CTA overlapping bottom-right corner --- */
+.promo-cta {
+  position: absolute;
+  z-index: 5;
+  right: -16px;
+  bottom: -22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 28px 13px;
+  border-radius: 999px;
+  border-bottom: 4px solid var(--el-yellow);
+  background: var(--el-navy);
+  color: var(--el-white);
+  font-family: var(--el-font-head);
+  font-weight: 800;
+  font-size: 17px;
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  box-shadow: 0 10px 22px rgba(8, 27, 73, 0.35);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+.promo-cta-arrow {
+  color: var(--el-yellow);
+  transition: transform 0.22s ease;
+}
+.promo-cta:hover,
+.promo-cta:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 26px rgba(8, 27, 73, 0.35), 0 0 0 4px rgba(255, 195, 18, 0.35),
+    0 0 28px 6px rgba(255, 195, 18, 0.55);
+}
+.promo-cta:hover .promo-cta-arrow {
+  transform: translateX(4px);
+}
+
+/* Lock page scroll while the modal is open */
+html.promo-lock,
+html.promo-lock body {
+  overflow: hidden;
+}
+
+/* --- Mobile --- */
+@media (max-width: 480px) {
+  .promo-dialog {
+    min-height: 430px;
+  }
+  .promo-content {
+    width: 62%;
+    padding: 32px 0 84px 26px;
+    gap: 12px;
+  }
+  .promo-logo {
+    width: 92px;
+  }
+  .promo-title {
+    font-size: clamp(32px, 10vw, 40px);
+  }
+  .promo-sub {
+    font-size: 13.5px;
+  }
+  .promo-badges li {
+    font-size: 12px;
+    padding: 5px 13px 6px;
+  }
+  .promo-badge-label {
+    font-size: 9px;
+  }
+  .promo-figure {
+    right: -14px;
+    width: 52%;
+    height: 106%;
+  }
+  .promo-card {
+    background:
+      radial-gradient(circle 118px at 92% 66%, var(--el-yellow) 0 98%, transparent 100%),
+      radial-gradient(rgba(8, 27, 73, 0.07) 1.2px, transparent 1.6px) 0 0 / 14px 14px,
+      linear-gradient(160deg, var(--el-white) 0%, var(--el-grey) 100%);
+  }
+  .promo-hook {
+    top: 70px;
+    right: 22px;
+  }
+  .promo-hook-lead {
+    font-size: 16px;
+  }
+  .promo-hook-main {
+    font-size: clamp(20px, 6.4vw, 26px);
+  }
+  .promo-cta {
+    right: -6px;
+    font-size: 15px;
+    padding: 13px 22px 11px;
+  }
+}
+
+/* =====================================================================
+   2. FESTIVE CORNER GREETING BADGE
+   ===================================================================== */
+.festive-badge {
+  position: fixed;
+  left: 24px;
+  bottom: 24px;
+  z-index: 120; /* above content, below tab/WhatsApp/modal */
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  max-width: calc(100vw - 120px); /* never collides with WhatsApp button */
+  padding: 8px 22px 8px 10px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--el-white);
+  box-shadow: 0 8px 26px rgba(8, 27, 73, 0.16), 0 2px 6px rgba(8, 27, 73, 0.08);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  opacity: 0;
+  /* `translate` (not `transform`) so the hover lift composes with the
+     slide-in animation instead of being overridden by it. */
+  transition: translate 0.25s ease, box-shadow 0.25s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.festive-badge[hidden] {
+  display: none;
+}
+.festive-badge.is-in {
+  animation: festive-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes festive-in {
+  from { opacity: 0; transform: translateX(calc(-100% - 40px)); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.festive-badge:hover {
+  translate: 0 -3px;
+  box-shadow: 0 12px 30px rgba(8, 27, 73, 0.22), 0 0 0 3px rgba(255, 195, 18, 0.35);
+}
+.festive-badge:active {
+  translate: 0 0;
+}
+.festive-badge:focus-visible {
+  outline: 3px solid var(--el-yellow);
+  outline-offset: 3px;
+}
+
+/* Fireworks layer — above everything (incl. the promo modal), click-through */
+.fireworks-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10001;
+  pointer-events: none;
+}
+.festive-text {
+  margin: 0;
+  font-family: "Cinzel", Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--festive-color, var(--el-gold));
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.festive-icon {
+  position: relative;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+}
+.festive-icon svg {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+/* Warm radial glow behind the icon */
+.festive-glow {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--festive-glow, rgba(255, 170, 40, 0.55)) 0%, transparent 65%);
+  animation: festive-glow 2.4s ease-in-out infinite;
+}
+@keyframes festive-glow {
+  0%, 100% { opacity: 0.55; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.12); }
+}
+
+/* Diya flame flicker */
+.festive-flame {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: festive-flicker 1.1s ease-in-out infinite alternate;
+}
+.festive-flame-inner {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: festive-flicker 0.7s ease-in-out infinite alternate-reverse;
+}
+@keyframes festive-flicker {
+  0% { transform: scale(1, 1) rotate(-2deg); opacity: 0.95; }
+  35% { transform: scale(0.94, 1.08) rotate(3deg); opacity: 1; }
+  70% { transform: scale(1.04, 0.93) rotate(-3deg); opacity: 0.88; }
+  100% { transform: scale(0.97, 1.05) rotate(1deg); opacity: 1; }
+}
+/* Generic twinkle for stars / sparkles */
+.festive-twinkle {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: festive-twinkle 1.6s ease-in-out infinite;
+}
+.festive-twinkle:nth-of-type(2n) {
+  animation-delay: 0.5s;
+}
+.festive-twinkle:nth-of-type(3n) {
+  animation-delay: 0.9s;
+}
+@keyframes festive-twinkle {
+  0%, 100% { transform: scale(0.75); opacity: 0.6; }
+  50% { transform: scale(1.1); opacity: 1; }
+}
+/* Gentle wave for the flag */
+.festive-wave {
+  transform-box: fill-box;
+  transform-origin: 0% 50%;
+  animation: festive-wave 2.2s ease-in-out infinite;
+}
+@keyframes festive-wave {
+  0%, 100% { transform: skewY(0deg); }
+  50% { transform: skewY(-4deg); }
+}
+
+/* ≤1024px the site shows .mobile-tabbar at the bottom and lifts the
+   WhatsApp button to 104px — sit level with it, above the tab bar. */
+@media (max-width: 1024px) {
+  .festive-badge {
+    bottom: calc(104px + env(safe-area-inset-bottom));
+  }
+}
+
+@media (max-width: 480px) {
+  .festive-badge {
+    left: 16px;
+    padding: 6px 16px 6px 8px;
+    gap: 8px;
+  }
+  .festive-icon {
+    width: 36px;
+    height: 36px;
+  }
+  .festive-text {
+    font-size: 12.5px;
+    letter-spacing: 1.5px;
+  }
+}
+
+/* =====================================================================
+   REDUCED MOTION
+   ===================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .promo-overlay {
+    transition: opacity 0.2s linear;
+  }
+  .festive-badge {
+    transition: none;
+  }
+  .festive-badge.is-in {
+    animation: none;
+    opacity: 1;
+  }
+  .festive-badge:hover {
+    translate: none;
+  }
+  .promo-dialog {
+    transform: none;
+  }
+  .promo-modal.is-open .promo-dialog {
+    animation: none;
+    opacity: 1;
+  }
+  .promo-modal.is-closing .promo-dialog {
+    animation: none;
+    opacity: 0;
+  }
+  .promo-close,
+  .promo-close:hover {
+    transition: none;
+    transform: translateX(-50%);
+  }
+  .promo-cta,
+  .promo-cta-arrow {
+    transition: none;
+  }
+  .promo-cta:hover,
+  .promo-cta:focus-visible,
+  .promo-cta:hover .promo-cta-arrow {
+    transform: none;
+  }
+  .festive-glow,
+  .festive-flame,
+  .festive-flame-inner,
+  .festive-twinkle,
+  .festive-wave {
+    animation: none;
+  }
+}

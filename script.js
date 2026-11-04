@@ -681,12 +681,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 // ===== TESTIMONIALS DATA =====
-// NOTE: Steven Gideon (below) and Maddoh Yoavi studied in Russia and Canada
-// respectively — neither is one of Elunite's 6 current destination pages
-// (India, USA, China, Germany, Australia, Ireland). The data itself is
-// internally consistent (no mismatch), just off-message versus what the
-// site currently promotes. TODO: confirm with owner whether to keep these,
-// swap in different real testimonials, or reword to de-emphasize the country.
+// Steven Gideon (Russia) and Maddoh Yoavi (Canada) are outside the six main
+// destinations; kept intentionally — index.html notes under the carousel that
+// Elunite also supports applications beyond them.
 const testimonials = [
   {
     name: 'Steven Gideon',
@@ -709,17 +706,15 @@ const testimonials = [
     image: 'images/students/Oliver_odhiambo.webp',
     program: 'Economics',
     university: 'Krupanidhi, India',
-    quote: 'Thanks to Elunite\'s expert counseling, I got admission to my reputed university. Their test preparation helped me achieve the required scores and secure 100% scholarship.',
+    quote: 'Thanks to Elunite\'s expert counseling, I got admission to my reputed university. Their scholarship guidance and application support helped me secure a 100% scholarship.',
     rating: 5
   },
   {
-    // TODO: confirm with owner — university says "Jain University, India" but
-    // the quote names "Cambridge Institute of Technology". Fix whichever is wrong.
     name: 'Debra Chebet',
     image: 'images/students/Debra.webp',
     program: 'ECE Student',
     university: 'Jain University, India',
-    quote: 'The personalized approach at Elunite helped me secure admission to Cambridge Institute of Technology. Their scholarship guidance was exceptional and saved my family thousands.',
+    quote: 'The personalized approach at Elunite helped me secure admission to Jain University. Their scholarship guidance was exceptional and saved my family thousands.',
     rating: 5
   },
   {
@@ -755,23 +750,19 @@ const testimonials = [
     rating: 5
   },
   {
-    // TODO: confirm with owner — university says "NIMS University, India" but
-    // the quote names "LSE" (London School of Economics). Fix whichever is wrong.
     name: 'Nathalie Juma',
     image: 'images/students/Nathalie Maghembe.webp',
     program: 'Public Health',
     university: 'NIMS University, India',
-    quote: 'From application essays to interview preparation, Elunite\'s comprehensive support helped me get into LSE. Their expertise is truly world-class.',
+    quote: 'From application essays to interview preparation, Elunite\'s comprehensive support helped me get into NIMS University. Their expertise is truly world-class.',
     rating: 5
   },
   {
-    // TODO: confirm with owner — university says "CIT University, India" but
-    // the quote describes "the complex US admission process" and Stanford. Fix whichever is wrong.
     name: 'Catherine Kipeleka',
     image: 'images/students/Catherine.webp',
     program: 'Artificial Intelligence',
     university: 'CIT University, India',
-    quote: 'Elunite\'s guidance helped me navigate the complex US admission process. Now I\'m pursuing my passion for AI at Stanford — a dream come true!',
+    quote: 'Elunite\'s guidance helped me navigate the complex admission process. Now I\'m pursuing my passion for AI at CIT University — a dream come true!',
     rating: 5
   }
 ];
@@ -926,9 +917,10 @@ document.addEventListener('DOMContentLoaded', function () {
   if (!viewport || !track || !nextBtn || !dotsContainer) return;
 
   if (summaryStars) {
-    // TODO: replace 4.8 with Elunite's real Google Business Profile rating
-    // (also update the score/count text next to it in index.html).
-    summaryStars.innerHTML = tstRenderStars(4.8);
+    // Rating comes from data-rating on #tst-google-card in index.html.
+    var googleCard = document.getElementById('tst-google-card');
+    var googleRating = googleCard ? parseFloat(googleCard.getAttribute('data-rating')) || 0 : 0;
+    summaryStars.innerHTML = tstRenderStars(googleRating);
   }
 
   var total = testimonials.length;

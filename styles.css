@@ -4936,6 +4936,26 @@ a.svd-cat-title:hover {
   transform: translateY(-2px);
 }
 
+/* Google reviews card shown below the carousel */
+.tst-google-card {
+  margin: 2rem 0 0;
+}
+
+.tst-summary-card[hidden] {
+  display: none;
+}
+
+h3.tst-summary-brandname {
+  margin: 0;
+}
+
+.tst-note {
+  margin: 1.25rem 0 0;
+  text-align: center;
+  font-size: 14px;
+  color: #6b7280;
+}
+
 /* ---- Star rating (supports halves via clip overlay) ---- */
 .tst-star {
   position: relative;

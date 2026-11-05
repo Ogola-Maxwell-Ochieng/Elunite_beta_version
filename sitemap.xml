@@ -1,290 +1,296 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.elunite.com/about.html</loc>
-    <lastmod>2026-09-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.elunite.com/australia.html</loc>
-    <lastmod>2026-09-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.elunite.com/bangalore.html</loc>
-    <lastmod>2026-09-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.elunite.com/best-countries-study-abroad-2026.html</loc>
-    <lastmod>2026-09-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.elunite.com/parents-guide-study-abroad-safety-cost.html</loc>
-    <lastmod>2026-09-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.elunite.com/how-to-choose-the-right-university-abroad.html</loc>
-    <lastmod>2026-09-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.elunite.com/study-abroad-scholarships-2026.html</loc>
-    <lastmod>2026-09-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.elunite.com/financial-planning-mistakes-study-abroad.html</loc>
-    <lastmod>2026-09-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.elunite.com/china-vs-usa-african-students-2027.html</loc>
+    <loc>https://www.elunite.com/about</loc>
     <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.elunite.com/csca-exam-2027-african-students.html</loc>
+    <loc>https://www.elunite.com/australia</loc>
     <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.elunite.com/stay-and-work-in-germany-after-masters-2026.html</loc>
-    <lastmod>2026-09-21</lastmod>
+    <loc>https://www.elunite.com/bangalore</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.elunite.com/germany-study-costs-2026-payment-timeline.html</loc>
-    <lastmod>2026-09-20</lastmod>
+    <loc>https://www.elunite.com/best-countries-study-abroad-2026</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.elunite.com/india-university-rankings-african-students.html</loc>
-    <lastmod>2026-09-14</lastmod>
+    <loc>https://www.elunite.com/parents-guide-study-abroad-safety-cost</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.elunite.com/studienkolleg-germany-application-visa-guide.html</loc>
-    <lastmod>2026-09-10</lastmod>
+    <loc>https://www.elunite.com/how-to-choose-the-right-university-abroad</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.elunite.com/how-to-avoid-wrong-course-trap-study-abroad.html</loc>
-    <lastmod>2026-09-10</lastmod>
+    <loc>https://www.elunite.com/study-abroad-scholarships-2026</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.elunite.com/open-doors-scholarship-2027-russia.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <loc>https://www.elunite.com/financial-planning-mistakes-study-abroad</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.elunite.com/blog.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <loc>https://www.elunite.com/china-vs-usa-african-students-2027</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.elunite.com/business-strategy-development.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <loc>https://www.elunite.com/csca-exam-2027-african-students</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.elunite.com/chandigarh.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <loc>https://www.elunite.com/stay-and-work-in-germany-after-masters-2026</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.elunite.com/china.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <loc>https://www.elunite.com/germany-study-costs-2026-payment-timeline</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.elunite.com/complete-guide-studying-abroad-2026.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <loc>https://www.elunite.com/new-rules-global-hiring-2026</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.elunite.com/contact.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <loc>https://www.elunite.com/india-university-rankings-african-students</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.elunite.com/corporate-institutional-training.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <loc>https://www.elunite.com/studienkolleg-germany-application-visa-guide</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.elunite.com/destination.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <loc>https://www.elunite.com/how-to-avoid-wrong-course-trap-study-abroad</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.elunite.com/end-to-end.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <loc>https://www.elunite.com/open-doors-scholarship-2027-russia</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.elunite.com/end-to-end-purchase.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <loc>https://www.elunite.com/blog</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.elunite.com/germany.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <loc>https://www.elunite.com/business-strategy-development</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.elunite.com/graduate-training.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <loc>https://www.elunite.com/chandigarh</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.elunite.com/gujarat.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <loc>https://www.elunite.com/china</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.elunite.com/hydrabad.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <loc>https://www.elunite.com/complete-guide-studying-abroad-2026</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.elunite.com/contact</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.elunite.com/corporate-institutional-training</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.elunite.com/destination</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.elunite.com/end-to-end</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.elunite.com/end-to-end-purchase</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.elunite.com/germany</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.elunite.com/graduate-training</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.elunite.com/gujarat</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.elunite.com/hydrabad</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.elunite.com/</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.elunite.com/india.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <loc>https://www.elunite.com/india</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.elunite.com/ireland.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <loc>https://www.elunite.com/ireland</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.elunite.com/mentorship-capacity-building.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <loc>https://www.elunite.com/mentorship-capacity-building</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.elunite.com/mumbai.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <loc>https://www.elunite.com/mumbai</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.elunite.com/new-delhi.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <loc>https://www.elunite.com/new-delhi</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.elunite.com/privacy-policy.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <loc>https://www.elunite.com/privacy-policy</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.elunite.com/programs.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <loc>https://www.elunite.com/programs</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.elunite.com/scholar.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <loc>https://www.elunite.com/scholar</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.elunite.com/scholarship-purchase.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <loc>https://www.elunite.com/scholarship-purchase</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.elunite.com/scholarships-exchange-programs.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <loc>https://www.elunite.com/scholarships-exchange-programs</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.elunite.com/service.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <loc>https://www.elunite.com/service</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.elunite.com/strategic-program.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <loc>https://www.elunite.com/strategic-program</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.elunite.com/study-abroad-services.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <loc>https://www.elunite.com/study-abroad-services</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.elunite.com/terms-of-service.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <loc>https://www.elunite.com/terms-of-service</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.elunite.com/usa.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <loc>https://www.elunite.com/usa</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.elunite.com/visa-purchase.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <loc>https://www.elunite.com/visa-purchase</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.elunite.com/work-abroad-relocation.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <loc>https://www.elunite.com/work-abroad-relocation</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>

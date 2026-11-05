@@ -1,6 +1,48 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/end_to_end",
+      "destination": "/end-to-end",
+      "statusCode": 301
+    },
+    {
+      "source": "/end_to_end.html",
+      "destination": "/end-to-end",
+      "statusCode": 301
+    },
+    {
+      "source": "/visa_purchase",
+      "destination": "/visa-purchase",
+      "statusCode": 301
+    },
+    {
+      "source": "/visa_purchase.html",
+      "destination": "/visa-purchase",
+      "statusCode": 301
+    },
+    {
+      "source": "/strategic_program",
+      "destination": "/strategic-program",
+      "statusCode": 301
+    },
+    {
+      "source": "/strategic_program.html",
+      "destination": "/strategic-program",
+      "statusCode": 301
+    },
+    {
+      "source": "/graduate_training",
+      "destination": "/graduate-training",
+      "statusCode": 301
+    },
+    {
+      "source": "/graduate_training.html",
+      "destination": "/graduate-training",
+      "statusCode": 301
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)\\.(html|htm)$",

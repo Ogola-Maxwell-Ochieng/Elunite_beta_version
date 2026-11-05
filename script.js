@@ -1579,6 +1579,7 @@ document.addEventListener('DOMContentLoaded', function () {
     'a[href="contact.html"].bsd-hero-btn-outline',
     'a[href="contact.html"].bsd-context-cta',
     'a[href="contact.html"].blog-hero-btn-primary',
+    'a[href="contact.html"].post-cta-btn-primary',
   ].join(', ');
 
   document.querySelectorAll(TRIGGER_SELECTOR).forEach(function (trigger) {

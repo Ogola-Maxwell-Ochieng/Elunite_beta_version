@@ -27,6 +27,26 @@
 
 var ELUNITE_BLOG_POSTS = [
   {
+    url: "china-vs-usa-african-students-2027.html",
+    title: "Why More African Students Are Choosing China Over the USA in 2027",
+    excerpt: "New US visa bans now cover 26 African countries. Costs, scholarships, visas and work rights in China and the USA compared, plus the downsides of China recruiters rarely mention.",
+    tag: "China vs USA",
+    date: "2026-11-05",
+    readTime: "8 min read",
+    icon: "scale",
+    image: "images/blogs/China vs USA 2027.webp"
+  },
+  {
+    url: "csca-exam-2027-african-students.html",
+    title: "CSCA Exam 2027: What African Students Must Know Before Applying to Study in China",
+    excerpt: "The CSCA is now required for bachelor's degrees at 300+ Chinese universities. Exam dates, fees, subjects, and how African students can sit it online from home.",
+    tag: "Study in China",
+    date: "2026-11-05",
+    readTime: "10 min read",
+    icon: "graduation-cap",
+    image: "images/blogs/CSCA Examination.webp"
+  },
+  {
     url: "stay-and-work-in-germany-after-masters-2026.html",
     title: "Can I Stay and Work in Germany After My Master's? 2026 Guide for International Graduates",
     excerpt: "Working during your studies, the 18-month post-study job-seeker permit, German language expectations, and 2026 EU Blue Card salary thresholds, explained step by step.",

@@ -23,7 +23,7 @@
   // ▶ WHICH GREETING IS SHOWING. It stays on the site until YOU change it.
   //   Set to one of the keys below (e.g. "christmas") to switch festivals,
   //   or to null to remove the badge completely.
-  var ACTIVE_GREETING = "diwali";
+  var ACTIVE_GREETING = null;
 
   // Tapping the badge plays fireworks. (The offer pop-up opens on its own.)
   // icon: "diya" | "tree" | "crescent" | "kenya-flag" | "sparkle"

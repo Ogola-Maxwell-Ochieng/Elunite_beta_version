@@ -1580,6 +1580,7 @@ document.addEventListener('DOMContentLoaded', function () {
     'a[href="contact.html"].bsd-context-cta',
     'a[href="contact.html"].blog-hero-btn-primary',
     'a[href="contact.html"].post-cta-btn-primary',
+    'a[href="contact.html"].footer-cta',
   ].join(', ');
 
   document.querySelectorAll(TRIGGER_SELECTOR).forEach(function (trigger) {
@@ -1741,3 +1742,321 @@ document.addEventListener('DOMContentLoaded', function () {
     },
   });
 });
+// ===== HERO STATS COUNT-UP =====
+// 2500+, 50+ and 95% count up from 0 when the hero comes into view (and
+// again whenever the carousel returns to slide 1). The final values stay in
+// the HTML, so search engines and no-JS visitors see the real numbers.
+(function () {
+  var nums = document.querySelectorAll('.hero-stats .stat-number');
+  if (!nums.length) return;
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var DURATION = 4500; // ms — slow, steady climb
+
+  var items = Array.prototype.map.call(nums, function (el) {
+    var m = el.textContent.trim().match(/^([^0-9]*)([0-9][0-9,]*)(.*)$/);
+    if (!m) return null;
+    return { el: el, prefix: m[1], target: parseInt(m[2].replace(/,/g, ''), 10), suffix: m[3], raf: 0 };
+  }).filter(Boolean);
+
+  // Gentle start, steady middle, soft landing (no fast burst at the start)
+  function easeInOutSine(t) { return -(Math.cos(Math.PI * t) - 1) / 2; }
+
+  function run() {
+    if (reduceMotion.matches) return;
+    items.forEach(function (it) {
+      cancelAnimationFrame(it.raf);
+      var start = null;
+      function frame(now) {
+        if (start === null) start = now;
+        var t = Math.min(1, (now - start) / DURATION);
+        it.el.textContent = it.prefix + Math.round(easeInOutSine(t) * it.target) + it.suffix;
+        if (t < 1) it.raf = requestAnimationFrame(frame);
+      }
+      it.el.textContent = it.prefix + '0' + it.suffix;
+      it.raf = requestAnimationFrame(frame);
+    });
+  }
+
+  window.eluniteHeroCountUp = run;
+
+  var section = document.querySelector('.hero-stats');
+  if ('IntersectionObserver' in window && section) {
+    var io = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) {
+        io.disconnect();
+        setTimeout(run, 300);
+      }
+    }, { threshold: 0.4 });
+    io.observe(section);
+  } else {
+    run();
+  }
+})();
+
+// ===== HERO CAROUSEL (homepage, all screen sizes) =====
+// Slide 1 = the video hero with its buttons, slide 2 = the intake banner.
+// The main slide stays up longer so visitors have time to use its buttons;
+// rotation pauses while the pointer is over the hero or focus is inside it,
+// and while the tab is hidden. No auto-rotation with reduced motion.
+(function () {
+  var hero = document.querySelector('[data-hero-carousel]');
+  if (!hero) return;
+
+  var dots = Array.prototype.slice.call(hero.querySelectorAll('.hero-dot'));
+  var slideLink = hero.querySelector('.hero-slide-image');
+  var content = hero.querySelector('.hero-content');
+  if (!dots.length || !slideLink || !content) return;
+
+  var DURATIONS = [9000, 6000]; // ms per slide
+  var desktop = window.matchMedia('(min-width: 768px)'); // map loads on tablets and up; the carousel itself runs everywhere
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  var current = 0;
+  var timer = null;
+  var startedAt = 0;
+  var remaining = 0;
+  var hovering = false;
+  var focused = false;
+
+  function autoplayAllowed() {
+    return !reduceMotion.matches && !document.hidden;
+  }
+
+  function isPaused() {
+    return hovering || focused || !autoplayAllowed();
+  }
+
+  function setPausedClass() {
+    hero.classList.toggle('is-paused', isPaused());
+  }
+
+  // Animated world map behind slide 2 — the player (vendor/lottie_light)
+  // is only fetched on desktop, after the page has loaded, and the map only
+  // plays while slide 2 is showing.
+  var mapEl = hero.querySelector('.hs-map');
+  var mapAnim = null;
+  var mapRequested = false;
+
+  function syncMap() {
+    if (!mapAnim) return;
+    if (current === 1 && !reduceMotion.matches && !document.hidden) mapAnim.play();
+    else mapAnim.pause();
+  }
+
+  function loadMap() {
+    if (mapRequested || !mapEl || !desktop.matches) return;
+    mapRequested = true;
+    var tag = document.createElement('script');
+    tag.src = 'vendor/lottie_light.min.js';
+    tag.async = true;
+    tag.onload = function () {
+      if (!window.lottie) return;
+      mapAnim = window.lottie.loadAnimation({
+        container: mapEl,
+        renderer: 'svg',
+        loop: true,
+        autoplay: false,
+        path: 'images/hero-map.json',
+        rendererSettings: { preserveAspectRatio: 'xMidYMid meet' },
+      });
+      mapAnim.addEventListener('DOMLoaded', function () {
+        if (reduceMotion.matches) mapAnim.goToAndStop(300, true); // still frame with dots showing
+        mapEl.classList.add('is-ready');
+        syncMap();
+      });
+    };
+    document.head.appendChild(tag);
+  }
+
+  if (document.readyState === 'complete') setTimeout(loadMap, 600);
+  else window.addEventListener('load', function () { setTimeout(loadMap, 600); });
+
+  var shownOnce = false;
+
+  function show(index) {
+    // Replay the stats count-up whenever slide 1 comes back
+    if (index === 0 && shownOnce && current !== 0 && window.eluniteHeroCountUp) {
+      setTimeout(window.eluniteHeroCountUp, 500);
+    }
+    shownOnce = true;
+    current = index;
+    var onImage = index === 1;
+    hero.classList.toggle('is-slide-2', onImage);
+    syncMap();
+
+    // Keep hidden controls out of the tab order / screen-reader view
+    content.inert = onImage;
+    slideLink.inert = !onImage;
+    slideLink.setAttribute('aria-hidden', String(!onImage));
+
+    hero.style.setProperty('--hero-slide-ms', DURATIONS[index] + 'ms');
+    dots.forEach(function (dot, k) {
+      var active = k === index;
+      dot.classList.remove('is-active');
+      dot.setAttribute('aria-selected', String(active));
+    });
+    void hero.offsetWidth; // restart the dot's fill animation
+    dots[index].classList.add('is-active');
+
+    remaining = DURATIONS[index];
+    schedule();
+  }
+
+  function schedule() {
+    clearTimeout(timer);
+    setPausedClass();
+    if (isPaused()) return;
+    startedAt = Date.now();
+    timer = setTimeout(function () {
+      show((current + 1) % dots.length);
+    }, remaining);
+  }
+
+  function pause() {
+    if (timer) {
+      clearTimeout(timer);
+      timer = null;
+      remaining = Math.max(0, remaining - (Date.now() - startedAt));
+    }
+    setPausedClass();
+  }
+
+  function resume() {
+    if (isPaused()) {
+      setPausedClass();
+      return;
+    }
+    if (remaining < 1200) remaining = 1200; // never flip straight away
+    schedule();
+  }
+
+  dots.forEach(function (dot, k) {
+    dot.addEventListener('click', function () {
+      show(k);
+    });
+  });
+
+  hero.addEventListener('mouseenter', function () { hovering = true; pause(); });
+  hero.addEventListener('mouseleave', function () { hovering = false; resume(); });
+  hero.addEventListener('focusin', function () { focused = true; pause(); });
+  hero.addEventListener('focusout', function (e) {
+    if (!hero.contains(e.relatedTarget)) { focused = false; resume(); }
+  });
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) pause(); else resume();
+    syncMap();
+  });
+
+  function onBreakpointChange() {
+    clearTimeout(timer);
+    timer = null;
+    loadMap();
+    show(0);
+  }
+  if (desktop.addEventListener) {
+    desktop.addEventListener('change', onBreakpointChange);
+    reduceMotion.addEventListener('change', onBreakpointChange);
+  }
+
+  show(0);
+})();
+
+/* ── How It Works (destination.html): staggered fade-up of the 6 steps ──
+   Hidden state is only applied (via .hiw-animate) once JS is running, so
+   the steps stay visible if scripts fail. Respects reduced motion. */
+(function initHowItWorks() {
+  var section = document.querySelector('.hiw-section');
+  if (!section || !('IntersectionObserver' in window)) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var steps = section.querySelectorAll('.hiw-step');
+  section.classList.add('hiw-animate');
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      steps.forEach(function (step, i) {
+        step.style.transitionDelay = (i * 100) + 'ms';
+        step.classList.add('is-visible');
+      });
+      observer.disconnect();
+    });
+  }, { threshold: 0.2 });
+
+  observer.observe(section.querySelector('.hiw-steps'));
+})();
+
+/* ── Scroll reveal ──────────────────────────────────────────────────────
+   Main content sections fade in and rise slightly as they scroll into
+   view. Safe by design:
+   - only sections that start BELOW the fold are hidden, so nothing on
+     screen at load ever flickers (the hero is never affected);
+   - content is hidden only once this script runs, so no-JS shows all;
+   - skipped entirely for prefers-reduced-motion and old browsers;
+   - after revealing, the helper classes are removed so each section goes
+     back to exactly its own styles. Styles: .reveal in styles.css. */
+(function initScrollReveal() {
+  if (!('IntersectionObserver' in window)) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var main = document.querySelector('main');
+  if (!main) return;
+
+  // Top-level sections only (not sections nested inside other sections).
+  var sections = Array.prototype.filter.call(
+    main.querySelectorAll('section'),
+    function (el) {
+      var parent = el.parentElement && el.parentElement.closest('section');
+      return !parent || !main.contains(parent);
+    }
+  );
+
+  var viewportH = window.innerHeight || document.documentElement.clientHeight;
+  function belowFold(el) {
+    var rect = el.getBoundingClientRect();
+    // Leave anything already visible (or hidden/zero-size) untouched.
+    return rect.height > 0 && rect.top > viewportH * 0.9;
+  }
+  var targets = sections.filter(belowFold);
+
+  // Cards inside sections that are already on screen (e.g. the blog
+  // listing grid) reveal one by one, staggered by their column.
+  var CARD_SELECTOR = '.blog-listing-card, .dlp-card';
+  Array.prototype.forEach.call(main.querySelectorAll(CARD_SELECTOR), function (card) {
+    if (!belowFold(card)) return;
+    if (targets.some(function (t) { return t.contains(card); })) return;
+    var siblings = Array.prototype.filter.call(card.parentElement.children, function (c) {
+      return c.matches(CARD_SELECTOR);
+    });
+    var cols = Math.max(1, Math.round(card.parentElement.clientWidth / Math.max(1, card.offsetWidth)));
+    card.style.transitionDelay = (siblings.indexOf(card) % cols) * 90 + 'ms';
+    targets.push(card);
+  });
+  if (!targets.length) return;
+
+  function finish(el) {
+    el.classList.remove('reveal', 'is-revealed');
+    el.style.transitionDelay = '';
+  }
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var el = entry.target;
+      observer.unobserve(el);
+      el.classList.add('is-revealed');
+      el.addEventListener('transitionend', function onEnd(e) {
+        if (e.target !== el || e.propertyName !== 'opacity') return;
+        el.removeEventListener('transitionend', onEnd);
+        finish(el);
+      });
+      // Safety net in case transitionend never fires.
+      setTimeout(function () { finish(el); }, 1800);
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+  targets.forEach(function (el) {
+    el.classList.add('reveal');
+    observer.observe(el);
+  });
+})();

@@ -1,6 +1,6 @@
 /**
  * Blog Listing Pagination
- * Paginates every card (the newest/first one included) 6 per page.
+ * Paginates every card (the newest/first one included) 9 per page.
  * Runs after blog-sort.js so it always paginates the final,
  * newest-first DOM order.
  *
@@ -12,7 +12,7 @@
 (function () {
   "use strict";
 
-  var PAGE_SIZE = 6;
+  var PAGE_SIZE = 9;
   var grid = document.getElementById("blog-listing-grid");
   var nav = document.getElementById("blog-pagination");
   if (!grid) return;

@@ -27,6 +27,26 @@
 
 var ELUNITE_BLOG_POSTS = [
   {
+    url: "study-in-india-2027-east-african-students.html",
+    title: "Study in India 2027: The Affordable English-Taught Pathway for East and Central African Students",
+    excerpt: "Affordable English-taught degrees, ICCR and India-Africa Maitri scholarships, real living costs and a step-by-step guide to applying from Kenya, Tanzania, Uganda and Ethiopia.",
+    tag: "Study in India",
+    date: "2026-11-13",
+    readTime: "8 min read",
+    icon: "graduation-cap",
+    image: "images/blogs/study-in-india-2027.webp"
+  },
+  {
+    url: "beyond-big-four-african-students-study-abroad-2027.html",
+    title: "Beyond the “Big Four”: Why African Students Are Redefining Study Abroad in 2027",
+    excerpt: "For years, the study abroad dream for ambitious students across Lagos, Nairobi, and Accra was locked onto the US, UK, Canada, and Australia. In 2027, the conversation is no longer about whether to study abroad, but where.",
+    tag: "Study Abroad 2026",
+    date: "2026-11-12",
+    readTime: "4 min read",
+    icon: "globe-2",
+    image: "images/blogs/beyond-big-four-2026.webp"
+  },
+  {
     url: "china-vs-usa-african-students-2027.html",
     title: "Why More African Students Are Choosing China Over the USA in 2027",
     excerpt: "New US visa bans now cover 26 African countries. Costs, scholarships, visas and work rights in China and the USA compared, plus the downsides of China recruiters rarely mention.",
@@ -34,7 +54,7 @@ var ELUNITE_BLOG_POSTS = [
     date: "2026-11-05",
     readTime: "8 min read",
     icon: "scale",
-    image: "images/blogs/China vs USA 2027.webp"
+    image: "images/blogs/china-vs-usa-2027.webp"
   },
   {
     url: "csca-exam-2027-african-students.html",
@@ -44,7 +64,7 @@ var ELUNITE_BLOG_POSTS = [
     date: "2026-11-05",
     readTime: "10 min read",
     icon: "graduation-cap",
-    image: "images/blogs/CSCA Examination.webp"
+    image: "images/blogs/csca-exam-2027.webp"
   },
   {
     url: "stay-and-work-in-germany-after-masters-2026.html",
@@ -54,7 +74,7 @@ var ELUNITE_BLOG_POSTS = [
     date: "2026-09-21",
     readTime: "11 min read",
     icon: "briefcase",
-    image: "images/blogs/Can I Stay and Work in Germany.webp"
+    image: "images/blogs/work-in-germany-after-masters.webp"
   },
   {
     url: "germany-study-costs-2026-payment-timeline.html",
@@ -64,7 +84,7 @@ var ELUNITE_BLOG_POSTS = [
     date: "2026-09-20",
     readTime: "10 min read",
     icon: "wallet",
-    image: "images/blogs/Germany Study Costs in 2026.webp"
+    image: "images/blogs/germany-study-costs-2026.webp"
   },
   {
     url: "india-university-rankings-african-students.html",
@@ -74,7 +94,7 @@ var ELUNITE_BLOG_POSTS = [
     date: "2026-09-14",
     readTime: "9 min read",
     icon: "landmark",
-    image: "images/blogs/India University Rankings.webp"
+    image: "images/blogs/india-university-rankings.webp"
   },
   {
     url: "new-rules-global-hiring-2026.html",
@@ -84,7 +104,7 @@ var ELUNITE_BLOG_POSTS = [
     date: "2026-09-13",
     readTime: "4 min read",
     icon: "briefcase",
-    image: "images/blogs/The New Rules of Global Hiring What Employers in 2026 Expect from International Graduates.webp"
+    image: "images/blogs/global-hiring-2026.webp"
   },
   {
     url: "studienkolleg-germany-application-visa-guide.html",
@@ -94,7 +114,7 @@ var ELUNITE_BLOG_POSTS = [
     date: "2026-09-10",
     readTime: "11 min read",
     icon: "graduation-cap",
-    image: "images/blogs/What Is a Studienkolleg Applications, Visa and Student Life.webp"
+    image: "images/blogs/studienkolleg-germany.webp"
   },
   {
     url: "how-to-avoid-wrong-course-trap-study-abroad.html",
@@ -104,7 +124,7 @@ var ELUNITE_BLOG_POSTS = [
     date: "2026-09-10",
     readTime: "10 min read",
     icon: "compass",
-    image: "images/blogs/How to Avoid the Wrong Course Trap When You Study Abroad.webp"
+    image: "images/blogs/wrong-course-trap-study-abroad.webp"
   },
   {
     url: "open-doors-scholarship-2027-russia.html",
@@ -114,7 +134,7 @@ var ELUNITE_BLOG_POSTS = [
     date: "2026-08-23",
     readTime: "12 min read",
     icon: "landmark",
-    image: "images/blogs/Open Doors Scholarship 2027 Russia Fully Funded Guide.webp"
+    image: "images/blogs/open-doors-scholarship-russia-2027.webp"
   },
   {
     url: "financial-planning-mistakes-study-abroad.html",
@@ -124,7 +144,7 @@ var ELUNITE_BLOG_POSTS = [
     date: "2026-08-22",
     readTime: "9 min read",
     icon: "wallet",
-    image: "images/blogs/12 Financial Planning Mistakes to Avoid Before Studying Abroad in 2026.webp"
+    image: "images/blogs/study-abroad-financial-mistakes-2026.webp"
   },
   {
     url: "parents-guide-study-abroad-safety-cost.html",
@@ -134,7 +154,7 @@ var ELUNITE_BLOG_POSTS = [
     date: "2026-08-21",
     readTime: "7 min read",
     icon: "shield-check",
-    image: "images/blogs/A Parent's Guide to Study Abroad Safety, Real Costs & How to Spot a Legitimate Consultant.webp"
+    image: "images/blogs/parents-guide-study-abroad.webp"
   },
   {
     url: "complete-guide-studying-abroad-2026.html",
@@ -144,7 +164,7 @@ var ELUNITE_BLOG_POSTS = [
     date: "2026-08-18",
     readTime: "5 min read",
     icon: "book-open",
-    image: "images/blogs/Complete Guide to Studying Abroad in 2026 Top Countries, Universities, and Application Tips.webp"
+    image: "images/blogs/study-abroad-guide-2026.webp"
   },
   {
     url: "best-countries-study-abroad-2026.html",
@@ -154,7 +174,7 @@ var ELUNITE_BLOG_POSTS = [
     date: "2026-08-18",
     readTime: "4 min read",
     icon: "globe-2",
-    image: "images/blogs/Best Countries to Study Abroad in 2026 Affordable Tuition, Visa Success Rates & Career Opportunities.webp"
+    image: "images/blogs/best-countries-study-abroad-2026.webp"
   },
   {
     url: "how-to-choose-the-right-university-abroad.html",
@@ -164,7 +184,7 @@ var ELUNITE_BLOG_POSTS = [
     date: "2026-08-14",
     readTime: "6 min read",
     icon: "graduation-cap",
-    image: "images/blogs/How to Choose the Right University Abroad Courses, Rankings, Scholarships & Future Career Scope.webp"
+    image: "images/blogs/choose-university-abroad.webp"
   },
   {
     url: "study-abroad-scholarships-2026.html",
@@ -174,6 +194,6 @@ var ELUNITE_BLOG_POSTS = [
     date: "2026-08-12",
     readTime: "8 min read",
     icon: "award",
-    image: "images/blogs/Study Abroad Scholarships 2026 How to Apply, Eligibility Requirements & Tips to Get Approved.webp"
+    image: "images/blogs/study-abroad-scholarships-2026.webp"
   }
 ];

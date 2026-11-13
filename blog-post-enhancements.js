@@ -80,7 +80,7 @@
     /* Inject share bar into the article-card-wrap (or article-body fallback) if not already present */
     var existingShare = document.querySelector('.article-share');
     if (!existingShare) {
-      var wrap = document.querySelector('.article-card-wrap') || document.querySelector('.article-body');
+      var wrap = document.querySelector('.post-card') || document.querySelector('.article-card-wrap') || document.querySelector('.article-body');
       if (wrap) wrap.insertAdjacentHTML('beforeend', shareHtml);
     }
 
@@ -91,6 +91,10 @@
 
     // If related articles section already rendered, prevent duplicate
     if (document.querySelector('.related-articles')) return;
+
+    // Redesigned posts have a "Related posts" list in the sidebar; when it
+    // exists, render there (title + date) instead of the grid below the post.
+    var sidebarList = document.getElementById('post-related-list');
 
     // Helper: Normalize URL to a comparable slug without domain, query, hash, slashes, or .html
     function normalizeSlug(str) {
@@ -136,16 +140,33 @@
     }
 
     // Pad with other posts if count < 3
-    if (related.length < 3) {
+    if (related.length < (sidebarList ? 4 : 3)) {
       var others = ELUNITE_BLOG_POSTS.filter(function (p) {
         return normalizeSlug(p.url) !== activeSlug && (!currentPost || p.tag !== currentPost.tag);
       });
-      related = related.concat(others).slice(0, 3);
+      related = related.concat(others).slice(0, sidebarList ? 4 : 3);
     } else {
-      related = related.slice(0, 3);
+      related = related.slice(0, sidebarList ? 4 : 3);
     }
 
     if (!related.length) return;
+
+    if (sidebarList) {
+      var fmt = window.EluniteBlogDate && window.EluniteBlogDate.formatUpdated;
+      sidebarList.innerHTML = related
+        .slice(0, 4)
+        .map(function (p) {
+          var when = fmt ? fmt(p.date, '') : p.date;
+          return (
+            '<a href="' + p.url + '" class="post-related-card">' +
+              '<span class="post-related-card-title">' + p.title + '</span>' +
+              '<span class="post-related-card-date">' + when + '</span>' +
+            '</a>'
+          );
+        })
+        .join('');
+      return;
+    }
 
     var cards = related
       .map(function (p) {
@@ -186,10 +207,76 @@
     }
   }
 
+  /* ── 3. Sidebar booking form (same design and checks as the pop-up) ── */
+  function initGuidanceForm() {
+    var form = document.getElementById('post-guidance-form');
+    if (!form || typeof initLeadFormSubmit !== 'function') return;
+    var card = form.parentElement;
+    var success = card.querySelector('.post-form-success');
+    var errorBox = card.querySelector('.post-form-error');
+    var renderedAt = Date.now();
+    var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var PHONE_RE = /^[0-9+\-\s()]{7,20}$/;
+
+    function setFieldError(input, message) {
+      var field = input.closest('.lead-field');
+      if (!field) return;
+      field.classList.toggle('lead-field-invalid', !!message);
+      var el = field.querySelector('.lead-field-error');
+      if (el) el.textContent = message || '';
+    }
+
+    function check(id, ok, message) {
+      var input = document.getElementById(id);
+      var valid = ok(input.value.trim());
+      setFieldError(input, valid ? '' : message);
+      return valid;
+    }
+
+    function validate() {
+      var valid = true;
+      valid = check('pg-name', function (v) { return !!v; }, 'Please enter your first name') && valid;
+      valid = check('pg-home-country', function (v) { return !!v; }, 'Please select your country') && valid;
+      valid = check('pg-email', function (v) { return EMAIL_RE.test(v); }, 'Enter a valid email address') && valid;
+      valid = check('pg-phone', function (v) {
+        var digits = v.replace(/[^0-9]/g, '');
+        return PHONE_RE.test(v) && digits.length >= 7 && digits.length <= 15;
+      }, 'Enter a valid phone number') && valid;
+      valid = check('pg-country', function (v) { return !!v; }, 'Please select your preferred study destination') && valid;
+      return valid;
+    }
+
+    initLeadFormSubmit(form, {
+      submitBtn: form.querySelector('.lead-modal-submit'),
+      cooldownKey: 'elunite_lead_modal_last_submit',
+      getRenderedAt: function () { return renderedAt; },
+      validate: validate,
+      onCooldown: function (submitBtn) {
+        if (!submitBtn) return;
+        var original = submitBtn.textContent;
+        submitBtn.textContent = 'Already sent \u2014 please wait';
+        setTimeout(function () { submitBtn.textContent = original; }, 3000);
+      },
+      onSuccess: function () {
+        form.reset();
+        form.hidden = true;
+        if (errorBox) errorBox.hidden = true;
+        if (success) success.hidden = false;
+      },
+      onError: function () {
+        if (errorBox) errorBox.hidden = false;
+      },
+    });
+  }
+
   // Ensure DOM is ready before executing
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initBlogEnhancements);
+    document.addEventListener('DOMContentLoaded', function () {
+      initBlogEnhancements();
+      initGuidanceForm();
+    });
   } else {
     initBlogEnhancements();
+    initGuidanceForm();
   }
 })();
